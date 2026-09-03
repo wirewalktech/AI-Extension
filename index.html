@@ -839,12 +839,16 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <p>Tell us what you run and what your next business deadline is &mdash; a budget cycle, a survey, a renewal. We work backward from it. Phase one is priced before phase two is discussed, the report is yours either way, and we take no vendor commissions or referral fees on anything we recommend.</p>
    </div>
    <div class="cta-c">
-    <form class="frm" novalidate="false">
-      <input type="text" placeholder="Name and organization" required>
-      <input type="email" placeholder="Work email" required>
+    <form class="frm" action="https://formsubmit.co/sales@wirewalk.com" method="POST">
+      <input type="hidden" name="_subject" value="Wirewalk — Scoping call request">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+      <input type="text" name="name" aria-label="Name and organization" placeholder="Name and organization" autocomplete="organization" required>
+      <input type="email" name="email" aria-label="Work email" placeholder="Work email" autocomplete="email" required>
       <button class="btn btn-p" type="submit">Book the review</button>
     </form>
-    <p class="small muted" style="margin-top:16px">We do not share contact details with vendors or partners, and we do not operate a mailing list.</p>
+    <p class="small" style="margin-top:16px">Prefer to call? <a href="tel:+15162691517">516-269-1517</a></p>
+    <p class="small muted" style="margin-top:16px">We use your details to respond to your inquiry. FormSubmit processes this form for email delivery. We do not sell your details or operate a mailing list.</p>
    </div>
   </div>
 </div></div></section>
@@ -1079,40 +1083,15 @@ lk.addEventListener('click',e=>{
 });
 addEventListener('keydown',e=>{if(e.key==='Escape'&&lk.classList.contains('open'))setMenu(false);});
 
-/* ── contact routing ───────────────────────────────────────────────────
-   The destination lives here only, and is never rendered into the page.
-   Point ENDPOINT at a form handler (Formspree, Web3Forms, a Cloudflare
-   Worker, your own /api/contact) and submissions POST to it as JSON.
-   Note that anything in this file is readable in view-source: to keep the
-   address genuinely private, hold it in the handler's config and drop the
-   `to` field below. */
-const CONTACT={to:'sales@wirewalk.com',endpoint:''};
+/* Submit directly to FormSubmit so its confirmation and spam checks run.
+   Delivery requires the recipient's one-time email activation.
+   Never display a local success message before the service accepts the form. */
 const frm=$('.frm');
 if(frm){
-  frm.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const btn=frm.querySelector('.btn');
-    if(btn.dataset.busy)return;
-    const name=frm.querySelector('input[type=text]').value.trim();
-    const mail=frm.querySelector('input[type=email]').value.trim();
-    btn.dataset.busy='1'; frm.classList.add('sending'); btn.textContent='Sending';
-    const body={to:CONTACT.to,subject:'Scoping call request',name:name,email:mail,page:location.href};
-    try{
-      if(!CONTACT.endpoint){
-        console.warn('[contact] no endpoint configured — set CONTACT.endpoint to deliver to '+CONTACT.to);
-        await new Promise(r=>setTimeout(r,550));
-      }else{
-        const r=await fetch(CONTACT.endpoint,{method:'POST',
-          headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-        if(!r.ok)throw new Error('HTTP '+r.status);
-      }
-      frm.classList.remove('sending'); frm.classList.add('sent');
-      btn.textContent='Thank you — we will be in touch';
-    }catch(err){
-      frm.classList.remove('sending'); btn.dataset.busy='';
-      btn.textContent='Could not send — try again';
-      console.error('[contact]',err);
-    }
+  frm.addEventListener('submit',e=>{
+    const name=frm.elements.namedItem('name');
+    name.value=name.value.trim();
+    if(!frm.reportValidity())e.preventDefault();
   });
 }
 </script>
