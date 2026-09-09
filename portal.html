@@ -121,6 +121,45 @@ summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset
 .bar.core i{background:var(--ac2)}
 .bar.done i{background:var(--ok)}
 
+/* ---- send everything at once ---- */
+.pcard .pnote{font-size:13px;color:var(--tx3);line-height:1.45}
+.pcard .pnote b{color:var(--ac2);font-weight:600}
+.bulkcta{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center;
+         border:1px solid var(--ln2);background:var(--alt);border-radius:12px;
+         padding:16px 18px;margin:24px 0 0}
+.bulkcta .t{flex:1 1 300px;min-width:0}
+.bulkcta b{display:block;font-size:15.5px;color:var(--tx)}
+.bulkcta p{margin:3px 0 0;font-size:14.5px;color:var(--tx2);max-width:none}
+.bulkcta .btn{flex:0 0 auto}
+
+#bulk{border:1px solid var(--ac);border-radius:12px;background:#fff;margin:44px 0 0;
+      overflow:hidden;scroll-margin-top:16px}
+#bulk .hd{background:var(--acs);border-bottom:1px solid var(--ac);padding:18px 22px}
+#bulk .hd h2{margin:0;font-size:clamp(19px,2.4vw,22px)}
+#bulk .hd p{margin:4px 0 0;font-size:14.5px;color:var(--tx2)}
+#bulk .bd{padding:20px 22px 24px}
+/* The disclaimer is the point of this block, so it is set at reading size and
+   sits above the control rather than under it in grey. */
+.tradeoff{border-left:3px solid var(--ac);padding:2px 0 2px 17px;margin:0 0 20px}
+.tradeoff b.h{display:block;font-size:16.5px;color:var(--tx);margin-bottom:9px}
+.tradeoff p{margin:0 0 9px;font-size:15.5px;color:var(--tx2);max-width:74ch}
+.tradeoff p:last-child{margin-bottom:0}
+.tradeoff .punch{font-size:16.5px;color:var(--tx);font-weight:600}
+.drop{border:2px dashed var(--ln2);border-radius:11px;padding:26px 20px;text-align:center;
+      background:var(--bg);transition:border-color .18s,background .18s}
+.drop.over{border-color:var(--ac);background:var(--acs)}
+.drop b{display:block;font-size:16px;color:var(--tx);margin-bottom:4px}
+.drop p{margin:0 auto;font-size:14.5px;color:var(--tx2);max-width:58ch}
+.drop .btn{margin-top:15px}
+#bulk .stat{font-size:13.5px;color:var(--tx2);margin:10px 0 0;font-variant-numeric:tabular-nums}
+#bulk .err{font-size:14px;color:var(--bad);margin:10px 0 0;display:flex;flex-wrap:wrap;
+           gap:10px;align-items:center}
+#bulk .err span{flex:1 1 240px;min-width:0}
+#bulklist{margin:16px 0 0}
+#bulklist .lbl{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3);
+               font-weight:700;margin:0 0 8px}
+#bulklist .after{font-size:14.5px;color:var(--tx2);margin:12px 0 0;max-width:74ch}
+
 /* ---- the skip notice ---- */
 .notice{border:1px solid var(--ac);background:var(--acs);border-radius:12px;
         padding:20px 22px;margin:26px 0 0}
@@ -263,10 +302,12 @@ footer.end a{color:var(--ac2)}
         <div class="v"><span id="all-n">0</span><small> of <span id="all-t">0</span> answered</small></div>
         <div class="bar"><i id="all-bar" style="width:0"></i></div>
       </div>
+      <!-- Deliberately NOT a progress bar. Files arriving is not the same as
+           questions being answered, and a bar here would imply it was. -->
       <div class="pcard">
-        <div class="k">Uploaded</div>
-        <div class="v"><span id="doc-n">0</span><small> files</small></div>
-        <div class="bar done"><i id="doc-bar" style="width:0"></i></div>
+        <div class="k">Files received</div>
+        <div class="v"><span id="doc-n">0</span><small> in total</small></div>
+        <div class="pnote" id="doc-note"></div>
       </div>
     </div>
   </div></div>
@@ -279,6 +320,16 @@ footer.end a{color:var(--ac2)}
     </div>
 
     <p class="sub" style="margin-top:18px" id="howto"></p>
+
+    <div class="bulkcta">
+      <div class="t">
+        <b>Short on time? Send everything at once.</b>
+        <p>One drop, no labelling — a zipped folder is fine. Faster for you, slower for us,
+        and precision suffers where we have to guess what a file is. The whole trade-off is
+        written out next to the button.</p>
+      </div>
+      <button class="btn" id="tobulk">Send everything at once ↓</button>
+    </div>
 
     <details class="jump" id="jump" open>
       <summary>Jump to a section</summary>
@@ -294,7 +345,52 @@ footer.end a{color:var(--ac2)}
 
     <div id="sections"></div>
 
+    <section id="bulk">
+      <div class="hd">
+        <h2>Send everything at once</h2>
+        <p>For when labelling a hundred requests is the thing standing between you and
+        starting.</p>
+      </div>
+      <div class="bd">
+        <div class="tradeoff">
+          <b class="h">Read this first — it is a real trade-off, not a formality.</b>
+          <p>A document that arrives against the request it answers tells us what it is.
+          A bulk drop means we work that out ourselves, from the file: what it is, which
+          entity and period it covers, and which of the requests below it was meant to
+          satisfy.</p>
+          <p>That is slower. It also makes us <em>less likely to notice what is
+          missing</em> — the gap analysis is only as good as knowing what was meant to be
+          there, and a folder does not tell us what is not in it. A request you skip with a
+          reason leaves a mark in the report. A request nothing happens to, because nothing
+          in the drop obviously answered it, can be read as answered when it was not.</p>
+          <p>It matters most on the <b><span id="bulk-core">33</span> core requests</b>.
+          Those are the ones the review cannot proceed without, and the ones where guessing
+          wrong costs the most.</p>
+          <p class="punch">Faster for you, slower for us — and precision suffers where we
+          have to guess what a file is.</p>
+          <p>Use it anyway if it is the difference between starting and not starting. A
+          bulk drop today beats a tidy intake that never happens, and you can come back and
+          answer the core requests specifically afterwards — the two work perfectly well
+          together.</p>
+        </div>
+
+        <div class="drop" id="drop">
+          <b>Drop files here</b>
+          <p>Or choose them. As many as you like, in one go — spreadsheets, documents,
+          exports, photographs of a whiteboard, or a single zip of the lot.</p>
+          <button class="btn" id="bulkpick">Choose files</button>
+          <input type="file" id="bulkinput" multiple hidden>
+        </div>
+
+        <div class="upl hide" id="bulkbar"><i></i></div>
+        <div class="stat hide" id="bulkstat"></div>
+        <div class="err hide" id="bulkerr"></div>
+        <div id="bulklist"></div>
+      </div>
+    </section>
+
     <div class="retn" id="retention"></div>
+    <div class="retn hide" id="destroyed"></div>
 
     <footer class="end">
       <p>Everything here is held for this engagement only. Access is logged — every open,
@@ -631,8 +727,18 @@ function counts() {
   const done = items.filter(i => ANSWERED.includes(i.status));
   const coreDone = core.filter(i => ANSWERED.includes(i.status));
   const docs = items.reduce((n, i) => n + (i.documents ? i.documents.length : 0), 0);
+  const unfiled = (DATA.unfiled || []).length;
   return { total: items.length, done: done.length, core: core.length,
-           coreDone: coreDone.length, docs };
+           coreDone: coreDone.length, docs, unfiled, files: docs + unfiled };
+}
+
+/* The earliest upload we still hold. Derived from what is actually here rather
+   than stored on the engagement, so it cannot drift from the bucket. */
+function heldSince() {
+  const all = [...(DATA.unfiled || []),
+               ...DATA.items.flatMap(i => i.documents || [])];
+  if (!all.length) return null;
+  return all.map(d => d.uploaded_at).filter(Boolean).sort()[0].slice(0, 10);
 }
 
 function bySection() {
@@ -648,10 +754,16 @@ function updateProgress() {
   const c = counts();
   $("#core-n").textContent = c.coreDone; $("#core-t").textContent = c.core;
   $("#all-n").textContent = c.done;      $("#all-t").textContent = c.total;
-  $("#doc-n").textContent = c.docs;
+  $("#doc-n").textContent = c.files;
   $("#core-bar").style.width = (c.core ? c.coreDone / c.core * 100 : 0) + "%";
   $("#all-bar").style.width = (c.total ? c.done / c.total * 100 : 0) + "%";
-  $("#doc-bar").style.width = Math.min(100, c.docs * 4) + "%";
+  /* Say the awkward part out loud. Files arriving in bulk look like progress
+     and are not, and the client should learn that here rather than from a
+     report that turned out to have holes in it. */
+  $("#doc-note").innerHTML = c.unfiled
+    ? "<b>" + c.unfiled + " sent in bulk</b>, not yet matched to a request — these do not " +
+      "count towards the answers above. " + (c.total - c.done) + " requests still open."
+    : (c.total - c.done) + " requests still open.";
 
   // per-section counters in the jump list and the section headers
   for (const [sid, items] of bySection()) {
@@ -829,14 +941,18 @@ function renderFiles(it, ul) {
       try {
         const r = await fetch(API + "/api/download?doc=" + encodeURIComponent(d.id),
           { headers: { "X-Portal-Token": TOKEN } });
+        // Classify before reporting. A bare catch here used to tell every
+        // failure, a rejected session included, that it was "the connection".
+        if (r.status === 403) throw new PortalError("denied", "");
         if (!r.ok) throw new PortalError("http", "that file could not be fetched");
         const url = URL.createObjectURL(await r.blob());
         const a = el("a"); a.href = url; a.download = d.filename; a.click();
         setTimeout(() => URL.revokeObjectURL(url), 4000);
         node()._error(null);
-      } catch {
-        node()._error("We could not fetch " + d.filename + " just now. The file is still " +
-                      "here — this was the connection, not the upload.", null);
+      } catch (e) {
+        const why = e instanceof PortalError ? e : new PortalError("network", "");
+        node()._error(whyFailed(why, "Fetching " + d.filename) +
+                      " The file itself is untouched.", null);
       } finally {
         get.textContent = was; get.disabled = false;
       }
@@ -855,10 +971,9 @@ function renderFiles(it, ul) {
         updateProgress();
       } catch (e) {
         rm.disabled = false; rm.textContent = "Remove";
-        node()._error("We could not remove " + d.filename + ". " +
-                      (e.kind === "network" || e.kind === "timeout"
-                        ? "The connection did not get through — the file is untouched."
-                        : e.message), null);
+        node()._error(whyFailed(e, "Removing " + d.filename) +
+                      (e.kind === "network" || e.kind === "timeout" || e.kind === "stalled"
+                        ? " The file is untouched." : ""), null);
       }
     });
     li.append(rm);
@@ -883,15 +998,43 @@ function render() {
     "your pace. Every answer saves the moment you give it, so you can close this and come " +
     "back as often as you like; the link keeps working until the engagement closes.";
 
+  const heldNow = counts().files;
   $("#retention").innerHTML =
-    "<b>How long we keep this.</b> Every file is destroyed twelve months after it is " +
-    "uploaded. That is enforced by the storage itself, not by anyone remembering to do it. " +
-    "On what has been uploaded so far, the last of it goes on <b>" +
-    (e.retention_until || "the agreed retention date") + "</b>; anything you add later is " +
-    "kept twelve months from the day you add it, and that date moves with it. You can " +
-    "remove any individual file yourself, at any time, with the Remove button beside it. " +
-    "Nothing here is public: the store has no public address, and every file leaves only " +
-    "through an authenticated request that is written to the audit log.";
+    "<b>How long we keep this: until the work is done, and not one day longer.</b> " +
+    "There is no retention period here, because we do not want one. Your documents are " +
+    "destroyed as soon as the work on them is finished — the review is delivered, the " +
+    "files go. Not archived, not moved somewhere cheaper, not kept in case they are " +
+    "useful later. Deleted." +
+    "<br><br>You then receive a <b>certificate of destruction</b> naming every file, its " +
+    "size, and the moment it was destroyed. That is the point of it: &ldquo;we keep " +
+    "nothing&rdquo; is worth very little as an assurance and quite a lot as a list you " +
+    "can check against what you sent." +
+    "<br><br>" + (heldNow
+      ? "Right now we hold <b>" + heldNow + " file" + (heldNow === 1 ? "" : "s") +
+        "</b> for you, received since <b>" + (heldSince() || e.created_at_date) + "</b>. "
+      : "Right now we hold nothing for you. ") +
+    "You can destroy any single file yourself, at any time, with the Remove button beside " +
+    "it — you do not need to ask us. Underneath all of this sits a thirty-day ceiling " +
+    "enforced by the storage itself, so a file that somehow gets forgotten goes anyway; " +
+    "it is the floor beneath the promise, not the promise." +
+    "<br><br>Nothing here is public: the store has no public address, and every file " +
+    "leaves only through an authenticated request that is written to an append-only log.";
+
+  /* The certificate, from the client's side. */
+  const gone = DATA.destroyed || [];
+  const dz = $("#destroyed");
+  dz.classList.toggle("hide", !gone.length);
+  if (gone.length) {
+    dz.innerHTML =
+      "<b>Destroyed — " + gone.length + " file" + (gone.length === 1 ? "" : "s") +
+      ".</b> These were deleted from our storage on the dates shown. No working copy, " +
+      "archive or backup of them is retained. Ask us at any time for the signed " +
+      "certificate covering them." +
+      '<ul class="files" style="margin-top:12px">' + gone.map(d =>
+        '<li><span class="fn">' + d.filename.replace(/[<&]/g, c => c === "<" ? "&lt;" : "&amp;") +
+        '</span><span class="sz">' + bytes(d.bytes) + "</span><span class=\"sz\">destroyed " +
+        String(d.deleted_at).slice(0, 10) + "</span></li>").join("") + "</ul>";
+  }
 
   const secs = $("#sections"); secs.innerHTML = "";
   const jl = $("#jumplist"); jl.innerHTML = "";
@@ -924,6 +1067,10 @@ function render() {
     sec.append(body);
     secs.append(sec);
   }
+
+  $("#bulk-core").textContent = c.core;
+  initBulk();
+  renderUnfiled();
   updateProgress();
 }
 
@@ -1011,18 +1158,42 @@ function xhrSend(method, url, body, { headers = {}, onProgress } = {}) {
   });
 }
 
-/* One sentence per failure, in the client's terms, and never the raw one. */
+/* One sentence per failure, in the client's terms, and never the raw one.
+ *
+ * Every call site routes through here for a reason. api() throws kind
+ * "denied" for a 403, and a handler that branches only on "challenge" and
+ * "http" lets a 403 fall through to "check the connection" -- which sends the
+ * client off debugging the one thing that is not wrong. That bug has now
+ * appeared three times in this file. Central table, no local guessing. */
+function whyFailed(e, what = "That") {
+  switch (e && e.kind) {
+    case "denied":
+      return "Your session was not accepted — usually a link that expired while this " +
+             "page sat open. Reload from your portal link and try again. Nothing you " +
+             "have already saved is affected.";
+    case "challenge":
+      return "The security check could not complete. That is usually a content blocker " +
+             "or a corporate network stopping challenges.cloudflare.com.";
+    case "stalled":
+      return `${what} stopped part-way. That is usually the connection rather than the ` +
+             "file. Nothing partial was kept.";
+    case "network":
+    case "timeout":
+      return `${what} did not get through — the connection dropped.`;
+    case "http":
+      return e.message;
+    default:
+      return (e && e.message) || "something went wrong at our end";
+  }
+}
+
+/* Uploads add one fact to the general explanation: no half-written file was
+   kept. Everything else defers to whyFailed, so a new error kind cannot be
+   handled correctly in one place and wrongly in another. */
 function uploadWhy(e, filename) {
-  if (e.kind === "stalled")
-    return `${filename} stopped uploading part-way. That is usually the connection ` +
-           `rather than the file. Nothing partial was kept.`;
-  if (e.kind === "network" || e.kind === "timeout")
-    return `${filename} did not reach us — the connection dropped during the upload. ` +
-           `Nothing partial was kept.`;
-  if (e.kind === "denied")
-    return `Your session was not accepted for that upload. Reload the page from your ` +
-           `portal link and try once more.`;
-  return `${filename} was not accepted: ${e.message}`;
+  const base = whyFailed(e, filename);
+  const partial = ["stalled", "network", "timeout"].includes(e && e.kind);
+  return base + (partial ? " Nothing partial was kept." : "");
 }
 
 async function uploadFiles(it, files, node) {
@@ -1042,10 +1213,10 @@ async function uploadFiles(it, files, node) {
         node._status(`Uploading ${label} — ${bytes(sent)} of ${bytes(total)} ` +
                      `(${Math.floor(pct)}%). You can leave this page open; it will finish.`);
       };
-      const doc = f.size <= 80 * 1024 * 1024
-        ? await uploadDirect(it, f, tick)
-        : await uploadMultipart(it, f, tick, node);
+      const doc = await uploadOne(f, it.id, tick, node._status);
       (it.documents ||= []).push(doc);
+      // A file against a specific request DOES answer it. This is the only
+      // upload path where that is true; see bulkUpload.
       it.status = "provided"; it.skip_reason = null;
       node._refresh(); updateProgress();
     }
@@ -1061,22 +1232,33 @@ async function uploadFiles(it, files, node) {
   }
 }
 
-async function uploadDirect(it, f, tick) {
+/* The transport is identical whether a file answers a specific request or
+   arrives in a bulk drop; the only difference is whether an item id travels
+   with it. What must NOT be shared is what happens afterwards — see the two
+   callers. Bulk drops are far larger and far more numerous than the per-item
+   flow ever sees, so they get the same progress-not-duration deadline. */
+async function uploadOne(f, itemId, tick, setStatus) {
+  return f.size <= 80 * 1024 * 1024
+    ? uploadDirect(f, itemId, tick)
+    : uploadMultipart(f, itemId, tick, setStatus);
+}
+
+async function uploadDirect(f, itemId, tick) {
   const q = "?filename=" + encodeURIComponent(f.name) + "&size=" + f.size +
-            "&item=" + encodeURIComponent(it.id);
+            (itemId ? "&item=" + encodeURIComponent(itemId) : "");
   const out = await xhrSend("POST", "/api/upload" + q, f, {
     headers: { "Content-Type": f.type || "application/octet-stream" },
     onProgress: tick,
   });
-  return { id: out.id, item_id: it.id, filename: f.name, bytes: f.size,
+  return { id: out.id, item_id: itemId || null, filename: f.name, bytes: f.size,
            content_type: f.type, uploaded_at: new Date().toISOString() };
 }
 
-async function uploadMultipart(it, f, tick, node) {
+async function uploadMultipart(f, itemId, tick, setStatus) {
   const start = await api("/api/upload/create", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ filename: f.name, size: f.size,
-                           contentType: f.type, itemId: it.id }),
+                           contentType: f.type, itemId: itemId || null }),
   });
   const size = start.partSize;
   const total = Math.ceil(f.size / size);
@@ -1092,16 +1274,16 @@ async function uploadMultipart(it, f, tick, node) {
       parts.push(p);
       tick(Math.min(n * size, f.size), f.size);
     }
-    node._status("Finishing…");
+    if (setStatus) setStatus("Finishing…");
     const out = await api("/api/upload/complete", {
       method: "POST", headers: { "Content-Type": "application/json" },
       // Reassembling a 200 MB object server-side is not instant.
       timeout: 60000,
       body: JSON.stringify({ key: start.key, uploadId: start.uploadId, parts,
-                             itemId: it.id, filename: f.name,
+                             itemId: itemId || null, filename: f.name,
                              contentType: f.type, size: f.size }),
     });
-    return { id: out.id, item_id: it.id, filename: f.name, bytes: f.size,
+    return { id: out.id, item_id: itemId || null, filename: f.name, bytes: f.size,
              content_type: f.type, uploaded_at: new Date().toISOString() };
   } catch (e) {
     // Leave no half-written object paying rent in the bucket.
@@ -1113,6 +1295,118 @@ async function uploadMultipart(it, f, tick, node) {
     } catch { /* the lifecycle rule sweeps it in seven days regardless */ }
     throw e;
   }
+}
+
+/* ---------------- send everything at once ---------------- */
+
+/* The bulk path shares the transport with the per-item uploader and shares
+   nothing else. In particular it does not touch a single intake item, and
+   updateProgress() below counts these files separately from the answers.
+   Marking 114 requests answered because a zip arrived would be precisely the
+   false success this portal was built to stop. */
+async function bulkUpload(files) {
+  const bar = $("#bulkbar"), fill = bar.querySelector("i");
+  const stat = $("#bulkstat"), err = $("#bulkerr"), drop = $("#drop");
+  const setStatus = t => { stat.textContent = t || ""; stat.classList.toggle("hide", !t); };
+  err.classList.add("hide"); err.innerHTML = "";
+  bar.classList.remove("hide");
+  drop.classList.remove("over");
+
+  let done = 0;
+  try {
+    for (const f of files) {
+      fill.style.width = "0%";
+      const label = files.length > 1
+        ? `${f.name} (${done + 1} of ${files.length})` : f.name;
+      const doc = await uploadOne(f, null, (sent, total) => {
+        const pct = total ? sent / total * 100 : 0;
+        fill.style.width = pct + "%";
+        setStatus(`Uploading ${label} — ${bytes(sent)} of ${bytes(total)} ` +
+                  `(${Math.floor(pct)}%). You can leave this page open; it will finish.`);
+      }, setStatus);
+      (DATA.unfiled ||= []).push(doc);
+      done++;
+      renderUnfiled();
+      updateProgress();
+    }
+    setStatus(`${done} file${done === 1 ? "" : "s"} received. Nothing else to do — ` +
+              `we take it from here.`);
+  } catch (e) {
+    setStatus("");
+    err.innerHTML = "";
+    const span = el("span", null, uploadWhy(e, files[done] ? files[done].name : "That file"));
+    const again = el("button", "btn sm g", "Try the rest again");
+    again.addEventListener("click", () => bulkUpload([...files].slice(done)));
+    err.append(span, again);
+    err.classList.remove("hide");
+    if (done) renderUnfiled();
+  } finally {
+    bar.classList.add("hide"); fill.style.width = "0%";
+  }
+}
+
+function renderUnfiled() {
+  const wrap = $("#bulklist");
+  const list = DATA.unfiled || [];
+  wrap.innerHTML = "";
+  if (!list.length) return;
+
+  wrap.append(el("p", "lbl", `Received in bulk — ${list.length} file` +
+                             (list.length === 1 ? "" : "s")));
+  const ul = el("ul", "files");
+  for (const d of list) {
+    const li = el("li");
+    li.append(el("span", "fn", d.filename), el("span", "sz", bytes(d.bytes)));
+    const rm = el("button", null, "Remove");
+    rm.addEventListener("click", async () => {
+      if (!confirm("Remove " + d.filename + "? The file is deleted, not hidden.")) return;
+      rm.disabled = true; rm.textContent = "Removing…";
+      try {
+        await api("/api/document?doc=" + encodeURIComponent(d.id), { method: "DELETE" });
+        DATA.unfiled = DATA.unfiled.filter(x => x.id !== d.id);
+        renderUnfiled(); updateProgress();
+      } catch (e) {
+        rm.disabled = false; rm.textContent = "Remove";
+        alert(whyFailed(e, "Removing " + d.filename));
+      }
+    });
+    li.append(rm);
+    ul.append(li);
+  }
+  wrap.append(ul);
+  // Said here, where somebody has just used it, rather than only in the
+  // disclaimer they read before they did.
+  wrap.append(el("p", "after",
+    "These are with us, and none of them has answered a request above — we will work out " +
+    "what each one is. If you have ten more minutes, the quickest thing you can do now is " +
+    "go back to the Core items and say what you have sent for each. It saves us guessing " +
+    "on exactly the requests where guessing costs most."));
+}
+
+function initBulk() {
+  const drop = $("#drop"), input = $("#bulkinput");
+  $("#tobulk").addEventListener("click", () => {
+    $("#bulk").scrollIntoView({ behavior: "smooth", block: "start" });
+    // Land on the disclaimer, not past it.
+    setTimeout(() => $("#bulkpick").focus({ preventScroll: true }), 700);
+  });
+  $("#bulkpick").addEventListener("click", () => input.click());
+  input.addEventListener("change", () => {
+    if (input.files.length) bulkUpload([...input.files]);
+    input.value = "";
+  });
+  for (const ev of ["dragenter", "dragover"])
+    drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); });
+  for (const ev of ["dragleave", "drop"])
+    drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); });
+  drop.addEventListener("drop", e => {
+    const files = [...(e.dataTransfer?.files || [])];
+    if (files.length) bulkUpload(files);
+  });
+  // Without this a missed drop navigates the browser to the file and the
+  // client loses the page they were half way through.
+  for (const ev of ["dragover", "drop"])
+    window.addEventListener(ev, e => { if (!drop.contains(e.target)) e.preventDefault(); });
 }
 
 /* ---------------- filters ---------------- */
