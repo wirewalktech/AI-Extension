@@ -18,23 +18,36 @@ TX3  = (0x8A, 0x87, 0x81)
 S    = 24                      # scale factor: 21px CSS -> 504px render
 
 def mark(scale=S):
+    """
+    Wirewalk AI mark: a 2x2 field, three squares filled and one left hollow.
+
+    The firm's argument is that attention across an operation is uneven - the
+    obvious areas get looked at, one does not, and that is where the cost sits.
+    The mark states it: three seen, one missed.
+
+    Geometry inherits the site's .mark rule (2x2, 2.5/21 gap, 1.5/21 radius) so
+    it stays the same brand, with the opacity fade replaced by a hollow square
+    for contrast that survives 16px.
+    """
     side  = int(21 * scale)
     gap   = 2.5 * scale
     cell  = (side - gap) / 2
     rad   = 1.5 * scale
     img   = Image.new("RGBA", (side, side), (0, 0, 0, 0))
     d     = ImageDraw.Draw(img)
-    # CSS applies transform: scale(.84) to each square
-    inset = cell * (1 - 0.84) / 2
+    stroke = max(2, int(cell * 0.19))
     for idx, (cx, cy) in enumerate([(0, 0), (1, 0), (0, 1), (1, 1)]):
-        alpha = [1.0, 1.0, 0.55, 0.28][idx]
-        x0 = cx * (cell + gap) + inset
-        y0 = cy * (cell + gap) + inset
-        x1 = x0 + cell * 0.84
-        y1 = y0 + cell * 0.84
-        d.rounded_rectangle([x0, y0, x1, y1], radius=rad * 0.84,
-                            fill=AC + (int(255 * alpha),))
+        x0 = cx * (cell + gap); y0 = cy * (cell + gap)
+        box = [x0, y0, x0 + cell, y0 + cell]
+        if idx < 3:
+            d.rounded_rectangle(box, radius=rad, fill=AC + (255,))
+        else:
+            ins = stroke / 2
+            d.rounded_rectangle([box[0]+ins, box[1]+ins, box[2]-ins, box[3]-ins],
+                                radius=max(1, rad - ins/2),
+                                outline=AC + (255,), width=stroke)
     return img
+
 
 def font(size, bold=False):
     for path, idx in (("/System/Library/Fonts/HelveticaNeue.ttc", 1 if bold else 0),
