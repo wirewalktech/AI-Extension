@@ -52,11 +52,12 @@ header.stuck{box-shadow:0 2px 14px rgba(31,30,29,.07)}
 .mark i{background:var(--acf);border-radius:1.5px;
  transition:opacity .34s var(--e),transform .38s var(--eo)}
 .brand:hover .mark i{opacity:1;transform:scale(.84)}
+.brand:hover .mark i:nth-child(4){background:var(--acf);box-shadow:none}
 .brand:hover .mark i:nth-child(2){transition-delay:.05s}
 .brand:hover .mark i:nth-child(3){transition-delay:.1s}
 .brand:hover .mark i:nth-child(4){transition-delay:.15s}
-.mark i:nth-child(2),.mark i:nth-child(3){opacity:.55}
-.mark i:nth-child(4){opacity:.28}
+.mark i:nth-child(2),.mark i:nth-child(3){opacity:1}
+.mark i:nth-child(4){opacity:1;background:transparent;box-shadow:inset 0 0 0 1.8px var(--acf);transition:background .34s var(--e),box-shadow .34s var(--e),transform .38s var(--eo)}
 .bn{display:grid;grid-template-columns:1fr;opacity:1;transition:grid-template-columns .4s var(--e),opacity .3s var(--e)}
 .bn>span{overflow:hidden;white-space:nowrap;min-width:0;font-weight:600;font-size:17px;color:var(--tx);letter-spacing:-.022em}
 .bn s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:7px}
@@ -518,7 +519,10 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .pred h4{font-size:16px;margin-bottom:7px}
 .pred p{font-size:15px}
 @media(max-width:800px){.pred{grid-template-columns:1fr}}
-</style></head>
+</style><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+</head>
 <body>
 
 <header id="hd"><div class="wrap nav">
