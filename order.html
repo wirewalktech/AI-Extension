@@ -75,7 +75,12 @@ table.cat td.p{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:r
      border-radius:20px;padding:1px 8px;margin-left:8px;vertical-align:2px}
 
 .routes{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:20px 0 0}
-.route{border:1px solid var(--ln);border-radius:11px;padding:18px;background:var(--alt)}
+.route{border:1px solid var(--ln);border-radius:11px;padding:18px;background:var(--alt);
+  display:block;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.route:hover{border-color:var(--ac);transform:translateY(-2px)}
+.route:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.route .go{display:block;margin-top:12px;font-size:14px;font-weight:600;color:var(--ac2)}
+@media (prefers-reduced-motion:reduce){.route{transition:none}.route:hover{transform:none}}
 .route.primary{border-color:var(--ac);background:var(--acs)}
 .route b{display:block;font-size:15.5px;color:var(--tx);margin-bottom:5px}
 .route .tagp{display:inline-block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
@@ -164,27 +169,31 @@ footer.end a{color:var(--ac2)}
 
   <h2 id="routes">How to order</h2>
   <div class="routes">
-    <div class="route primary">
+    <a class="route primary" href="#po">
       <span class="tagp">Primary route</span>
       <b>Purchase order</b>
       <p>Raise a PO against the engagement; we invoice against it on net 30 terms. This is
       what institutional procurement is set up for, and the only route that works when the
       figure is above a cardholder limit.</p>
-    </div>
-    <div class="route">
+      <span class="go">Submit a purchase order &rarr;</span>
+    </a>
+    <a class="route" href="#po" data-route="invoice">
       <b>Request an invoice</b>
       <p>No PO in your process? Ask for an invoice and settle it by ACH or bank transfer on
       the same net 30 terms.</p>
-    </div>
-    <div class="route">
+      <span class="go">Request an invoice &rarr;</span>
+    </a>
+    <a class="route" href="#pay" data-mode="full">
       <b>Prepay and reserve &mdash; 10% off</b>
       <p>Pay in full up front, take 10% off, and the dates are held on receipt of funds.
-      Card or ACH.</p>
-    </div>
-    <div class="route">
+      ACH or card.</p>
+      <span class="go">Pay in full &rarr;</span>
+    </a>
+    <a class="route" href="#pay" data-mode="deposit">
       <b>Deposit</b>
       <p>Pay a deposit to book the engagement; the balance is invoiced on delivery.</p>
-    </div>
+      <span class="go">Pay a deposit &rarr;</span>
+    </a>
   </div>
 
   <!-- ======================= PURCHASE ORDER (primary) ==================== -->
@@ -481,6 +490,24 @@ function token(){
     else { turnstile.reset(widgetId); turnstile.execute(widgetId, opts); }
   });
 }
+
+/* A route card is a promise about what happens next. Carry the choice across
+   so the visitor lands on the form already set the way they asked for, rather
+   than being dropped at a section and made to choose again. */
+document.querySelectorAll(".route[data-mode]").forEach(a => {
+  a.addEventListener("click", () => {
+    const m = a.getAttribute("data-mode");
+    const sel = $("#pay-mode");
+    if (sel) { sel.value = m; sel.dispatchEvent(new Event("change")); }
+  });
+});
+document.querySelectorAll('.route[data-route="invoice"]').forEach(a => {
+  a.addEventListener("click", () => {
+    const num = $("#po-num");
+    if (num) { num.value = ""; num.placeholder = "Leave blank — invoice without a PO"; }
+    const t = $("#po-terms"); if (t && !t.value) t.placeholder = "Net 30";
+  });
+});
 
 $("#paygo").addEventListener("click", async () => {
   const btn = $("#paygo"), msg = $("#paymsg");
