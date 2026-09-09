@@ -61,8 +61,25 @@ summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset
 
 /* ---- gate ---- */
 #gate{padding:64px 0 90px}
-#gate .box{max-width:560px}
+#gate .box{max-width:620px}
 #ts{margin:20px 0 6px}
+#ts:empty{margin:0}
+.gate-help{color:var(--tx2);font-size:15.5px;margin:16px 0 0}
+.gate-help ul{margin:10px 0 0;padding-left:20px}
+.gate-help li{margin:5px 0}
+.gate-help code{font:13px/1 var(--mono);background:var(--alt2);border-radius:4px;padding:2px 6px}
+.gacts{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0;align-items:center}
+.spin{display:inline-block;width:13px;height:13px;border:2px solid var(--ln2);
+      border-top-color:var(--ac);border-radius:50%;animation:sp .7s linear infinite;
+      vertical-align:-1px;margin-right:8px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2.4s}}
+
+/* ---- per-item status and failure ---- */
+.item .stat{font-size:13.5px;color:var(--tx2);margin:9px 0 0;font-variant-numeric:tabular-nums}
+.item .err{font-size:14px;color:var(--bad);margin:9px 0 0;display:flex;flex-wrap:wrap;
+           gap:10px;align-items:center}
+.item .err span{flex:1 1 240px;min-width:0}
 
 /* ---- the running header ---- */
 .engbar{background:var(--alt);border-bottom:1px solid var(--ln);padding:26px 0 22px}
@@ -201,17 +218,13 @@ footer.end a{color:var(--ac2)}
 <div id="gate"><div class="wrap"><div class="box">
   <span class="eyebrow">Client portal</span>
   <h1 id="gate-h">Opening your portal…</h1>
-  <p class="lede" id="gate-p">One moment. We are checking your link.</p>
+  <p class="lede" id="gate-p"><span class="spin" aria-hidden="true"></span>One moment. We are
+    checking your link.</p>
+  <!-- Turnstile renders into this. It must stay in the DOM in every state,
+       because a retry re-uses the same widget rather than making a new one. -->
   <div id="ts"></div>
-  <p class="msg bad hide" id="gate-err"></p>
-  <p class="sub hide" id="gate-help">
-    Your portal link was sent to the address on the engagement. It is a long link with a
-    <code>#</code> in it — the part after the <code>#</code> is the key, so copy the whole
-    thing. If you cannot find it, email
-    <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> and we will issue a new one.
-    We cannot recover the old link; we can only replace it.
-  </p>
-  <p><button class="btn hide" id="gate-retry">Try again</button></p>
+  <div id="gate-body" aria-live="polite"></div>
+  <div class="gacts" id="gate-acts"></div>
 </div></div></div>
 
 <!-- ================= portal ================= -->
@@ -308,71 +321,202 @@ const bytes = n => !n ? "" : n > 1048576 ? (n / 1048576).toFixed(1) + " MB"
                           : n > 1024 ? Math.round(n / 1024) + " KB" : n + " B";
 const ANSWERED = ["provided", "skipped", "not_applicable", "later"];
 
+/* A failure the page can tell apart from another failure.
+   `kind` is what the screen branches on. "The security check was blocked" and
+   "that link is not valid" send a client down completely different roads, and
+   showing the second when the first is true is how somebody gives up on a link
+   that was working perfectly. */
+class PortalError extends Error {
+  constructor(kind, message) { super(message); this.kind = kind; }
+}
+
+const CONTROL_TIMEOUT = 20000;   // JSON in, JSON out. Should be milliseconds.
+const TURNSTILE_TIMEOUT = 18000; // beyond this the challenge is not coming back
+const SCRIPT_TIMEOUT = 8000;     // for challenges.cloudflare.com to load at all
+
+/* Every network call in this page goes through here, and every one of them has
+   a deadline. A fetch with no AbortController waits forever, and forever is the
+   one outcome a client cannot act on. */
 async function api(path, opts = {}) {
-  const r = await fetch(API + path, {
-    ...opts,
-    headers: { "X-Portal-Token": TOKEN, ...(opts.headers || {}) },
-  });
+  const ctl = new AbortController();
+  const ms = opts.timeout || CONTROL_TIMEOUT;
+  const timer = setTimeout(() => ctl.abort(), ms);
+  let r;
+  try {
+    r = await fetch(API + path, {
+      ...opts,
+      signal: ctl.signal,
+      headers: { "X-Portal-Token": TOKEN, ...(opts.headers || {}) },
+    });
+  } catch (e) {
+    throw ctl.signal.aborted
+      ? new PortalError("timeout", "that took too long and we stopped waiting")
+      : new PortalError("network", "we could not reach the server");
+  } finally {
+    clearTimeout(timer);
+  }
   let body = null;
   try { body = await r.json(); } catch { /* a download or an empty body */ }
-  if (!r.ok) throw new Error((body && body.error) || "that did not go through");
+  if (r.status === 403) throw new PortalError("denied", (body && body.error) || "");
+  if (!r.ok) throw new PortalError("http", (body && body.error) || "that did not go through");
   return body;
 }
 
 /* ---------------- gate ---------------- */
 
-function gateFail(message, showHelp) {
-  $("#gate-h").textContent = "We could not open that link";
-  $("#gate-p").classList.add("hide");
-  $("#gate-err").textContent = message;
-  $("#gate-err").classList.remove("hide");
-  if (showHelp) $("#gate-help").classList.remove("hide");
-  $("#gate-retry").classList.remove("hide");
+/* One function renders every state this screen can be in, so there is no path
+   through it that leaves the spinner running with nothing behind it. */
+function gate(state) {
+  const h = $("#gate-h"), p = $("#gate-p"),
+        body = $("#gate-body"), acts = $("#gate-acts"), ts = $("#ts");
+  body.innerHTML = ""; acts.innerHTML = "";
+  ts.classList.toggle("hide", state !== "checking");
+  p.classList.remove("hide");
+
+  const retry = (label = "Try again") => {
+    const b = document.createElement("button");
+    b.className = "btn"; b.textContent = label;
+    b.addEventListener("click", () => { gate("checking"); open_(); });
+    acts.append(b);
+  };
+  const mail = (label = "Email sales@wirewalk.com") => {
+    const a = document.createElement("a");
+    a.className = "btn g"; a.href = "mailto:sales@wirewalk.com?subject=Portal%20access";
+    a.textContent = label;
+    acts.append(a);
+  };
+
+  if (state === "checking") {
+    h.textContent = "Opening your portal…";
+    p.innerHTML = '<span class="spin" aria-hidden="true"></span>One moment. We are ' +
+                  "checking your link.";
+    return;
+  }
+
+  if (state === "noToken") {
+    h.textContent = "This page needs your portal link";
+    p.textContent = "The portal opens from the link issued with your engagement. There is " +
+                    "nothing to type here — no username, no password.";
+    body.innerHTML =
+      '<div class="gate-help"><p>Your link was sent to the address on the engagement. It is ' +
+      'a long link with a <code>#</code> in it, and the part after the <code>#</code> is the ' +
+      'key — so copy the whole thing, including that tail.</p>' +
+      '<p style="margin-top:10px">If you cannot find it, we will issue a new one. We cannot ' +
+      'recover the old link; nobody here can read it back. We can only replace it.</p></div>';
+    mail("Ask for a new link");
+    return;
+  }
+
+  /* The important one. Turnstile never produced a token -- blocked, broken or
+     simply not finished. The link is fine, and saying otherwise sends the
+     client to the wrong place entirely. */
+  if (state === "challenge") {
+    h.textContent = "The security check could not complete";
+    p.textContent = "Your link is fine — this is the anti-abuse check in front of it, and " +
+                    "it did not finish. Nothing has been lost and nothing needs to be redone.";
+    body.innerHTML =
+      '<div class="gate-help"><p>Almost always one of these, in this order of likelihood:</p>' +
+      "<ul>" +
+      "<li>A content or privacy blocker — uBlock, Ghostery, Brave Shields, Firefox strict " +
+      "mode — stopping <code>challenges.cloudflare.com</code>. Pausing it for this page is " +
+      "usually enough.</li>" +
+      "<li>A corporate network, VPN or web filter that does not allow that domain. Your IT " +
+      "team can allow <code>challenges.cloudflare.com</code>, or try from a phone on mobile " +
+      "data as a quick test of whether that is it.</li>" +
+      "<li>A locked-down or very old browser build. Chrome, Edge, Firefox or Safari, current " +
+      "version, will work.</li>" +
+      "<li>Simply a flaky moment on the network. Try again first — it is free.</li>" +
+      "</ul>" +
+      "<p style=\"margin-top:12px\">If none of that clears it, say so and we will arrange " +
+      "another way to get your documents to us. This is a solved problem and not one you " +
+      "should spend an afternoon on.</p></div>";
+    retry();
+    mail("Ask for another way in");
+    return;
+  }
+
+  if (state === "offline") {
+    h.textContent = "We could not reach the server";
+    p.textContent = "Your link is fine. The request did not get through — that is usually a " +
+                    "dropped connection at one end or the other.";
+    body.innerHTML =
+      '<div class="gate-help"><p>Check the connection and try again. If it keeps failing ' +
+      "from one network but works from another, a filter or proxy in between is the likely " +
+      "cause, and your IT team will recognise the pattern.</p></div>";
+    retry();
+    mail();
+    return;
+  }
+
+  if (state === "denied") {
+    h.textContent = "We could not open that link";
+    p.textContent = DATA_DENIED_MESSAGE;
+    body.innerHTML =
+      '<div class="gate-help"><p>Check you copied the whole link, including everything after ' +
+      'the <code>#</code>. Links are also retired when an engagement closes, and can be ' +
+      "retired early if one has been forwarded somewhere it should not have gone.</p></div>";
+    retry();
+    mail("Ask for a new link");
+    return;
+  }
 }
 
+let DATA_DENIED_MESSAGE =
+  "That portal link is not valid. It may have expired, or the engagement may be closed.";
+
+/* Resolves with a Turnstile token, or rejects -- but always does one of the
+   two. Every way this can fail is wired: the three callbacks Turnstile offers,
+   plus a deadline of our own for the case where it silently never calls any of
+   them, which is exactly what a blocked challenges.cloudflare.com looks like
+   from in here. */
 function turnstileToken() {
   return new Promise((resolve, reject) => {
-    if (!window.turnstile) return reject(new Error("verification did not load"));
-    const opts = { sitekey: SITE_KEY, callback: resolve,
-                   "error-callback": () => reject(new Error("verification failed")),
-                   "expired-callback": () => reject(new Error("verification expired")) };
-    if (widgetId === null) widgetId = turnstile.render("#ts", opts);
-    else { turnstile.reset(widgetId); turnstile.execute(widgetId, opts); }
+    if (!window.turnstile)
+      return reject(new PortalError("challenge", "the check did not load"));
+
+    let settled = false;
+    const done = fn => v => { if (settled) return; settled = true; clearTimeout(timer); fn(v); };
+    const ok = done(resolve);
+    const fail = why => done(() => reject(new PortalError("challenge", why)))();
+
+    const timer = setTimeout(
+      () => fail("the check did not finish in time"), TURNSTILE_TIMEOUT);
+
+    const opts = {
+      sitekey: SITE_KEY,
+      callback: ok,
+      "error-callback": () => fail("the check reported an error"),
+      "expired-callback": () => fail("the check expired before it completed"),
+      "timeout-callback": () => fail("the check timed out"),
+    };
+    try {
+      if (widgetId === null) widgetId = turnstile.render("#ts", opts);
+      else { turnstile.reset(widgetId); turnstile.execute(widgetId, opts); }
+    } catch {
+      fail("the check could not start");
+    }
   });
 }
 
 async function open_() {
-  if (!TOKEN) {
-    $("#gate-h").textContent = "This page needs your portal link";
-    $("#gate-p").textContent =
-      "The portal opens from the link issued with your engagement. There is nothing to " +
-      "type here — no username, no password.";
-    $("#gate-help").classList.remove("hide");
-    return;
-  }
+  if (!TOKEN) return gate("noToken");
   try {
     const ts = await turnstileToken();
-    const data = await api("/api/open", {
+    DATA = await api("/api/open", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: TOKEN, ts }),
     });
-    DATA = data;
     $("#gate").classList.add("hide");
     $("#app").classList.remove("hide");
     render();
   } catch (e) {
-    gateFail(e.message, true);
+    if (e.kind === "denied" && e.message) DATA_DENIED_MESSAGE = e.message;
+    gate(e.kind === "challenge" ? "challenge"
+       : e.kind === "denied" ? "denied"
+       : "offline");
   }
 }
-
-$("#gate-retry").addEventListener("click", () => {
-  $("#gate-err").classList.add("hide");
-  $("#gate-retry").classList.add("hide");
-  $("#gate-h").textContent = "Opening your portal…";
-  $("#gate-p").classList.remove("hide");
-  open_();
-});
 
 /* ---------------- render ---------------- */
 
@@ -487,7 +631,9 @@ function itemNode(it) {
   node.append(acts);
 
   const bar = el("div", "upl hide"); bar.append(el("i"));
-  node.append(bar);
+  const stat = el("div", "stat hide");
+  const errRow = el("div", "err hide");
+  node.append(bar, stat, errRow);
 
   const files = el("ul", "files");
   node.append(files);
@@ -521,6 +667,26 @@ function itemNode(it) {
   };
   node._saved = () => { sv.classList.add("on"); setTimeout(() => sv.classList.remove("on"), 1600); };
   node._bar = bar;
+
+  /* Progress and failure belong beside the item they describe, not in an
+     alert() the client has to dismiss before they can read the row it was
+     about. A stalled upload with no visible outcome gets retried, and a
+     duplicate general ledger is worse than a clear error. */
+  node._status = text => {
+    stat.textContent = text || "";
+    stat.classList.toggle("hide", !text);
+  };
+  node._error = (text, again) => {
+    errRow.innerHTML = "";
+    if (!text) { errRow.classList.add("hide"); return; }
+    errRow.append(el("span", null, text));
+    if (again) {
+      const b = el("button", "btn sm g", "Try that again");
+      b.addEventListener("click", () => { node._error(null); again(); });
+      errRow.append(b);
+    }
+    errRow.classList.remove("hide");
+  };
   return node;
 }
 
@@ -537,22 +703,58 @@ function stateLabel(it) {
 
 function renderFiles(it, ul) {
   ul.innerHTML = "";
+  const node = () => document.getElementById("it-" + it.id);
   for (const d of it.documents || []) {
     const li = el("li");
-    const a = el("a", "fn", d.filename);
-    a.href = API + "/api/download?doc=" + encodeURIComponent(d.id) +
-             "&t=" + encodeURIComponent(TOKEN);
-    li.append(a, el("span", "sz", bytes(d.bytes)));
+
+    /* A plain <a href="...&t=TOKEN"> would work, and would also put the token
+       in a URL -- which means a query string, which means an access log. The
+       whole reason it lives in the fragment is to stay out of those. So the
+       download is fetched with the token as a header and handed over as a
+       blob. It costs holding the file in memory briefly; that is the cheaper
+       side of the trade. */
+    const get = el("button", "fn", d.filename);
+    get.style.cssText = "background:none;border:0;font:inherit;text-align:left;" +
+                        "color:var(--ac2);cursor:pointer;padding:0;text-decoration:underline;" +
+                        "text-underline-offset:2px";
+    get.addEventListener("click", async () => {
+      const was = get.textContent;
+      get.textContent = "Fetching " + d.filename + "…";
+      get.disabled = true;
+      try {
+        const r = await fetch(API + "/api/download?doc=" + encodeURIComponent(d.id),
+          { headers: { "X-Portal-Token": TOKEN } });
+        if (!r.ok) throw new PortalError("http", "that file could not be fetched");
+        const url = URL.createObjectURL(await r.blob());
+        const a = el("a"); a.href = url; a.download = d.filename; a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+        node()._error(null);
+      } catch {
+        node()._error("We could not fetch " + d.filename + " just now. The file is still " +
+                      "here — this was the connection, not the upload.", null);
+      } finally {
+        get.textContent = was; get.disabled = false;
+      }
+    });
+
+    li.append(get, el("span", "sz", bytes(d.bytes)));
     const rm = el("button", null, "Remove");
     rm.addEventListener("click", async () => {
       if (!confirm("Remove " + d.filename + "? The file is deleted, not hidden.")) return;
+      rm.disabled = true; rm.textContent = "Removing…";
       try {
         await api("/api/document?doc=" + encodeURIComponent(d.id), { method: "DELETE" });
         it.documents = it.documents.filter(x => x.id !== d.id);
         if (!it.documents.length && it.status === "provided") it.status = "pending";
-        document.getElementById("it-" + it.id)._refresh();
+        node()._refresh();
         updateProgress();
-      } catch (e) { alert(e.message); }
+      } catch (e) {
+        rm.disabled = false; rm.textContent = "Remove";
+        node()._error("We could not remove " + d.filename + ". " +
+                      (e.kind === "network" || e.kind === "timeout"
+                        ? "The connection did not get through — the file is untouched."
+                        : e.message), null);
+      }
     });
     li.append(rm);
     ul.append(li);
@@ -577,11 +779,12 @@ function render() {
     "back as often as you like; the link keeps working until the engagement closes.";
 
   $("#retention").innerHTML =
-    "<b>How long we keep this.</b> Documents uploaded here are held for this engagement and " +
-    "destroyed on <b>" + (e.retention_until || "the agreed retention date") + "</b>. " +
-    "That is enforced by the storage itself — a lifecycle rule deletes each file twelve " +
-    "months after it is uploaded — rather than by anyone remembering to do it. You can " +
-    "remove any individual file yourself, at any time, with the Remove link beside it. " +
+    "<b>How long we keep this.</b> Every file is destroyed twelve months after it is " +
+    "uploaded. That is enforced by the storage itself, not by anyone remembering to do it. " +
+    "On what has been uploaded so far, the last of it goes on <b>" +
+    (e.retention_until || "the agreed retention date") + "</b>; anything you add later is " +
+    "kept twelve months from the day you add it, and that date moves with it. You can " +
+    "remove any individual file yourself, at any time, with the Remove button beside it. " +
     "Nothing here is public: the store has no public address, and every file leaves only " +
     "through an authenticated request that is written to the audit log.";
 
@@ -623,6 +826,7 @@ function render() {
 
 async function answer(it, status, skipReason, node, note) {
   const prev = { status: it.status, skip_reason: it.skip_reason, client_note: it.client_note };
+  node._error(null);
   it.status = status;
   it.skip_reason = status === "pending" || status === "provided" ? null : skipReason;
   if (note !== undefined) it.client_note = note;
@@ -638,49 +842,132 @@ async function answer(it, status, skipReason, node, note) {
     node._saved();
   } catch (e) {
     // Put the answer back rather than leaving the screen claiming something
-    // the server does not know about.
+    // the server does not know about, and say so where they can see it.
     Object.assign(it, prev);
     node._refresh();
     updateProgress();
-    alert("That answer did not save: " + e.message);
+    node._error(
+      e.kind === "denied"
+        ? "Your session was not accepted. Reload the page from your portal link — nothing " +
+          "you have already saved is affected."
+        : "That answer did not save, so we have put it back as it was. " +
+          (e.kind === "timeout" || e.kind === "network"
+            ? "The connection did not get through."
+            : e.message),
+      () => answer(it, status, skipReason, node, note));
   }
+}
+
+/* Bodies go up over XHR rather than fetch, for one reason: fetch cannot report
+   upload progress. On a 200 MB general ledger, fetch gives a bar that sits at
+   zero for four minutes and then jumps to done, which is indistinguishable
+   from a hang -- so the client cancels and uploads it twice.
+ *
+ * A flat timeout would be the wrong instrument here too: a legitimately slow
+ * upload takes as long as it takes. What is NOT legitimate is bytes ceasing to
+ * move, so the deadline is on progress, not on total duration. A transfer that
+ * keeps advancing is never killed; one that goes quiet for STALL_MS is. */
+const STALL_MS = 45000;
+
+function xhrSend(method, url, body, { headers = {}, onProgress } = {}) {
+  return new Promise((resolve, reject) => {
+    const x = new XMLHttpRequest();
+    x.open(method, API + url, true);
+    x.setRequestHeader("X-Portal-Token", TOKEN);
+    for (const [k, v] of Object.entries(headers)) x.setRequestHeader(k, v);
+
+    let stall = null;
+    const arm = () => {
+      clearTimeout(stall);
+      stall = setTimeout(() => {
+        x.abort();
+        reject(new PortalError("stalled",
+          "the upload stopped making progress and we stopped waiting"));
+      }, STALL_MS);
+    };
+    const disarm = () => clearTimeout(stall);
+    arm();
+
+    x.upload.onprogress = e => { arm(); if (onProgress && e.lengthComputable) onProgress(e.loaded, e.total); };
+    x.onprogress = arm;
+    x.onload = () => {
+      disarm();
+      let out = null;
+      try { out = JSON.parse(x.responseText); } catch { /* not json */ }
+      if (x.status === 403) return reject(new PortalError("denied", (out && out.error) || ""));
+      if (x.status < 200 || x.status >= 300)
+        return reject(new PortalError("http", (out && out.error) || "the server refused that file"));
+      resolve(out);
+    };
+    x.onerror = () => { disarm(); reject(new PortalError("network", "we could not reach the server")); };
+    x.onabort = () => disarm();
+    x.ontimeout = () => { disarm(); reject(new PortalError("timeout", "that took too long")); };
+    x.send(body);
+  });
+}
+
+/* One sentence per failure, in the client's terms, and never the raw one. */
+function uploadWhy(e, filename) {
+  if (e.kind === "stalled")
+    return `${filename} stopped uploading part-way. That is usually the connection ` +
+           `rather than the file. Nothing partial was kept.`;
+  if (e.kind === "network" || e.kind === "timeout")
+    return `${filename} did not reach us — the connection dropped during the upload. ` +
+           `Nothing partial was kept.`;
+  if (e.kind === "denied")
+    return `Your session was not accepted for that upload. Reload the page from your ` +
+           `portal link and try once more.`;
+  return `${filename} was not accepted: ${e.message}`;
 }
 
 async function uploadFiles(it, files, node) {
   const bar = node._bar, fill = bar.querySelector("i");
+  node._error(null);
   bar.classList.remove("hide");
+  const many = files.length > 1;
   try {
+    let n = 0;
     for (const f of files) {
+      n++;
       fill.style.width = "0%";
+      const label = many ? `${f.name} (${n} of ${files.length})` : f.name;
+      const tick = (sent, total) => {
+        const pct = total ? sent / total * 100 : 0;
+        fill.style.width = pct + "%";
+        node._status(`Uploading ${label} — ${bytes(sent)} of ${bytes(total)} ` +
+                     `(${Math.floor(pct)}%). You can leave this page open; it will finish.`);
+      };
       const doc = f.size <= 80 * 1024 * 1024
-        ? await uploadDirect(it, f, fill)
-        : await uploadMultipart(it, f, fill);
+        ? await uploadDirect(it, f, tick)
+        : await uploadMultipart(it, f, tick, node);
       (it.documents ||= []).push(doc);
       it.status = "provided"; it.skip_reason = null;
       node._refresh(); updateProgress();
     }
+    node._status("");
     node._saved();
   } catch (e) {
-    alert("That upload did not finish: " + e.message);
+    node._status("");
+    // Offer the retry as a button rather than making them find the file again.
+    node._error(uploadWhy(e, files[0] ? files[0].name : "That file"),
+                () => uploadFiles(it, files, node));
   } finally {
     bar.classList.add("hide"); fill.style.width = "0%";
   }
 }
 
-async function uploadDirect(it, f, fill) {
-  fill.style.width = "35%";
+async function uploadDirect(it, f, tick) {
   const q = "?filename=" + encodeURIComponent(f.name) + "&size=" + f.size +
             "&item=" + encodeURIComponent(it.id);
-  const out = await api("/api/upload" + q, {
-    method: "POST", body: f,
+  const out = await xhrSend("POST", "/api/upload" + q, f, {
     headers: { "Content-Type": f.type || "application/octet-stream" },
+    onProgress: tick,
   });
-  fill.style.width = "100%";
   return { id: out.id, item_id: it.id, filename: f.name, bytes: f.size,
            content_type: f.type, uploaded_at: new Date().toISOString() };
 }
 
-async function uploadMultipart(it, f, fill) {
+async function uploadMultipart(it, f, tick, node) {
   const start = await api("/api/upload/create", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ filename: f.name, size: f.size,
@@ -692,14 +979,19 @@ async function uploadMultipart(it, f, fill) {
   try {
     for (let n = 1; n <= total; n++) {
       const chunk = f.slice((n - 1) * size, n * size);
-      const p = await api("/api/upload/part?key=" + encodeURIComponent(start.key) +
-                          "&uploadId=" + encodeURIComponent(start.uploadId) + "&part=" + n,
-                          { method: "PUT", body: chunk });
+      const base = (n - 1) * size;
+      const p = await xhrSend("PUT",
+        "/api/upload/part?key=" + encodeURIComponent(start.key) +
+        "&uploadId=" + encodeURIComponent(start.uploadId) + "&part=" + n, chunk,
+        { onProgress: sent => tick(Math.min(base + sent, f.size), f.size) });
       parts.push(p);
-      fill.style.width = (n / total * 100) + "%";
+      tick(Math.min(n * size, f.size), f.size);
     }
+    node._status("Finishing…");
     const out = await api("/api/upload/complete", {
       method: "POST", headers: { "Content-Type": "application/json" },
+      // Reassembling a 200 MB object server-side is not instant.
+      timeout: 60000,
       body: JSON.stringify({ key: start.key, uploadId: start.uploadId, parts,
                              itemId: it.id, filename: f.name,
                              contentType: f.type, size: f.size }),
@@ -748,11 +1040,14 @@ document.addEventListener("keydown", e => {
     document.querySelectorAll(".skipmenu").forEach(m => m.dataset.open = "false");
 });
 
-/* Turnstile loads asynchronously; wait for it rather than racing it. */
-(function boot(n) {
-  if (window.turnstile || !TOKEN) return open_();
-  if (n > 60) return gateFail("Verification did not load. Reload the page and try again.", true);
-  setTimeout(() => boot(n + 1), 150);
-})(0);
+/* Turnstile loads asynchronously; wait for it rather than racing it -- but not
+   forever. A blocked or filtered challenges.cloudflare.com never loads and
+   never errors, so the only way to notice is to give up on a clock and say so. */
+(function boot(started) {
+  if (!TOKEN) return gate("noToken");
+  if (window.turnstile) return open_();
+  if (Date.now() - started > SCRIPT_TIMEOUT) return gate("challenge");
+  setTimeout(() => boot(started), 150);
+})(Date.now());
 </script>
 </body></html>
