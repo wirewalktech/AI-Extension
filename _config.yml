@@ -23,5 +23,7 @@ exclude:
   - make_logo.py
   # Generates industries/ from the portal worker's data files. Not a page.
   - make_industries.mjs
+  # Layout regression checker. Tooling, not content.
+  - tools
   - wirewalk-ai_3.html
   - README.md

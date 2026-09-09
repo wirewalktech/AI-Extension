@@ -48,11 +48,17 @@ header:before{content:'';display:block;height:3px;background:rgba(217,119,87,.28
 #prog{position:absolute;top:0;left:0;right:0;height:3px;background:var(--ac);
  transform:scaleX(0);transform-origin:0 50%}
 header.stuck{box-shadow:0 2px 14px rgba(31,30,29,.07)}
-.nav{display:flex;align-items:center;gap:28px;
+.nav{display:flex;align-items:center;gap:22px;
   max-width:1160px;margin:0 auto;padding:0 var(--pad);height:62px}
 .nav-l{display:flex;align-items:center;gap:0;flex:0 0 auto}
 .nav-c{flex:1 1 auto;display:flex;justify-content:center;min-width:0}
-.nav-l,.nav-r{position:relative;z-index:2;background:inherit}
+/* These paint OVER the centre column if it ever outgrows the space between
+   them. `background:inherit` was the intent, but the header is deliberately
+   translucent, so inherit resolved to see-through and the collision showed as
+   two lines of text on top of each other -- "WirewalkThAe lenses". An opaque
+   token is visually identical here and actually masks. It is a backstop, not
+   the fix: the fix is that the centre column now fits. */
+.nav-l,.nav-r{position:relative;z-index:2;background:var(--bg)}
 .nav-r{display:flex;align-items:center;gap:14px;flex:0 0 auto}
 .navlink{font-size:14.5px;line-height:1;color:var(--tx2);padding:0 16px 0 0;margin-right:2px;
  border-right:1px solid var(--ln);transition:color .18s var(--e)}
@@ -313,10 +319,15 @@ footer{padding:52px 0 32px;background:#fff}
  [data-rv],.hro,.hero .scopes,.sh h2>span,.sh-split h2>span,.sh .eyebrow,.sh-split .eyebrow,
  .sh p,.sh-split p,.aa div,nav.lk>*{opacity:1!important;transform:none!important}
  html{scroll-behavior:auto}}
-/* the centred nav is ~512px and cannot shrink: shed the right-hand items
-   before it reaches the brand or the buttons, then collapse to the burger */
-@media(max-width:1120px){.nav-r .navlink{display:none}}
-@media(max-width:1040px){
+/* Collapse to the burger while the full nav still FITS, not once it has
+   already broken. The old breakpoint was 1040px, chosen when the centre
+   column was five items and ~512px wide; it then kept the full nav on screen
+   for four more items it could not hold. Six items measure ~600px, the brand
+   and button ~300px, so the row needs ~990px including padding -- hence 1100,
+   which leaves real headroom for a platform whose font metrics run wider than
+   the one this was measured on. Re-measure with tools/check-layout.mjs before
+   moving this number or adding an item above it. */
+@media(max-width:1100px){
  .nav-r .navlink{display:none}.burger{display:block}.nav-l{gap:0}
  header nav.lk{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
   background:#fff;border-bottom:1px solid var(--ln);padding:6px var(--pad) 14px;
@@ -337,6 +348,26 @@ footer{padding:52px 0 32px;background:#fff}
  header nav.lk.open>*:nth-child(5){transition-delay:.16s}
  header nav.lk.open>*:nth-child(6){transition-delay:.2s}
  header nav.lk .caret{transform:rotate(-90deg);opacity:.4}
+}
+/* Desktop backstop. If a future item, a wider font stack or a zoomed browser
+   pushes the centre column past its space, clip it rather than let it slide
+   under the brand. A clipped last item is a visible, obvious fault; overlapping
+   text reads as a rendering glitch and nobody reports it. */
+@media(min-width:1101px){nav.lk{overflow:hidden}}
+
+/* Narrow phones. At 390px the brand, the CTA and the burger came to 44px more
+   than the viewport and the burger hung off the right edge -- reachable only
+   by scrolling sideways, on the one control that opens the menu. Reclaim the
+   space from padding and gaps, which nobody misses, rather than from the
+   button, which is the only call to action on the screen. */
+@media(max-width:470px){
+ .nav{gap:10px}
+ .brand{padding-right:0}
+ .nav-r{gap:8px}
+}
+@media(max-width:400px){
+ .nav-r .btn{font-size:13.5px;padding:9px 13px}
+ .burger{padding:8px 9px}
 }
 
 /* ── data visualization ───────────────────────────────────────────────
@@ -547,17 +578,23 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="nav-c">
     <nav class="lk" id="lk">
       <span id="pill"></span>
+      <!-- Six items, and it stays six. The nav is capped at 1160px wide, so
+           whatever is in here has to fit roughly 700px of centre column at
+           EVERY viewport width -- a wider screen buys nothing. Nine items did
+           not fit and overlapped the brand rather than reflowing. Phase one
+           and two live under Phases; Terms lives under Ordering; the client
+           portal is not prospect navigation at all and is reached from the
+           link we email, so it sits in the footer. tools/check-layout.mjs
+           fails the build if anything in here collides again. -->
       <a href="#lenses" data-sec="lenses">Three lenses</a>
-      <a href="#coverage" data-sec="coverage">Method</a>
+      <a href="#coverage" data-sec="coverage checkable">Method</a>
+      <a href="#phase1" data-sec="phase1 phase2 people">Phases</a>
       <a href="#industries" data-sec="industries">Industries</a>
-      <a href="#compliance" data-sec="compliance">Compliance</a>
-      <a href="#phase1" data-sec="phase1">Phase one</a>
-      <a href="#phase2" data-sec="phase2">Phase two</a>
-      <a href="#terms" data-sec="terms">Terms</a><a href="/order/">Ordering</a><a href="/writing/">Notes</a>
+      <a href="#compliance" data-sec="compliance credentials">Compliance</a>
+      <a href="/order/">Ordering</a>
     </nav>
   </div>
   <div class="nav-r">
-    <a href="/portal/" class="navlink">Client portal</a>
     <a href="#contact" class="btn btn-p btn-sm">Book the review</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="lk"><i></i><i></i><i></i></button>
@@ -1101,12 +1138,18 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
   addEventListener('resize',()=>{pill.style.transition='none';settle();
     requestAnimationFrame(()=>pill.style.transition='');},{passive:true});
 
-  const IDS=['lenses','coverage','industries','compliance','phase1','phase2','terms'], live=new Set();
+  /* Six nav items now stand for eleven sections, because nine top-level items
+     did not fit the bar. data-sec therefore holds a LIST: "phase1 phase2
+     people" all light up Phases. Matching on equality here would have left the
+     indicator dark through most of the page. */
+  const IDS=['lenses','coverage','checkable','industries','compliance','credentials',
+             'phase1','phase2','people','terms'], live=new Set();
+  const covers=(el,id)=>(el.dataset.sec||'').split(/\s+/).includes(id);
   const spy=new IntersectionObserver(es=>{
     for(const e of es) e.isIntersecting?live.add(e.target.id):live.delete(e.target.id);
     /* the topmost section still in view wins; none in view clears the mark */
     const id=IDS.find(x=>live.has(x));
-    const hit=id?items.find(i=>i.dataset.sec===id):null;
+    const hit=id?items.find(i=>covers(i,id)):null;
     if(hit===current)return;
     items.forEach(i=>i.classList.remove('cur'));
     current=hit||null; if(hit)hit.classList.add('cur');
