@@ -14,7 +14,7 @@
  * actually ask for.
  */
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { INDUSTRIES } from "../wirewalk-portal-worker/src/industries.js";
@@ -778,6 +778,52 @@ ${foot}`;
  * Write
  * ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ *
+ * The homepage teaser
+ * ------------------------------------------------------------------ *
+ * The homepage used to hand-list every industry. It had silently gone stale --
+ * twenty listed against twenty-three that existed, missing the three most
+ * recently added -- because nothing connects a hand-written list to the data it
+ * is supposed to describe. Any list kept in two places is a list that
+ * eventually disagrees with itself, and the version a visitor reads is the one
+ * nobody remembered to update.
+ *
+ * So it is written from the same INDUSTRIES data as everything else, between
+ * markers in index.html. Adding the twenty-fourth industry means adding it once.
+ */
+function homepageTeaser() {
+  return GROUPS.map(g => {
+    const links = g.slugs
+      .filter(sl => BY_SLUG[sl])
+      .map(sl => `<a class="ilink" href="/industries/${sl}/">${esc(BY_SLUG[sl].name)}</a>`)
+      .join(" &middot;\n      ");
+    return `    <div><span class="n">${esc(g.id.charAt(0).toUpperCase() + g.id.slice(1))}</span>` +
+           `<h4>${esc(g.title)}</h4>\n      <p>${esc(g.blurb)}<br>\n      ${links}</p></div>`;
+  });
+}
+
+function writeHomepageTeaser() {
+  const HOME = join(HERE, "index.html");
+  const html = readFileSync(HOME, "utf8");
+  const A = "<!--GEN:industries-start-->", B = "<!--GEN:industries-end-->";
+  const i = html.indexOf(A), j = html.indexOf(B);
+  if (i < 0 || j < 0) {
+    console.error("homepage markers missing — teaser NOT written");
+    process.exitCode = 1;
+    return 0;
+  }
+  const cards = homepageTeaser();
+  /* Three to a row, so the grid stays whole however many industries exist. */
+  const rows = [];
+  for (let k = 0; k < cards.length; k += 3) {
+    rows.push(`  <div class="g3" data-rv${k ? ' style="margin-top:1px"' : ""}>\n` +
+              cards.slice(k, k + 3).join("\n") + "\n  </div>");
+  }
+  const out = html.slice(0, i + A.length) + "\n" + rows.join("\n") + "\n  " + html.slice(j);
+  writeFileSync(HOME, out);
+  return cards.length;
+}
+
 writeFileSync(join(OUT, "index.html"), indexPage());
 let n = 1;
 for (const ind of INDUSTRIES) {
@@ -786,4 +832,6 @@ for (const ind of INDUSTRIES) {
   writeFileSync(join(OUT, `${ind.slug}-proposal.html`), proposalPage(ind));
   n++;
 }
+const teased = writeHomepageTeaser();
 console.log(`wrote ${n} files into ${OUT}`);
+console.log(`homepage teaser: ${teased} group card(s) from ${INDUSTRIES.length} industries`);

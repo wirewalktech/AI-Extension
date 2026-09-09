@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wirewalk AI — The Operating Review</title>
-<meta name="description" content="The Operating Review: revenue optimization and risk detection across finance, IT, compliance, contracts, people, marketing and sales. Three lenses — leakage, drag and exposure — across the full operating system, not one department. Twenty industries, each read in its own vocabulary.">
+<meta name="description" content="The Operating Review: revenue optimization and risk detection across finance, IT, compliance, contracts, people, marketing and sales. Three lenses — leakage, drag and exposure — across the full operating system, not one department. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits ins own vocabulary.">
 <style>
 :root{
   --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
@@ -471,21 +471,35 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 /* ── AI module: three lenses ── */
 .lens{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);
- border:1px solid var(--ln);border-radius:12px;overflow:hidden}
-.lens>div{background:#fff;padding:28px 26px 30px;position:relative;transition:background .22s var(--e)}
+ border:1px solid var(--ln);border-radius:12px;overflow:hidden;
+ /* Four named rows shared by all three cards, so the label, the heading, the
+    list and the footer each align ACROSS the row. Without this the cards end
+    flush at the bottom and their footers start at three different heights,
+    because the copy lengths differ -- which reads as misalignment even though
+    every card is the same height. Subgrid keeps it true whatever the copy
+    later becomes; the auto/1fr fallback below is the pre-subgrid behaviour. */
+ grid-template-rows:auto auto 1fr auto}
+.lens>div{background:#fff;padding:26px 26px 0;position:relative;
+ transition:background .22s var(--e);display:grid;grid-template-rows:auto auto 1fr auto}
+@supports(grid-template-rows:subgrid){
+  .lens>div{grid-row:span 4;grid-template-rows:subgrid}
+}
 .lens>div:hover{background:var(--alt)}
 .lens>div:after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--ac);
  transform:scaleX(0);transform-origin:0 50%;transition:transform .42s var(--eo)}
 .lens>div:hover:after{transform:scaleX(1)}
-.lens .lb{font:600 12.5px/1 var(--mono);letter-spacing:.06em;color:var(--ac2);display:block;margin-bottom:10px}
-.lens h3{font-size:19px;letter-spacing:-.016em;margin-bottom:18px;min-height:2.5em;text-wrap:balance}
-.lens .fig{font-size:34px;font-weight:600;color:var(--tx);letter-spacing:-.03em;line-height:1.05}
-.lens .figc{font-size:14px;color:var(--tx3);margin-top:6px;padding-bottom:18px;
- border-bottom:1px solid var(--ln);margin-bottom:18px;max-width:30ch;min-height:64px}
-.lens ul{list-style:none;margin:0;padding:0}
-.lens li{font-size:15px;color:var(--tx2);padding:7px 0 7px 18px;position:relative;line-height:1.5}
-.lens li:before{content:'';position:absolute;left:0;top:15px;width:6px;height:1.5px;background:var(--tx3)}
-@media(max-width:940px){.lens{grid-template-columns:1fr}}
+.lens .lb{font:600 11.5px/1 var(--mono);letter-spacing:.11em;color:var(--ac2);
+ display:flex;align-items:center;gap:8px;margin-bottom:13px}
+.lens .lb i{font-style:normal;color:var(--ln2);font-weight:500}
+.lens h3{font-size:25px;line-height:1.2;letter-spacing:-.021em;margin:0 0 20px;
+ text-wrap:balance;font-weight:600}
+.lens ul{list-style:none;margin:0 0 22px;padding:0}
+.lens li{font-size:14.5px;color:var(--tx2);padding:6px 0 6px 17px;position:relative;line-height:1.5}
+.lens li:before{content:'';position:absolute;left:0;top:14px;width:6px;height:1.5px;background:var(--tx3)}
+.lens .gets{margin:0 -26px;padding:15px 26px 17px;border-top:1px solid var(--ln);background:var(--alt2)}
+.lens .gets b{display:block;font:600 11.5px/1 var(--mono);letter-spacing:.1em;color:var(--ac2);margin-bottom:6px}
+.lens .gets span{font-size:14px;line-height:1.5;color:var(--tx2)}
+@media(max-width:940px){.lens{grid-template-columns:1fr}.lens h3{font-size:22px}}
 
 /* ── comparison ── */
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ln);
@@ -643,52 +657,50 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="sh-split">
     <div><span class="eyebrow">What we look for</span>
       <h2>Three lenses on the same operation.</h2></div>
-    <p>Money leaving that should not, work taking longer than it needs to, and risk nobody has priced. The three lenses are the same in every sector. What changes is what each one is called and where it hides &mdash; which is why there is <a class="ilink" href="/industries/">a page for each industry</a> rather than one page that asks you to translate.</p>
+    <p>Every operation loses money in three ways at once, and most reviews are commissioned to look at one of them. The lenses are the same in every sector. What changes is what each is called and where it hides &mdash; which is why there is <a class="ilink" href="/industries/">a page for your industry</a> rather than one page that asks you to translate.</p>
   </div>
   <div class="lens" data-rv>
     <div>
-      <span class="lb">LEAKAGE</span>
-      <h3>Money leaving that shouldn't</h3>
-      <div class="fig">65%</div>
-      <div class="figc">of denied healthcare claims are never reworked at all &mdash; one sector's version of a loss every sector has a version of</div>
+      <span class="lb">01 <i>&mdash;</i> LEAKAGE</span>
+      <h3>Money leaving that shouldn&rsquo;t</h3>
       <ul>
-        <li>Full finance-operation audit</li>
         <li>Billing, collection, AR/AP and write-offs</li>
         <li>Vendor overpayment and duplicate services</li>
         <li>Contract terms nobody enforces</li>
+        <li>Rates and discounts never trued up</li>
       </ul>
+      <div class="gets"><b>RECOVERABLE</b>
+        <span>Cash you go and get back. Usually the first thing to move, and it
+        is what pays for the review.</span></div>
     </div>
     <div>
-      <span class="lb">DRAG</span>
-      <h3>Work taking longer than it needs to</h3>
-      <div class="fig">51&ndash;75 hrs</div>
-      <div class="figc">a week on denial rework in a single healthcare back office; elsewhere the same hours go to reconciliation, rekeying or approval queues</div>
+      <span class="lb">02 <i>&mdash;</i> DRAG</span>
+      <h3>Capacity spent on work that shouldn&rsquo;t exist</h3>
       <ul>
-        <li>IT operations and support drag</li>
+        <li>Reconciliation, rekeying and approval queues</li>
+        <li>Rework loops, and what causes them upstream</li>
         <li>Time from hire to productive, and what it waits on</li>
-        <li>Marketing, sales and delivery handoffs</li>
-        <li>Manual approvals and rework loops</li>
+        <li>Handoffs between sales, delivery and finance</li>
       </ul>
+      <div class="gets"><b>REPEATING</b>
+        <span>Capacity you stop buying, or start selling. Moves the run rate
+        rather than the quarter.</span></div>
     </div>
     <div>
-      <span class="lb">EXPOSURE</span>
+      <span class="lb">03 <i>&mdash;</i> EXPOSURE</span>
       <h3>Risk nobody has priced</h3>
-      <div class="fig">13 of 20</div>
-      <div class="figc">enforcement matters cited one missing document</div>
       <ul>
         <li>Compliance and regulatory stance</li>
-        <li>Legal contract exposure</li>
+        <li>Legal and contractual exposure</li>
         <li>Unmanaged AI or data sharing</li>
         <li>Key-person and uninsured liability</li>
       </ul>
+      <div class="gets"><b>CONTINGENT</b>
+        <span>Loss you avoid. Worth nothing until the day it is worth
+        everything.</span></div>
     </div>
   </div>
-  <p class="rl"><b>The figures above are illustrations, not our results.</b> Two of the three
-  come from healthcare, because that is where this kind of loss has been measured most
-  publicly. They are here to show the shape of the thing &mdash; concentrated, not
-  distributed &mdash; and not to suggest we have produced them for anyone. What the review
-  finds in your operation is what the review finds; we write down what we expect
-  <a class="ilink" href="#checkable">before fieldwork</a> so it can be checked afterwards.</p>
+  <p class="rl"><b>What the review finds is what the review finds.</b> Nothing above is a result we are claiming; it is where we look. We write down what we expect to find <a class="ilink" href="#checkable">before fieldwork</a>, so afterwards you can check us against it rather than take our word for what was always going to be in there.</p>
 </div></section>
 
 <section class="sec tint" id="coverage"><div class="wrap">
@@ -727,31 +739,42 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 <section class="sec" id="industries"><div class="wrap">
   <div class="sh-split">
     <div><span class="eyebrow">Industries</span>
-      <h2>Twenty industries, each read in its own vocabulary.</h2></div>
-    <p>The thesis does not change by sector. Where the loss concentrates does, and so does
-    what it is called. A page that says &ldquo;vendor contracts and write-offs&rdquo; makes
-    you translate; a page that says &ldquo;realisation, WIP ageing and origination
-    credit&rdquo; does not. So there is one page per industry, not one page listing
-    industries.</p>
+      <h2>Your regulator, your filings, your vocabulary.</h2></div>
+    <p>What a review has to look at is set by your sector, not by us. A law firm has trust
+    account reconciliation and a bar audit. A defence supplier has an SPRS score and an ITAR
+    boundary. A property sponsor has covenant definitions that differ per loan document. None
+    of those appear on anyone else&rsquo;s list. A page that says &ldquo;vendor contracts and
+    write-offs&rdquo; makes you translate &mdash; one that says &ldquo;realisation, WIP ageing
+    and origination credit&rdquo; does not. So each page is written for one industry and
+    borrows nothing from the others.</p>
   </div>
+    <!-- GENERATED industries-teaser — do not edit by hand.
+       Written by make_industries.mjs from the same INDUSTRIES data the
+       industry pages come from. This block was hand-maintained and had
+       silently gone stale: it listed twenty sectors when there were
+       twenty-three, and omitted the three most recently added. Any list
+       kept in two places is a list that disagrees with itself. -->
+  <!--GEN:industries-start-->
   <div class="g3" data-rv>
     <div><span class="n">Advisory</span><h4>Professional and advisory firms</h4>
       <p>Where the product is time, and three different numbers describe the same hour.<br>
       <a class="ilink" href="/industries/law-firms/">Law firms</a> &middot;
+      <a class="ilink" href="/industries/accountancy/">Accountancy firms</a> &middot;
       <a class="ilink" href="/industries/professional-services/">Professional services</a> &middot;
       <a class="ilink" href="/industries/agencies/">Agencies and media</a> &middot;
-      <a class="ilink" href="/industries/staffing/">Staffing</a></p></div>
+      <a class="ilink" href="/industries/staffing/">Staffing and recruitment</a></p></div>
     <div><span class="n">Financial</span><h4>Financial services and insurance</h4>
-      <p>Where regulated cost is an operating line, and the operations underneath it are
-      rarely priced.<br>
+      <p>Where regulated cost is an operating line, and the operations underneath it are rarely priced.<br>
       <a class="ilink" href="/industries/financial-services/">Financial services</a> &middot;
-      <a class="ilink" href="/industries/insurance/">Insurance</a></p></div>
+      <a class="ilink" href="/industries/insurance/">Insurance</a> &middot;
+      <a class="ilink" href="/industries/real-estate-finance/">Real estate finance</a></p></div>
     <div><span class="n">Industrial</span><h4>Making, moving and building</h4>
       <p>Where margin is calculated from standards, and the standards drift.<br>
       <a class="ilink" href="/industries/manufacturing/">Manufacturing</a> &middot;
+      <a class="ilink" href="/industries/aerospace-defence/">Aerospace and defence</a> &middot;
       <a class="ilink" href="/industries/warehousing-logistics/">Warehousing and logistics</a> &middot;
       <a class="ilink" href="/industries/transport-fleet/">Transport and fleet</a> &middot;
-      <a class="ilink" href="/industries/construction/">Construction</a></p></div>
+      <a class="ilink" href="/industries/construction/">Construction and contracting</a></p></div>
   </div>
   <div class="g3" data-rv style="margin-top:1px">
     <div><span class="n">Asset</span><h4>Property, energy and infrastructure</h4>
@@ -761,24 +784,23 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <div><span class="n">Commerce</span><h4>Selling and serving</h4>
       <p>Where volume hides the unit, and the unit is where the loss is.<br>
       <a class="ilink" href="/industries/retail-ecommerce/">Retail and e-commerce</a> &middot;
-      <a class="ilink" href="/industries/hospitality/">Hospitality</a> &middot;
+      <a class="ilink" href="/industries/hospitality/">Hospitality and food service</a> &middot;
       <a class="ilink" href="/industries/technology-saas/">Technology and SaaS</a></p></div>
     <div><span class="n">Funded</span><h4>Public, funded and regulated</h4>
-      <p>Where the funder, the regulator or the statute sets the operating model, and the
-      cost of complying with it is nobody&rsquo;s line item.<br>
+      <p>Where the funder, the regulator or the statute sets the operating model, and the cost of complying with it is nobody's line item.<br>
       <a class="ilink" href="/industries/healthcare/">Healthcare</a> &middot;
       <a class="ilink" href="/industries/government-contracting/">Government contracting</a> &middot;
       <a class="ilink" href="/industries/public-sector/">Public sector</a> &middot;
       <a class="ilink" href="/industries/education-research/">Education and research</a> &middot;
-      <a class="ilink" href="/industries/nonprofit/">Nonprofit</a></p></div>
+      <a class="ilink" href="/industries/nonprofit/">Nonprofit and grant-funded</a></p></div>
   </div>
-  <p class="rl"><b>Healthcare is one of these, not the frame around the rest.</b> It appears
-  above because it is a sector with unusually well-documented operating loss, not because
-  the method depends on it. Every engagement runs the same 107 document requests across
-  finance, revenue, receivables, payables, contracts, people, IT, operations, risk,
-  commercial and governance; the sector module is what gets added on top. Start at
-  <a class="ilink" href="/industries/">the industry index</a>, or tell us what you do and we
-  will say what we would add.</p>
+  <!--GEN:industries-end-->
+  <p class="rl"><b>Not listed is not out of scope.</b> These are the sectors with a page
+  written for them so far. The operating spine underneath &mdash; finance, revenue,
+  receivables, payables, contracts, people, IT, operations, risk, commercial and governance
+  &mdash; is the same wherever you sit; what a sector adds is its own regulator, its own
+  filings and its own words for the same losses. Tell us what you do and we will say what we
+  would add. Or start at <a class="ilink" href="/industries/">the index</a>.</p>
 </div></section>
 
 <section class="sec tint" id="compliance"><div class="wrap">
@@ -1081,14 +1103,14 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <div>
       <a href="#top" class="brand" style="margin-bottom:12px"><span class="mark"><i></i><i></i><i></i><i></i></span>
         <span class="bn"><span>Wirewalk<s>AI</s></span></span></a>
-      <p class="small" style="max-width:36ch">The Operating Review. Revenue optimization and risk detection across finance, IT, compliance, contracts, sales and delivery &mdash; in twenty industries, each read in its own vocabulary.</p>
+      <p class="small" style="max-width:36ch">The Operating Review. Revenue optimization and risk detection across finance, IT, compliance, contracts, sales and delivery &mdash; read in your sector&rsquo;s own vocabulary.</p>
     </div>
     <div><h5>The review</h5>
       <a href="#lenses">Three lenses</a><a href="#coverage">Method</a>
       <a href="#phase1">Phase one</a><a href="#phase2">Phase two</a><a href="#next">Next step</a>
       <a href="/writing/">Notes</a></div>
     <div><h5>Industries</h5>
-      <a href="/industries/">All twenty industries</a>
+      <a href="/industries/">Find your industry</a>
       <a href="/industries/#advisory">Professional and advisory</a>
       <a href="/industries/#industrial">Making, moving and building</a>
       <a href="/industries/#commerce">Selling and serving</a>
