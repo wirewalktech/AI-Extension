@@ -157,6 +157,40 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
 
+/* proposal page */
+.prop-hero{padding:26px 0 6px}
+.phase{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
+.phase li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:18px 0;
+  border-top:1px solid var(--ln)}
+.phase li:last-child{border-bottom:1px solid var(--ln)}
+.phase .wk{font:650 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ac);padding-top:2px}
+.phase b{display:block;font-size:15.5px;margin-bottom:5px}
+.phase span{font-size:14.5px;line-height:1.6;color:var(--tx2)}
+.deliv{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px}
+.deliv li{padding-left:24px;position:relative;font-size:14.5px;line-height:1.55}
+.deliv li:before{content:"";position:absolute;left:6px;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--ac)}
+.quotebox{border:1px solid var(--ln);border-radius:11px;padding:22px;margin:26px 0 0;
+  background:var(--bg2)}
+.quotebox label{display:block;font-size:13px;color:var(--tx2);margin-bottom:7px}
+.quotebox input,.quotebox select{width:100%;max-width:220px;padding:11px 12px;
+  font:500 15px/1.2 var(--sans);border:1px solid var(--ln);border-radius:7px;
+  background:var(--bg);color:var(--tx)}
+.qrow{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end}
+.qout{margin-top:20px;padding-top:18px;border-top:1px solid var(--ln)}
+.qbig{font:700 34px/1.1 var(--sans);letter-spacing:-.02em}
+.qsub{font-size:13.5px;color:var(--tx2);margin-top:5px}
+.qlines{list-style:none;padding:0;margin:15px 0 0;display:grid;gap:6px}
+.qlines li{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;
+  color:var(--tx2);font-variant-numeric:tabular-nums}
+.qopts{display:grid;gap:9px;margin-top:16px}
+.qopt{display:flex;justify-content:space-between;gap:14px;padding:11px 13px;
+  border:1px solid var(--ln);border-radius:7px;font-size:14px;background:var(--bg)}
+.qopt b{font-variant-numeric:tabular-nums}
+.qerr{color:#b4232a;font-size:14px;margin-top:12px}
+@media(max-width:640px){.phase li{grid-template-columns:1fr;gap:6px}}
+
 /* depth blocks -- systems, sub-verticals, filings, triggers */
 .depth{margin:26px 0 0}
 .depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
@@ -491,9 +525,12 @@ ${roleHtml}
   fees on anything we recommend.</p>
 
   <div class="acts">
-    <a class="btn" href="/order/#catalog">Commission the review</a>
+    <a class="btn" href="/industries/${ind.slug}/proposal/">See the proposal and the price</a>
     <a class="btn g" href="/#contact">Talk it through first</a>
   </div>
+  <p class="sub" style="margin-top:11px">The proposal sets out the sequence week by
+  week, what we would need from you, and what it costs for your number of operating
+  units. No call required to see the number.</p>
 
   <h2>Closest to this</h2>
   <p class="sub">Operations that share more with ${esc(phrase)} than the sector label
@@ -505,6 +542,217 @@ ${alsoLinks}
 ${foot}`;
 }
 
+const ORDERS_API = "https://wirewalk-orders.wirewalk-upload.workers.dev";
+
+/* The sequence is the same shape in every sector -- it is the method, not the
+   industry -- but WHAT is read in each phase is drawn from that sector's own
+   intake module and loss patterns. A proposal that describes a generic method
+   with generic examples reads as a template, because it is one. */
+function proposalPage(ind) {
+  const mod = SECTOR_MODULES[ind.sector];
+  const d = DEPTH[ind.slug] || {};
+  const phrase = phraseOf(ind);
+  const core = mod.items.filter(i => i.importance === "core");
+
+  const phases = [
+    { wk: "Week 1", title: "Intake and reconciliation",
+      body: `You complete the intake in the client portal — ${mod.items.length} requests ` +
+            `specific to ${phrase}, on top of the 107 asked of every organisation. ` +
+            `Anything you do not have is skipped in one click, with a reason. We reconcile ` +
+            `what arrives against what was asked and tell you, before any fieldwork, which ` +
+            `findings the gaps will limit.` },
+    { wk: "Weeks 2–3", title: "Full pass, not a sample",
+      body: `Every ${d.metrics ? d.metrics[0] : "record"} in scope is read rather than ` +
+            `sampled. Concentrated loss is exactly what sampling misses — one contract, one ` +
+            `queue, one unreviewed account — so a sample of the operation tends to miss it ` +
+            `and a full pass tends to find it.` },
+    { wk: "Week 4", title: "Quantification and challenge",
+      body: `Each finding is sized, and each is put to the person who owns it before it is ` +
+            `written down. A finding the operator can immediately explain away is not a ` +
+            `finding, and it is cheaper to discover that here than in the room.` },
+    { wk: "Week 5", title: "Report and walkthrough",
+      body: `A written report with the evidence attached, and a walkthrough with whoever ` +
+            `you want in the room. Findings are ranked by annual value and by how hard they ` +
+            `are to act on, because those are different axes and the cheap ones should not ` +
+            `wait for the big ones.` },
+  ];
+
+  const phaseHtml = phases.map(p => `    <li>
+      <span class="wk">${esc(p.wk)}</span>
+      <div><b>${esc(p.title)}</b><span>${esc(p.body)}</span></div>
+    </li>`).join("\n");
+
+  const patHtml = ind.patterns.slice(0, 5).map(p =>
+    `    <li>${esc(p)}</li>`).join("\n");
+  const coreHtml = core.map(i =>
+    `    <li><b>${esc(i.label)}</b>${i.detail ? ` — ${esc(i.detail)}` : ""}</li>`).join("\n");
+
+  const triggerHtml = d.triggers ? `
+  <h2>If any of this is already happening</h2>
+  <p>The review is always worth doing and rarely urgent. It becomes urgent when
+  something else is happening — and if one of these is, the sequence above compresses
+  to fit it.</p>
+  <ul class="trg">
+${d.triggers.map(t => `    <li>${esc(t)}</li>`).join("\n")}
+  </ul>` : "";
+
+  const roleHtml = d.roles ? `
+  <h2>Who needs to be in the room</h2>
+  <ul class="roles">
+    <li><b>Signs it:</b> ${esc(d.roles.signs)}</li>
+    <li><b>Will resist it:</b> ${esc(d.roles.blocks)} — worth telling them what the
+      review is for before they hear it from somewhere else.</li>
+    <li><b>Has been asking for it:</b> ${esc(d.roles.benefits)}</li>
+  </ul>` : "";
+
+  return `---
+permalink: /industries/${ind.slug}/proposal/
+title: ${yaml("Proposal — " + ind.name)}
+description: ${yaml("What the Operating Review would do for " + phrase + ": scope, sequence, what you get, and what it costs.")}
+---
+${head(`Proposal — ${ind.name} — Wirewalk AI`,
+       clip(`What the Operating Review would do for ${phrase}: the sequence, the deliverable, what we need from you, and what it costs.`, 290),
+       `https://ai.wirewalk.com/industries/${ind.slug}/proposal/`)}
+<div class="wrap">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo;
+    <a href="/industries/">Industries</a> &rsaquo;
+    <a href="/industries/${ind.slug}/">${esc(ind.name)}</a> &rsaquo; Proposal</p>
+
+  <div class="prop-hero">
+    <span class="eyebrow">Proposal &mdash; ${esc(ind.name)}</span>
+    <h1>${esc(ind.headline)}</h1>
+    <p class="lede">This is what we would actually do, in what order, and what it costs.
+    No discovery call is required to see the number.</p>
+  </div>
+
+  <h2>What we would go looking for</h2>
+  <p class="sub">These are patterns that recur in ${esc(phrase)}, written as things to
+  look for. They are not findings from a named engagement.</p>
+  <ol class="pat">
+${patHtml}
+  </ol>
+
+  <h2>The sequence</h2>
+  <p>Five weeks for one operating unit. More units run in parallel rather than in
+  series, so a group does not take five times as long.</p>
+  <ul class="phase">
+${phaseHtml}
+  </ul>
+
+  <h2>What you get</h2>
+  <ul class="deliv">
+    <li>A written report, with the evidence for each finding attached rather than
+      referenced.</li>
+    <li>Each finding sized in annual value, and ranked against how hard it is to act on.</li>
+    <li>The reconciliation of what was asked for against what was provided, so the
+      limits of the work are stated rather than implied.</li>
+    <li>A walkthrough with whoever you want present.</li>
+    <li>Your documents destroyed on completion, with a certificate naming every file.</li>
+  </ul>
+  <p class="sub" style="margin-top:14px">Phase one is priced before phase two is
+  discussed. The report is yours either way, and we take no vendor commissions or
+  referral fees on anything we recommend.</p>
+
+  <h2>What we need from you</h2>
+  <p>${core.length} core requests specific to ${esc(phrase)}, inside the full intake.
+  Anything you do not have can be skipped with a reason — skipping narrows what the
+  review can conclude, and we tell you where before the work starts rather than after.</p>
+  <ul class="deliv">
+${coreHtml}
+  </ul>
+${triggerHtml}
+${roleHtml}
+
+  <h2>What it costs</h2>
+  <p>Priced by operating unit — an entity, a location, or a business the accounts are
+  kept separately for. The second unit costs less than the first because by then the
+  intake is built, the chart of accounts is understood and the patterns are known.</p>
+
+  <div class="quotebox">
+    <div class="qrow">
+      <div>
+        <label for="units">Operating units in scope</label>
+        <input id="units" type="number" min="1" max="25" value="1" inputmode="numeric">
+      </div>
+      <div>
+        <label for="sectors">Sector modules</label>
+        <select id="sectors">
+          <option value="1">1 — ${esc(ind.name.toLowerCase())} only</option>
+          <option value="2">2 — plus one adjacent</option>
+          <option value="3">3 — plus two adjacent</option>
+          <option value="4">4 — plus three adjacent</option>
+        </select>
+      </div>
+    </div>
+    <div class="qout" id="qout" aria-live="polite">
+      <div class="qbig" id="qbig">&mdash;</div>
+      <div class="qsub" id="qsub">Choose a scope to see the price.</div>
+      <ul class="qlines" id="qlines"></ul>
+      <div class="qopts" id="qopts"></div>
+    </div>
+    <div class="acts" style="margin-top:20px">
+      <a class="btn" href="/order/#catalog" id="orderbtn">Commission it</a>
+      <a class="btn g" href="/#contact">Ask a question first</a>
+    </div>
+    <p class="sub" style="margin-top:14px">Purchase order is the primary route — most
+    buyers this size raise a PO and pay against an invoice on terms. Card and bank
+    transfer exist for those who prefer them.</p>
+  </div>
+
+  <h2>Read first, if you would rather</h2>
+  <ul class="also">
+    <li><a href="/industries/${ind.slug}/">${esc(ind.name)} &mdash; where loss concentrates</a></li>
+    <li><a href="/">How the review works</a></li>
+    <li><a href="/terms/">Ordering terms</a></li>
+  </ul>
+
+<script>
+(function(){
+  var API=${JSON.stringify(ORDERS_API)};
+  var u=document.getElementById("units"), s=document.getElementById("sectors");
+  var big=document.getElementById("qbig"), sub=document.getElementById("qsub");
+  var lines=document.getElementById("qlines"), opts=document.getElementById("qopts");
+  var t=null;
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function render(d){
+    big.textContent=d.engagementTotalFormatted;
+    sub.textContent=d.units+" operating unit"+(d.units===1?"":"s")+
+      " — "+d.perUnitFormatted+" each"+
+      (d.scaleSaving>0?", "+d.scaleSavingFormatted+" below the flat rate":"");
+    lines.innerHTML=d.lines.map(function(l){
+      return "<li><span>"+esc(l.label)+"</span><span>"+esc(l.amountFormatted)+"</span></li>";}).join("");
+    var o=d.options;
+    opts.innerHTML=
+      '<div class="qopt"><span>Purchase order — invoiced on terms</span><b>'+esc(o.po.totalFormatted)+'</b></div>'+
+      '<div class="qopt"><span>Deposit now, balance on delivery</span><b>'+esc(o.deposit.dueNowFormatted)+' now</b></div>'+
+      '<div class="qopt"><span>Pay in full</span><b>'+esc(o.full.dueNowFormatted)+'</b></div>'+
+      '<div class="qopt"><span>Pay in full by bank transfer</span><b>'+esc(o.fullAch.dueNowFormatted)+'</b></div>';
+  }
+  function fail(msg){
+    big.textContent="—"; lines.innerHTML=""; opts.innerHTML="";
+    sub.innerHTML='<span class="qerr">'+esc(msg)+'</span>';
+  }
+  function go(){
+    /* The browser sends the SHAPE of the business and never a price. Every
+       figure above is resolved server-side and resolved again at checkout. */
+    fetch(API+"/quote",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({units:Number(u.value)||1,sectors:Number(s.value)||1})})
+      .then(function(r){return r.json().then(function(b){return {ok:r.ok,b:b};});})
+      .then(function(x){
+        if(!x.ok){ fail(x.b.error||"That scope needs a conversation — please get in touch."); return; }
+        render(x.b);
+      })
+      .catch(function(){ fail("Could not reach pricing just now. Please try again, or email sales@wirewalk.com."); });
+  }
+  function debounced(){ clearTimeout(t); t=setTimeout(go,220); }
+  u.addEventListener("input",debounced); s.addEventListener("change",go);
+  go();
+})();
+</script>
+${foot}`;
+}
+
 /* ------------------------------------------------------------------ *
  * Write
  * ------------------------------------------------------------------ */
@@ -513,6 +761,8 @@ writeFileSync(join(OUT, "index.html"), indexPage());
 let n = 1;
 for (const ind of INDUSTRIES) {
   writeFileSync(join(OUT, `${ind.slug}.html`), industryPage(ind));
+  n++;
+  writeFileSync(join(OUT, `${ind.slug}-proposal.html`), proposalPage(ind));
   n++;
 }
 console.log(`wrote ${n} files into ${OUT}`);
