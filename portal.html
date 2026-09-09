@@ -69,6 +69,22 @@ summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset
 .gate-help li{margin:5px 0}
 .gate-help code{font:13px/1 var(--mono);background:var(--alt2);border-radius:4px;padding:2px 6px}
 .gacts{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0;align-items:center}
+
+/* ---- ask for a replacement link ---- */
+.askform{border:1px solid var(--ln);background:#fff;border-radius:12px;padding:20px 22px;
+         margin:24px 0 0;max-width:520px}
+.askform b{display:block;font-size:16px;color:var(--tx);margin-bottom:4px}
+.askform p{margin:0 0 14px;color:var(--tx2);font-size:14.5px}
+.askform label{display:block;font-weight:600;font-size:13px;margin:0 0 5px;color:var(--tx)}
+.askform input[type=email]{width:100%;padding:10px 12px;font:inherit;font-size:15px;
+  background:#fff;border:1px solid var(--ln2);border-radius:8px;color:var(--tx)}
+.askform .rowb{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 0}
+.askform .said{font-size:15px;color:var(--ok);margin:14px 0 0}
+.askform .said b{color:var(--ok)}
+.askform .oops{font-size:14.5px;color:var(--bad);margin:12px 0 0}
+.askform .fine{font-size:13.5px;color:var(--tx3);margin:12px 0 0}
+#ts2{margin:12px 0 0}
+#ts2:empty{margin:0}
 .spin{display:inline-block;width:13px;height:13px;border:2px solid var(--ln2);
       border-top-color:var(--ac);border-radius:50%;animation:sp .7s linear infinite;
       vertical-align:-1px;margin-right:8px}
@@ -312,7 +328,10 @@ function tokenFromHash() {
 let TOKEN = tokenFromHash();
 let DATA = null;
 let FILTER = "all";
-let widgetId = null;
+/* Two independent Turnstile widgets: one in front of opening the portal, one
+   in front of asking for a replacement link. They are separate because a token
+   is single-use and the two flows can both be attempted in one visit. */
+const WIDGETS = { gate: null, form: null };
 
 const $ = s => document.querySelector(s);
 const el = (t, c, txt) => { const e = document.createElement(t);
@@ -395,15 +414,15 @@ function gate(state) {
 
   if (state === "noToken") {
     h.textContent = "This page needs your portal link";
-    p.textContent = "The portal opens from the link issued with your engagement. There is " +
-                    "nothing to type here — no username, no password.";
+    p.textContent = "The portal opens from the link issued with your engagement — there is " +
+                    "no username and no password.";
     body.innerHTML =
       '<div class="gate-help"><p>Your link was sent to the address on the engagement. It is ' +
       'a long link with a <code>#</code> in it, and the part after the <code>#</code> is the ' +
       'key — so copy the whole thing, including that tail.</p>' +
       '<p style="margin-top:10px">If you cannot find it, we will issue a new one. We cannot ' +
       'recover the old link; nobody here can read it back. We can only replace it.</p></div>';
-    mail("Ask for a new link");
+    askForm(body);
     return;
   }
 
@@ -454,9 +473,10 @@ function gate(state) {
     body.innerHTML =
       '<div class="gate-help"><p>Check you copied the whole link, including everything after ' +
       'the <code>#</code>. Links are also retired when an engagement closes, and can be ' +
-      "retired early if one has been forwarded somewhere it should not have gone.</p></div>";
+      "retired early if one has been forwarded somewhere it should not have gone. We cannot " +
+      "recover the old link; nobody here can read it back. We can only replace it.</p></div>";
     retry();
-    mail("Ask for a new link");
+    askForm(body);
     return;
   }
 }
@@ -469,7 +489,7 @@ let DATA_DENIED_MESSAGE =
    plus a deadline of our own for the case where it silently never calls any of
    them, which is exactly what a blocked challenges.cloudflare.com looks like
    from in here. */
-function turnstileToken() {
+function turnstileToken(slot = "gate", selector = "#ts") {
   return new Promise((resolve, reject) => {
     if (!window.turnstile)
       return reject(new PortalError("challenge", "the check did not load"));
@@ -490,12 +510,93 @@ function turnstileToken() {
       "timeout-callback": () => fail("the check timed out"),
     };
     try {
-      if (widgetId === null) widgetId = turnstile.render("#ts", opts);
-      else { turnstile.reset(widgetId); turnstile.execute(widgetId, opts); }
+      if (WIDGETS[slot] === null) WIDGETS[slot] = turnstile.render(selector, opts);
+      else { turnstile.reset(WIDGETS[slot]); turnstile.execute(WIDGETS[slot], opts); }
     } catch {
       fail("the check could not start");
     }
   });
+}
+
+/* The form that replaces a mailto: on the two states where somebody has no
+   working link. A mailto depends on a configured mail client, which on a work
+   machine frequently opens nothing at all -- and the person it fails for is
+   the one already locked out.
+ *
+ * It cannot tell you whether your address is known, and neither can this page.
+ * The answer is the same either way, on purpose: whether a given address is on
+ * an engagement is a fact about who this practice's clients are. */
+function askForm(container) {
+  const box = el("div", "askform");
+  box.innerHTML =
+    "<b>Ask for a new link</b>" +
+    "<p>Enter the email address the engagement is under. If it matches, we send a fresh " +
+    "link to <em>that</em> address — never to one supplied here, which is what stops this " +
+    "form being useful to anybody but you.</p>" +
+    '<label for="ask-email">Email address</label>' +
+    '<input id="ask-email" type="email" autocomplete="email" spellcheck="false" ' +
+    'placeholder="you@yourcompany.com">' +
+    '<div id="ts2"></div>' +
+    '<div class="rowb"><button class="btn" id="ask-send">Send me a new link</button>' +
+    '<span class="fine" id="ask-fine">Checked for abuse. Usually invisible.</span></div>' +
+    '<div id="ask-out"></div>';
+  container.append(box);
+
+  const input = box.querySelector("#ask-email");
+  const btn = box.querySelector("#ask-send");
+  const out = box.querySelector("#ask-out");
+  const fine = box.querySelector("#ask-fine");
+
+  const submit = async () => {
+    const email = input.value.trim();
+    out.innerHTML = "";
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      out.innerHTML = '<p class="oops">That does not look like an email address.</p>';
+      input.focus();
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    fine.textContent = "Running the abuse check…";
+    try {
+      const ts = await turnstileToken("form", "#ts2");
+      fine.textContent = "";
+      const r = await api("/api/request-link", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, ts }),
+      });
+      // Deliberately the server's sentence, unmodified. The page must not add
+      // anything the server did not say, because the server said the same
+      // thing to everybody.
+      out.innerHTML = '<p class="said"><b>Thank you.</b> ' + r.message.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;") + "</p>" +
+        '<p class="fine">We reissue by hand rather than automatically, so that a link to ' +
+        "somebody's payroll is never one form submission away from being emailed. If it is " +
+        "urgent, call <a href=\"tel:+15162691517\">516-269-1517</a>.</p>";
+      btn.textContent = "Sent";
+      input.disabled = true;
+      return;
+    } catch (e) {
+      out.innerHTML = '<p class="oops">' + (
+        e.kind === "challenge"
+          ? "The abuse check could not complete — that is usually a content blocker or a " +
+            "corporate network stopping challenges.cloudflare.com. Email " +
+            "sales@wirewalk.com and we will do it by hand."
+          : e.kind === "http"
+            ? e.message
+            : "That did not reach us. Check the connection and try again, or email " +
+              "sales@wirewalk.com."
+      ) + "</p>";
+      btn.disabled = false;
+      btn.textContent = "Try again";
+      fine.textContent = "";
+    }
+  };
+
+  btn.addEventListener("click", submit);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") submit(); });
+  return box;
 }
 
 async function open_() {
