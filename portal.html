@@ -583,6 +583,10 @@ function askForm(container) {
           ? "The abuse check could not complete — that is usually a content blocker or a " +
             "corporate network stopping challenges.cloudflare.com. Email " +
             "sales@wirewalk.com and we will do it by hand."
+          : e.kind === "denied"
+            ? "The security check was not accepted. That is almost always a token that " +
+              "expired while the page sat open \u2014 reload and try once more. If it " +
+              "happens again, email sales@wirewalk.com and we will reissue by hand."
           : e.kind === "http"
             ? e.message
             : "That did not reach us. Check the connection and try again, or email " +
