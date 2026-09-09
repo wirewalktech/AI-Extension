@@ -2,14 +2,14 @@
 permalink: /industries/
 title: Industries
 description: >-
-  20 industries, each read in its own vocabulary — where operating
+  23 industries, each read in its own vocabulary — where operating
   loss concentrates in that sector, what a review would ask for, and who commissions it.
 ---
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Industries — Wirewalk AI</title>
-<meta name="description" content="20 industries, each read in its own vocabulary: where operating loss concentrates in that sector, what a review would ask for, and who commissions it.">
+<meta name="description" content="23 industries, each read in its own vocabulary: where operating loss concentrates in that sector, what a review would ask for, and who commissions it.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
@@ -55,6 +55,27 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
+
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
 
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
@@ -136,7 +157,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   distributes, so a sample of thirty transactions and eight interviews is the wrong
   instrument for finding it. What differs by sector is where it concentrates, and what
   it is called.</p>
-  <p>Below, 20 industries. Each page names five concentrated losses
+  <p>Below, 23 industries. Each page names five concentrated losses
   that recur in that sector &mdash; not abstractions, and not case studies &mdash; and
   shows what the intake would actually ask for. Find yours, or read the
   <a href="/">method</a> first if you would rather start there.</p>
@@ -150,6 +171,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
         <b>Law firms</b>
         <span>The gap between recorded, billed and collected.</span>
         <em>realisation · WIP · leverage · origination credit</em>
+      </a>
+      <a href="/industries/accountancy/">
+        <b>Accountancy firms</b>
+        <span>You audit everyone else's numbers. Nobody audits how the firm earns.</span>
+        <em>realisation · net fees per partner · utilisation · WIP</em>
       </a>
       <a href="/industries/professional-services/">
         <b>Professional services</b>
@@ -183,6 +209,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
         <span>Loss ratio gets the attention. Expense ratio decides it.</span>
         <em>loss ratio · expense ratio · claims leakage · acquisition cost</em>
       </a>
+      <a href="/industries/real-estate-finance/">
+        <b>Real estate finance</b>
+        <span>What the operating agreement says, and what the model computes.</span>
+        <em>waterfall · promote · preferred return · capital account</em>
+      </a>
     </div>
   </div>
 
@@ -194,6 +225,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
         <b>Manufacturing</b>
         <span>Standard cost said one thing. The line said another.</span>
         <em>standard cost · yield · scrap and rework · OEE</em>
+      </a>
+      <a href="/industries/aerospace-defence/">
+        <b>Aerospace and defence</b>
+        <span>Here, a compliance lapse is not a fine. It is a contract you may no longer bid.</span>
+        <em>AS9100 · ITAR · DFARS · SPRS</em>
       </a>
       <a href="/industries/warehousing-logistics/">
         <b>Warehousing and logistics</b>

@@ -19,6 +19,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { INDUSTRIES } from "../wirewalk-portal-worker/src/industries.js";
 import { SECTOR_MODULES } from "../wirewalk-portal-worker/src/intake-template.js";
+import { DEPTH } from "../wirewalk-portal-worker/src/industry-depth.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, "industries");
@@ -43,13 +44,14 @@ const BY_SLUG = Object.fromEntries(INDUSTRIES.map(i => [i.slug, i]));
 const GROUPS = [
   { id: "advisory", title: "Professional and advisory firms",
     blurb: "Where the product is time, and three different numbers describe the same hour.",
-    slugs: ["law-firms", "professional-services", "agencies", "staffing"] },
+    slugs: ["law-firms", "accountancy", "professional-services", "agencies", "staffing"] },
   { id: "financial", title: "Financial services and insurance",
     blurb: "Where regulated cost is an operating line, and the operations underneath it are rarely priced.",
-    slugs: ["financial-services", "insurance"] },
+    slugs: ["financial-services", "insurance", "real-estate-finance"] },
   { id: "industrial", title: "Making, moving and building",
     blurb: "Where margin is calculated from standards, and the standards drift.",
-    slugs: ["manufacturing", "warehousing-logistics", "transport-fleet", "construction"] },
+    slugs: ["manufacturing", "aerospace-defence", "warehousing-logistics",
+             "transport-fleet", "construction"] },
   { id: "asset", title: "Property, energy and infrastructure",
     blurb: "Where the asset is the business, and what is contracted is not what is collected.",
     slugs: ["real-estate", "energy-utilities"] },
@@ -86,6 +88,9 @@ const ALSO = {
   "nonprofit": ["education-research", "public-sector", "healthcare"],
   "financial-services": ["insurance", "professional-services", "technology-saas"],
   "insurance": ["financial-services", "healthcare", "law-firms"],
+  "accountancy": ["law-firms", "professional-services", "financial-services"],
+  "aerospace-defence": ["manufacturing", "government-contracting", "technology-saas"],
+  "real-estate-finance": ["real-estate", "financial-services", "construction"],
 };
 
 /* How each name reads inside a sentence. Most are fine lowercased; these are
@@ -98,6 +103,11 @@ const PHRASE = {
   "financial-services": "financial services",
   "government-contracting": "government contracting",
 };
+Object.assign(PHRASE, {
+  "accountancy": "an accountancy firm",
+  "aerospace-defence": "an aerospace and defence manufacturer",
+  "real-estate-finance": "a real estate sponsor",
+});
 const phraseOf = i => PHRASE[i.slug] || i.name.toLowerCase();
 
 /* ------------------------------------------------------------------ *
@@ -146,6 +156,27 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
+
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
 
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
@@ -349,6 +380,55 @@ function industryPage(ind) {
   const coreCount = mod.items.filter(i => i.importance === "core").length;
   const phrase = phraseOf(ind);
 
+  /* Depth is OPTIONAL and PARTIAL. An industry without an entry renders exactly
+     as it did before; one with an entry renders more. That is what lets depth
+     be written in the order the pipeline demands rather than all at once. */
+  const d = DEPTH[ind.slug] || {};
+  const block = (cls, title, inner) => inner
+    ? `\n  <div class="depth">\n    <h3>${title}</h3>\n${inner}\n  </div>` : "";
+
+  const systemsHtml = block("sys",
+    "Where this data actually lives",
+    d.systems ? `    <ul class="sysl">\n` +
+      d.systems.map(x => `      <li>${esc(x)}</li>`).join("\n") +
+      `\n    </ul>\n    <p class="sub" style="margin-top:11px">Named because it changes ` +
+      `what the intake asks for. An extract from one of these has known gaps, and the ` +
+      `review is built around them rather than surprised by them.</p>` : "");
+
+  const subHtml = block("sub",
+    `Not every ${esc(phrase.replace(/^an? /, ""))} is the same business`,
+    d.subsectors ? `    <ul class="subv">\n` +
+      d.subsectors.map(x =>
+        `      <li><b>${esc(x.name)}</b><span>${esc(x.note)}</span></li>`).join("\n") +
+      `\n    </ul>` : "");
+
+  const filHtml = block("fil",
+    "The obligations that set the deadlines",
+    d.filings ? `    <ul class="fil">\n` +
+      d.filings.map(x => `      <li>${esc(x)}</li>`).join("\n") +
+      `\n    </ul>` : "");
+
+  const trgHtml = block("trg",
+    "When this stops being interesting and becomes urgent",
+    d.triggers ? `    <ul class="trg">\n` +
+      d.triggers.map(x => `      <li>${esc(x)}</li>`).join("\n") +
+      `\n    </ul>` : "");
+
+  const metHtml = block("met",
+    "Reported in your numbers, not ours",
+    d.metrics ? `    <ul class="mets">\n` +
+      d.metrics.map(x => `      <li>${esc(x)}</li>`).join("\n") +
+      `\n    </ul>` : "");
+
+  const roleHtml = d.roles ? `\n  <div class="depth">
+    <h3>Who this involves</h3>
+    <ul class="roles">
+      <li><b>Signs it:</b> ${esc(d.roles.signs)}</li>
+      <li><b>Resists it:</b> ${esc(d.roles.blocks)}</li>
+      <li><b>Has been asking for it:</b> ${esc(d.roles.benefits)}</li>
+    </ul>
+  </div>` : "";
+
   return `---
 permalink: /industries/${ind.slug}/
 title: ${yaml(ind.name + " — the Operating Review")}
@@ -382,6 +462,11 @@ ${vocab}
 ${pats}
   </ol>
 
+${subHtml}
+${systemsHtml}
+${metHtml}
+${filHtml}
+
   <h2>What the review would ask you for</h2>
   <div class="ask">
     <div class="hd"><b>${mod.items.length} further requests, specific to
@@ -396,6 +481,9 @@ ${asks}
   click, with a reason. The intake is completed in the
   <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
   returned to as often as you like.</p>
+
+${trgHtml}
+${roleHtml}
 
   <h2>Who commissions it</h2>
   <p class="who"><b>${esc(ind.buyer)}.</b> Phase one is priced before phase two is

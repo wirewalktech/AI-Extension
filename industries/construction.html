@@ -54,6 +54,27 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
 
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -163,6 +184,54 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>Extension of time entitlements not claimed within the contractual notice period, so a valid claim expires unused.</li>
   </ol>
 
+
+  <div class="depth">
+    <h3>Not every construction and contracting is the same business</h3>
+    <ul class="subv">
+      <li><b>General contracting</b><span>Margin lives in the difference between the estimate, the buyout and the final cost, and the estimate is rarely revisited once the job is won.</span></li>
+      <li><b>Mechanical, electrical and specialty trades</b><span>Change orders performed before they are approved, then negotiated from a weak position because the work is already installed.</span></li>
+      <li><b>Heavy civil and public work</b><span>Certified payroll, prevailing wage and DBE participation, where a compliance failure is withheld payment rather than a fine.</span></li>
+      <li><b>Service and maintenance divisions</b><span>The steadiest margin in the business, usually run on the estimating assumptions of the construction side, which do not fit it.</span></li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Where this data actually lives</h3>
+    <ul class="sysl">
+      <li>Sage 300 CRE (Timberline) or Viewpoint Vista in established contractors</li>
+      <li>Procore for project management, often not reconciled to the accounting system</li>
+      <li>Foundation or Computer Ease in specialty trades</li>
+      <li>A separate certified payroll process for any public work</li>
+      <li>Textura or GCPay for subcontractor payment and lien waiver tracking</li>
+    </ul>
+    <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
+  </div>
+
+  <div class="depth">
+    <h3>Reported in your numbers, not ours</h3>
+    <ul class="mets">
+      <li>gross margin by job</li>
+      <li>over/under billings</li>
+      <li>backlog</li>
+      <li>change order cycle time</li>
+      <li>cost to complete</li>
+      <li>labour productivity</li>
+      <li>EMR</li>
+      <li>days sales outstanding</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>The obligations that set the deadlines</h3>
+    <ul class="fil">
+      <li>Certified payroll (WH-347) and prevailing wage determinations on public work</li>
+      <li>Lien waivers, notices to owner and the statutory deadlines that void a claim</li>
+      <li>Surety bonding — the WIP schedule the bonding agent actually reads</li>
+      <li>OSHA 300 logs and EMR, which price the insurance</li>
+      <li>AIA G702/G703 applications and stored-materials substantiation</li>
+    </ul>
+  </div>
+
   <h2>What the review would ask you for</h2>
   <div class="ask">
     <div class="hd"><b>8 further requests, specific to
@@ -208,6 +277,27 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   click, with a reason. The intake is completed in the
   <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
   returned to as often as you like.</p>
+
+
+  <div class="depth">
+    <h3>When this stops being interesting and becomes urgent</h3>
+    <ul class="trg">
+      <li>A bonding capacity review, where the WIP schedule is read by someone who knows how to read one</li>
+      <li>A job that lost money and nobody can say at which point it turned</li>
+      <li>An owner or generational transition</li>
+      <li>A bank line renewal against work-in-progress</li>
+      <li>An audit of a public contract</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Who this involves</h3>
+    <ul class="roles">
+      <li><b>Signs it:</b> Owner or president; CFO on anything touching the bonding relationship</li>
+      <li><b>Resists it:</b> Project managers whose job margins become individually visible</li>
+      <li><b>Has been asking for it:</b> The controller, and the bonding agent</li>
+    </ul>
+  </div>
 
   <h2>Who commissions it</h2>
   <p class="who"><b>Commercial directors, QSs and finance leads.</b> Phase one is priced before phase two is

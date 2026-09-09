@@ -54,6 +54,27 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
 
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -161,6 +182,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>Reserve development patterns that repeat by line and are treated as actuarial rather than operational.</li>
   </ol>
 
+
+
+
+
+
   <h2>What the review would ask you for</h2>
   <div class="ask">
     <div class="hd"><b>7 further requests, specific to
@@ -202,6 +228,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   click, with a reason. The intake is completed in the
   <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
   returned to as often as you like.</p>
+
+
+
 
   <h2>Who commissions it</h2>
   <p class="who"><b>COOs, finance directors and heads of claims.</b> Phase one is priced before phase two is

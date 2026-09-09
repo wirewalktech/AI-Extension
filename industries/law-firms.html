@@ -54,6 +54,27 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
 
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -162,6 +183,54 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>Trust and client account reconciliation exceptions carried month to month, which is a regulatory exposure rather than an accounting untidiness.</li>
   </ol>
 
+
+  <div class="depth">
+    <h3>Not every law firms is the same business</h3>
+    <ul class="subv">
+      <li><b>Insurance defence</b><span>Panel rates, litigation guidelines and carrier audits. Realisation is set by someone else's billing rules, and the write-downs happen after the work.</span></li>
+      <li><b>Plaintiff and contingency</b><span>Case costs advanced and carried for years. The question is not realisation but which advanced costs will never be recovered and are still on the books.</span></li>
+      <li><b>Corporate and transactional</b><span>Matter budgets agreed at engagement and quietly exceeded, with the overage written off rather than discussed.</span></li>
+      <li><b>Trusts, estates and private client</b><span>Long-running matters, fixed fees agreed years ago, and time recorded against them at today's rates.</span></li>
+      <li><b>Immigration and high-volume practice</b><span>Flat fees at scale, where unit economics per matter type are rarely calculated and one type is usually loss-making.</span></li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Where this data actually lives</h3>
+    <ul class="sysl">
+      <li>Elite 3E or ProLaw for the larger firms; Aderant Expert where the finance function grew up around it</li>
+      <li>Clio Manage or PracticePanther in firms under about forty fee earners</li>
+      <li>Chrome River or Nexudus for disbursements, usually reconciled by hand</li>
+      <li>iManage or NetDocuments for matter files — often the only complete record of what was actually agreed</li>
+      <li>A separate IOLTA/client account reconciliation, frequently in Excel</li>
+    </ul>
+    <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
+  </div>
+
+  <div class="depth">
+    <h3>Reported in your numbers, not ours</h3>
+    <ul class="mets">
+      <li>realisation</li>
+      <li>collection rate</li>
+      <li>lock-up days</li>
+      <li>WIP ageing</li>
+      <li>leverage ratio</li>
+      <li>profit per equity partner</li>
+      <li>matter margin</li>
+      <li>origination credit</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>The obligations that set the deadlines</h3>
+    <ul class="fil">
+      <li>State bar trust account (IOLTA) compliance and the annual certification</li>
+      <li>Client account three-way reconciliation — bank, ledger and matter balances</li>
+      <li>Malpractice insurance renewal disclosures on claims and circumstances</li>
+      <li>1099 reporting on settlement disbursements</li>
+    </ul>
+  </div>
+
   <h2>What the review would ask you for</h2>
   <div class="ask">
     <div class="hd"><b>9 further requests, specific to
@@ -211,6 +280,27 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   click, with a reason. The intake is completed in the
   <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
   returned to as often as you like.</p>
+
+
+  <div class="depth">
+    <h3>When this stops being interesting and becomes urgent</h3>
+    <ul class="trg">
+      <li>A partner retiring or de-equitising, which forces a real valuation of WIP and receivables rather than a comfortable one</li>
+      <li>A merger conversation, where the other side's diligence asks the questions nobody internal has asked</li>
+      <li>A bar audit or a trust account exception that did not clear</li>
+      <li>A practice management migration, which surfaces every unbilled matter at once</li>
+      <li>A bank covenant test on the firm's line of credit</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Who this involves</h3>
+    <ul class="roles">
+      <li><b>Signs it:</b> Managing partner, or the executive committee</li>
+      <li><b>Resists it:</b> The practice group heads whose realisation the review will decompose</li>
+      <li><b>Has been asking for it:</b> The finance director, who has been saying this for two years</li>
+    </ul>
+  </div>
 
   <h2>Who commissions it</h2>
   <p class="who"><b>Managing partners, finance directors and COOs.</b> Phase one is priced before phase two is

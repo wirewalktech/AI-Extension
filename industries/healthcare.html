@@ -54,6 +54,27 @@ a{color:var(--ac2);text-underline-offset:2px}
 .btn.g:hover{background:var(--alt)}
 .acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
 
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -162,6 +183,54 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>Preference-item supply variation between clinicians doing the same procedure, with no clinical difference in outcome.</li>
   </ol>
 
+
+  <div class="depth">
+    <h3>Not every healthcare is the same business</h3>
+    <ul class="subv">
+      <li><b>Multi-site physician groups</b><span>Payer contracts negotiated per location or inherited through acquisition, so the same CPT code is reimbursed differently across the group.</span></li>
+      <li><b>Dermatology, ophthalmology and specialty</b><span>Ancillary revenue — pathology, cosmetics, optical — with materially different margins that are rarely reported separately.</span></li>
+      <li><b>Dental groups and DSOs</b><span>Per-location P&amp;Ls where doctor compensation formulas differ by acquisition vintage and nobody has modelled the aggregate.</span></li>
+      <li><b>Behavioural and human services</b><span>Medicaid and grant funding with cost-reporting obligations, where an unallowable cost found late is repayable.</span></li>
+      <li><b>Imaging, surgery centres and ancillary</b><span>Capital-heavy, utilisation-driven, and priced on assumptions set when the equipment was bought.</span></li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Where this data actually lives</h3>
+    <ul class="sysl">
+      <li>Epic in the larger groups; athenahealth, eClinicalWorks or NextGen in the mid-market; Modernizing Medicine in specialty practices</li>
+      <li>Waystar, Availity or Change Healthcare sitting between the practice and the payer</li>
+      <li>A separate credentialling tracker, very often a spreadsheet</li>
+      <li>Dentrix or Open Dental in dental groups, per location and rarely consolidated</li>
+    </ul>
+    <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
+  </div>
+
+  <div class="depth">
+    <h3>Reported in your numbers, not ours</h3>
+    <ul class="mets">
+      <li>days in AR</li>
+      <li>denial rate</li>
+      <li>net collection rate</li>
+      <li>RVU per provider</li>
+      <li>no-show rate</li>
+      <li>payer mix</li>
+      <li>cost per encounter</li>
+      <li>chair or room utilisation</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>The obligations that set the deadlines</h3>
+    <ul class="fil">
+      <li>Payer credentialling and revalidation per provider per payer — lapse and the claims deny</li>
+      <li>Medicare cost reports and Medicaid cost settlement where applicable</li>
+      <li>HIPAA security risk analysis, which is required annually and often is not done</li>
+      <li>Stark and Anti-Kickback exposure on any physician compensation formula</li>
+      <li>340B compliance where the group participates</li>
+    </ul>
+  </div>
+
   <h2>What the review would ask you for</h2>
   <div class="ask">
     <div class="hd"><b>9 further requests, specific to
@@ -211,6 +280,27 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   click, with a reason. The intake is completed in the
   <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
   returned to as often as you like.</p>
+
+
+  <div class="depth">
+    <h3>When this stops being interesting and becomes urgent</h3>
+    <ul class="trg">
+      <li>A private equity approach or a DSO/MSO roll-up</li>
+      <li>A payer contract coming up for renegotiation without a rate analysis to argue from</li>
+      <li>A denial rate that moved and nobody can say why</li>
+      <li>An acquisition where the acquired site's economics turn out to be different</li>
+      <li>A HIPAA risk analysis requested by a payer, a lender or a buyer</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Who this involves</h3>
+    <ul class="roles">
+      <li><b>Signs it:</b> Practice administrator or CEO; the managing physician on clinical scope</li>
+      <li><b>Resists it:</b> Physician owners whose compensation formula the review will decompose</li>
+      <li><b>Has been asking for it:</b> The revenue cycle lead, who can already name the problem sites</li>
+    </ul>
+  </div>
 
   <h2>Who commissions it</h2>
   <p class="who"><b>CFOs, revenue cycle directors and COOs.</b> Phase one is priced before phase two is
