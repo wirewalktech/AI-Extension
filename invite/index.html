@@ -1,0 +1,246 @@
+---
+permalink: /invite/
+title: An invitation
+description: A personal introduction to the Operating Review.
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>An invitation — Wirewalk AI</title>
+<!-- Addressed to one person. Never indexed: a search engine listing every
+     invitation would publish the list of everyone being approached. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:40px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);
+       font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;
+      grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(28px,5vw,38px);line-height:1.14;letter-spacing:-.024em;margin:0 0 16px;
+   text-wrap:balance}
+h2{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.016em;margin:46px 0 10px}
+p{margin:0 0 15px}
+.lede{font-size:19.5px;line-height:1.55;color:var(--tx2);margin-bottom:26px}
+.note{background:var(--acs);border-left:3px solid var(--ac);border-radius:0 9px 9px 0;
+      padding:17px 20px;margin:0 0 28px;font-size:16.5px;line-height:1.6}
+.note .from{display:block;margin-top:10px;font-size:14px;color:var(--tx2)}
+.offer{border:1px solid var(--ln);border-radius:12px;padding:24px;background:var(--alt);
+       margin:0 0 30px}
+.offer .pct{font-size:44px;line-height:1;font-weight:700;letter-spacing:-.03em;color:var(--ac2)}
+.offer .pctsub{font-size:14.5px;color:var(--tx2);margin-top:7px}
+.money{display:flex;gap:26px;flex-wrap:wrap;margin-top:20px;padding-top:18px;
+       border-top:1px solid var(--ln)}
+.money div{min-width:120px}
+.money dt{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx3);
+          font-weight:600;margin-bottom:4px}
+.money dd{margin:0;font-size:22px;font-weight:650;font-variant-numeric:tabular-nums}
+.money dd.was{color:var(--tx3);font-weight:500;text-decoration:line-through;font-size:18px}
+.steps{list-style:none;padding:0;margin:0 0 8px;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding:0 0 20px 46px;
+          border-left:1px solid var(--ln);margin-left:13px}
+.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+.steps li:before{content:counter(st);position:absolute;left:-13px;top:-2px;width:26px;
+  height:26px;border-radius:50%;background:var(--ac);color:#fff;font-size:13px;
+  font-weight:650;display:grid;place-items:center}
+.steps b{display:block;font-size:16.5px;margin-bottom:3px}
+.steps span{font-size:15.5px;color:var(--tx2);line-height:1.55}
+.acts{display:flex;gap:11px;flex-wrap:wrap;margin:30px 0 0}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;background:var(--ac);
+     color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid var(--ac)}
+.btn:hover{background:var(--ac2);border-color:var(--ac2)}
+.btn.g{background:transparent;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt2)}
+.sub{font-size:14.5px;color:var(--tx2)}
+.expiry{font-size:14px;color:var(--tx3);margin-top:16px}
+.hide{display:none}
+footer{margin-top:64px;border-top:1px solid var(--ln);padding:24px 0 50px;
+       font-size:14px;color:var(--tx3)}
+footer a{color:var(--tx2)}
+.err h1{margin-bottom:12px}
+@media(max-width:560px){.money{gap:18px}}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span>
+    Wirewalk <s>AI</s></a>
+</div></header>
+
+<div class="wrap">
+  <!-- Everything below is filled in at run time from the code in the URL. The
+       recipient's name and employer live in the private orders Worker and are
+       NEVER in this file -- publishing this page must not publish the list of
+       people being approached. -->
+  <div id="loading">
+    <p class="sub">One moment…</p>
+  </div>
+
+  <div id="bad" class="hide err">
+    <span class="eyebrow">Invitation</span>
+    <h1>This invitation link is not valid.</h1>
+    <p class="lede">It may have expired, or the link may have been altered in
+    copying — they are long and easy to truncate.</p>
+    <p>If someone passed this to you, ask them to resend it. Or start from the
+    beginning; nothing below is behind the invitation.</p>
+    <div class="acts">
+      <a class="btn" href="/industries/">See what this is</a>
+      <a class="btn g" href="/#contact">Get in touch</a>
+    </div>
+  </div>
+
+  <div id="good" class="hide">
+    <span class="eyebrow" id="eyebrow">A personal invitation</span>
+    <h1 id="head"></h1>
+    <p class="lede" id="lede"></p>
+
+    <div class="note hide" id="notebox">
+      <span id="notetext"></span>
+      <span class="from" id="notefrom"></span>
+    </div>
+
+    <div class="offer">
+      <div class="pct" id="pct"></div>
+      <div class="pctsub" id="pctsub"></div>
+      <div class="money" id="money"></div>
+    </div>
+
+    <h2>What it actually is</h2>
+    <p>A full read of how an operation earns and where it leaks — finance,
+    revenue, receivables, payables, contracts, people and IT — with every
+    finding sized in annual value and the evidence attached.</p>
+    <p>Not a sample. Concentrated loss is exactly what sampling misses: one
+    contract, one queue, one account nobody reviews. A sample of the operation
+    tends to miss those and a full pass tends to find them.</p>
+
+    <h2>Getting started, if you want to</h2>
+    <ol class="steps">
+      <li><b>Read the proposal for your sector</b>
+        <span>It sets out the sequence week by week, what we would need from you,
+        and what it costs for your number of operating units. No call required to
+        see the number.</span></li>
+      <li><b>Send it to whoever owns the numbers</b>
+        <span>Usually the CFO or finance director. The page is written to be
+        forwarded without explanation.</span></li>
+      <li><b>Commission it, or ask first</b>
+        <span>Purchase order is the normal route — most buyers this size raise a
+        PO and pay against an invoice on terms. Your invitation applies either
+        way.</span></li>
+    </ol>
+
+    <div class="acts">
+      <a class="btn" id="cta" href="/industries/">Read the proposal</a>
+      <a class="btn g" href="/#contact">Ask a question first</a>
+    </div>
+    <p class="expiry" id="expiry"></p>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <p>Wirewalk AI &middot; <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a>
+  &middot; <a href="tel:+15162691517">516-269-1517</a></p>
+  <p style="margin-top:8px">This page is addressed to one person and is not
+  indexed. The discount is applied by the code in the link and is resolved when
+  you order — nothing here needs to be quoted back to us.</p>
+</div></footer>
+
+<script>
+(function(){
+  var API="https://wirewalk-orders.wirewalk-upload.workers.dev";
+  var $=function(id){return document.getElementById(id);};
+  var esc=function(x){return String(x==null?"":x).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+  var show=function(id){$(id).classList.remove("hide");};
+  var hide=function(id){$(id).classList.add("hide");};
+
+  var code=new URLSearchParams(location.search).get("c");
+  if(!code){ hide("loading"); show("bad"); return; }
+
+  var money=function(n){return "$"+Math.round(n/100).toLocaleString("en-US");};
+
+  fetch(API+"/invite?c="+encodeURIComponent(code))
+    .then(function(r){return r.json().then(function(b){return {ok:r.ok,b:b};});})
+    .then(function(x){
+      hide("loading");
+      if(!x.ok||!x.b.ok){ show("bad"); return; }
+      var inv=x.b.invite, who=inv.recipient||{};
+      var first=who.name||"";
+
+      $("head").textContent = first
+        ? first+", this was put together with you in mind."
+        : "An introduction to the Operating Review.";
+
+      $("lede").textContent = inv.sender
+        ? (inv.sender+" suggested this reach you directly, so it comes with an "
+           +"introduction rather than a sales page.")
+        : "This comes with an introduction rather than through a sales page.";
+
+      if(who.org){
+        $("eyebrow").textContent = "A personal invitation"+(who.role?" — "+who.role+", ":" — ")+who.org;
+      }
+
+      if(inv.note){
+        $("notetext").textContent = inv.note;
+        if(inv.sender) $("notefrom").textContent = "— "+inv.sender;
+        show("notebox");
+      }
+
+      $("pct").textContent = inv.pct+"% off";
+      $("pctsub").textContent =
+        "Applied automatically by this link. It does not stack with the standard "
+        +"prepay discount — you get whichever is larger, which is this one — and "
+        +"paying by bank transfer takes a further 3% off on top.";
+
+      /* Show it in money, not just percent. The sizing engine is the source of
+         the base figure, so this page cannot drift from the real price. */
+      fetch(API+"/quote",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({units:1,sectors:1,invite:code})})
+        .then(function(r){return r.ok?r.json():null;})
+        .then(function(q){
+          if(!q) return;
+          var was=q.engagementTotal, now=q.options.full.dueNow, ach=q.options.fullAch.dueNow;
+          $("money").innerHTML =
+            '<div><dt>List, one unit</dt><dd class="was">'+esc(money(was))+'</dd></div>'+
+            '<div><dt>With this invitation</dt><dd>'+esc(money(now))+'</dd></div>'+
+            '<div><dt>By bank transfer</dt><dd>'+esc(money(ach))+'</dd></div>';
+        })
+        .catch(function(){ /* the percentage above still stands on its own */ });
+
+      if(inv.industry){
+        $("cta").href="/industries/"+inv.industry+"/proposal/";
+        $("cta").textContent="Read the proposal for your sector";
+      }
+
+      if(inv.ends){
+        var d=new Date(inv.ends+"T23:59:59Z");
+        $("expiry").textContent="This invitation is open until "+
+          d.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"})+".";
+      }
+      show("good");
+    })
+    .catch(function(){
+      /* A failure here must not render a working-looking page with no offer on
+         it. Say it plainly and give a route that does not depend on the code. */
+      hide("loading"); show("bad");
+    });
+})();
+</script>
+</body></html>
