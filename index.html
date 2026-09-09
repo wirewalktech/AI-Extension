@@ -29,6 +29,16 @@ p{max-width:68ch}
 .lead{font-size:18px;color:var(--tx2)}
 .small{font-size:14.5px}
 .muted{color:var(--tx3)}
+/* body links have to opt back in: the reset above strips colour and underline
+   from every anchor so the nav and cards can style themselves */
+.ilink{color:var(--ac2);text-decoration:underline;text-decoration-thickness:1px;
+ text-underline-offset:3px;text-decoration-color:rgba(194,96,63,.42);transition:text-decoration-color .18s}
+.ilink:hover{text-decoration-color:var(--ac2)}
+/* the route line: each section's own next step, not a repeated CTA */
+.rl{margin-top:28px;padding:16px 22px;border-left:2px solid var(--ac);background:var(--alt);
+ border-radius:0 10px 10px 0;font-size:15.5px;color:var(--tx2);max-width:82ch}
+.rl b{color:var(--tx);font-weight:600}
+.sec.tint .rl{background:var(--bg)}
 
 /* ── header ── */
 header{position:sticky;top:0;z-index:60;background:rgba(250,249,245,.96);
@@ -261,6 +271,8 @@ nav.lk a:hover{color:var(--tx);background:var(--alt2)}
 @media(max-width:900px){.cta-in{grid-template-columns:1fr;gap:20px}.cta-b{padding-top:0}
  .cta-c{margin-top:6px}}
 .cta .small.muted{color:#9C9891}
+.cta .ilink{color:var(--ac);text-decoration-color:rgba(217,119,87,.5)}
+.cta .ilink:hover{text-decoration-color:var(--ac)}
 .frm{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;max-width:760px}
 .frm input{min-width:0}
 .frm input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:999px;
@@ -283,7 +295,8 @@ nav.lk a:hover{color:var(--tx);background:var(--alt2)}
 
 /* ── footer ── */
 footer{padding:52px 0 32px;background:#fff}
-.fg{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:32px;margin-bottom:38px}
+.fg{display:grid;grid-template-columns:1.7fr 1fr 1.15fr 1fr 1fr;gap:30px;margin-bottom:38px}
+@media(max-width:1080px){.fg{grid-template-columns:1.6fr 1fr 1.15fr 1fr;gap:28px}}
 .fg h5{font:600 13px/1 var(--sans);color:var(--tx);margin-bottom:13px}
 .fg a{display:block;font-size:14.5px;padding:5px 0;color:var(--tx2);width:fit-content;
  transition:color .2s var(--e),transform .26s var(--eo)}
@@ -537,7 +550,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <a href="#coverage" data-sec="coverage">Method</a>
       <a href="#phase1" data-sec="phase1">Phase one</a>
       <a href="#phase2" data-sec="phase2">Phase two</a>
-      <a href="#terms" data-sec="terms">Terms</a><a href="writing/">Notes</a>
+      <a href="#terms" data-sec="terms">Terms</a><a href="/order/">Ordering</a><a href="/writing/">Notes</a>
     </nav>
   </div>
   <div class="nav-r">
@@ -658,6 +671,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       </ul>
     </div>
   </div>
+  <p class="rl"><b>That coverage is what you are buying.</b> The engagement that delivers it
+  end to end across a single business unit is
+  <a class="ilink" href="/order/#catalog">The Operating Review, one business unit</a>, at a
+  fixed fee. Multi-site and multi-entity coverage is quoted per engagement, because the
+  number of units and systems drives everything.</p>
 </div></section>
 
 <section class="sec" id="phase1"><div class="wrap">
@@ -691,6 +709,12 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </div>
     <div class="ph-note"><b>Completed reviews have covered both failure points and practices worth preserving.</b></div>
   </div>
+  <p class="rl"><b>Not ready to commission the whole thing?</b> The
+  <a class="ilink" href="/order/#catalog">operating diagnostic</a> is the short, bounded
+  version of exactly this: the same six areas, enough of each to establish where the loss is
+  actually concentrated and whether a full review is worth commissioning at all. If it is
+  not, we say so. It is the sensible place to start, and it can be raised on a purchase
+  order like anything else.</p>
 </div></section>
 
 <section class="sec tint" id="phase2"><div class="wrap">
@@ -731,6 +755,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       </div>
     </div>
   </div>
+  <p class="rl"><b>Phase two is never sold before phase one is delivered.</b> When the
+  findings are agreed and you want help landing them,
+  <a class="ilink" href="/order/#catalog">implementation support</a> is scoped and quoted
+  against those findings &mdash; not before them, and never as a condition of receiving
+  them.</p>
 </div></section>
 
 <section class="sec" id="people"><div class="wrap">
@@ -758,6 +787,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <div><h4>If we are wrong</h4><p>The miss is documented too. The method stays testable.</p></div>
     <div><h4>Why it matters</h4><p>The work can be checked after the engagement.</p></div>
   </div>
+  <p class="rl"><b>You can test the method before you buy the review.</b> The predictions are
+  written before fieldwork on every engagement, including the
+  <a class="ilink" href="/order/#catalog">operating diagnostic</a> &mdash; which is the
+  cheapest way to find out whether our reading of your operation holds up, at a fraction of
+  what a full review commits you to.</p>
 </div></section>
 
 <section class="sec" id="credentials"><div class="wrap">
@@ -820,6 +854,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       </ul>
     </div>
   </div>
+  <p class="rl"><b>The commercial half of this is written down too.</b> When an order becomes
+  binding, what cancellation costs, who owns the deliverables and how regulated data is
+  handled are all in the <a class="ilink" href="/terms/">ordering terms</a>. An order is an
+  offer to purchase; it binds no one until we accept it in writing naming the scope, the fee
+  and the start date.</p>
 </div></section>
 
 <section class="sec" id="next"><div class="wrap">
@@ -831,6 +870,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <div><span class="k">02</span><h4>Fieldwork</h4><p>We work around operations; staff keep working.</p></div>
     <div><span class="k">03</span><h4>Findings presented</h4><p>Findings are quantified. Phase two comes afterward.</p></div>
   </div>
+  <p class="rl"><b>If your procurement office moves before your calendar does, start there.</b>
+  Raise a purchase order against the engagement and we invoice on net 30 &mdash; the route
+  most hospital systems, health networks and universities are actually set up for. Prices,
+  deposits and the PO form are on the
+  <a class="ilink" href="/order/">ordering page</a>.</p>
 </div></section>
 
 <section class="sec" id="contact" style="border-bottom:0"><div class="wrap"><div class="cta">
@@ -858,7 +902,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <input type="email" name="email" aria-label="Work email" placeholder="Work email" autocomplete="email" required>
       <button class="btn btn-p" type="submit">Book the review</button>
     </form>
-    <p class="small" style="margin-top:16px">Prefer to call? <a href="tel:+15162691517">516-269-1517</a></p>
+    <p class="small" style="margin-top:16px">Prefer to call? <a class="ilink" href="tel:+15162691517">516-269-1517</a></p>
+    <p class="small" style="margin-top:16px">Already know what you want, or need a quotation
+    your procurement office can raise a PO against?
+    <a class="ilink" href="/order/">Commission it directly</a> &mdash; prices, deposits and
+    the purchase-order form are all there.</p>
     <p class="small muted" style="margin-top:16px">We use your details to respond to your inquiry. FormSubmit processes this form for email delivery. We do not sell your details or operate a mailing list.</p>
    </div>
   </div>
@@ -873,7 +921,12 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </div>
     <div><h5>The review</h5>
       <a href="#lenses">Three lenses</a><a href="#coverage">Method</a>
-      <a href="#phase1">Phase one</a><a href="#phase2">Phase two</a><a href="#next">Next step</a></div>
+      <a href="#phase1">Phase one</a><a href="#phase2">Phase two</a><a href="#next">Next step</a>
+      <a href="/writing/">Notes</a></div>
+    <div><h5>Commission it</h5>
+      <a href="/order/#catalog">What it costs</a><a href="/order/#po">Raise a purchase order</a>
+      <a href="/order/#pay">Prepay or pay a deposit</a><a href="/terms/">Ordering terms</a>
+      <a href="#contact">Talk it through first</a></div>
     <div><h5>Firm</h5>
       <a href="#credentials">Track record</a><a href="#terms">Terms of engagement</a>
       <a href="#checkable">How we make the work checkable</a><a href="#people">Your people</a><a href="#contact">Contact</a></div>

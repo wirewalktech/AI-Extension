@@ -55,6 +55,11 @@ Full coverage costs more time than a sample. It also produces findings a sample 
 reach, and it removes the argument about whether the sample was representative — because
 there was no sample.
 
+That is the engagement itself: [The Operating Review, one business unit](/order/#catalog),
+priced as a single fixed fee and raised on a purchase order like anything else. Multi-site
+and multi-entity coverage is quoted per engagement, because the number of units and systems
+drives the effort rather than the headcount.
+
 ## The check we put on ourselves
 
 Before fieldwork begins we write down three dated predictions about what we expect to find,
@@ -64,3 +69,9 @@ predictions are compared against what turned up.
 If we are right, it shows the diagnosis came from experience rather than hindsight. If we
 are wrong, the miss is documented too. Either way the method stays testable, which is more
 than can be said for a report that only ever describes what it already found.
+
+The predictions are written on every engagement, including the shortest one. If you want to
+test the method against your own operation before commissioning a full review, the
+[operating diagnostic](/order/#catalog) is the bounded way to do it: a short look across the
+same areas, enough to establish where the loss is concentrated and whether a full review is
+worth commissioning at all. If it is not, we say so.

@@ -44,6 +44,14 @@ h1{font-size:clamp(30px,5.5vw,42px);line-height:1.14;letter-spacing:-.022em;marg
 .empty{padding:40px 0;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);
        color:var(--tx2)}
 .empty code{background:var(--alt);padding:2px 7px;border-radius:4px;font-size:14px}
+.rl{margin:34px 0 0;padding:18px 22px;border-left:2px solid var(--ac);background:var(--alt);
+    border-radius:0 10px 10px 0;font-size:15.5px;color:var(--tx2)}
+.rl b{color:var(--tx);font-weight:600}
+.rl a{color:var(--ac2);text-decoration:underline;text-decoration-thickness:1px;
+      text-underline-offset:3px;text-decoration-color:rgba(194,96,63,.42)}
+.rl a:hover{text-decoration-color:var(--ac2)}
+.rl p{margin:0}
+.rl p+p{margin-top:9px}
 footer.end{margin:54px 0 42px;padding-top:24px;border-top:1px solid var(--ln);
            color:var(--tx3);font-size:14px}
 footer.end a{color:var(--ac2)}
@@ -80,8 +88,21 @@ footer.end a{color:var(--ac2)}
     </div>
   {% endif %}
 
+  <div class="rl">
+    <p><b>These notes come out of engagements, and each one has an engagement behind it.</b>
+    The method they describe &mdash; full coverage of the operating system rather than a
+    sample of one department &mdash; is what
+    <a href="/order/#catalog">The Operating Review</a> buys for a single business unit.</p>
+    <p>If you are weighing whether any of this applies to your operation, the
+    <a href="/order/#catalog">operating diagnostic</a> is the short, bounded way to find out
+    before committing to a full review. Both can be raised on a purchase order from the
+    <a href="/order/">ordering page</a>.</p>
+  </div>
+
   <footer class="end">
-    <a href="{{ '/' | relative_url }}">← The Operating Review</a>
+    <a href="{{ '/' | relative_url }}">← The Operating Review</a> ·
+    <a href="{{ '/order/' | relative_url }}">Ordering</a> ·
+    <a href="{{ '/terms/' | relative_url }}">Ordering terms</a>
   </footer>
 </div>
 </body></html>
