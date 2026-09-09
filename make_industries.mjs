@@ -348,28 +348,47 @@ ${g.slugs.map(s => {
     </div>
   </div>`).join("\n");
 
+  /* DO NOT COUNT THE INDUSTRIES HERE.
+   *
+   * This page used to open with "N industries, each read in its own
+   * vocabulary". That number is the wrong boast. A managing partner looking for
+   * someone who understands law firms reads a sector count as evidence of a
+   * template with the nouns swapped -- breadth is exactly what a specialist
+   * buyer discounts, and stating it first invites the discount before they have
+   * read a word of their own page.
+   *
+   * The breadth still earns its keep: it is how someone arrives, and it is what
+   * lets an owner of two unrelated businesses find both. But it should be
+   * DISCOVERED by scrolling, not announced. So this page is a way in, and every
+   * claim it makes is about the depth of one page rather than the number of
+   * them. */
   return `---
 permalink: /industries/
 title: Industries
 description: >-
-  ${INDUSTRIES.length} industries, each read in its own vocabulary — where operating
-  loss concentrates in that sector, what a review would ask for, and who commissions it.
+  Where operating loss concentrates in your sector, what a review would ask you
+  for, and who commissions it — written for one industry at a time.
 ---
 ${head(`Industries — Wirewalk AI`,
-  `${INDUSTRIES.length} industries, each read in its own vocabulary: where operating loss concentrates in that sector, what a review would ask for, and who commissions it.`,
+  `Where operating loss concentrates in your sector, what a review would ask you for, and who commissions it. Written for one industry at a time.`,
   "https://ai.wirewalk.com/industries/")}
 <div class="wrap">
   <p class="crumb"><a href="/">The Operating Review</a> &rsaquo; Industries</p>
   <span class="eyebrow">Industries</span>
-  <h1>Your operation, in your own vocabulary.</h1>
+  <h1>Find yours.</h1>
   <p class="lede">The argument is the same everywhere: loss concentrates rather than
   distributes, so a sample of thirty transactions and eight interviews is the wrong
   instrument for finding it. What differs by sector is where it concentrates, and what
   it is called.</p>
-  <p>Below, ${INDUSTRIES.length} industries. Each page names five concentrated losses
-  that recur in that sector &mdash; not abstractions, and not case studies &mdash; and
-  shows what the intake would actually ask for. Find yours, or read the
-  <a href="/">method</a> first if you would rather start there.</p>
+  <p>Each page below was written for one industry and borrows nothing from the others.
+  It names the losses that recur there in the words that sector actually uses, the
+  systems the data sits in, the filings that set the deadlines, and what the intake
+  would ask for. If yours is here, start there rather than with the
+  <a href="/">method</a> &mdash; the method reads better once it is about your own
+  operation.</p>
+  <p class="sub">If yours is not listed, it is worth asking anyway. The reason these
+  are separate pages rather than one is that the vocabulary matters, and that is a
+  conversation rather than a page.</p>
 
 ${groups}
 
@@ -503,10 +522,11 @@ ${filHtml}
 
   <h2>What the review would ask you for</h2>
   <div class="ask">
-    <div class="hd"><b>${mod.items.length} further requests, specific to
-      ${esc(phrase)}</b> &mdash; ${coreCount} of them core &mdash; on top of the 107 the
-      intake asks of every organisation, across finance, revenue, receivables, payables,
-      contracts, people, IT, operations, risk, commercial and governance.</div>
+    <div class="hd"><b>${mod.items.length} requests written for ${esc(phrase)}
+      and asked of nobody else</b> &mdash; ${coreCount} of them core. They sit alongside
+      the operating spine every business has &mdash; finance, revenue, receivables,
+      payables, contracts, people, IT, operations, risk, commercial and governance
+      &mdash; which is 107 further requests.</div>
     <ul>
 ${asks}
     </ul>
@@ -557,7 +577,8 @@ function proposalPage(ind) {
   const phases = [
     { wk: "Week 1", title: "Intake and reconciliation",
       body: `You complete the intake in the client portal — ${mod.items.length} requests ` +
-            `specific to ${phrase}, on top of the 107 asked of every organisation. ` +
+            `written for ${phrase} and asked of nobody else, alongside the 107 that ` +
+            `cover the operating spine any business has. ` +
             `Anything you do not have is skipped in one click, with a reason. We reconcile ` +
             `what arrives against what was asked and tell you, before any fieldwork, which ` +
             `findings the gaps will limit.` },
@@ -654,7 +675,7 @@ ${phaseHtml}
   referral fees on anything we recommend.</p>
 
   <h2>What we need from you</h2>
-  <p>${core.length} core requests specific to ${esc(phrase)}, inside the full intake.
+  <p>${core.length} core requests written for ${esc(phrase)}, inside the full intake.
   Anything you do not have can be skipped with a reason — skipping narrows what the
   review can conclude, and we tell you where before the work starts rather than after.</p>
   <ul class="deliv">
