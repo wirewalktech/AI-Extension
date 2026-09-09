@@ -4,8 +4,10 @@ description: >-
   Field notes on operating performance: where value leaks across finance, IT,
   compliance, contracts and delivery, and what it costs to leave it there.
 author: Wirewalk AI
-url: https://wirewalktech.github.io
-baseurl: /AI-Extension
+url: https://ai.wirewalk.com
+# Served at the root of ai.wirewalk.com (see CNAME). A non-empty baseurl
+# makes every Liquid-generated link 404 on the live domain.
+baseurl: ""
 permalink: /writing/:title/
 timezone: America/New_York
 markdown: kramdown

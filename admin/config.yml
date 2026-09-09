@@ -21,10 +21,10 @@ backend:
 local_backend: true
 
 media_folder: "assets/uploads"
-public_folder: "/AI-Extension/assets/uploads"
+public_folder: "/assets/uploads"
 
 publish_mode: simple
-site_url: https://wirewalktech.github.io/AI-Extension/
+site_url: https://ai.wirewalk.com/
 
 collections:
   - name: notes

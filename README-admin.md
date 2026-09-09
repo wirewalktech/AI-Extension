@@ -1,7 +1,7 @@
 # Writing notes for the AI site
 
 Notes live in `_posts/` as Markdown files. Jekyll builds them into
-`https://wirewalktech.github.io/AI-Extension/writing/`.
+`https://ai.wirewalk.com/writing/`.
 
 There are three ways to write one. The first needs no setup.
 
@@ -72,7 +72,7 @@ requires one small external piece. It is free, and it is set up once.
 | Field | Value |
 |---|---|
 | Application name | Wirewalk AI notes |
-| Homepage URL | `https://wirewalktech.github.io/AI-Extension/` |
+| Homepage URL | `https://ai.wirewalk.com/` |
 | Authorization callback URL | the `/callback` URL of the proxy from step 2 |
 
 Note the **Client ID** and generate a **Client Secret**.
@@ -111,7 +111,7 @@ Commit and push. `/admin/` on the live site will then offer **Login with GitHub*
 | `writing.html` | the index page, at `/writing/` |
 | `_layouts/article.html` | how a single note is rendered |
 | `admin/config.yml` | CMS fields and backend |
-| `_config.yml` | Jekyll settings — `baseurl` must stay `/AI-Extension` |
+| `_config.yml` | Jekyll settings — `baseurl` must stay empty (the site is served at the root of ai.wirewalk.com) |
 
 `index.html` has no front matter, so Jekyll copies it through untouched. The Operating Review
 page is unaffected by any of this.
