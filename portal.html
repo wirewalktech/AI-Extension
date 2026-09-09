@@ -1,0 +1,758 @@
+---
+permalink: /portal/
+title: Client portal
+description: >-
+  The secure portal for a Wirewalk engagement. Complete the document intake,
+  upload what you have, and say what you do not. Access is by the link issued
+  with your engagement.
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client portal — Wirewalk AI</title>
+<meta name="description" content="The secure portal for a Wirewalk engagement: complete the document intake, upload what you have, and say what you do not.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://ai.wirewalk.com/portal/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --ok:#1E7A4B; --okbg:#EAF4EE; --bad:#A32B1C; --skip:#7A6E52; --skipbg:#F2EEE2;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 clamp(18px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:20px 0}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;
+      grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.back:hover{color:var(--ac)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(27px,4.6vw,36px);line-height:1.16;letter-spacing:-.022em;margin:0 0 12px;
+   text-wrap:balance}
+h2{font-size:clamp(20px,2.6vw,24px);letter-spacing:-.014em;margin:0 0 6px}
+p{max-width:70ch}
+.lede{color:var(--tx2);font-size:18px;margin:0 0 10px}
+.sub{color:var(--tx3);font-size:15px;margin:0 0 20px}
+a{color:var(--ac2);text-underline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:600;
+     padding:11px 20px;border-radius:9px;border:1px solid var(--ac);background:var(--ac);
+     color:#fff;cursor:pointer}
+.btn:hover{background:var(--ac2);border-color:var(--ac2)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt);border-color:var(--ln2)}
+.btn.sm{font-size:13.5px;padding:7px 13px;border-radius:7px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,
+summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.msg{font-size:15px}.msg.bad{color:var(--bad)}.msg.ok{color:var(--ok)}
+.hide{display:none!important}
+
+/* ---- gate ---- */
+#gate{padding:64px 0 90px}
+#gate .box{max-width:560px}
+#ts{margin:20px 0 6px}
+
+/* ---- the running header ---- */
+.engbar{background:var(--alt);border-bottom:1px solid var(--ln);padding:26px 0 22px}
+.engbar .who{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
+.engbar h1{margin:0}
+.stage{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+       color:var(--ac2);background:var(--acs);border:1px solid var(--ac);
+       border-radius:20px;padding:5px 11px;white-space:nowrap}
+.meta{color:var(--tx3);font-size:14px;margin:8px 0 0}
+.meta b{color:var(--tx2);font-weight:600}
+
+/* ---- progress ---- */
+.prog{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:20px 0 0}
+.pcard{background:#fff;border:1px solid var(--ln);border-radius:11px;padding:14px 16px}
+.pcard .k{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tx3);
+          font-weight:700}
+.pcard .v{font-size:22px;font-weight:600;color:var(--tx);font-variant-numeric:tabular-nums;
+          margin:2px 0 8px;letter-spacing:-.01em}
+.pcard .v small{font-size:14px;font-weight:400;color:var(--tx3)}
+.bar{height:6px;border-radius:4px;background:var(--alt2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac);border-radius:4px;
+       transition:width .25s ease}
+.bar.core i{background:var(--ac2)}
+.bar.done i{background:var(--ok)}
+
+/* ---- the skip notice ---- */
+.notice{border:1px solid var(--ac);background:var(--acs);border-radius:12px;
+        padding:20px 22px;margin:26px 0 0}
+.notice b{display:block;font-size:16px;color:var(--tx);margin-bottom:6px}
+.notice p{margin:0;color:var(--tx2);font-size:15px;max-width:none}
+.notice.inline{margin:0 0 18px;border-color:var(--ln2);background:var(--alt)}
+.notice.inline b{font-size:14.5px}
+.notice.inline p{font-size:14.5px}
+
+/* ---- section navigation ---- */
+.jump{margin:30px 0 0;border:1px solid var(--ln);border-radius:12px;overflow:hidden;background:#fff}
+.jump summary{cursor:pointer;padding:13px 18px;font-weight:600;font-size:15px;
+              background:var(--alt);border-bottom:1px solid var(--ln)}
+.jump ol{margin:0;padding:8px 0;list-style:none;counter-reset:j}
+.jump li{margin:0}
+.jump a{display:flex;gap:12px;align-items:center;padding:8px 18px;text-decoration:none;
+        color:var(--tx);font-size:14.5px}
+.jump a:hover{background:var(--alt)}
+.jump a .nm{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jump a .ct{flex:0 0 auto;font:12.5px/1 var(--mono);color:var(--tx3);
+            font-variant-numeric:tabular-nums}
+.jump a .mini{flex:0 0 64px;height:5px;border-radius:3px;background:var(--alt2);overflow:hidden}
+.jump a .mini i{display:block;height:100%;background:var(--ac)}
+.jump a.done .mini i{background:var(--ok)}
+
+/* ---- filters ---- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;align-items:center}
+.filters .lb{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--tx3);
+             font-weight:700;margin-right:2px}
+.chip{font:inherit;font-size:13.5px;padding:6px 13px;border-radius:20px;cursor:pointer;
+      border:1px solid var(--ln2);background:#fff;color:var(--tx2)}
+.chip[aria-pressed=true]{background:var(--tx);border-color:var(--tx);color:#fff;font-weight:600}
+
+/* ---- sections and items ---- */
+section.sec{margin:34px 0 0;border:1px solid var(--ln);border-radius:12px;background:#fff;
+            overflow:hidden;scroll-margin-top:14px}
+.sechd{padding:18px 20px 16px;background:var(--alt);border-bottom:1px solid var(--ln)}
+.sechd .r{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.sechd h2{flex:1 1 auto}
+.sechd .ct{font:12.5px/1 var(--mono);color:var(--tx3);font-variant-numeric:tabular-nums;
+           white-space:nowrap}
+.sechd p{margin:4px 0 10px;color:var(--tx2);font-size:15px}
+.secbody{padding:4px 20px 8px}
+
+.item{border-top:1px solid var(--ln);padding:16px 0}
+.item:first-child{border-top:0}
+.item.st-provided{background:linear-gradient(90deg,var(--okbg),transparent 42%)}
+.item.st-skipped,.item.st-not_applicable,.item.st-later{
+  background:linear-gradient(90deg,var(--skipbg),transparent 42%)}
+.item .hd{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.item .lbl{flex:1 1 260px;font-weight:600;font-size:16px;color:var(--tx);min-width:0}
+.tag{font:700 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+     border-radius:20px;padding:4px 9px;white-space:nowrap;flex:0 0 auto}
+.tag.core{color:#fff;background:var(--ac2)}
+.tag.standard{color:var(--tx2);background:var(--alt2)}
+.tag.optional{color:var(--tx3);background:var(--alt);border:1px solid var(--ln)}
+.tag.state{background:var(--alt2);color:var(--tx2)}
+.tag.state.provided{background:var(--ok);color:#fff}
+.tag.state.skipped,.tag.state.not_applicable,.tag.state.later{background:var(--skip);color:#fff}
+.item .det{color:var(--tx2);font-size:14.5px;margin:5px 0 0;max-width:74ch}
+.item .acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:11px 0 0}
+.item .acts .sv{font-size:12.5px;color:var(--ok);opacity:0;transition:opacity .2s}
+.item .acts .sv.on{opacity:1}
+.files{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.files li{display:flex;gap:10px;align-items:center;font-size:14px;background:var(--alt);
+          border:1px solid var(--ln);border-radius:8px;padding:7px 11px}
+.files .fn{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files .sz{color:var(--tx3);font:12.5px/1 var(--mono);flex:0 0 auto}
+.files button{background:none;border:0;color:var(--bad);font:inherit;font-size:13px;
+              cursor:pointer;padding:2px 4px;flex:0 0 auto}
+.upl{height:5px;border-radius:3px;background:var(--alt2);overflow:hidden;margin:8px 0 0}
+.upl i{display:block;height:100%;background:var(--ac);width:0;transition:width .2s}
+.skipmenu{position:relative;display:inline-block}
+.skipmenu>div{position:absolute;z-index:20;top:calc(100% + 5px);left:0;min-width:250px;
+              background:#fff;border:1px solid var(--ln2);border-radius:10px;
+              box-shadow:0 8px 26px rgba(31,30,29,.14);padding:5px;display:none}
+.skipmenu[data-open=true]>div{display:block}
+.skipmenu button.opt{display:block;width:100%;text-align:left;background:none;border:0;
+                     font:inherit;font-size:14.5px;color:var(--tx);padding:8px 11px;
+                     border-radius:7px;cursor:pointer}
+.skipmenu button.opt:hover{background:var(--alt)}
+.notewrap{margin:9px 0 0}
+.notewrap summary{cursor:pointer;font-size:13.5px;color:var(--tx3)}
+.notewrap textarea{width:100%;max-width:620px;margin:8px 0 0;padding:9px 11px;font:inherit;
+                   font-size:14.5px;border:1px solid var(--ln2);border-radius:8px;
+                   min-height:64px;resize:vertical;background:#fff;color:var(--tx)}
+.item input[type=file]{display:none}
+
+footer.end{margin:56px 0 44px;padding-top:24px;border-top:1px solid var(--ln);
+           color:var(--tx3);font-size:14px}
+footer.end a{color:var(--ac2)}
+.retn{border-left:2px solid var(--ac);padding-left:16px;margin:26px 0 0;font-size:15px;
+      color:var(--tx2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:620px){
+  .item .hd{gap:8px}
+  .secbody{padding:4px 14px 8px}
+  .sechd{padding:15px 14px 13px}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span>
+    <span>Wirewalk<s>AI</s></span></a>
+  <a class="back" href="/">Back to the site</a>
+</div></header>
+
+<!-- ================= gate ================= -->
+<div id="gate"><div class="wrap"><div class="box">
+  <span class="eyebrow">Client portal</span>
+  <h1 id="gate-h">Opening your portal…</h1>
+  <p class="lede" id="gate-p">One moment. We are checking your link.</p>
+  <div id="ts"></div>
+  <p class="msg bad hide" id="gate-err"></p>
+  <p class="sub hide" id="gate-help">
+    Your portal link was sent to the address on the engagement. It is a long link with a
+    <code>#</code> in it — the part after the <code>#</code> is the key, so copy the whole
+    thing. If you cannot find it, email
+    <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> and we will issue a new one.
+    We cannot recover the old link; we can only replace it.
+  </p>
+  <p><button class="btn hide" id="gate-retry">Try again</button></p>
+</div></div></div>
+
+<!-- ================= portal ================= -->
+<main id="app" class="hide">
+
+  <div class="engbar"><div class="wrap">
+    <div class="who">
+      <h1 id="org">&nbsp;</h1>
+      <span class="stage" id="stage"></span>
+    </div>
+    <p class="meta" id="engmeta"></p>
+    <div class="prog">
+      <div class="pcard">
+        <div class="k">Core items</div>
+        <div class="v"><span id="core-n">0</span><small> of <span id="core-t">0</span> answered</small></div>
+        <div class="bar core"><i id="core-bar" style="width:0"></i></div>
+      </div>
+      <div class="pcard">
+        <div class="k">Everything</div>
+        <div class="v"><span id="all-n">0</span><small> of <span id="all-t">0</span> answered</small></div>
+        <div class="bar"><i id="all-bar" style="width:0"></i></div>
+      </div>
+      <div class="pcard">
+        <div class="k">Uploaded</div>
+        <div class="v"><span id="doc-n">0</span><small> files</small></div>
+        <div class="bar done"><i id="doc-bar" style="width:0"></i></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="wrap">
+
+    <div class="notice" id="skipnotice">
+      <b>You will not have all of this, and that is expected.</b>
+      <p id="skipnotice-text"></p>
+    </div>
+
+    <p class="sub" style="margin-top:18px" id="howto"></p>
+
+    <details class="jump" id="jump" open>
+      <summary>Jump to a section</summary>
+      <ol id="jumplist"></ol>
+    </details>
+
+    <div class="filters">
+      <span class="lb">Show</span>
+      <button class="chip" id="f-all" aria-pressed="true" data-f="all">Everything</button>
+      <button class="chip" id="f-core" aria-pressed="false" data-f="core">Core only</button>
+      <button class="chip" id="f-todo" aria-pressed="false" data-f="todo">Still to answer</button>
+    </div>
+
+    <div id="sections"></div>
+
+    <div class="retn" id="retention"></div>
+
+    <footer class="end">
+      <p>Everything here is held for this engagement only. Access is logged — every open,
+      view, upload, skip and download — so that if you ever ask who saw a file, the answer
+      is a list rather than an opinion.</p>
+      <p style="margin-top:10px">Questions about the request itself?
+      <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> ·
+      <a href="tel:+15162691517">516-269-1517</a> ·
+      <a href="/terms/">Ordering terms</a></p>
+    </footer>
+  </div>
+</main>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script>
+"use strict";
+
+const API = "https://wirewalk-portal.wirewalk-upload.workers.dev";
+const SITE_KEY = "0x4AAAAAAEuBwz8OpbI3bmtE";
+
+/* The token lives in the URL fragment, never the path or the query.
+   A fragment is not sent to any server, does not appear in a Referer header,
+   and does not land in an access log -- which matters when the thing it
+   unlocks is somebody else's general ledger. */
+function tokenFromHash() {
+  const h = (location.hash || "").replace(/^#/, "");
+  const m = /(?:^|&)t=([A-Za-z0-9_-]+)/.exec(h);
+  return m ? m[1] : "";
+}
+
+let TOKEN = tokenFromHash();
+let DATA = null;
+let FILTER = "all";
+let widgetId = null;
+
+const $ = s => document.querySelector(s);
+const el = (t, c, txt) => { const e = document.createElement(t);
+  if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
+const bytes = n => !n ? "" : n > 1048576 ? (n / 1048576).toFixed(1) + " MB"
+                          : n > 1024 ? Math.round(n / 1024) + " KB" : n + " B";
+const ANSWERED = ["provided", "skipped", "not_applicable", "later"];
+
+async function api(path, opts = {}) {
+  const r = await fetch(API + path, {
+    ...opts,
+    headers: { "X-Portal-Token": TOKEN, ...(opts.headers || {}) },
+  });
+  let body = null;
+  try { body = await r.json(); } catch { /* a download or an empty body */ }
+  if (!r.ok) throw new Error((body && body.error) || "that did not go through");
+  return body;
+}
+
+/* ---------------- gate ---------------- */
+
+function gateFail(message, showHelp) {
+  $("#gate-h").textContent = "We could not open that link";
+  $("#gate-p").classList.add("hide");
+  $("#gate-err").textContent = message;
+  $("#gate-err").classList.remove("hide");
+  if (showHelp) $("#gate-help").classList.remove("hide");
+  $("#gate-retry").classList.remove("hide");
+}
+
+function turnstileToken() {
+  return new Promise((resolve, reject) => {
+    if (!window.turnstile) return reject(new Error("verification did not load"));
+    const opts = { sitekey: SITE_KEY, callback: resolve,
+                   "error-callback": () => reject(new Error("verification failed")),
+                   "expired-callback": () => reject(new Error("verification expired")) };
+    if (widgetId === null) widgetId = turnstile.render("#ts", opts);
+    else { turnstile.reset(widgetId); turnstile.execute(widgetId, opts); }
+  });
+}
+
+async function open_() {
+  if (!TOKEN) {
+    $("#gate-h").textContent = "This page needs your portal link";
+    $("#gate-p").textContent =
+      "The portal opens from the link issued with your engagement. There is nothing to " +
+      "type here — no username, no password.";
+    $("#gate-help").classList.remove("hide");
+    return;
+  }
+  try {
+    const ts = await turnstileToken();
+    const data = await api("/api/open", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: TOKEN, ts }),
+    });
+    DATA = data;
+    $("#gate").classList.add("hide");
+    $("#app").classList.remove("hide");
+    render();
+  } catch (e) {
+    gateFail(e.message, true);
+  }
+}
+
+$("#gate-retry").addEventListener("click", () => {
+  $("#gate-err").classList.add("hide");
+  $("#gate-retry").classList.add("hide");
+  $("#gate-h").textContent = "Opening your portal…";
+  $("#gate-p").classList.remove("hide");
+  open_();
+});
+
+/* ---------------- render ---------------- */
+
+function counts() {
+  const items = DATA.items;
+  const core = items.filter(i => i.importance === "core");
+  const done = items.filter(i => ANSWERED.includes(i.status));
+  const coreDone = core.filter(i => ANSWERED.includes(i.status));
+  const docs = items.reduce((n, i) => n + (i.documents ? i.documents.length : 0), 0);
+  return { total: items.length, done: done.length, core: core.length,
+           coreDone: coreDone.length, docs };
+}
+
+function bySection() {
+  const map = new Map();
+  for (const i of DATA.items) {
+    if (!map.has(i.section)) map.set(i.section, []);
+    map.get(i.section).push(i);
+  }
+  return map;
+}
+
+function updateProgress() {
+  const c = counts();
+  $("#core-n").textContent = c.coreDone; $("#core-t").textContent = c.core;
+  $("#all-n").textContent = c.done;      $("#all-t").textContent = c.total;
+  $("#doc-n").textContent = c.docs;
+  $("#core-bar").style.width = (c.core ? c.coreDone / c.core * 100 : 0) + "%";
+  $("#all-bar").style.width = (c.total ? c.done / c.total * 100 : 0) + "%";
+  $("#doc-bar").style.width = Math.min(100, c.docs * 4) + "%";
+
+  // per-section counters in the jump list and the section headers
+  for (const [sid, items] of bySection()) {
+    const done = items.filter(i => ANSWERED.includes(i.status)).length;
+    const j = document.querySelector(`#jumplist a[data-s="${sid}"]`);
+    if (j) {
+      j.querySelector(".ct").textContent = done + "/" + items.length;
+      j.querySelector(".mini i").style.width = (done / items.length * 100) + "%";
+      j.classList.toggle("done", done === items.length);
+    }
+    const hc = document.querySelector(`#sec-${sid} .ct`);
+    if (hc) hc.textContent = done + " of " + items.length + " answered";
+    // A quiet second showing of the notice where a section has gone mostly
+    // unanswered by skipping. Not a nag on every item -- once, where it is
+    // actually describing something that happened.
+    const skipped = items.filter(i => i.status !== "provided"
+                                   && ANSWERED.includes(i.status)).length;
+    const n = document.querySelector(`#sec-${sid} .notice.inline`);
+    if (n) n.classList.toggle("hide", skipped < 3);
+  }
+}
+
+function itemNode(it) {
+  const node = el("div", "item st-" + it.status);
+  node.id = "it-" + it.id;
+  node.dataset.importance = it.importance;
+  node.dataset.status = it.status;
+
+  const hd = el("div", "hd");
+  hd.append(el("div", "lbl", it.label));
+  hd.append(el("span", "tag " + it.importance,
+    it.importance === "core" ? "Core" : it.importance === "optional" ? "Optional" : "Standard"));
+  const state = el("span", "tag state " + it.status, stateLabel(it));
+  state.classList.toggle("hide", it.status === "pending");
+  hd.append(state);
+  node.append(hd);
+
+  if (it.detail) node.append(el("p", "det", it.detail));
+
+  const acts = el("div", "acts");
+
+  // upload
+  const file = el("input"); file.type = "file"; file.multiple = true;
+  const up = el("button", "btn sm", "Upload a file");
+  up.addEventListener("click", () => file.click());
+  file.addEventListener("change", () => {
+    if (file.files.length) uploadFiles(it, [...file.files], node);
+    file.value = "";
+  });
+  acts.append(up, file);
+
+  // skip, in one click from a menu -- never a form, never a confirmation
+  const menu = el("div", "skipmenu");
+  const trig = el("button", "btn sm g", "Skip this");
+  const panel = el("div");
+  for (const [code, label] of DATA.skipReasons) {
+    const b = el("button", "opt", label);
+    b.addEventListener("click", () => {
+      menu.dataset.open = "false";
+      const status = code === "not_applicable" ? "not_applicable"
+                   : code === "later" ? "later" : "skipped";
+      answer(it, status, code, node);
+    });
+    panel.append(b);
+  }
+  trig.addEventListener("click", e => {
+    e.stopPropagation();
+    const open = menu.dataset.open === "true";
+    document.querySelectorAll(".skipmenu").forEach(m => m.dataset.open = "false");
+    menu.dataset.open = open ? "false" : "true";
+  });
+  menu.append(trig, panel);
+  acts.append(menu);
+
+  const undo = el("button", "btn sm g", "Clear answer");
+  undo.classList.toggle("hide", it.status === "pending");
+  undo.addEventListener("click", () => answer(it, "pending", null, node));
+  acts.append(undo);
+
+  const sv = el("span", "sv", "Saved");
+  acts.append(sv);
+  node.append(acts);
+
+  const bar = el("div", "upl hide"); bar.append(el("i"));
+  node.append(bar);
+
+  const files = el("ul", "files");
+  node.append(files);
+  renderFiles(it, files);
+
+  // note
+  const nw = el("details", "notewrap");
+  nw.append(el("summary", null, "Add a note about this item"));
+  const ta = el("textarea");
+  ta.placeholder = "Anything that would save us asking — where it lives, what it is called, " +
+                   "why it looks odd.";
+  ta.value = it.client_note || "";
+  if (it.client_note) nw.open = true;
+  let t = null;
+  ta.addEventListener("input", () => {
+    clearTimeout(t);
+    t = setTimeout(() => answer(it, it.status, it.skip_reason, node, ta.value), 700);
+  });
+  nw.append(ta);
+  node.append(nw);
+
+  node._refresh = () => {
+    node.className = "item st-" + it.status;
+    node.dataset.status = it.status;
+    state.className = "tag state " + it.status;
+    state.textContent = stateLabel(it);
+    state.classList.toggle("hide", it.status === "pending");
+    undo.classList.toggle("hide", it.status === "pending");
+    renderFiles(it, files);
+    applyFilter();
+  };
+  node._saved = () => { sv.classList.add("on"); setTimeout(() => sv.classList.remove("on"), 1600); };
+  node._bar = bar;
+  return node;
+}
+
+function stateLabel(it) {
+  if (it.status === "provided") return "Provided";
+  if (it.status === "later") return "Sending later";
+  if (it.status === "not_applicable") return "Not applicable";
+  if (it.status === "skipped") {
+    const r = (DATA.skipReasons.find(([k]) => k === it.skip_reason) || [])[1];
+    return r ? "Skipped — " + r.toLowerCase() : "Skipped";
+  }
+  return "";
+}
+
+function renderFiles(it, ul) {
+  ul.innerHTML = "";
+  for (const d of it.documents || []) {
+    const li = el("li");
+    const a = el("a", "fn", d.filename);
+    a.href = API + "/api/download?doc=" + encodeURIComponent(d.id) +
+             "&t=" + encodeURIComponent(TOKEN);
+    li.append(a, el("span", "sz", bytes(d.bytes)));
+    const rm = el("button", null, "Remove");
+    rm.addEventListener("click", async () => {
+      if (!confirm("Remove " + d.filename + "? The file is deleted, not hidden.")) return;
+      try {
+        await api("/api/document?doc=" + encodeURIComponent(d.id), { method: "DELETE" });
+        it.documents = it.documents.filter(x => x.id !== d.id);
+        if (!it.documents.length && it.status === "provided") it.status = "pending";
+        document.getElementById("it-" + it.id)._refresh();
+        updateProgress();
+      } catch (e) { alert(e.message); }
+    });
+    li.append(rm);
+    ul.append(li);
+  }
+}
+
+function render() {
+  const e = DATA.engagement;
+  $("#org").textContent = e.organisation;
+  $("#stage").textContent = e.stage;
+  $("#engmeta").innerHTML =
+    "<b>" + (e.service_name || "Operating Review") + "</b> · engagement " + e.id +
+    (e.contact_name ? " · " + e.contact_name : "");
+  $("#skipnotice-text").textContent = DATA.skipNotice;
+
+  const c = counts();
+  $("#howto").textContent =
+    "There are " + c.total + " requests below, grouped into sections. " + c.core +
+    " of them are marked Core: if you only have an afternoon, spend it on those — they are " +
+    "the ones the review genuinely cannot proceed without. Everything else can follow at " +
+    "your pace. Every answer saves the moment you give it, so you can close this and come " +
+    "back as often as you like; the link keeps working until the engagement closes.";
+
+  $("#retention").innerHTML =
+    "<b>How long we keep this.</b> Documents uploaded here are held for this engagement and " +
+    "destroyed on <b>" + (e.retention_until || "the agreed retention date") + "</b>. " +
+    "That is enforced by the storage itself — a lifecycle rule deletes each file twelve " +
+    "months after it is uploaded — rather than by anyone remembering to do it. You can " +
+    "remove any individual file yourself, at any time, with the Remove link beside it. " +
+    "Nothing here is public: the store has no public address, and every file leaves only " +
+    "through an authenticated request that is written to the audit log.";
+
+  const secs = $("#sections"); secs.innerHTML = "";
+  const jl = $("#jumplist"); jl.innerHTML = "";
+
+  for (const [sid, items] of bySection()) {
+    const meta = DATA.sections[sid] || { title: sid, blurb: "" };
+
+    const li = el("li");
+    const a = el("a"); a.href = "#sec-" + sid; a.dataset.s = sid;
+    a.append(el("span", "nm", meta.title));
+    const mini = el("span", "mini"); mini.append(el("i")); a.append(mini);
+    a.append(el("span", "ct", "0/0"));
+    li.append(a); jl.append(li);
+
+    const sec = el("section", "sec"); sec.id = "sec-" + sid;
+    const hd = el("div", "sechd");
+    const r = el("div", "r");
+    r.append(el("h2", null, meta.title));
+    r.append(el("span", "ct", ""));
+    hd.append(r);
+    if (meta.blurb) hd.append(el("p", null, meta.blurb));
+    sec.append(hd);
+
+    const body = el("div", "secbody");
+    const inline = el("div", "notice inline hide");
+    inline.append(el("b", null, "Several of these are unanswered or set aside."));
+    inline.append(el("p", null, DATA.skipNotice));
+    body.append(inline);
+    for (const it of items) body.append(itemNode(it));
+    sec.append(body);
+    secs.append(sec);
+  }
+  updateProgress();
+}
+
+/* ---------------- writes ---------------- */
+
+async function answer(it, status, skipReason, node, note) {
+  const prev = { status: it.status, skip_reason: it.skip_reason, client_note: it.client_note };
+  it.status = status;
+  it.skip_reason = status === "pending" || status === "provided" ? null : skipReason;
+  if (note !== undefined) it.client_note = note;
+  node._refresh();
+  updateProgress();
+  try {
+    await api("/api/answer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ itemId: it.id, status: it.status,
+                             skipReason: it.skip_reason, note: it.client_note || null }),
+    });
+    node._saved();
+  } catch (e) {
+    // Put the answer back rather than leaving the screen claiming something
+    // the server does not know about.
+    Object.assign(it, prev);
+    node._refresh();
+    updateProgress();
+    alert("That answer did not save: " + e.message);
+  }
+}
+
+async function uploadFiles(it, files, node) {
+  const bar = node._bar, fill = bar.querySelector("i");
+  bar.classList.remove("hide");
+  try {
+    for (const f of files) {
+      fill.style.width = "0%";
+      const doc = f.size <= 80 * 1024 * 1024
+        ? await uploadDirect(it, f, fill)
+        : await uploadMultipart(it, f, fill);
+      (it.documents ||= []).push(doc);
+      it.status = "provided"; it.skip_reason = null;
+      node._refresh(); updateProgress();
+    }
+    node._saved();
+  } catch (e) {
+    alert("That upload did not finish: " + e.message);
+  } finally {
+    bar.classList.add("hide"); fill.style.width = "0%";
+  }
+}
+
+async function uploadDirect(it, f, fill) {
+  fill.style.width = "35%";
+  const q = "?filename=" + encodeURIComponent(f.name) + "&size=" + f.size +
+            "&item=" + encodeURIComponent(it.id);
+  const out = await api("/api/upload" + q, {
+    method: "POST", body: f,
+    headers: { "Content-Type": f.type || "application/octet-stream" },
+  });
+  fill.style.width = "100%";
+  return { id: out.id, item_id: it.id, filename: f.name, bytes: f.size,
+           content_type: f.type, uploaded_at: new Date().toISOString() };
+}
+
+async function uploadMultipart(it, f, fill) {
+  const start = await api("/api/upload/create", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ filename: f.name, size: f.size,
+                           contentType: f.type, itemId: it.id }),
+  });
+  const size = start.partSize;
+  const total = Math.ceil(f.size / size);
+  const parts = [];
+  try {
+    for (let n = 1; n <= total; n++) {
+      const chunk = f.slice((n - 1) * size, n * size);
+      const p = await api("/api/upload/part?key=" + encodeURIComponent(start.key) +
+                          "&uploadId=" + encodeURIComponent(start.uploadId) + "&part=" + n,
+                          { method: "PUT", body: chunk });
+      parts.push(p);
+      fill.style.width = (n / total * 100) + "%";
+    }
+    const out = await api("/api/upload/complete", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: start.key, uploadId: start.uploadId, parts,
+                             itemId: it.id, filename: f.name,
+                             contentType: f.type, size: f.size }),
+    });
+    return { id: out.id, item_id: it.id, filename: f.name, bytes: f.size,
+             content_type: f.type, uploaded_at: new Date().toISOString() };
+  } catch (e) {
+    // Leave no half-written object paying rent in the bucket.
+    try {
+      await api("/api/upload/abort", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: start.key, uploadId: start.uploadId }),
+      });
+    } catch { /* the lifecycle rule sweeps it in seven days regardless */ }
+    throw e;
+  }
+}
+
+/* ---------------- filters ---------------- */
+
+function applyFilter() {
+  for (const node of document.querySelectorAll(".item")) {
+    const core = node.dataset.importance === "core";
+    const todo = node.dataset.status === "pending";
+    const show = FILTER === "all" || (FILTER === "core" && core) || (FILTER === "todo" && todo);
+    node.classList.toggle("hide", !show);
+  }
+  for (const sec of document.querySelectorAll("section.sec")) {
+    const any = [...sec.querySelectorAll(".item")].some(n => !n.classList.contains("hide"));
+    sec.classList.toggle("hide", !any);
+  }
+}
+for (const c of document.querySelectorAll(".chip")) {
+  c.addEventListener("click", () => {
+    FILTER = c.dataset.f;
+    document.querySelectorAll(".chip").forEach(x =>
+      x.setAttribute("aria-pressed", String(x === c)));
+    applyFilter();
+  });
+}
+
+document.addEventListener("click", () =>
+  document.querySelectorAll(".skipmenu").forEach(m => m.dataset.open = "false"));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape")
+    document.querySelectorAll(".skipmenu").forEach(m => m.dataset.open = "false");
+});
+
+/* Turnstile loads asynchronously; wait for it rather than racing it. */
+(function boot(n) {
+  if (window.turnstile || !TOKEN) return open_();
+  if (n > 60) return gateFail("Verification did not load. Reload the page and try again.", true);
+  setTimeout(() => boot(n + 1), 150);
+})(0);
+</script>
+</body></html>

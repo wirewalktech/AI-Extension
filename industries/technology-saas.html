@@ -1,0 +1,249 @@
+---
+permalink: /industries/technology-saas/
+title: "Technology and SaaS — the Operating Review"
+description: "Recurring revenue, and the cost that recurs against it. Gross margin in software is decided by cost to serve, and cost to serve is the line least likely to have an owner. Cloud spend in particular grows by accretion — nobody decides it, everybody adds to it."
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Technology and SaaS — the Operating Review — Wirewalk AI</title>
+<meta name="description" content="Recurring revenue, and the cost that recurs against it. Gross margin in software is decided by cost to serve, and cost to serve is the line least likely to have an owner. Cloud spend in particular grows by accretion — nobody decides it, everybody adds to it.">
+<link rel="canonical" href="https://ai.wirewalk.com/industries/technology-saas/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:44px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);
+       font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;
+      grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.back:hover{color:var(--ac)}
+.crumb{font-size:13.5px;color:var(--tx3);margin:0 0 14px}
+.crumb a{color:var(--tx2);text-decoration:none}
+.crumb a:hover{color:var(--ac2)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(30px,5.4vw,42px);line-height:1.13;letter-spacing:-.024em;margin:0 0 16px;
+   text-wrap:balance}
+h2{font-size:clamp(21px,2.9vw,26px);letter-spacing:-.016em;margin:56px 0 8px;text-wrap:balance}
+h3{font-size:17.5px;margin:0 0 5px}
+p{max-width:70ch}
+.lede{color:var(--tx2);font-size:19px;margin:0 0 12px}
+.sub{color:var(--tx3);font-size:15px;margin:0 0 22px}
+a{color:var(--ac2);text-underline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15.5px;
+     font-weight:600;padding:12px 22px;border-radius:9px;border:1px solid var(--ac);
+     background:var(--ac);color:#fff;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--ac2);border-color:var(--ac2)}
+.btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt)}
+.acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
+
+/* vocabulary strip */
+.vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
+.vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
+          border:1px solid var(--ln);border-radius:20px;padding:6px 12px}
+.vocab-note{color:var(--tx3);font-size:13.5px;margin:10px 0 0}
+
+/* the patterns -- the substance of the page, so give them room */
+.pat{list-style:none;margin:22px 0 0;padding:0;counter-reset:p}
+.pat li{counter-increment:p;position:relative;border-top:1px solid var(--ln);
+        padding:20px 0 20px 58px;font-size:17px;color:var(--tx);max-width:74ch}
+.pat li:last-child{border-bottom:1px solid var(--ln)}
+.pat li:before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:20px;
+               font:700 13px/1.5 var(--mono);color:var(--ac2);letter-spacing:.04em}
+
+/* what the intake would ask for */
+.ask{border:1px solid var(--ln);border-radius:12px;background:#fff;margin:22px 0 0;
+     overflow:hidden}
+.ask .hd{background:var(--alt);border-bottom:1px solid var(--ln);padding:15px 20px;
+         font-size:14.5px;color:var(--tx2)}
+.ask .hd b{color:var(--tx)}
+.ask ul{list-style:none;margin:0;padding:4px 20px 8px}
+.ask li{border-top:1px solid var(--ln);padding:14px 0}
+.ask li:first-child{border-top:0}
+.ask b{display:block;font-size:16px;color:var(--tx)}
+.ask b .core{font:700 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+             color:#fff;background:var(--ac2);border-radius:20px;padding:4px 9px;
+             margin-left:9px;vertical-align:2px}
+.ask span{display:block;color:var(--tx2);font-size:14.5px;max-width:70ch}
+
+.who{border-left:2px solid var(--ac);padding-left:18px;margin:22px 0 0;color:var(--tx2);
+     font-size:16px}
+.who b{color:var(--tx)}
+
+/* the index */
+.grp{margin:46px 0 0}
+.grp h2{margin:0 0 4px}
+.grp>p{color:var(--tx2);font-size:15.5px;margin:0 0 16px}
+.cards{display:grid;gap:1px;background:var(--ln);border:1px solid var(--ln);border-radius:12px;
+       overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.cards a{display:block;background:#fff;padding:18px 20px;text-decoration:none;color:var(--tx)}
+.cards a:hover{background:var(--acs)}
+.cards b{display:block;font-size:16.5px;margin-bottom:4px}
+.cards span{display:block;color:var(--tx2);font-size:14.5px}
+.cards em{display:block;font:12px/1.5 var(--mono);font-style:normal;color:var(--tx3);
+          margin-top:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.also{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 0;padding:0;list-style:none}
+.also a{display:inline-block;font-size:14.5px;text-decoration:none;color:var(--tx);
+        border:1px solid var(--ln2);border-radius:20px;padding:7px 15px;background:#fff}
+.also a:hover{border-color:var(--ac);background:var(--acs);color:var(--ac2)}
+
+.note{border:1px solid var(--ac);background:var(--acs);border-radius:12px;padding:20px 22px;
+      margin:30px 0 0}
+.note b{display:block;font-size:17px;color:var(--tx);margin-bottom:6px}
+.note p{margin:0;color:var(--tx2);font-size:15.5px;max-width:none}
+.note p+p{margin-top:9px}
+
+footer.end{margin:60px 0 46px;padding-top:24px;border-top:1px solid var(--ln);
+           color:var(--tx3);font-size:14px}
+footer.end a{color:var(--ac2)}
+footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span>
+    <span>Wirewalk<s>AI</s></span></a>
+  <a class="back" href="/order/">Commission an engagement</a>
+</div></header>
+
+<div class="wrap">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo;
+    <a href="/industries/">Industries</a> &rsaquo; Technology and SaaS</p>
+  <span class="eyebrow">Technology and SaaS</span>
+  <h1>Recurring revenue, and the cost that recurs against it.</h1>
+  <p class="lede">Gross margin in software is decided by cost to serve, and cost to serve is the line least likely to have an owner. Cloud spend in particular grows by accretion — nobody decides it, everybody adds to it.</p>
+
+  <ul class="vocab">
+    <li>ARR</li>
+    <li>net revenue retention</li>
+    <li>cost to serve</li>
+    <li>committed use</li>
+    <li>churn</li>
+    <li>capitalised R&amp;D</li>
+    <li>seat utilisation</li>
+    <li>gross margin</li>
+  </ul>
+  <p class="vocab-note">The terms above are the ones the review uses with you, because they
+  are the ones you already use. Nothing is translated into a consultant's vocabulary and
+  then translated back.</p>
+
+  <h2>Where it concentrates here</h2>
+  <p>Five losses that recur in
+  technology and SaaS and are worth going looking for. Each is concentrated &mdash; a single
+  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
+  a sample of the operation tends to miss them and a full pass tends to find them. They are
+  not findings from a named engagement; they are what a review of
+  technology and SaaS is built to look for.</p>
+  <ol class="pat">
+    <li>Non-production environments running continuously at production scale, because turning them off is somebody's job and nobody's priority.</li>
+    <li>Committed-use and reserved capacity purchased against a forecast that has since changed, so the commitment and the usage have quietly diverged.</li>
+    <li>Seats sold against seats actually active, on both sides — customers overpaying and renewing on inertia, and internal tools bought per head and used by a fraction.</li>
+    <li>Support tickets clustering on a small number of product defects, funded as support cost rather than fixed as engineering cost.</li>
+    <li>Auto-renewing customer contracts with uplift caps that were never applied.</li>
+  </ol>
+
+  <h2>What the review would ask you for</h2>
+  <div class="ask">
+    <div class="hd"><b>8 further requests, specific to
+      technology and SaaS</b> &mdash; 3 of them core &mdash; on top of the 107 the
+      intake asks of every organisation, across finance, revenue, receivables, payables,
+      contracts, people, IT, operations, risk, commercial and governance.</div>
+    <ul>
+      <li>
+        <b>ARR or MRR movement <span class="core">Core</span></b>
+        <span>New, expansion, contraction and churn by month.</span>
+      </li>
+      <li>
+        <b>Churn and retention <span class="core">Core</span></b>
+        <span>Logo and revenue, with reasons where captured.</span>
+      </li>
+      <li>
+        <b>Cost to serve <span class="core">Core</span></b>
+        <span>Hosting, support and success cost per customer or per seat.</span>
+      </li>
+      <li>
+        <b>Cloud spend by service and environment</b>
+        <span>With committed-use and reserved commitments. Non-production environments running at production scale is routine.</span>
+      </li>
+      <li>
+        <b>R&amp;D spend and capitalisation policy</b>
+        <span>What is capitalised, on what basis.</span>
+      </li>
+      <li>
+        <b>Product usage against entitlement</b>
+        <span>Seats sold versus seats active.</span>
+      </li>
+      <li>
+        <b>Support ticket volume by cause</b>
+        <span>Repeat causes are product cost, not support cost.</span>
+      </li>
+      <li>
+        <b>Customer contracts</b>
+        <span>Term, auto-renewal, uplift caps and notice.</span>
+      </li>
+    </ul>
+  </div>
+  <p class="sub" style="margin-top:16px">Anything you do not have can be skipped in one
+  click, with a reason. The intake is completed in the
+  <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
+  returned to as often as you like.</p>
+
+  <h2>Who commissions it</h2>
+  <p class="who"><b>CFOs, COOs and VPs of engineering.</b> Phase one is priced before phase two is
+  discussed, the report is yours either way, and we take no vendor commissions or referral
+  fees on anything we recommend.</p>
+
+  <div class="acts">
+    <a class="btn" href="/order/#catalog">Commission the review</a>
+    <a class="btn g" href="/#contact">Talk it through first</a>
+  </div>
+
+  <h2>Closest to this</h2>
+  <p class="sub">Operations that share more with technology and SaaS than the sector label
+  suggests.</p>
+  <ul class="also">
+    <li><a href="/industries/professional-services/">Professional services</a></li>
+    <li><a href="/industries/retail-ecommerce/">Retail and e-commerce</a></li>
+    <li><a href="/industries/agencies/">Agencies and media</a></li>
+    <li><a href="/industries/#commerce">All of selling and serving</a></li>
+  </ul>
+
+  <footer class="end">
+    <div class="fl">
+      <a href="/">The Operating Review</a>
+      <a href="/industries/">All industries</a>
+      <a href="/order/">What it costs</a>
+      <a href="/terms/">Ordering terms</a>
+      <a href="/writing/">Notes</a>
+      <a href="/portal/">Client portal</a>
+      <a href="https://www.wirewalk.com/">Wirewalk</a>
+    </div>
+    <p>Wirewalk AI · <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> ·
+    <a href="tel:+15162691517">516-269-1517</a></p>
+    <p style="margin-top:9px">The patterns on these pages are what recurs in each
+    sector and what a review therefore goes looking for. They are not claims about
+    any particular organisation, and nothing here reports a client, an engagement
+    or a measured result.</p>
+  </footer>
+</div>
+</body></html>
