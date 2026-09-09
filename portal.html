@@ -707,12 +707,12 @@ function renderFiles(it, ul) {
   for (const d of it.documents || []) {
     const li = el("li");
 
-    /* A plain <a href="...&t=TOKEN"> would work, and would also put the token
-       in a URL -- which means a query string, which means an access log. The
-       whole reason it lives in the fragment is to stay out of those. So the
-       download is fetched with the token as a header and handed over as a
-       blob. It costs holding the file in memory briefly; that is the cheaper
-       side of the trade. */
+    /* A plain anchor carrying the token as a query parameter would work, and
+       would also put the token in a URL -- which means a query string, which
+       means an access log. The whole reason it lives in the fragment is to
+       stay out of those. So the download is fetched with the token as a header
+       and handed over as a blob. It costs holding the file in memory briefly;
+       that is the cheaper side of the trade. */
     const get = el("button", "fn", d.filename);
     get.style.cssText = "background:none;border:0;font:inherit;text-align:left;" +
                         "color:var(--ac2);cursor:pointer;padding:0;text-decoration:underline;" +
