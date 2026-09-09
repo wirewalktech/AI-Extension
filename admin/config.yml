@@ -1,0 +1,64 @@
+# Wirewalk AI - note authoring
+#
+# Two ways to run this:
+#
+#   LOCAL, works right now, no setup:
+#     cd ~/Downloads/wirewalkai && npx decap-server
+#     then open  http://localhost:4000/admin/   (with jekyll serve running)
+#   local_backend below makes that work.
+#
+#   HOSTED at /admin/ on the live site, usable from a phone:
+#     needs a GitHub OAuth app plus a small auth proxy, because GitHub Pages
+#     cannot host the OAuth callback itself. Set base_url to that proxy.
+#     See README-admin.md.
+
+backend:
+  name: github
+  repo: wirewalktech/AI-Extension
+  branch: main
+  # base_url: https://your-oauth-proxy.example.workers.dev
+
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/AI-Extension/assets/uploads"
+
+publish_mode: simple
+site_url: https://wirewalktech.github.io/AI-Extension/
+
+collections:
+  - name: notes
+    label: Notes
+    label_singular: Note
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}}  —  {{year}}-{{month}}-{{day}}"
+    sortable_fields: [date, title]
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: "Sentence case. This becomes the page heading and the browser title."
+      - label: Date
+        name: date
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        format: "YYYY-MM-DD HH:mm:ss -0400"
+        hint: "A future date will not appear on the site until that date passes."
+      - label: Summary
+        name: summary
+        widget: text
+        required: false
+        hint: "One or two sentences. Shown on the notes index and used as the meta description."
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        hint: "Optional. Shown at the foot of the note."
+      - label: Body
+        name: body
+        widget: markdown

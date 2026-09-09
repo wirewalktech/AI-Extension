@@ -1,0 +1,23 @@
+title: Wirewalk AI
+tagline: The Operating Review
+description: >-
+  Field notes on operating performance: where value leaks across finance, IT,
+  compliance, contracts and delivery, and what it costs to leave it there.
+author: Wirewalk AI
+url: https://wirewalktech.github.io
+baseurl: /AI-Extension
+permalink: /writing/:title/
+timezone: America/New_York
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: article }
+exclude:
+  - make_docs.py
+  - make_logo.py
+  - wirewalk-ai_3.html
+  - README.md
