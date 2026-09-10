@@ -40,6 +40,20 @@ D_TX, D_TX2, D_TX3, D_AC = DRGB(0x1F,0x1E,0x1D), DRGB(0x5C,0x5A,0x54), DRGB(0x8A
 def parse(path):
     s = open(path, encoding="utf-8").read()
     s = re.sub(r"<(script|style|noscript)[^>]*>.*?</\1>", "", s, flags=re.S | re.I)
+
+    # Some blocks on the page carry their meaning in <b>/<span> rather than in a
+    # heading and a paragraph, so a tag-based reader walks straight past them.
+    # Two of those are load-bearing: the RECOVERABLE / REPEATING / CONTINGENT
+    # horizons under each loss, and the scoping offer under AI adoption. Both
+    # were silently absent from the deck and the document until the output was
+    # checked against the page rather than against the file size.
+    #
+    # Rewritten into <p> before parsing rather than by adding <b> and <span> to
+    # the tag list, which would drag in every inline emphasis on the page.
+    s = re.sub(r'<div class="gets"><b>(.*?)</b>\s*<span>(.*?)</span></div>',
+               r"<p>\1 — \2</p>", s, flags=re.S)
+    s = re.sub(r'<div class="aibuy">\s*<div>\s*<b>(.*?)</b>\s*<span>(.*?)</span>',
+               r"<p>\1 — \2</p>", s, flags=re.S)
     out = []
     for m in re.finditer(r'<section[^>]*id="([^"]+)"[^>]*>(.*?)</section>', s, re.S | re.I):
         sid, body = m.group(1), m.group(2)
