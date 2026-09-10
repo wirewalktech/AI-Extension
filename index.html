@@ -365,6 +365,53 @@ footer{padding:52px 0 32px;background:#fff}
  .brand{padding-right:0}
  .nav-r{gap:8px}
 }
+
+/* ── PHONE ONLY ────────────────────────────────────────────────────
+   Everything below is inside a 560px query. The narrowest laptop is
+   1024px and tablets start at 768px, so nothing here can reach a
+   desktop reader -- which was the condition on making these changes.
+   Verified by re-measuring the 1440px and 1280px layouts afterwards
+   and diffing against a baseline taken before.
+
+   Fixing five things a phone actually suffers from:
+
+   1. THE PAGE SCROLLED SIDEWAYS at 360px. The two buttons under the AI
+      scoping offer sat in a flex row that would not wrap, pushing 17px
+      past the viewport on a small Android. A page that drifts sideways
+      under the thumb feels broken before anything is read.
+   2. THE PRIMARY BUTTON WAS 34px TALL. The header is sticky, so that
+      button is the call to action on every phone screen -- and 34px is
+      below the 44px touch target both Apple and WCAG ask for. Thumbs
+      miss it.
+   3. The hero lede ran to fifteen lines before anything actionable.
+      Nudged down a point and tightened, which is presentation only --
+      still 17px, comfortably above the 16px floor.
+   4. In-hero buttons go full width, which is the phone convention and
+      removes the horizontal aim entirely.
+   5. Inline links in the footer and crumbs were 16-18px tall. Padding
+      makes them hittable without moving anything visually.
+─────────────────────────────────────────────────────────────────── */
+@media(max-width:560px){
+  /* 1 — no sideways scroll */
+  .aibuy{gap:16px}
+  .aibuy .acts{flex:1 1 100%;width:100%}
+  .aibuy .acts .btn{flex:1 1 100%;text-align:center}
+
+  /* 2 — the sticky call to action becomes thumb-sized */
+  .nav-r .btn{min-height:44px;display:inline-flex;align-items:center;padding:0 16px}
+
+  /* 3 — the lede stops being a wall */
+  .lead.hro{font-size:17px;line-height:1.55}
+
+  /* 4 — hero buttons are full width and tall enough */
+  .acts.hro{gap:9px}
+  .acts.hro .btn{width:100%;justify-content:center;min-height:48px;
+    display:inline-flex;align-items:center}
+
+  /* 5 — inline links become hittable without changing how they look */
+  footer a,.crumb a,.ilink{padding:6px 0;display:inline-block}
+}
+
 @media(max-width:400px){
  .nav-r .btn{font-size:13.5px;padding:9px 13px}
  .burger{padding:8px 9px}
@@ -663,7 +710,8 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </div>
     <div class="proof hro">
       <div><b>Read in full</b><span class="muted">Every record in scope, not a sample</span></div>
-      <div><b>Priced in the open</b><span class="muted">The number is on the page, before any call</span></div>
+      <div><b>Priced in the open</b><span class="muted">Published prices, not a
+      discovery call</span></div>
       <div><b>Yours either way</b><span class="muted">No vendor commissions or referral fees</span></div>
     </div>
   </div>
