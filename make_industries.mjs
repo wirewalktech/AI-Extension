@@ -44,7 +44,8 @@ const BY_SLUG = Object.fromEntries(INDUSTRIES.map(i => [i.slug, i]));
 const GROUPS = [
   { id: "advisory", title: "Professional and advisory firms",
     blurb: "Where the product is time, and three different numbers describe the same hour.",
-    slugs: ["law-firms", "accountancy", "professional-services", "agencies", "staffing"] },
+    slugs: ["law-firms", "accountancy", "professional-services", "agencies", "staffing",
+             "engineering-architecture"] },
   { id: "financial", title: "Financial services and insurance",
     blurb: "Where regulated cost is an operating line, and the operations underneath it are rarely priced.",
     slugs: ["financial-services", "insurance", "real-estate-finance"] },
@@ -60,7 +61,7 @@ const GROUPS = [
     slugs: ["retail-ecommerce", "hospitality", "technology-saas"] },
   { id: "funded", title: "Public, funded and regulated",
     blurb: "Where the funder, the regulator or the statute sets the operating model, and the cost of complying with it is nobody's line item.",
-    slugs: ["healthcare", "government-contracting", "public-sector",
+    slugs: ["healthcare", "human-services", "government-contracting", "public-sector",
             "education-research", "nonprofit"] },
 ];
 
@@ -88,6 +89,8 @@ const ALSO = {
   "nonprofit": ["education-research", "public-sector", "healthcare"],
   "financial-services": ["insurance", "professional-services", "technology-saas"],
   "insurance": ["financial-services", "healthcare", "law-firms"],
+  "human-services": ["healthcare", "nonprofit", "public-sector"],
+  "engineering-architecture": ["construction", "professional-services", "manufacturing"],
   "accountancy": ["law-firms", "professional-services", "financial-services"],
   "aerospace-defence": ["manufacturing", "government-contracting", "technology-saas"],
   "real-estate-finance": ["real-estate", "financial-services", "construction"],
@@ -104,6 +107,8 @@ const PHRASE = {
   "government-contracting": "government contracting",
 };
 Object.assign(PHRASE, {
+  "human-services": "a human services organisation",
+  "engineering-architecture": "a design practice",
   "accountancy": "an accountancy firm",
   "aerospace-defence": "an aerospace and defence manufacturer",
   "real-estate-finance": "a real estate sponsor",
