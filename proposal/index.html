@@ -163,13 +163,18 @@ footer a{color:var(--tx2)}
       <div class="pats" id="pats"></div>
     </div>
 
+    <!-- Deliberately names no vendor and no model. Which tooling sits behind
+         this changes, and a page that hardcodes a supplier is wrong the day it
+         changes. What the reader actually needs is that drafting is automated,
+         that the money is not, and that they should keep confidential material
+         out -- none of which depends on whose model it is. -->
     <div class="note">
-      <b>How this is written, since we sell AI policy advice</b>
-      <p>A language model drafts the proposal from what you type plus our own sector
-      material, and every figure on it is calculated by us rather than written by the
-      model. Your text goes to Anthropic's API to do that. <b>Please leave out anything
-      confidential</b> &mdash; we do not need it to make this useful, and a page that asked
-      you for it while advising you on AI policy would not deserve reading.</p>
+      <b>How this gets written</b>
+      <p>The proposal is drafted automatically from what you type and our own sector
+      material. <b>Every figure on it is calculated by us</b>, not written by the drafting
+      step. <b>Please leave out anything confidential</b> &mdash; we do not need it to make
+      this useful, and given what we advise clients on, a page that asked you for it would
+      not deserve reading.</p>
     </div>
 
     <div id="ts" style="margin:20px 0"></div>
@@ -315,10 +320,10 @@ footer a{color:var(--tx2)}
       '<a class="btn g" href="/#contact">Talk it through first</a>'+
       (d.industry?'<a class="btn g" href="/industries/'+esc(d.industry.slug)+'/">More on your sector</a>':'')+
       '</div>'+
-      '<p class="sub" style="margin-top:16px">Drafted for you by a language model from your '+
-      'description and our own sector material, then checked. Every figure was calculated by '+
-      'us. Nothing above is a finding or a promise &mdash; it is what a review would look for. '+
-      'Reference '+esc(d.id)+'.</p>';
+      '<p class="sub" style="margin-top:16px">Drafted for you from your description and our '+
+      'own sector material, then checked. Every figure was calculated by us. Nothing above '+
+      'is a finding or a promise &mdash; it is what a review would look for. Reference '+
+      esc(d.id)+'.</p>';
     o.classList.remove("hide");
     window.scrollTo({top:0,behavior:"smooth"});
   }
