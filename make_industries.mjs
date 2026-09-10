@@ -202,6 +202,12 @@ a{color:var(--ac2);text-underline-offset:2px}
 .subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
 .subv b{display:block;font-size:14.5px;margin-bottom:4px}
 .subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.subv li.has{padding:0}
+.subv li.has a{display:block;padding:12px 14px;text-decoration:none;color:inherit;
+  border-radius:8px;transition:background .16s}
+.subv li.has a:hover{background:var(--alt)}
+.subv li.has em{display:block;margin-top:7px;font-style:normal;font-size:13px;
+  font-weight:600;color:var(--ac2)}
 .fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
 .fil li,.trg li{font-size:14.5px;line-height:1.55}
 .mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
@@ -451,8 +457,15 @@ function industryPage(ind) {
   const subHtml = block("sub",
     `Not every ${esc(phrase.replace(/^an? /, ""))} is the same business`,
     d.subsectors ? `    <ul class="subv">\n` +
-      d.subsectors.map(x =>
-        `      <li><b>${esc(x.name)}</b><span>${esc(x.note)}</span></li>`).join("\n") +
+      d.subsectors.map(x => {
+        /* Link only where a page exists. A card that looks clickable and is
+           not is worse than a card that never did. */
+        const body = `<b>${esc(x.name)}</b><span>${esc(x.note)}</span>`;
+        return x.slug && x.patterns
+          ? `      <li class="has"><a href="/industries/${ind.slug}/${x.slug}/">${body}` +
+            `<em>Read the page for ${esc(x.name.toLowerCase())} &rarr;</em></a></li>`
+          : `      <li>${body}</li>`;
+      }).join("\n") +
       `\n    </ul>` : "");
 
   const filHtml = block("fil",
@@ -779,6 +792,83 @@ ${foot}`;
  * ------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------ *
+ * Sub-vertical pages
+ * ------------------------------------------------------------------ *
+ * A sub-vertical gets its own page ONLY when it has `slug` and `patterns` --
+ * that is, when somebody has written material the parent page cannot carry.
+ * The rest stay as cards on the parent, which is the honest outcome: pages
+ * that restate their parent with a different noun are doorway pages, and they
+ * would contradict the one claim this whole section rests on, that each page
+ * is written for one reader.
+ *
+ * An insurance-defence firm should meet LEDES exports, task-code rejections
+ * and carrier audits here -- none of which belong on a page a plaintiff firm
+ * also reads.
+ */
+function subVerticalPage(ind, sub) {
+  const phrase = phraseOf(ind);
+  const pats = (sub.patterns || []).map(x => `    <li>${esc(x)}</li>`).join("\n");
+  const sys = (sub.systems || []).map(x => `      <li>${esc(x)}</li>`).join("\n");
+  const vocab = (sub.vocabulary || []).map(v => `    <li>${esc(v)}</li>`).join("\n");
+
+  return `---
+permalink: /industries/${ind.slug}/${sub.slug}/
+title: ${yaml(sub.name + " — " + ind.name)}
+description: ${yaml(sub.note)}
+---
+${head(`${sub.name} — ${ind.name} — Wirewalk AI`,
+       clip(`${sub.note} ${sub.lede || ""}`, 290),
+       `https://ai.wirewalk.com/industries/${ind.slug}/${sub.slug}/`)}
+<div class="wrap">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo;
+    <a href="/industries/">Industries</a> &rsaquo;
+    <a href="/industries/${ind.slug}/">${esc(ind.name)}</a> &rsaquo; ${esc(sub.name)}</p>
+  <span class="eyebrow">${esc(ind.name)} &mdash; ${esc(sub.name)}</span>
+  <h1>${esc(sub.note)}</h1>
+  ${sub.lede ? `<p class="lede">${esc(sub.lede)}</p>` : ""}
+
+  ${vocab ? `<ul class="vocab">\n${vocab}\n  </ul>
+  <p class="vocab-note">These are the terms the review uses with you. A page written for
+  ${esc(phrase)} generally would not contain any of them.</p>` : ""}
+
+  <h2>Where it concentrates here</h2>
+  <p>Specific to ${esc(sub.name.toLowerCase())}, not to ${esc(phrase)} generally. Each is
+  concentrated &mdash; a single agreement, a single code, a single account nobody reviews
+  &mdash; which is why a sample of the operation tends to miss it and a full pass tends to
+  find it. They are not findings from a named engagement.</p>
+  <ol class="pat">
+${pats}
+  </ol>
+
+  ${sys ? `<h2>Where this data actually lives</h2>
+  <div class="depth">
+    <ul class="sysl">
+${sys}
+    </ul>
+    <p class="sub" style="margin-top:11px">Named because it changes what the intake asks
+    for. An extract from one of these has known gaps, and the review is built around them
+    rather than surprised by them.</p>
+  </div>` : ""}
+
+  <div class="acts">
+    <a class="btn" href="/industries/${ind.slug}/proposal/">See the proposal and the price</a>
+    <a class="btn g" href="/#contact">Talk it through first</a>
+  </div>
+  <p class="sub" style="margin-top:11px">The proposal is written for ${esc(phrase)} as a
+  whole &mdash; the sequence, what we would need from you, and what it costs for your
+  number of operating units. What is on this page is what we would additionally expect to
+  find in ${esc(sub.name.toLowerCase())}.</p>
+
+  <h2>The rest of the sector</h2>
+  <ul class="also">
+    <li><a href="/industries/${ind.slug}/">${esc(ind.name)} &mdash; where loss concentrates</a></li>
+${(DEPTH[ind.slug]?.subsectors || []).filter(o => o.slug && o.slug !== sub.slug)
+   .map(o => `    <li><a href="/industries/${ind.slug}/${o.slug}/">${esc(o.name)}</a></li>`).join("\n")}
+  </ul>
+${foot}`;
+}
+
+/* ------------------------------------------------------------------ *
  * The homepage teaser
  * ------------------------------------------------------------------ *
  * The homepage used to hand-list every industry. It had silently gone stale --
@@ -825,13 +915,18 @@ function writeHomepageTeaser() {
 }
 
 writeFileSync(join(OUT, "index.html"), indexPage());
-let n = 1;
+let n = 1, subs = 0;
 for (const ind of INDUSTRIES) {
   writeFileSync(join(OUT, `${ind.slug}.html`), industryPage(ind));
   n++;
   writeFileSync(join(OUT, `${ind.slug}-proposal.html`), proposalPage(ind));
   n++;
+  for (const sub of (DEPTH[ind.slug]?.subsectors || [])) {
+    if (!sub.slug || !sub.patterns) continue;   // card only, no page
+    writeFileSync(join(OUT, `${ind.slug}--${sub.slug}.html`), subVerticalPage(ind, sub));
+    n++; subs++;
+  }
 }
 const teased = writeHomepageTeaser();
-console.log(`wrote ${n} files into ${OUT}`);
+console.log(`wrote ${n} files into ${OUT} (${subs} sub-vertical page(s))`);
 console.log(`homepage teaser: ${teased} group card(s) from ${INDUSTRIES.length} industries`);

@@ -99,6 +99,12 @@ a{color:var(--ac2);text-underline-offset:2px}
 .subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
 .subv b{display:block;font-size:14.5px;margin-bottom:4px}
 .subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.subv li.has{padding:0}
+.subv li.has a{display:block;padding:12px 14px;text-decoration:none;color:inherit;
+  border-radius:8px;transition:background .16s}
+.subv li.has a:hover{background:var(--alt)}
+.subv li.has em{display:block;margin-top:7px;font-style:normal;font-size:13px;
+  font-weight:600;color:var(--ac2)}
 .fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
 .fil li,.trg li{font-size:14.5px;line-height:1.55}
 .mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
@@ -221,11 +227,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Not every law firms is the same business</h3>
     <ul class="subv">
-      <li><b>Insurance defence</b><span>Panel rates, litigation guidelines and carrier audits. Realisation is set by someone else's billing rules, and the write-downs happen after the work.</span></li>
-      <li><b>Plaintiff and contingency</b><span>Case costs advanced and carried for years. The question is not realisation but which advanced costs will never be recovered and are still on the books.</span></li>
-      <li><b>Corporate and transactional</b><span>Matter budgets agreed at engagement and quietly exceeded, with the overage written off rather than discussed.</span></li>
-      <li><b>Trusts, estates and private client</b><span>Long-running matters, fixed fees agreed years ago, and time recorded against them at today's rates.</span></li>
-      <li><b>Immigration and high-volume practice</b><span>Flat fees at scale, where unit economics per matter type are rarely calculated and one type is usually loss-making.</span></li>
+      <li class="has"><a href="/industries/law-firms/insurance-defence/"><b>Insurance defence</b><span>Panel rates, litigation guidelines and carrier audits. Realisation is set by someone else's billing rules, and the write-downs happen after the work.</span><em>Read the page for insurance defence &rarr;</em></a></li>
+      <li class="has"><a href="/industries/law-firms/plaintiff-contingency/"><b>Plaintiff and contingency</b><span>Case costs advanced and carried for years. The question is not realisation but which advanced costs will never be recovered and are still on the books.</span><em>Read the page for plaintiff and contingency &rarr;</em></a></li>
+      <li class="has"><a href="/industries/law-firms/corporate-transactional/"><b>Corporate and transactional</b><span>Matter budgets agreed at engagement and quietly exceeded, with the overage written off rather than discussed.</span><em>Read the page for corporate and transactional &rarr;</em></a></li>
     </ul>
   </div>
 
