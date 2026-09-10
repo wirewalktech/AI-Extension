@@ -152,6 +152,11 @@ summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset
 .drop p{margin:0 auto;font-size:14.5px;color:var(--tx2);max-width:58ch}
 .drop .btn{margin-top:15px}
 #bulk .stat{font-size:13.5px;color:var(--tx2);margin:10px 0 0;font-variant-numeric:tabular-nums}
+.bulkdone{margin:18px 0 0;padding:18px 20px;border-radius:10px;background:var(--acs);
+  border:1px solid var(--ac)}
+.bulkdone b{display:block;font-size:19px;margin-bottom:8px}
+.bulkdone p{margin:0 0 10px;font-size:15px;line-height:1.55;color:var(--tx2);max-width:62ch}
+.bulkdone p:last-child{margin-bottom:0}
 #bulk .err{font-size:14px;color:var(--bad);margin:10px 0 0;display:flex;flex-wrap:wrap;
            gap:10px;align-items:center}
 #bulk .err span{flex:1 1 240px;min-width:0}
@@ -384,6 +389,7 @@ footer.end a{color:var(--ac2)}
 
         <div class="upl hide" id="bulkbar"><i></i></div>
         <div class="stat hide" id="bulkstat"></div>
+        <div class="bulkdone hide" id="bulkdone"></div>
         <div class="err hide" id="bulkerr"></div>
         <div id="bulklist"></div>
       </div>
@@ -1329,8 +1335,13 @@ async function bulkUpload(files) {
       renderUnfiled();
       updateProgress();
     }
-    setStatus(`${done} file${done === 1 ? "" : "s"} received. Nothing else to do — ` +
-              `we take it from here.`);
+    /* This used to be one line of 13.5px grey where a progress bar had just
+       vanished, and the counter above still read 0 of N — so the page said
+       "nothing else to do" in small print while appearing to show that nothing
+       had happened. People asked what to do next, which is the correct
+       response to that. Say it properly, and explain the counter. */
+    setStatus("");
+    bulkDone(done);
   } catch (e) {
     setStatus("");
     err.innerHTML = "";
@@ -1343,6 +1354,24 @@ async function bulkUpload(files) {
   } finally {
     bar.classList.add("hide"); fill.style.width = "0%";
   }
+}
+
+/* The confirmation people actually see. Answers the three questions they have
+   at this exact moment: did it work, do I have to do anything else, and why has
+   the counter not moved. */
+function bulkDone(n) {
+  const box = $("#bulkdone");
+  if (!box) return;
+  box.innerHTML =
+    '<b>' + n + ' file' + (n === 1 ? "" : "s") + ' received.</b>' +
+    '<p>You do not need to do anything else with these. We work out what each one ' +
+    'answers, which is why the counter above has not moved — a bulk file only counts ' +
+    'towards a request once a person has read it and filed it.</p>' +
+    '<p>If there are requests you would rather answer directly, the list is above and ' +
+    'still open. Otherwise you are done, and we will come back to you if something ' +
+    'important is missing.</p>';
+  box.classList.remove("hide");
+  box.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 function renderUnfiled() {
