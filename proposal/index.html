@@ -1,0 +1,327 @@
+---
+permalink: /proposal/
+title: A proposal written for you
+description: >-
+  Describe your operation and get a proposal addressed to it — what we would go
+  looking for, what we would ask you for first, and what it costs.
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A proposal written for you — Wirewalk AI</title>
+<meta name="description" content="Describe your operation and get a proposal addressed to it: what we would go looking for, what we would ask for first, and what it costs.">
+<link rel="canonical" href="https://ai.wirewalk.com/proposal/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{--bg:#FAF9F5;--alt:#F4F2EC;--alt2:#EFEDE5;--ln:#E4E0D5;--ln2:#D5D0C0;
+ --tx:#1F1E1D;--tx2:#5C5A54;--tx3:#8A8781;--ac:#D97757;--ac2:#C2603F;--acs:#FBEEE8;
+ --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+ --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:17px;
+ line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:40px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.crumb{font-size:13.5px;color:var(--tx3);margin:0 0 14px}
+.crumb a{color:var(--tx2);text-decoration:none}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+ color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(28px,5vw,38px);line-height:1.14;letter-spacing:-.024em;margin:0 0 16px;text-wrap:balance}
+h2{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.016em;margin:44px 0 10px}
+p{margin:0 0 15px}
+.lede{font-size:19px;line-height:1.55;color:var(--tx2);margin-bottom:24px}
+label{display:block;font-size:14px;font-weight:600;margin:20px 0 6px}
+label span{font-weight:400;color:var(--tx3)}
+input,select,textarea{width:100%;padding:12px 13px;font:400 16px/1.45 var(--sans);
+ border:1px solid var(--ln2);border-radius:8px;background:#fff;color:var(--tx)}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:1px;border-color:var(--ac)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pats{display:grid;gap:8px;margin-top:8px}
+.pats label{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;
+ margin:0;padding:11px 13px;border:1px solid var(--ln);border-radius:8px;cursor:pointer;line-height:1.5}
+.pats label:hover{background:var(--alt)}
+.pats input{width:auto;margin-top:3px;flex:0 0 auto}
+.btn{display:inline-block;padding:14px 24px;border-radius:8px;background:var(--ac);color:#fff;
+ border:1px solid var(--ac);font-weight:600;font-size:16px;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--ac2)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn.g{background:transparent;color:var(--tx);border-color:var(--ln2)}
+.acts{display:flex;gap:11px;flex-wrap:wrap;margin:28px 0 0}
+.note{background:var(--acs);border-left:3px solid var(--ac);border-radius:0 9px 9px 0;
+ padding:15px 18px;margin:24px 0}
+.note b{display:block;margin-bottom:5px}
+.note p{margin:0;font-size:14.5px;line-height:1.55;color:var(--tx2)}
+.hide{display:none}
+#wait{text-align:center;padding:56px 20px}
+#wait .sp{width:34px;height:34px;margin:0 auto 20px;border:3px solid var(--ln);
+ border-top-color:var(--ac);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#wait b{display:block;font-size:18px;margin-bottom:8px}
+#wait p{font-size:15px;color:var(--tx2);max-width:44ch;margin:0 auto}
+#wait .el{font:500 13px/1 var(--mono);color:var(--tx3);margin-top:16px}
+.out h1{margin-bottom:14px}
+.out ol,.out ul{padding-left:0;list-style:none;margin:0}
+.out li{padding:14px 0;border-bottom:1px solid var(--ln);font-size:16px;line-height:1.58}
+.out li:last-child{border-bottom:0}
+.out ol{counter-reset:n}
+.out ol li{counter-increment:n;padding-left:38px;position:relative}
+.out ol li:before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:15px;
+ font:600 12px/1 var(--mono);color:var(--ac2)}
+.out ul li{padding-left:20px;position:relative}
+.out ul li:before{content:'';position:absolute;left:2px;top:22px;width:7px;height:1.5px;background:var(--tx3)}
+.qbox{border:1px solid var(--ln);border-radius:11px;background:var(--alt);padding:22px;margin:26px 0 0}
+.qbig{font:700 32px/1.1 var(--sans);letter-spacing:-.02em}
+.qsub{font-size:14px;color:var(--tx2);margin-top:6px}
+.qopts{display:grid;gap:8px;margin-top:16px}
+.qopt{display:flex;justify-content:space-between;gap:14px;padding:11px 13px;border:1px solid var(--ln);
+ border-radius:7px;font-size:14.5px;background:#fff}
+.qopt b{font-variant-numeric:tabular-nums}
+.err{color:#9b2c22;font-size:15px;margin-top:14px}
+.sub{font-size:14.5px;color:var(--tx2)}
+footer{margin-top:64px;border-top:1px solid var(--ln);padding:24px 0 50px;font-size:14px;color:var(--tx3)}
+footer a{color:var(--tx2)}
+@media(max-width:620px){.two{grid-template-columns:1fr}}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span> Wirewalk <s>AI</s></a>
+  <a class="back" href="/order/">What it costs</a>
+</div></header>
+
+<div class="wrap">
+<div id="form">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo; A proposal for you</p>
+  <span class="eyebrow">Tailored proposal</span>
+  <h1>Tell us what is actually going on.</h1>
+  <p class="lede">Not a contact form. Describe your operation and what is worrying you, and
+  you get a proposal addressed to it &mdash; what we would go looking for in your case,
+  what we would want from you first, and what it costs. Takes about a minute to fill in and
+  half a minute to come back.</p>
+
+  <form id="f">
+    <label for="sector">Your sector</label>
+    <select id="sector" required>
+      <option value="">Choose one&hellip;</option>
+      <option value="law-firms">Law firms</option>
+      <option value="manufacturing">Manufacturing</option>
+      <option value="real-estate">Real estate</option>
+      <option value="warehousing-logistics">Warehousing and logistics</option>
+      <option value="construction">Construction and contracting</option>
+      <option value="government-contracting">Government contracting</option>
+      <option value="financial-services">Financial services</option>
+      <option value="healthcare">Healthcare</option>
+      <option value="professional-services">Professional services</option>
+      <option value="technology-saas">Technology and SaaS</option>
+      <option value="retail-ecommerce">Retail and e-commerce</option>
+      <option value="hospitality">Hospitality and food service</option>
+      <option value="education-research">Education and research</option>
+      <option value="nonprofit">Nonprofit and grant-funded</option>
+      <option value="staffing">Staffing and recruitment</option>
+      <option value="agencies">Agencies and media</option>
+      <option value="transport-fleet">Transport and fleet</option>
+      <option value="energy-utilities">Energy and utilities</option>
+      <option value="public-sector">Public sector</option>
+      <option value="insurance">Insurance</option>
+      <option value="accountancy">Accountancy firms</option>
+      <option value="aerospace-defence">Aerospace and defence</option>
+      <option value="real-estate-finance">Real estate finance</option>
+      <option value="human-services">Human services and behavioural health</option>
+      <option value="engineering-architecture">Engineering and architecture</option>
+    </select>
+
+    <div class="two">
+      <div><label for="units">Operating units in scope
+        <span>&mdash; entities, sites or businesses</span></label>
+        <input id="units" type="number" min="1" max="25" value="1" inputmode="numeric"></div>
+      <div><label for="role">Your role <span>&mdash; optional</span></label>
+        <input id="role" type="text" placeholder="Managing partner, CFO, owner&hellip;"></div>
+    </div>
+
+    <label for="size">Roughly how big <span>&mdash; however you measure it</span></label>
+    <input id="size" type="text" placeholder="40 fee earners across two offices; $30M revenue; 180 staff&hellip;">
+
+    <label for="trigger">What prompted you to look at this now?
+      <span>&mdash; optional, but it changes the answer a lot</span></label>
+    <input id="trigger" type="text" placeholder="A partner is retiring; a bank covenant test; an audit finding&hellip;">
+
+    <label for="concern">What is actually worrying you?</label>
+    <textarea id="concern" maxlength="2000" required
+      placeholder="In your own words. The more specific, the more specific the answer &mdash; &ldquo;margin is down and nobody can tell me which product&rdquo; produces a better proposal than &ldquo;improve efficiency&rdquo;."></textarea>
+
+    <div id="patwrap" class="hide">
+      <label>Any of these sound familiar? <span>&mdash; tick what applies</span></label>
+      <div class="pats" id="pats"></div>
+    </div>
+
+    <div class="note">
+      <b>How this is written, since we sell AI policy advice</b>
+      <p>A language model drafts the proposal from what you type plus our own sector
+      material, and every figure on it is calculated by us rather than written by the
+      model. Your text goes to Anthropic's API to do that. <b>Please leave out anything
+      confidential</b> &mdash; we do not need it to make this useful, and a page that asked
+      you for it while advising you on AI policy would not deserve reading.</p>
+    </div>
+
+    <div id="ts" style="margin:20px 0"></div>
+    <button class="btn" id="go" type="submit" disabled>Write my proposal</button>
+    <p class="err hide" id="ferr"></p>
+    <p class="sub" style="margin-top:14px">Would rather just read one?
+      <a href="/industries/">Every sector has a written proposal already</a>.</p>
+  </form>
+</div>
+
+<div id="wait" class="hide">
+  <div class="sp"></div>
+  <b>Reading your sector and writing it now</b>
+  <p>This is written for you rather than assembled from a template, which takes about
+  thirty seconds. Please leave the page open.</p>
+  <div class="el" id="el">0s</div>
+</div>
+
+<div id="out" class="hide out"></div>
+</div>
+
+<footer><div class="wrap">
+  <p>Wirewalk AI &middot; <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a>
+  &middot; <a href="tel:+15162691517">516-269-1517</a></p>
+  <p style="margin-top:8px">Proposals describe what a review would look for. Nothing in one
+  is a finding, a result, or a promise about your operation.</p>
+</div></footer>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script>
+(function(){
+  var PORTAL="https://wirewalk-portal.wirewalk-upload.workers.dev";
+  var ORDERS="https://wirewalk-orders.wirewalk-upload.workers.dev";
+  var SITE_KEY="0x4AAAAAAEuBwz8OpbI3bmtE";
+  var $=function(id){return document.getElementById(id)};
+  var esc=function(x){return String(x==null?"":x).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var token=null;
+
+  window.onloadTurnstileCallback=function(){
+    turnstile.render("#ts",{sitekey:SITE_KEY,callback:function(t){token=t;$("go").disabled=false;}});
+  };
+  var poll=setInterval(function(){
+    if(window.turnstile){clearInterval(poll);window.onloadTurnstileCallback();}
+  },300);
+  /* If the challenge never returns -- blocked, offline, a corporate proxy --
+     the button must not stay dead with no explanation. */
+  setTimeout(function(){
+    if(!token){ $("go").disabled=false;
+      $("ferr").textContent="The bot check has not loaded. You can still try; if it fails, use the contact form.";
+      $("ferr").classList.remove("hide"); }
+  },18000);
+
+  /* Sector patterns, fetched so the tick list is the real one and cannot drift
+     from what the industry pages say. */
+  $("sector").addEventListener("change",function(){
+    var s=$("sector").value;
+    if(!s){$("patwrap").classList.add("hide");return;}
+    fetch("/industries/"+s+"/").then(function(r){return r.ok?r.text():null}).then(function(html){
+      if(!html){$("patwrap").classList.add("hide");return;}
+      var d=document.createElement("div"); d.innerHTML=html;
+      var items=[].slice.call(d.querySelectorAll("ol.pat li")).slice(0,7);
+      if(!items.length){$("patwrap").classList.add("hide");return;}
+      $("pats").innerHTML=items.map(function(li,i){
+        var t=li.textContent.trim();
+        return '<label><input type="checkbox" value="'+esc(t)+'"><span>'+esc(t)+'</span></label>';
+      }).join("");
+      $("patwrap").classList.remove("hide");
+    }).catch(function(){$("patwrap").classList.add("hide")});
+  });
+
+  function money(n){return "$"+Math.round(n/100).toLocaleString("en-US")}
+
+  $("f").addEventListener("submit",function(e){
+    e.preventDefault();
+    $("ferr").classList.add("hide");
+    var payload={
+      token:token, sector:$("sector").value, units:Number($("units").value)||1,
+      size:$("size").value, role:$("role").value, trigger:$("trigger").value,
+      concern:$("concern").value,
+      recognised:[].slice.call(document.querySelectorAll("#pats input:checked")).map(function(c){return c.value})
+    };
+    $("form").classList.add("hide"); $("wait").classList.remove("hide");
+    var t0=Date.now();
+    var tick=setInterval(function(){$("el").textContent=Math.round((Date.now()-t0)/1000)+"s"},1000);
+
+    Promise.all([
+      fetch(PORTAL+"/api/proposal",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload)}).then(function(r){return r.json().then(function(b){return{ok:r.ok,b:b}})}),
+      fetch(ORDERS+"/quote",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({units:payload.units,sectors:1})})
+        .then(function(r){return r.ok?r.json():null}).catch(function(){return null})
+    ]).then(function(res){
+      clearInterval(tick);
+      var p=res[0], q=res[1];
+      $("wait").classList.add("hide");
+      if(!p.ok){
+        $("form").classList.remove("hide");
+        $("ferr").textContent=(p.b.error||"That did not work.")+
+          (p.b.proposalUrl?" There is a written proposal for your sector instead.":"");
+        $("ferr").classList.remove("hide");
+        if(p.b.proposalUrl) setTimeout(function(){location.href=p.b.proposalUrl},2500);
+        return;
+      }
+      render(p.b,q);
+    }).catch(function(){
+      clearInterval(tick); $("wait").classList.add("hide"); $("form").classList.remove("hide");
+      $("ferr").textContent="Could not reach us just now. Please try again, or email sales@wirewalk.com.";
+      $("ferr").classList.remove("hide");
+    });
+  });
+
+  function render(d,q){
+    var p=d.proposal, o=$("out");
+    var qh="";
+    if(q){
+      qh='<div class="qbox"><div class="qbig">'+esc(q.engagementTotalFormatted)+'</div>'+
+        '<div class="qsub">'+q.units+' operating unit'+(q.units===1?'':'s')+
+        (q.scaleSaving>0?' &mdash; '+esc(q.scaleSavingFormatted)+' below the flat rate':'')+
+        '</div><div class="qopts">'+
+        '<div class="qopt"><span>Purchase order, invoiced on terms</span><b>'+esc(q.options.po.totalFormatted)+'</b></div>'+
+        '<div class="qopt"><span>Deposit now, balance on delivery</span><b>'+esc(q.options.deposit.dueNowFormatted)+' now</b></div>'+
+        '<div class="qopt"><span>Pay in full by bank transfer</span><b>'+esc(q.options.fullAch.dueNowFormatted)+'</b></div>'+
+        '</div><p class="sub" style="margin-top:14px">Calculated by us, not written by the model.</p></div>';
+    }
+    o.innerHTML=
+      '<p class="crumb"><a href="/">The Operating Review</a> &rsaquo; '+
+        (d.industry?esc(d.industry.name):'Proposal')+'</p>'+
+      '<span class="eyebrow">'+(d.industry?esc(d.industry.name):'Proposal')+
+        ' &mdash; written for you</span>'+
+      '<h1>'+esc(p.headline)+'</h1>'+
+      '<p class="lede">'+esc(p.opening)+'</p>'+
+      '<h2>What we would go looking for</h2><ol>'+
+        p.looking_for.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ol>'+
+      '<h2>What we would want from you first</h2><ul>'+
+        p.first_asks.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>'+
+      (p.sequence&&p.sequence.length?'<h2>How it would run</h2><ol>'+
+        p.sequence.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ol>':'')+
+      (p.honest_note?'<div class="note"><b>What this would not tell you</b><p>'+
+        esc(p.honest_note)+'</p></div>':'')+
+      '<h2>What it costs</h2>'+qh+
+      '<div class="acts"><a class="btn" href="/order/#catalog">Commission it</a>'+
+      '<a class="btn g" href="/#contact">Talk it through first</a>'+
+      (d.industry?'<a class="btn g" href="/industries/'+esc(d.industry.slug)+'/">More on your sector</a>':'')+
+      '</div>'+
+      '<p class="sub" style="margin-top:16px">Drafted for you by a language model from your '+
+      'description and our own sector material, then checked. Every figure was calculated by '+
+      'us. Nothing above is a finding or a promise &mdash; it is what a review would look for. '+
+      'Reference '+esc(d.id)+'.</p>';
+    o.classList.remove("hide");
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+})();
+</script>
+</body></html>
