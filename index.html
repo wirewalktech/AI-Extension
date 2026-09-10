@@ -1158,7 +1158,12 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </p>
    </div>
    <div class="cta-c">
-    <form class="frm" action="https://formsubmit.co/sales@wirewalk.com" method="POST">
+    <!-- Posts to our own Worker, which RECORDS the enquiry before it mails it.
+         Previously this went straight to FormSubmit, whose activation is
+         per-domain and silent until done -- an unactivated form accepts the
+         submission, shows this visitor a thank-you page and delivers nothing.
+         Now the message survives whatever email does. -->
+    <form class="frm" action="https://wirewalk-portal.wirewalk-upload.workers.dev/api/enquiry" method="POST">
       <input type="hidden" name="_subject" value="Wirewalk — Scoping call request">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -1173,7 +1178,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     your procurement office can raise a PO against?
     <a class="ilink" href="/order/">Commission it directly</a> &mdash; prices, deposits and
     the purchase-order form are all there.</p>
-    <p class="small muted" style="margin-top:16px">We use your details to respond to your inquiry. FormSubmit processes this form for email delivery. We do not sell your details or operate a mailing list.</p>
+    <p class="small muted" style="margin-top:16px">We use your details to respond to your inquiry. Your message is stored on our own infrastructure and delivered to us by email. We do not sell your details or operate a mailing list.</p>
    </div>
   </div>
 </div></div></section>
