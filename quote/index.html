@@ -1,0 +1,745 @@
+---
+permalink: /quote/
+title: Quotation
+description: >-
+  A numbered quotation from Wirewalk AI, for attaching to a purchase
+  requisition.
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quotation — Wirewalk AI</title>
+<meta name="description" content="A numbered quotation from Wirewalk AI, for attaching to a purchase requisition.">
+<!-- Not a marketing page. Each quotation is addressed to one organisation and
+     reachable only with its token, so there is nothing here for an index. -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --ok:#1E7A4B; --bad:#A32B1C;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:40px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.back:hover{color:var(--ac)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(29px,5vw,40px);line-height:1.14;letter-spacing:-.024em;margin:0 0 16px;text-wrap:balance}
+h2{font-size:clamp(20px,2.7vw,25px);letter-spacing:-.016em;margin:52px 0 10px;text-wrap:balance}
+p{margin:0 0 15px}
+.lede{font-size:19.5px;line-height:1.55;color:var(--tx2);margin-bottom:26px}
+a.ilink{color:var(--ac2)}
+.sub{font-size:14.5px;color:var(--tx2)}
+
+/* ---- the document itself ------------------------------------------------
+   One bordered sheet, because it is printed and filed as a sheet. Everything
+   a procurement office needs to key a requisition is above the fold of it:
+   number, both parties, validity, total. */
+.doc{border:1px solid var(--ln);border-radius:11px;background:#fff;overflow:hidden;margin:0 0 26px}
+.doc .hd{background:var(--alt);border-bottom:1px solid var(--ln);padding:22px 24px;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.doc .hd h1{margin:0;font-size:clamp(24px,3.4vw,31px)}
+.docno{font:600 15px/1.5 var(--mono);color:var(--ac2);text-align:right}
+.docno span{display:block;font:500 12px/1.6 var(--sans);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--tx3)}
+.doc .bd{padding:22px 24px}
+
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  padding:0 0 20px;border-bottom:1px solid var(--ln);margin-bottom:20px}
+.meta div span{display:block;font:600 11px/1.6 var(--sans);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--tx3)}
+.meta div b{font-weight:600;font-size:15.5px;display:block}
+
+.parties{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 22px}
+.party{border:1px solid var(--ln);border-radius:9px;padding:15px 17px;background:var(--alt)}
+.party>b{display:block;font:600 11px/1 var(--mono);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ac2);margin-bottom:10px}
+.party .nm{font-weight:650;font-size:16.5px;display:block;margin-bottom:3px}
+.party p{margin:0;font-size:14.5px;line-height:1.55;color:var(--tx2)}
+
+.scope{margin:0 0 22px}
+.scope>b{display:block;font:600 11px/1 var(--mono);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ac2);margin-bottom:9px}
+.scope p{margin:0 0 9px;font-size:15.5px;line-height:1.6}
+.scope p:last-child{margin-bottom:0}
+
+.lt{width:100%;border-collapse:collapse;margin:0 0 4px;font-size:15.5px}
+.lt th{text-align:left;font:600 11px/1.6 var(--sans);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--tx3);border-bottom:1px solid var(--ln2);
+  padding:0 0 8px}
+.lt th.n,.lt td.n{text-align:right;white-space:nowrap}
+.lt td{padding:13px 0;border-bottom:1px solid var(--ln);vertical-align:top}
+.lt td.n{font-variant-numeric:tabular-nums}
+.lt td b{display:block;font-weight:600}
+.lt td i{display:block;font-style:normal;font-size:14px;color:var(--tx2);
+  line-height:1.5;margin-top:3px}
+/* Scope detail is free text an operator types, and a long unbreakable token in
+   it -- a URL, a system name -- sets the column's minimum width and pushes the
+   amount off the sheet. The amounts must never move for the prose. */
+.lt td b,.lt td i{overflow-wrap:anywhere}
+.lt tr.tot td{border-bottom:0;border-top:2px solid var(--tx);padding-top:14px;
+  font-weight:700;font-size:19px}
+.lt tr.sum td{border-bottom:0;padding:7px 0;color:var(--tx2);font-size:15px}
+.lt tr.sum td.n{color:var(--tx)}
+.lt tr.first-sum td{padding-top:13px}
+/* Belt and braces. `.doc` clips its overflow to keep its rounded corners, so a
+   table wider than the sheet is CUT OFF SILENTLY rather than scrolling -- which
+   is how the total, the one figure that matters, went missing on a phone while
+   every overflow check passed. Nothing may clip a fee. */
+.lt-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.qty-note{display:none}
+
+.terms{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--ln);
+  font-size:14.5px;color:var(--tx2)}
+.terms b{color:var(--tx)}
+
+/* Status. An expired quotation that still looks live is how a buyer raises a
+   PO against a fee that no longer stands. */
+.flag{border-left:3px solid var(--ac);background:var(--acs);border-radius:0 9px 9px 0;
+  padding:14px 18px;margin:0 0 22px}
+.flag b{display:block;margin-bottom:4px}
+.flag p{margin:0;font-size:15px;color:var(--tx2)}
+.flag.good{border-left-color:var(--ok);background:#EFF6F1}
+.flag.bad{border-left-color:var(--bad);background:#FBEDEB}
+
+.acts{display:flex;gap:11px;flex-wrap:wrap;margin:0 0 8px}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;background:var(--ac);color:#fff;
+     text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid var(--ac);cursor:pointer;
+     font-family:inherit}
+.btn:hover{background:var(--ac2)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn.g{background:transparent;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt)}
+
+fieldset{border:1px solid var(--ln);border-radius:11px;padding:18px 20px 6px;margin:0 0 18px;
+  background:var(--alt)}
+legend{font:600 12px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ac2);padding:0 8px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{margin:0 0 15px}
+.fld label{display:block;font-size:14.5px;font-weight:600;margin-bottom:6px}
+.fld label .h{font-weight:400;color:var(--tx3)}
+.fld input[type=text],.fld input[type=email]{width:100%;padding:11px 13px;font-size:16px;
+  font-family:inherit;color:var(--tx);background:#fff;border:1px solid var(--ln2);border-radius:8px}
+.fld input:focus{outline:2px solid var(--ac);outline-offset:1px;border-color:var(--ac)}
+.fld label.cb{font-weight:400;font-size:15px;display:flex;gap:9px;align-items:flex-start;line-height:1.5}
+.fld label.cb input{margin-top:4px;flex:0 0 auto}
+.msg{margin:12px 0 0;padding:13px 16px;border-radius:9px;font-size:15px;display:none}
+.msg.on{display:block}
+.msg.err{background:#FBEDEB;border-left:3px solid var(--bad)}
+.msg.wait{background:var(--alt2);border-left:3px solid var(--ln2);color:var(--tx2)}
+
+footer{margin-top:52px;border-top:1px solid var(--ln);padding:24px 0 50px;font-size:14px;color:var(--tx3)}
+footer a{color:var(--tx2)}
+.printonly{display:none}
+
+@media(max-width:700px){
+  .meta{grid-template-columns:1fr 1fr}
+  .parties{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+}
+/* On a narrow screen four money columns cannot fit, and squeezing them makes
+   the amount unreadable. Drop to Description + Amount and move the arithmetic
+   ("2 × $4,500.00") under the description, where it still reads as a sentence.
+   The pad cell on the summary rows goes too, or those rows would be one column
+   wider than the body. */
+@media(max-width:560px){
+  /* Scoped to tr.ln -- the LINE rows. Written as `tbody td.n:nth-child(2|3)`
+     it also matched the summary rows, whose three cells are pad / label /
+     value: it hid the word "Total" and the total itself, on every phone. */
+  .lt th.n:nth-child(2),.lt th.n:nth-child(3),
+  .lt tr.ln td.n:nth-child(2),.lt tr.ln td.n:nth-child(3){display:none}
+  .lt tr.sum td:first-child,.lt tr.tot td:first-child{display:none}
+  /* With the pad cell gone the label sits hard against the figure, and at
+     total weight they read as one word: "Total$19,950.00". */
+  .lt tr.sum td.n:nth-child(2),.lt tr.tot td.n:nth-child(2){padding-right:14px}
+  .qty-note{display:block}
+  .lt tr.tot td{font-size:17px}
+  /* Give the sheet's inner padding back to the table. At 320px the default
+     24px gutters left the amount column 20px outside the sheet, so the total
+     was only reachable by sideways-scrolling a table nobody expects to
+     scroll. */
+  .doc .bd{padding:18px 15px}
+  .doc .hd{padding:17px 15px}
+}
+/* The smallest phones still in use (320 CSS px). The amount column cannot wrap
+   -- a fee split over two lines is a misread fee -- so the type comes down
+   instead, by a point and a half, which is the difference between the total
+   landing on the sheet and hanging 5px off it. */
+@media(max-width:380px){
+  .lt{font-size:14px}
+  .lt tr.tot td{font-size:16px}
+  .lt tr.sum td{font-size:13.5px}
+  .lt th{font-size:10px;letter-spacing:.06em}
+}
+
+/* ---- print --------------------------------------------------------------
+   A procurement office prints this to PDF and attaches it to a requisition.
+   So: no site furniture, no accept form, black on white, and the quotation
+   number repeated at the top of the sheet in case it separates from its
+   covering email. Rows are kept off page breaks -- a line item split across
+   two pages is how a fee gets misread. */
+@media print{
+  @page{margin:16mm}
+  html,body{background:#fff;color:#000;font-size:10.5pt;line-height:1.5}
+  header.top,footer,.noprint{display:none!important}
+  .wrap{max-width:none;margin:0;padding:0}
+  .printonly{display:block}
+  .doc{border:0;border-radius:0;margin:0;background:#fff}
+  .doc .hd{background:#fff;border-bottom:1.5pt solid #000;padding:0 0 10pt;
+    margin-bottom:14pt}
+  .doc .bd{padding:0}
+  .doc .hd h1{font-size:20pt}
+  .docno{font-size:11pt;color:#000}
+  /* Letter minus 16mm margins is ~695 CSS px, which trips the 700px mobile
+     breakpoint above and stacks the parties one under the other on paper. A
+     quotation is read as two columns -- supplier on the left, buyer on the
+     right -- so put them back. This block is later in the sheet, so it wins. */
+  .meta{grid-template-columns:repeat(4,1fr);gap:10pt}
+  .parties{grid-template-columns:1fr 1fr;gap:10pt}
+  .meta div b{font-size:10.5pt}
+  /* Accent orange prints as pale grey on a mono printer. */
+  .eyebrow{color:#000}
+  .party,fieldset{background:#fff;border-color:#999}
+  .party>b,.scope>b,.docno span,.meta div span,.lt th{color:#000}
+  .flag{background:#fff;border:1pt solid #000;border-radius:0;padding:8pt 10pt}
+  .lt{font-size:10pt}
+  .lt td{padding:8pt 0}
+  .lt tr{page-break-inside:avoid}
+  .lt tr.tot td{font-size:13pt}
+  .parties,.scope,.meta{page-break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span> Wirewalk <s>AI</s></a>
+  <a class="back" href="/order/">Ordering</a>
+</div></header>
+
+<div class="wrap">
+
+  <!-- Repeated on the printed sheet only, so a page that gets separated from
+       its covering email still identifies itself. -->
+  <p class="printonly" id="printhead" style="font:600 9pt/1.4 monospace;margin:0 0 10pt"></p>
+
+  <div id="stage">
+    <p class="sub" id="loading">Retrieving the quotation&hellip;</p>
+  </div>
+
+</div>
+
+<footer class="noprint"><div class="wrap">
+  <p>Wirewalk AI &middot; <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a>
+  &middot; <a href="tel:+15162691517">516-269-1517</a></p>
+  <p style="margin-top:8px">Quotations are issued to the organisation named on them.
+  Ordering terms are at <a href="/terms/">ai.wirewalk.com/terms</a>.</p>
+</div></footer>
+
+<script>
+/* The quotation is FETCHED, never written into this page.
+ *
+ * THE ONE RULE, from the buyer's side: this page cannot state a fee of its
+ * own. Every figure below arrives from /quote/view, which reads the row the
+ * admin created and computed once. Nothing here adds, discounts or totals
+ * anything, and the acceptance POST carries no amount at all -- so there is no
+ * edit a devtools user can make to this document that changes what they are
+ * accepting.
+ *
+ * It also means a quotation cannot be published to a public repository by
+ * accident: the buyer's name, address and fee live in D1, not in this HTML. */
+const ORDERS  = "https://wirewalk-orders.wirewalk-upload.workers.dev";
+const ENQUIRY = "https://wirewalk-portal.wirewalk-upload.workers.dev/api/enquiry";
+
+const stage = document.getElementById("stage");
+const token = new URLSearchParams(location.search).get("q") || "";
+
+/* Built with textContent throughout. The scope and address are typed by an
+   operator, not a visitor, but a quotation is not the place to find out that
+   an em-dash in an organisation's name was pasted as markup. */
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined && text !== null) n.textContent = text;
+  return n;
+}
+/** Multi-line free text -> real line breaks, without innerHTML. */
+function lines(node, text) {
+  String(text || "").split(/\r?\n/).forEach((ln, i) => {
+    if (i) node.appendChild(document.createElement("br"));
+    node.appendChild(document.createTextNode(ln));
+  });
+  return node;
+}
+function paras(node, text) {
+  String(text || "").split(/\n{2,}/).filter(s => s.trim())
+    .forEach(p => node.appendChild(lines(el("p"), p.trim())));
+  return node;
+}
+const day = iso => {
+  const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso + "T12:00:00Z" : iso);
+  return isNaN(d) ? String(iso) : d.toLocaleDateString("en-US",
+    { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+};
+
+function panel(head, body, extra) {
+  stage.textContent = "";
+  const d = el("div", "doc");
+  const hd = el("div", "hd"); hd.appendChild(el("h1", null, head));
+  d.appendChild(hd);
+  const bd = el("div", "bd"); paras(bd, body);
+  if (extra) bd.appendChild(extra);
+  d.appendChild(bd);
+  stage.appendChild(d);
+}
+
+function orderLink(label, cls) {
+  const a = el("a", "btn" + (cls ? " " + cls : ""), label || "Go to the ordering page");
+  a.href = "/order/";
+  const wrapper = el("div", "acts noprint");
+  wrapper.appendChild(a);
+  return wrapper;
+}
+
+if (!token) {
+  panel("Quotation",
+    "This page shows one quotation, and it needs the link that was sent with it. " +
+    "That link ends in a reference of its own — it is not the quotation number.\n\n" +
+    "If you have the number but not the link, write to sales@wirewalk.com and it will " +
+    "be re-sent the same working day.",
+    orderLink("See what can be commissioned"));
+} else {
+  load();
+}
+
+async function load() {
+  let data;
+  try {
+    const r = await fetch(ORDERS + "/quote/view?q=" + encodeURIComponent(token),
+                          { headers: { Accept: "application/json" } });
+    data = await r.json();
+    if (!r.ok || !data.ok) {
+      /* 404 covers both "no such quotation" and a malformed token, on purpose:
+         telling a stranger which of the two it was turns the token into an
+         oracle they can probe. */
+      panel("Quotation not found",
+        "This link does not match a quotation we hold. It may have been mistyped, " +
+        "or truncated by an email client that broke the line.\n\n" +
+        "Write to sales@wirewalk.com quoting the number on your copy and a fresh " +
+        "link comes back the same working day.",
+        orderLink());
+      return;
+    }
+  } catch (err) {
+    /* Never render a document we did not receive. */
+    panel("Could not retrieve the quotation",
+      "The connection failed before the quotation could be read. Reload the page; " +
+      "if it keeps failing, write to sales@wirewalk.com and we will send a PDF.",
+      orderLink());
+    return;
+  }
+  render(data.quote);
+}
+
+function render(q) {
+  document.title = q.number + " — Quotation — Wirewalk AI";
+  document.getElementById("printhead").textContent =
+    q.number + "  ·  " + q.seller.name + "  ·  " + q.seller.site;
+
+  stage.textContent = "";
+
+  const doc = el("div", "doc");
+
+  // ---- head: what it is, and its number -------------------------------
+  const hd = el("div", "hd");
+  const left = el("div");
+  left.appendChild(el("span", "eyebrow", "Quotation"));
+  left.appendChild(el("h1", null, q.title || "Quotation"));
+  hd.appendChild(left);
+  const no = el("div", "docno");
+  no.appendChild(el("span", null, "Reference"));
+  no.appendChild(document.createTextNode(q.number));
+  hd.appendChild(no);
+  doc.appendChild(hd);
+
+  const bd = el("div", "bd");
+
+  // ---- status ---------------------------------------------------------
+  if (q.expired) {
+    const f = el("div", "flag bad");
+    f.appendChild(el("b", null, "This quotation has lapsed."));
+    f.appendChild(el("p", null,
+      "It was valid until " + day(q.validUntil) + " and can no longer be accepted. " +
+      "Fees may have changed. Write to " + q.seller.email + " quoting " + q.number +
+      " and a current one will be issued."));
+    bd.appendChild(f);
+  } else if (q.accepted) {
+    const f = el("div", "flag good");
+    f.appendChild(el("b", null, "Accepted" + (q.acceptedAt ? " on " + day(q.acceptedAt) : "") + "."));
+    f.appendChild(el("p", null,
+      (q.acceptedBy ? "Accepted by " + q.acceptedBy + ". " : "") +
+      (q.acceptedPo ? "Purchase order " + q.acceptedPo + ". " : "") +
+      "This copy is retained as the record of what was agreed."));
+    bd.appendChild(f);
+  }
+
+  // ---- the four things a requisition needs ----------------------------
+  const meta = el("div", "meta");
+  const cell = (label, value) => {
+    const d = el("div");
+    d.appendChild(el("span", null, label));
+    d.appendChild(el("b", null, value));
+    meta.appendChild(d);
+  };
+  cell("Quotation no.", q.number);
+  cell("Date issued", day(q.createdAt));
+  cell("Valid until", day(q.validUntil));
+  cell("Your reference", q.buyer.reference || "—");
+  bd.appendChild(meta);
+
+  // ---- both parties ---------------------------------------------------
+  const parties = el("div", "parties");
+
+  const from = el("div", "party");
+  from.appendChild(el("b", null, "From"));
+  from.appendChild(el("span", "nm", q.seller.name));
+  const fp = el("p");
+  lines(fp, q.seller.line + "\n" + q.seller.site + "\n" +
+            q.seller.email + "\n" + q.seller.phone);
+  from.appendChild(fp);
+  if (q.seller.note) {
+    const n = el("p", null, q.seller.note);
+    n.style.marginTop = "8px";
+    from.appendChild(n);
+  }
+  parties.appendChild(from);
+
+  const to = el("div", "party");
+  to.appendChild(el("b", null, "Quotation for"));
+  to.appendChild(el("span", "nm", q.buyer.organisation));
+  const tp = el("p");
+  const bits = [];
+  if (q.buyer.contact) bits.push(q.buyer.contact);
+  if (q.buyer.address) bits.push(q.buyer.address);
+  if (q.buyer.email) bits.push(q.buyer.email);
+  lines(tp, bits.join("\n"));
+  to.appendChild(tp);
+  parties.appendChild(to);
+  bd.appendChild(parties);
+
+  // ---- scope ----------------------------------------------------------
+  if (q.scope) {
+    const s = el("div", "scope");
+    s.appendChild(el("b", null, "Scope of the engagement"));
+    paras(s, q.scope);
+    bd.appendChild(s);
+  }
+
+  // ---- the money, all of it read back from the stored record ----------
+  const t = el("table", "lt");
+  const thead = el("thead");
+  const hr = el("tr");
+  [["Description", ""], ["Qty", "n"], ["Unit", "n"], ["Amount", "n"]]
+    .forEach(([label, cls]) => hr.appendChild(el("th", cls, label)));
+  thead.appendChild(hr); t.appendChild(thead);
+
+  const tb = el("tbody");
+  q.lines.forEach(l => {
+    const tr = el("tr", "ln");   // marks a LINE row; the narrow-width CSS
+                                 // drops columns on these and only these
+    const d = el("td");
+    d.appendChild(el("b", null, l.description));
+    if (l.detail) d.appendChild(lines(el("i"), l.detail));
+    /* Shown only where the Qty and Unit columns have been dropped for width.
+       The unit price is part of the offer and must not vanish with them. */
+    d.appendChild(el("i", "qty-note", l.qty + " × " + l.unitFormatted));
+    tr.appendChild(d);
+    tr.appendChild(el("td", "n", String(l.qty)));
+    tr.appendChild(el("td", "n", l.unitFormatted));
+    tr.appendChild(el("td", "n", l.amountFormatted));
+    tb.appendChild(tr);
+  });
+
+  const sumRow = (label, value, cls) => {
+    const tr = el("tr", "sum" + (cls ? " " + cls : ""));
+    const pad = el("td"); pad.colSpan = 2; tr.appendChild(pad);
+    tr.appendChild(el("td", "n", label));
+    tr.appendChild(el("td", "n", value));
+    tb.appendChild(tr);
+  };
+  sumRow("Subtotal", q.subtotalFormatted, "first-sum");
+  if (q.discount) sumRow(q.discount.label, "−" + q.discount.amountFormatted);
+
+  const tot = el("tr", "tot");
+  const pad = el("td"); pad.colSpan = 2; tot.appendChild(pad);
+  tot.appendChild(el("td", "n", "Total"));
+  tot.appendChild(el("td", "n", q.totalFormatted));
+  tb.appendChild(tot);
+  t.appendChild(tb);
+  const tw = el("div", "lt-wrap");
+  tw.appendChild(t);
+  bd.appendChild(tw);
+
+  // ---- terms ----------------------------------------------------------
+  const terms = el("div", "terms");
+  terms.appendChild(el("b", null, "Payment terms. "));
+  terms.appendChild(document.createTextNode(q.terms));
+  const t2 = el("p");
+  t2.style.margin = "10px 0 0";
+  t2.appendChild(document.createTextNode(
+    "This quotation is an offer to supply the scope described above at the fee " +
+    "stated, and stands until " + day(q.validUntil) + ". A purchase order raised " +
+    "against it becomes a binding contract when Wirewalk issues written acceptance " +
+    "naming the scope, the fee and the start date. Where a purchase order's " +
+    "pre-printed terms conflict with that acceptance, the acceptance governs. " +
+    "The full ordering terms are at "));
+  const ta = el("a", null, "ai.wirewalk.com/terms");
+  ta.href = "/terms/";
+  t2.appendChild(ta);
+  t2.appendChild(document.createTextNode("."));
+  terms.appendChild(t2);
+  bd.appendChild(terms);
+
+  doc.appendChild(bd);
+  stage.appendChild(doc);
+
+  // ---- print / accept -------------------------------------------------
+  const acts = el("div", "acts noprint");
+  const pr = el("button", "btn g", "Print or save as PDF");
+  pr.type = "button";
+  pr.addEventListener("click", () => window.print());
+  acts.appendChild(pr);
+  stage.appendChild(acts);
+
+  if (!q.expired && !q.accepted) stage.appendChild(acceptSection(q));
+  else stage.appendChild(closingNote(q));
+}
+
+function closingNote(q) {
+  const p = el("p", "sub noprint");
+  p.style.marginTop = "6px";
+  p.textContent = q.expired
+    ? "Write to " + q.seller.email + " quoting " + q.number + " for a current quotation."
+    : "Anything to change? Write to " + q.seller.email + " quoting " + q.number + ".";
+  return p;
+}
+
+/**
+ * Acceptance.
+ *
+ * Two things happen, in this order, and the order matters:
+ *
+ *   1. The acceptance is RECORDED against the quotation in the database. That
+ *      is what makes "accepted" a fact rather than an email somebody
+ *      remembers, and it is where the fee being accepted comes from -- the
+ *      stored one. This request carries a name, a title, an email and a PO
+ *      number, and no figure of any kind.
+ *
+ *   2. The form is then submitted to the SAME purchase-order intake the
+ *      ordering page posts to, carrying the quotation number and everything
+ *      already known about the buyer. That is the point of the exercise: a
+ *      quotation becomes an order without anybody retyping an organisation
+ *      name into a second form.
+ *
+ * If step 1 refuses -- the quotation lapsed between loading this page and
+ * pressing the button -- the buyer is told and nothing is submitted. If step 1
+ * merely fails to reach us, the order still goes through with a flag on it
+ * saying so: blocking a buyer who is trying to give us work, because our own
+ * telemetry hiccuped, would be the wrong failure.
+ */
+function acceptSection(q) {
+  const box = el("div", "noprint");
+  box.appendChild(el("h2", null, "Accept this quotation"));
+  const intro = el("p", "sub");
+  intro.textContent =
+    "This records your acceptance of " + q.number + " at " + q.totalFormatted +
+    " and hands it to the purchase-order intake with everything above already " +
+    "filled in. You will not be asked to retype any of it, and nothing is charged here.";
+  box.appendChild(intro);
+
+  const f = el("form");
+  f.action = ENQUIRY;        // the existing ordering intake, unchanged
+  f.method = "POST";
+  f.setAttribute("novalidate", "");   // we validate, then submit natively
+
+  /* Control fields for the intake. Underscore-prefixed keys are its own
+     configuration and are stripped from the recorded message. */
+  const hidden = {
+    _subject: "Wirewalk AI — Quotation " + q.number + " accepted",
+    _template: "table",
+    _captcha: "false",
+    _next: "https://ai.wirewalk.com/order/received/",
+    "Quotation": q.number,
+    "Organisation": q.buyer.organisation,
+    "Engagement": q.title || "As quoted",
+    "Quotation reference": q.buyer.reference || "",
+    /* Deliberately NOT the fee. The authoritative figure lives on the quote
+       record under this number; putting a number into a hidden field would be
+       the one place on this page a browser could state one. */
+    "Fee": "As recorded against quotation " + q.number,
+    "Acceptance recorded": "pending",
+  };
+  for (const [k, v] of Object.entries(hidden)) {
+    const i = document.createElement("input");
+    i.type = "hidden"; i.name = k; i.value = v;
+    f.appendChild(i);
+  }
+  const honey = document.createElement("input");
+  honey.type = "text"; honey.name = "_honey"; honey.tabIndex = -1;
+  honey.autocomplete = "off"; honey.setAttribute("aria-hidden", "true");
+  honey.style.cssText = "position:absolute;left:-9999px;width:1px;height:1px;opacity:0";
+  f.appendChild(honey);
+
+  const fs = el("fieldset");
+  fs.appendChild(el("legend", null, "Who is accepting"));
+
+  /* Every field carries a real name. A field without one is dropped silently
+     and nobody notices until somebody asks why the email was blank. `name`
+     and `email` are the keys the intake files into its own columns. */
+  const field = (id, label, hint, type, name, value, required) => {
+    const d = el("div", "fld");
+    const l = el("label", null, label);
+    l.htmlFor = id;
+    if (hint) { const h = el("span", "h", " — " + hint); l.appendChild(h); }
+    d.appendChild(l);
+    const i = document.createElement("input");
+    i.type = type; i.id = id; i.name = name; i.value = value || "";
+    if (required) i.required = true;
+    if (type === "email") i.autocomplete = "email";
+    d.appendChild(i);
+    return d;
+  };
+
+  const r1 = el("div", "row");
+  r1.appendChild(field("ac-name", "Your name", null, "text", "name",
+                       q.buyer.contact ? q.buyer.contact.split(",")[0].trim() : "", true));
+  r1.appendChild(field("ac-title", "Job title", "for the acceptance record", "text",
+                       "Job title", "", false));
+  fs.appendChild(r1);
+
+  const r2 = el("div", "row");
+  r2.appendChild(field("ac-email", "Your email", null, "email", "email",
+                       q.buyer.email || "", true));
+  r2.appendChild(field("ac-po", "Purchase order number", "if already raised", "text",
+                       "PO number", "", false));
+  fs.appendChild(r2);
+
+  const agree = el("div", "fld");
+  const al = el("label", "cb");
+  al.htmlFor = "ac-agree";
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.id = "ac-agree"; cb.name = "Accepted ordering terms";
+  cb.value = "Yes"; cb.required = true;
+  al.appendChild(cb);
+  /* All of the wording goes in ONE flex child. Appended straight to the label
+     it became three -- and the box, the sentence and the link laid themselves
+     out as three columns, stranding the link and its full stop on the right. */
+  const words = el("span");
+  words.appendChild(document.createTextNode(
+    "I am authorised to accept this quotation on behalf of " +
+    q.buyer.organisation + ", and have read the "));
+  const tl = el("a", null, "ordering terms");
+  tl.href = "/terms/"; tl.target = "_blank"; tl.rel = "noopener";
+  words.appendChild(tl);
+  words.appendChild(document.createTextNode("."));
+  al.appendChild(words);
+  agree.appendChild(al);
+  fs.appendChild(agree);
+  f.appendChild(fs);
+
+  const go = el("button", "btn", "Accept " + q.number + " and raise the order");
+  go.type = "submit";
+  f.appendChild(go);
+
+  const msg = el("div", "msg");
+  f.appendChild(msg);
+
+  const say = (text, kind) => {
+    msg.textContent = text;
+    msg.className = "msg on " + kind;
+  };
+
+  let sending = false;
+  f.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    if (sending) return;
+
+    const name = f.elements["name"].value.trim();
+    const email = f.elements["email"].value.trim();
+    if (!name) return say("Please give the name of the person accepting.", "err");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
+      return say("Please give a valid email address for the acceptance record.", "err");
+    if (!cb.checked) return say("Please confirm you are authorised to accept this quotation.", "err");
+
+    sending = true;
+    go.disabled = true;
+    say("Recording your acceptance…", "wait");
+
+    let recorded = false, refusal = null;
+    try {
+      const r = await fetch(ORDERS + "/quote/accept", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          q: token, name: name, email: email,
+          title: f.elements["Job title"].value.trim(),
+          poNumber: f.elements["PO number"].value.trim(),
+        }),
+      });
+      const out = await r.json().catch(() => ({}));
+      if (r.ok && out.ok) recorded = true;
+      /* A refusal is a real answer and must stop the order: 409 means the
+         quotation lapsed between this page loading and the button being
+         pressed, and the fee on screen is no longer the fee. */
+      else if (r.status === 409 || r.status === 404 || r.status === 400)
+        refusal = out.error || "This quotation can no longer be accepted.";
+    } catch (err) {
+      /* Reached nothing. Not a refusal -- fall through and place the order. */
+    }
+
+    if (refusal) {
+      sending = false;
+      go.disabled = false;
+      return say(refusal, "err");
+    }
+
+    f.elements["Acceptance recorded"].value =
+      recorded ? "yes" : "no — record manually against " + q.number;
+    say("Accepted. Sending it to the ordering desk…", "wait");
+    /* Native submit: the intake's own 303 carries the buyer to the existing
+       confirmation page, and it is the intake -- not this script -- that
+       decides whether the order was recorded. Nothing here renders success. */
+    HTMLFormElement.prototype.submit.call(f);
+  });
+
+  box.appendChild(f);
+
+  const after = el("p", "sub");
+  after.style.marginTop = "-4px";
+  after.textContent =
+    "Prefer to send a purchase order document instead? The intake form, W-9 and " +
+    "certificate of insurance are on the ordering page — quote " + q.number + " on it.";
+  box.appendChild(after);
+  /* Secondary. Accepting is the action on this page; the ordering page is the
+     way round it, and two solid buttons would give them equal weight. */
+  box.appendChild(orderLink("Open the ordering page", "g"));
+
+  return box;
+}
+</script>
+</body></html>
