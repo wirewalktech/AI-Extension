@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wirewalk AI — The Operating Review</title>
-<meta name="description" content="The Operating Review: revenue optimization and risk detection across finance, IT, compliance, contracts, people, marketing and sales. Three lenses — leakage, drag and exposure — across the full operating system, not one department. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits ins own vocabulary.">
+<meta name="description" content="The obvious problems already have owners. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits ins own vocabulary.">
 <style>
 :root{
   --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
@@ -469,7 +469,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 #mega a.m i{font-style:normal;font:500 11px/1 var(--mono);color:var(--ac);margin-right:7px}
 @media(max-width:1040px){#mega{display:none}}
 
-/* ── AI module: three lenses ── */
+/* ── the three losses, led by the sentence a reader has already said ── */
 .lens{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);
  border:1px solid var(--ln);border-radius:12px;overflow:hidden;
  /* Four named rows shared by all three cards, so the label, the heading, the
@@ -511,6 +511,10 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .cmp ul{list-style:none;margin:0;padding:0}
 .cmp li{font-size:15.5px;color:var(--tx2);padding:9px 0;border-bottom:1px solid var(--ln);line-height:1.5}
 .cmp li:last-child{border-bottom:0}
+.cmp p.aip{font-size:14.5px;line-height:1.55;color:var(--tx2);margin:0 0 14px;
+  padding-bottom:14px;border-bottom:1px solid var(--ln)}
+.cmp li b{color:var(--tx);font-weight:650}
+@media(max-width:820px){.cmp{grid-template-columns:1fr}}
 .cmp>div:first-child li{color:var(--tx2)}
 @media(max-width:820px){.cmp{grid-template-columns:1fr}}
 
@@ -600,11 +604,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
            portal is not prospect navigation at all and is reached from the
            link we email, so it sits in the footer. tools/check-layout.mjs
            fails the build if anything in here collides again. -->
-      <a href="#lenses" data-sec="lenses">Three lenses</a>
+      <a href="#lenses" data-sec="lenses">What we find</a>
       <a href="#coverage" data-sec="coverage handling checkable">Method</a>
       <a href="#phase1" data-sec="phase1 phase2 people">Phases</a>
       <a href="#industries" data-sec="industries">Industries</a>
-      <a href="#ai-policy" data-sec="ai-policy compliance credentials">AI &amp; compliance</a>
+      <a href="#ai-policy" data-sec="ai-policy compliance credentials">AI adoption</a>
       <a href="/order/">Ordering</a>
     </nav>
   </div>
@@ -667,13 +671,17 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 <section class="sec" id="lenses"><div class="wrap">
   <div class="sh-split">
     <div><span class="eyebrow">What we look for</span>
-      <h2>Three lenses on the same operation.</h2></div>
-    <p>Every operation loses money in three ways at once, and most reviews are commissioned to look at one of them. The lenses are the same in every sector. What changes is what each is called and where it hides &mdash; which is why there is <a class="ilink" href="/industries/">a page for your industry</a> rather than one page that asks you to translate.</p>
+      <h2>You have probably said one of these out loud.</h2></div>
+    <p>Every operation loses money in three ways at once, and most reviews are
+    commissioned to look at one of them. What each one is called and where it hides
+    changes by sector, which is why there is
+    <a class="ilink" href="/industries/">a page for your industry</a> rather than one page
+    asking you to translate.</p>
   </div>
   <div class="lens" data-rv>
     <div>
       <span class="lb">01 <i>&mdash;</i> LEAKAGE</span>
-      <h3>Money leaving that shouldn&rsquo;t</h3>
+      <h3>&ldquo;Revenue is up. Somehow the cash isn&rsquo;t.&rdquo;</h3>
       <ul>
         <li>Billing, collection, AR/AP and write-offs</li>
         <li>Vendor overpayment and duplicate services</li>
@@ -686,7 +694,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </div>
     <div>
       <span class="lb">02 <i>&mdash;</i> DRAG</span>
-      <h3>Capacity spent on work that shouldn&rsquo;t exist</h3>
+      <h3>&ldquo;We are busier than ever and it isn&rsquo;t reaching the bottom line.&rdquo;</h3>
       <ul>
         <li>Reconciliation, rekeying and approval queues</li>
         <li>Rework loops, and what causes them upstream</li>
@@ -699,7 +707,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </div>
     <div>
       <span class="lb">03 <i>&mdash;</i> EXPOSURE</span>
-      <h3>Risk nobody has priced</h3>
+      <h3>&ldquo;The audit found something nobody knew was there.&rdquo;</h3>
       <ul>
         <li>Compliance and regulatory stance</li>
         <li>Legal and contractual exposure</li>
@@ -711,7 +719,10 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
         everything.</span></div>
     </div>
   </div>
-  <p class="rl"><b>What the review finds is what the review finds.</b> Nothing above is a result we are claiming; it is where we look. We write down what we expect to find <a class="ilink" href="#checkable">before fieldwork</a>, so afterwards you can check us against it rather than take our word for what was always going to be in there.</p>
+  <p class="rl"><b>What the review finds is what the review finds.</b> Nothing above is a
+  result we are claiming; it is where we look. We write down what we expect to find
+  <a class="ilink" href="#checkable">before fieldwork</a>, so afterwards you can check us
+  against it rather than take our word for what was always going to be in there.</p>
 </div></section>
 
 <section class="sec" id="handling"><div class="wrap">
@@ -856,44 +867,60 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 <section class="sec" id="ai-policy"><div class="wrap">
   <div class="sh-split">
-    <div><span class="eyebrow">AI in your operation</span>
-      <h2>It is already in your building. The question is whether you can say where.</h2></div>
-    <p>Sometime in the last two years your people started using AI tools. Nobody
-    authorised it and nobody stopped it, because nobody knew &mdash; these arrived through
-    a browser tab rather than through procurement. That is not a discipline problem. It is
-    what happens when something genuinely useful is one click away and free.</p>
+    <div><span class="eyebrow">AI</span>
+      <h2>Two separate jobs. Most people need one of them.</h2></div>
+    <p>Deciding what your organisation is allowed to do with AI, and working out where it
+    would actually earn its keep, are different pieces of work for different reasons. They
+    are priced and delivered separately, and taking one does not commit you to the other
+    &mdash; a firm with a client asking hard questions needs the first and may never want
+    the second.</p>
   </div>
-  <div class="g3 g4" data-rv>
-    <div><span class="n">Find</span><h4>What is actually in use</h4>
-      <p>An inventory built from what the network and the expense claims show, not from a
-      survey asking people to confess. Which tools, which teams, how often, and which of
-      them anyone is paying for.</p></div>
-    <div><span class="n">Trace</span><h4>Where the data went</h4>
-      <p>A client file in a consumer account is a different exposure from the same file in
-      an account with a processing agreement and zero retention. Both look identical from
-      the outside. Only one of them is defensible.</p></div>
-    <div><span class="n">Check</span><h4>What you already promised</h4>
-      <p>Client contracts, confidentiality terms, insurance renewals and sector rules
-      increasingly say something about AI. Most were signed or renewed before anybody
-      thought to ask, and almost nobody has read them back.</p></div>
-    <div><span class="n">Fix</span><h4>A policy people will actually follow</h4>
-      <p>One that bans everything is ignored by the second week, and then you have the same
-      exposure plus a document saying you knew. One that names approved tools and makes the
-      safe route the easy route gets used.</p></div>
+
+  <div class="cmp" data-rv>
+    <div>
+      <h4>ONE &mdash; THE POLICY</h4>
+      <p class="aip">For when somebody is going to ask what you allow, and you need an
+      answer you can stand behind.</p>
+      <ul>
+        <li><b>What is already in use.</b> An inventory from what the network and the
+          expense claims show, not a survey asking people to confess.</li>
+        <li><b>A policy people will follow.</b> Written to permit rather than forbid:
+          named tools, what may go into each, what must never, who signs an exception.
+          A ban is ignored by the second week and leaves you the same exposure plus a
+          document saying you knew.</li>
+        <li><b>The evidence behind it.</b> Processing agreements, retention terms,
+          approvals and an audit trail &mdash; so the answer exists before a client, an
+          insurer or a regulator asks.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>TWO &mdash; PUTTING IT TO WORK</h4>
+      <p class="aip">For when you want the productivity and have nobody who can tell you
+      where it is real.</p>
+      <ul>
+        <li><b>Where it would actually earn.</b> Which work in your operation is genuinely
+          worth automating, judged against how the business runs rather than against what
+          is currently fashionable.</li>
+        <li><b>Buy, build or neither.</b> What a tool costs to run at your volume, what it
+          would cost to build, and which of the obvious applications will not repay the
+          effort. Often the honest answer is the third one.</li>
+        <li><b>Delivered so it survives you.</b> Documented, owned by your people, and not
+          dependent on us or on a vendor you cannot leave.</li>
+      </ul>
+    </div>
   </div>
-  <p class="rl"><b>This is not about stopping anyone using AI.</b> The productivity is real
-  and your competitors are getting it. It is about being able to answer plainly when a
-  client asks whether their material has been through a model, when an insurer asks at
-  renewal, or when a regulator asks at the worst possible moment &mdash; and to have the
-  answer be yes, here is the policy, here are the approved tools, here is the agreement
-  with the provider, and here is who signed off. That answer is worth having before
-  somebody asks for it.</p>
-  <p class="rl" style="margin-top:1px"><b>Your sector already has a view on this.</b> A law
-  firm has bar guidance on client confidences. A defence supplier has controlled technical
-  data that must not reach a public model at all. A practice has patient records and a
-  business associate agreement that never contemplated any of this. The general advice is
-  the same everywhere; what makes it usable is knowing which rules are yours &mdash; which
-  is what <a class="ilink" href="/industries/">the industry pages</a> are for.</p>
+
+  <p class="rl"><b>They connect, but only if you want them to.</b> Knowing which of your
+  work a model is good at is an operating question, answered by reading how the business
+  actually runs &mdash; which is what the rest of this page is about. If a review is
+  already happening, this costs very little extra. If it is not, either job stands
+  perfectly well on its own.</p>
+  <p class="rl" style="margin-top:1px"><b>Your sector already has a view.</b> A law firm
+  has bar guidance on client confidences. A defence supplier has controlled technical data
+  that must not reach a public model at all. A practice has patient records and a business
+  associate agreement written before any of this existed. What makes general advice usable
+  is knowing which rules are yours, which is what
+  <a class="ilink" href="/industries/">the industry pages</a> are for.</p>
 </div></section>
 
 <section class="sec tint" id="compliance"><div class="wrap">
@@ -1204,7 +1231,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <p class="small" style="max-width:36ch">The Operating Review. Revenue optimization and risk detection across finance, IT, compliance, contracts, sales and delivery &mdash; read in your sector&rsquo;s own vocabulary.</p>
     </div>
     <div><h5>The review</h5>
-      <a href="#lenses">Three lenses</a><a href="#coverage">Method</a>
+      <a href="#lenses">What we find</a><a href="#coverage">Method</a>
       <a href="#phase1">Phase one</a><a href="#phase2">Phase two</a><a href="#next">Next step</a>
       <a href="/writing/">Notes</a></div>
     <div><h5>Industries</h5>
