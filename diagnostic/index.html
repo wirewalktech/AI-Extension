@@ -63,6 +63,17 @@ a.ilink{color:var(--ac2)}
 .btn:hover{background:var(--ac2)}
 .btn.g{background:transparent;color:var(--tx);border-color:var(--ln2)}
 .sub{font-size:14.5px;color:var(--tx2)}
+.plain{border:1px solid var(--ln);border-radius:11px;background:var(--alt);
+  padding:20px 22px;margin:8px 0 0}
+.plain>b{display:block;font:600 12px/1 var(--mono);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ac2);margin-bottom:14px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pair span{display:block;font-weight:650;font-size:16px;margin-bottom:5px}
+.pair p{margin:0;font-size:15px;line-height:1.55;color:var(--tx2)}
+.pair p b{color:var(--tx)}
+.pn{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--ln);font-size:14.5px;
+  color:var(--tx2)}
+@media(max-width:640px){.pair{grid-template-columns:1fr;gap:16px}}
 footer{margin-top:66px;border-top:1px solid var(--ln);padding:24px 0 50px;font-size:14px;color:var(--tx3)}
 footer a{color:var(--tx2)}
 </style></head><body>
@@ -81,6 +92,20 @@ footer a{color:var(--tx2)}
   interviewed, and a written answer in about two weeks telling you where the money is
   concentrated and whether it is worth going after.</p>
 
+  <div class="plain">
+    <b>In plain terms</b>
+    <div class="pair">
+      <div><span>The diagnostic</span><p>Finds out <b>whether and where</b> you have a
+        problem. It reads your summaries &mdash; the lists and totals you already produce
+        &mdash; and tells you which areas look wrong.</p></div>
+      <div><span>The review</span><p>Finds out <b>what the problem is and what it costs
+        you</b>. It goes into the underlying records, contracts and people, and puts a
+        number and a cause against each finding.</p></div>
+    </div>
+    <p class="pn">You can commission the review directly if you already know where the
+    problem is. Most people do not, which is what the first one is for.</p>
+  </div>
+
   <h2>What we ask you for</h2>
   <p>Every organisation keeps the same handful of registers, whatever it actually does. A
   law firm calls one of them a matter list and a manufacturer calls it a job list, but they
@@ -91,17 +116,22 @@ footer a{color:var(--tx2)}
     <div class="hd"><b>Around thirty requests.</b> Registers, ageings and summaries.
       Nothing here requires a decision, a redaction or a meeting.</div>
     <ol>
-      <li><b>Trial balance and monthly profit and loss</b>
-        <span>For the period under review, so we can see the shape before the detail.</span></li>
+      <li><b>Trial balance, and your monthly results as you report them</b>
+        <span>A profit and loss for most organisations; a statement of activities by fund
+        if you are grant-funded, a budget-to-actual if you are public sector. Whatever your
+        board actually sees.</span></li>
       <li><b>Aged receivables and aged payables</b>
         <span>Who owes you and how long, who you owe and how long.</span></li>
       <li><b>Spend by vendor, and your recurring payments</b>
         <span>The full list, not the top ten. The interesting ones are rarely in the top ten.</span></li>
-      <li><b>Revenue by line, customer, site or unit</b>
-        <span>However you already cut it. We do not need it recut.</span></li>
-      <li><b>Write-offs, credits, adjustments and refusals</b>
-        <span>With whatever reason code exists. This is usually the single most revealing
-        export in the set.</span></li>
+      <li><b>Income by line, customer, programme, site or unit</b>
+        <span>Fees, sales, contracts, grants, appropriations or reimbursements &mdash;
+        however money reaches you and however you already cut it. We do not need it
+        recut.</span></li>
+      <li><b>Write-offs, credits, adjustments, denials and disallowances</b>
+        <span>Whatever your system calls the money that was expected and did not arrive,
+        with any reason code attached. This is usually the single most revealing export in
+        the set.</span></li>
       <li><b>Your contract register</b>
         <span>The list &mdash; counterparty, value, renewal date, notice period. Not the
         contracts.</span></li>
@@ -162,8 +192,9 @@ footer a{color:var(--tx2)}
   </div>
 
   <h2>And if you go ahead</h2>
-  <p>The $12,000 is <b>credited in full</b> against a review commissioned within 120 days.
-  If the diagnostic points somewhere worth going, it has cost you nothing.</p>
+  <p>The $12,000 is <b>credited in full</b> against a review, whenever you commission it. There is no
+  deadline on that. If the diagnostic points somewhere worth going, it has cost you
+  nothing.</p>
 
   <div class="acts">
     <a class="btn" href="/order/#catalog">Commission the diagnostic</a>
