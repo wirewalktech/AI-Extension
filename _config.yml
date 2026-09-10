@@ -19,6 +19,10 @@ defaults:
   - scope: { path: "", type: "posts" }
     values: { layout: article }
 exclude:
+  # Was live at /README-admin.md. No credentials in it, but it published the
+  # private repo path and the OAuth setup procedure. `README.md` was excluded --
+  # a file that does not exist.
+  - README-admin.md
   - make_docs.py
   - make_logo.py
   # Generates industries/ from the portal worker's data files. Not a page.

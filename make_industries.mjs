@@ -115,6 +115,23 @@ Object.assign(PHRASE, {
 });
 const phraseOf = i => PHRASE[i.slug] || i.name.toLowerCase();
 
+/* What a sector counts in. Used where the sentence needs a countable noun and a
+   metric would produce "Every days in AR in scope is read". */
+const COUNTABLE = {
+  "law-firms": "matter", "accountancy": "engagement", "healthcare": "encounter",
+  "human-services": "unit of service", "construction": "job",
+  "engineering-architecture": "project", "manufacturing": "part",
+  "aerospace-defence": "part", "real-estate": "lease",
+  "real-estate-finance": "deal", "staffing": "placement", "agencies": "client",
+  "insurance": "policy", "warehousing-logistics": "client account",
+  "professional-services": "engagement", "technology-saas": "account",
+  "financial-services": "account", "retail-ecommerce": "order",
+  "transport-fleet": "load", "hospitality": "outlet", "nonprofit": "programme",
+  "education-research": "grant", "government-contracting": "contract",
+  "public-sector": "service", "energy-utilities": "site",
+};
+const countable = i => COUNTABLE[i.slug] || "record";
+
 /* ------------------------------------------------------------------ *
  * Shared chrome. Said once, here, rather than twenty times in prose.
  * ------------------------------------------------------------------ */
@@ -601,7 +618,10 @@ function proposalPage(ind) {
             `what arrives against what was asked and tell you, before any fieldwork, which ` +
             `findings the gaps will limit.` },
     { wk: "Weeks 2–3", title: "Full pass, not a sample",
-      body: `Every ${d.metrics ? d.metrics[0] : "record"} in scope is read rather than ` +
+      /* A sector's first metric is a MEASURE, not a countable thing -- healthcare's
+         is "days in AR", which produced "Every days in AR in scope is read". The
+         sentence needs a noun, so use the unit the sector actually counts in. */
+      body: `Every ${countable(ind)} in scope is read rather than ` +
             `sampled. Concentrated loss is exactly what sampling misses — one contract, one ` +
             `queue, one unreviewed account — so a sample of the operation tends to miss it ` +
             `and a full pass tends to find it.` },
@@ -693,7 +713,7 @@ ${phaseHtml}
   referral fees on anything we recommend.</p>
 
   <h2>What we need from you</h2>
-  <p>${core.length} core requests written for ${esc(phrase)}, inside the full intake.
+  <p>${core.length} core request${core.length === 1 ? "" : "s"} written for ${esc(phrase)}, inside the full intake.
   Anything you do not have can be skipped with a reason — skipping narrows what the
   review can conclude, and we tell you where before the work starts rather than after.</p>
   <ul class="deliv">
