@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wirewalk AI — The Operating Review</title>
-<meta name="description" content="Revenue optimization and risk detection across the whole operation. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits ins own vocabulary.">
+<meta name="description" content="Revenue optimization, risk detection and AI adoption across the whole operation. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits ins own vocabulary.">
 <style>
 :root{
   --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
@@ -514,9 +514,20 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .cmp p.aip{font-size:14.5px;line-height:1.55;color:var(--tx2);margin:0 0 14px;
   padding-bottom:14px;border-bottom:1px solid var(--ln)}
 .cmp li b{color:var(--tx);font-weight:650}
+.aih{font-size:clamp(19px,2.5vw,23px);letter-spacing:-.016em;margin:46px 0 6px}
+.px{font-size:17px;letter-spacing:-.01em;display:inline-block;margin-top:10px}
+.pxn{font-size:13.5px;color:var(--tx3)}
+.aibuy{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  border:1px solid var(--ln);border-radius:11px;background:var(--alt);padding:22px 24px;
+  margin:22px 0 0}
+.aibuy>div:first-child{flex:1 1 380px}
+.aibuy b{display:block;font-size:16.5px;margin-bottom:7px}
+.aibuy span{font-size:14.5px;line-height:1.55;color:var(--tx2)}
+.aibuy span b{display:inline;font-size:inherit}
+.aibuy .acts{margin:0;flex:0 0 auto}
 @media(max-width:820px){.cmp{grid-template-columns:1fr}}
 .cmp>div:first-child li{color:var(--tx2)}
-@media(max-width:820px){.cmp{grid-template-columns:1fr}}
+
 
 /* ── credentials ── */
 .cred{display:grid;grid-template-columns:1fr 1fr 1fr;gap:34px}
@@ -636,12 +647,14 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
          This also carries the terms people actually search for. The argument then
          lands immediately underneath, where it reads as a claim about the work
          rather than as a slogan standing on its own. -->
-    <h1 class="hro">Revenue optimization and risk detection across the whole operation.</h1>
+    <h1 class="hro">Revenue optimization, risk detection and AI adoption across the whole operation.</h1>
     <p class="lead hro">Most reviews look closely at one department and estimate the rest.
     We read the whole operating system &mdash; finance, revenue, receivables, payables,
     contracts, people and IT &mdash; because that is where the money quietly goes: an
     agreement that renews itself on terms nobody revisits, a queue that belongs to no one,
-    an account that stopped being reconciled three years ago and was never missed.
+    an account that stopped being reconciled three years ago and was never missed. And
+    because the same reading tells you where AI would genuinely help, and where it would
+    only add cost.
     <b>The obvious problems already have owners. We are here for the expensive ones that
     do not.</b></p>
     <div class="acts hro">
@@ -915,6 +928,43 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
         <li><b>Delivered so it survives you.</b> Documented, owned by your people, and not
           dependent on us or on a vendor you cannot leave.</li>
       </ul>
+    </div>
+  </div>
+
+  <h3 class="aih">Three ways to actually run it</h3>
+  <p class="sub" style="max-width:62ch;margin:0 0 18px">Where the models run decides what
+  you are allowed to put into them. That is an infrastructure question before it is a
+  policy one, and it is the half most advice skips.</p>
+  <div class="g3" data-rv>
+    <div><span class="n">On your premises</span><h4>A private installation</h4>
+      <p>One machine in your rack running open models on hardware you own. Nothing leaves
+      the building &mdash; the only arrangement that works for controlled technical data,
+      client confidences or patient records.<br>
+      <b class="px">$28,000</b> <span class="pxn">specified, built, benchmarked and
+      handed over</span></p></div>
+    <div><span class="n">In the cloud</span><h4>The right provider, chosen properly</h4>
+      <p>Which platform fits the work, what it costs at your volume rather than at list,
+      where your data goes and what the exit looks like. Ends in a written recommendation
+      you can put to a board.<br>
+      <b class="px">$12,000</b> <span class="pxn">with the numbers behind it</span></p></div>
+    <div><span class="n">Larger builds</span><h4>Production infrastructure</h4>
+      <p>GPUs, interconnect, shared storage, scheduling, and the monitoring to know it is
+      delivering what it cost. The fabric and the storage decide the price, and both
+      depend on the workload.<br>
+      <b class="px">Quoted per build</b> <span class="pxn">after a scoping session</span></p></div>
+  </div>
+
+  <div class="aibuy">
+    <div>
+      <b>Start with a scoping session &mdash; $1,500</b>
+      <span>Half a day, remote, with whoever owns the decision. What you are already
+      running, what you are actually trying to do, and an honest read on whether it needs
+      building, buying or dropping. <b>Credited in full</b> against any engagement
+      commissioned within 90 days, so it costs nothing if you go ahead.</span>
+    </div>
+    <div class="acts">
+      <a class="btn btn-p" href="/order/#catalog">Book a scoping session</a>
+      <a class="btn btn-g" href="/#contact">Ask first</a>
     </div>
   </div>
 
