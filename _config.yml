@@ -31,3 +31,8 @@ exclude:
   - tools
   - wirewalk-ai_3.html
   - README.md
+
+# Generates /sitemap.xml at build time. On the GitHub Pages allowlist,
+# so no Gemfile change and no build mode change is needed.
+plugins:
+  - jekyll-sitemap

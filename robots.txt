@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Operator console and the client portal. Neither is secret -- both are
+# authenticated -- but neither belongs in a search index.
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /quote/
+
+Sitemap: https://ai.wirewalk.com/sitemap.xml
