@@ -138,6 +138,22 @@ footer.end a{color:var(--ac2)}
  "mainEntity": [
   {
    "@type": "Question",
+   "name": "What is the difference between the sounding and the diagnostic?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Scope, not depth. The sounding answers one question about one area — the thing that is actually nagging you — from three registers, in five business days. The diagnostic reads the whole operating system, around thirty registers, and tells you where loss is concentrated and roughly what each area is worth. The sounding deliberately does not size anything in money and does not look outside the one area you named. If it finds something, the obvious next question is what else you have not looked at — and that is the diagnostic."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is the sounding fee credited too?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, in full, against a diagnostic commissioned within 90 days. Because the credit is the list fee and you will have paid the prepay price, starting with a sounding works out slightly cheaper than going straight to the diagnostic. It needs no purchase order — at this size an owner or managing partner can authorise it directly, which is most of the point of it existing."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Is the diagnostic fee credited against a full review?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -403,6 +419,22 @@ footer.end a{color:var(--ac2)}
 
   <h2 id="questions">Questions that come up</h2>
 
+  <details><summary>What is the difference between the sounding and the diagnostic?</summary>
+    <p><b>Scope, not depth.</b> The sounding answers one question about one area &mdash; the
+    thing that is actually nagging you &mdash; from three registers, in five business days.
+    The diagnostic reads the whole operating system, around thirty registers, and tells you
+    where loss is concentrated and roughly what each area is worth.</p>
+    <p>The sounding deliberately does not size anything in money and does not look outside
+    the one area you named. If it finds something, the obvious next question is what else you
+    have not looked at &mdash; and that is the diagnostic.</p></details>
+
+  <details><summary>Is the sounding fee credited too?</summary>
+    <p>Yes, in full, against a diagnostic commissioned within 90 days. Because the credit is
+    the list fee and you will have paid the prepay price, starting with a sounding works out
+    slightly cheaper than going straight to the diagnostic.</p>
+    <p>It needs no purchase order &mdash; at this size an owner or managing partner can
+    authorise it directly, which is most of the point of it existing.</p></details>
+
   <details><summary>Is the diagnostic fee credited against a full review?</summary>
     <p>That is settled in the written quotation for the review rather than assumed here, so
     ask for it in writing before you commission one. What is fixed is the sequence: the
@@ -504,8 +536,12 @@ function renderCatalog(){
             "<th style=\"text-align:right\">Prepay</th><th style=\"text-align:right\">Deposit</th>" +
             "</tr></thead><tbody>";
     for (const i of rows){
-      /* The diagnostic is the intended entry point, so it is marked as one. */
-      const pin = i.sku === "ai-diagnostic" ? '<span class="pin">Start here</span>' : "";
+      /* The sounding is now the intended entry point -- it is the cheapest rung
+         and needs no purchase order. The diagnostic keeps its own marker so the
+         ladder reads as a ladder rather than two unrelated options. */
+      const pin = i.sku === "ai-sounding"   ? '<span class="pin">Start here</span>'
+                : i.sku === "ai-diagnostic" ? '<span class="pin">Most commissioned</span>'
+                : "";
       if (i.priceOnApplication){
         html += '<tr><td class="n">' + esc(i.name) + pin +
                 "<span>" + esc(i.blurb) + "</span></td>" +
