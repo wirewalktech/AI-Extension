@@ -76,6 +76,57 @@ table.cat td{padding:14px 12px 14px 0;border-bottom:1px solid var(--ln);vertical
 table.cat td.n{font-weight:600;color:var(--tx)}
 table.cat td.n span{display:block;font-weight:400;color:var(--tx2);font-size:14px;
                     margin-top:4px;max-width:58ch}
+/* Commit from the row you are reading. The catalogue used to be a price list
+   and the decision was re-made in a dropdown 400px further down, which asks the
+   buyer to choose twice and re-opens a settled decision at the moment of
+   commitment. */
+table.cat td.n .acts{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 2px}
+table.cat td.n .acts button{font:600 13px/1 var(--sans);padding:8px 12px;border-radius:7px;
+  border:1px solid var(--ln2);background:#fff;color:var(--tx);cursor:pointer}
+table.cat td.n .acts button:hover{border-color:var(--ac);color:var(--ac2)}
+table.cat td.n .acts button.go{background:var(--ac);border-color:var(--ac);color:#fff}
+table.cat td.n .acts button.go:hover{background:var(--ac2);color:#fff}
+.chosen{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  border-left:3px solid var(--ac);background:var(--acs);border-radius:0 8px 8px 0;
+  padding:11px 15px;margin:0 0 16px;font-size:15px}
+.chosen b{font-weight:650}
+.chosen button{font:500 13.5px/1 var(--sans);background:none;border:0;padding:0;
+  color:var(--ac2);text-decoration:underline;cursor:pointer}
+/* Touch targets. 13px text in 8px padding is a ~29px target -- under every
+   published minimum and unpleasant on a phone. */
+table.cat td.n .acts button{min-height:44px}
+table.cat td.n .acts button.go{min-height:46px}
+
+/* Below 700px a four-column table crushes the description into a ~220px column
+   and produces a thirty-line wall of text beside three columns of figures.
+   Stack each engagement as a card instead: name, description, a labelled price
+   line, then the actions. Desktop is untouched. */
+@media(max-width:700px){
+  table.cat thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.cat,table.cat tbody,table.cat tr,table.cat td{display:block;width:100%}
+  table.cat tr{border-bottom:1px solid var(--ln);padding:18px 0 16px}
+  table.cat tr:last-child{border-bottom:0}
+  table.cat td{border:0;padding:0}
+  table.cat td.n{font-size:16.5px}
+  table.cat td.n span{font-size:14.5px;margin-top:6px}
+  /* the three figures become one labelled row, not three columns */
+  table.cat td.p{display:inline-block;width:auto;text-align:left;margin:10px 14px 0 0;
+    font-size:14px;color:var(--tx2)}
+  table.cat td.p::before{content:attr(data-l);display:block;font-size:10.5px;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--tx3);margin-bottom:2px}
+  table.cat td.p.poa{display:block;margin-top:10px}
+  table.cat td.p.poa::before{content:none}
+  /* Price before commitment. The actions live inside the name cell, so the cell
+     is dissolved with display:contents and its children ordered alongside the
+     price cells -- otherwise the buttons render above the figures they quote. */
+  table.cat tr{display:flex;flex-direction:column}
+  table.cat td.n{display:contents}
+  table.cat td.n .nm{order:1;font-weight:600;font-size:16.5px;display:block}
+  table.cat td.n > span:not(.nm):not(.acts){order:2}
+  table.cat td.p{order:3}
+  table.cat td.n .acts{order:4;margin-top:14px}
+  table.cat td.n .acts button{flex:1 1 auto;min-width:46%}
+}
 table.cat td.p{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right;color:var(--tx2)}
 .save{color:var(--ok);font-size:12.5px;display:block}
 .poa{color:var(--tx3);font-style:italic;font-size:14px}
@@ -299,7 +350,8 @@ footer.end a{color:var(--ac2)}
   a quotation, a W-9, a certificate of insurance or supplier registration before one can be
   raised, say so below and those come back the same working day.</p>
 
-  <form class="frm" action="https://wirewalk-portal.wirewalk-upload.workers.dev/api/enquiry" method="POST"
+  <div class="chosen" id="po-chosen" hidden></div>
+  <form class="frm" id="poform" action="https://wirewalk-portal.wirewalk-upload.workers.dev/api/enquiry" method="POST"
         enctype="multipart/form-data">
     <input type="hidden" name="_subject" value="Wirewalk AI — Purchase order submission">
     <input type="hidden" name="_template" value="table">
@@ -396,6 +448,7 @@ footer.end a{color:var(--ac2)}
   purchase order form above or ask for a quotation.</p>
 
   <div id="payblock">
+    <div class="chosen" id="pay-chosen" hidden></div>
     <div class="row">
       <div class="fld"><label for="pay-svc">Engagement</label>
         <select id="pay-svc" name="Engagement"><option value="">Select an engagement</option></select></div>
@@ -543,22 +596,83 @@ function renderCatalog(){
                 : i.sku === "ai-diagnostic" ? '<span class="pin">Most commissioned</span>'
                 : "";
       if (i.priceOnApplication){
-        html += '<tr><td class="n">' + esc(i.name) + pin +
-                "<span>" + esc(i.blurb) + "</span></td>" +
+        html += '<tr><td class="n">' + '<span class="nm">' + esc(i.name) + pin + '</span>' +
+                "<span>" + esc(i.blurb) + "</span>" +
+                '<span class="acts"><button type="button" data-sku="' + esc(i.sku) +
+                '" data-mode="po">Raise a purchase order</button></span></td>' +
                 '<td class="p poa" colspan="3">Quoted per engagement</td></tr>';
         continue;
       }
       const sp = i.special ? '<span class="save">' + esc(i.special.label) + "</span>" : "";
-      html += '<tr><td class="n">' + esc(i.name) + pin +
-              "<span>" + esc(i.blurb) + "</span></td>" +
-              '<td class="p">' + esc(i.listFormatted) + "</td>" +
-              '<td class="p">' + esc(i.prepay.formatted) +
+      html += '<tr><td class="n">' + '<span class="nm">' + esc(i.name) + pin + '</span>' +
+              "<span>" + esc(i.blurb) + "</span>" +
+              '<span class="acts">' +
+                '<button type="button" class="go" data-sku="' + esc(i.sku) + '" data-mode="full">' +
+                  "Prepay " + esc(i.prepay.formatted) + "</button>" +
+                '<button type="button" data-sku="' + esc(i.sku) + '" data-mode="deposit">' +
+                  "Deposit " + esc(i.deposit.formatted) + "</button>" +
+                '<button type="button" data-sku="' + esc(i.sku) + '" data-mode="po">' +
+                  "Purchase order</button>" +
+              "</span></td>" +
+              '<td class="p" data-l="List">' + esc(i.listFormatted) + "</td>" +
+              '<td class="p" data-l="Prepay">' + esc(i.prepay.formatted) +
               '<span class="save">save ' + esc(i.prepay.savingFormatted) + "</span>" + sp + "</td>" +
-              '<td class="p">' + esc(i.deposit.formatted) + "</td></tr>";
+              '<td class="p" data-l="Deposit">' + esc(i.deposit.formatted) + "</td></tr>";
     }
     html += "</tbody></table></div>";
   }
   $("#catalog").innerHTML = html;
+  $("#catalog").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-sku]");
+    if (b) choose(b.dataset.sku, b.dataset.mode);
+  });
+}
+
+/* Commit straight from the catalogue row.
+   Two things here are load-bearing:
+   (a) setting select.value from script does NOT fire `change`, so the price
+       summary would silently not update -- dispatch it explicitly;
+   (b) focus the first EMPTY field rather than the select, so the buyer carries
+       on filling the form instead of landing back on the choice they just made. */
+function choose(sku, mode){
+  const po = mode === "po";
+  const svc = po ? $("#po-svc") : $("#pay-svc");
+  if (!svc) return;
+  svc.value = sku;
+  svc.dispatchEvent(new Event("change", { bubbles: true }));
+  if (!po){
+    const m = $("#pay-mode");
+    m.value = mode;
+    m.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+  markChosen(po, sku, mode);
+  const form = po ? document.querySelector("#po") : document.querySelector("#pay");
+  if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+  const first = [...(po ? $("#poform") : $("#payblock")).querySelectorAll("input")]
+    .find(el => el.type !== "hidden" && !el.value && el.offsetParent !== null);
+  if (first) setTimeout(() => first.focus({ preventScroll: true }), 420);
+}
+
+/* Once something is chosen, say so as a statement rather than re-presenting the
+   whole menu. The select stays -- changing your mind must remain possible -- it
+   just stops being the thing that asks the question. */
+function markChosen(po, sku, mode){
+  const i = ITEMS.find(x => x.sku === sku);
+  if (!i) return;
+  const holder = po ? $("#po-chosen") : $("#pay-chosen");
+  if (!holder) return;
+  const how = mode === "po" ? "on a purchase order"
+            : mode === "deposit" ? "deposit now, balance on delivery"
+            : "paid in full";
+  holder.hidden = false;
+  holder.innerHTML = "<span>Commissioning <b>" + esc(i.name) + "</b> \u2014 " + esc(how) + ".</span>";
+  const btn = document.createElement("button");
+  btn.type = "button"; btn.textContent = "change";
+  btn.addEventListener("click", () => {
+    holder.hidden = true;
+    (po ? $("#po-svc") : $("#pay-svc")).focus();
+  });
+  holder.appendChild(btn);
 }
 
 function fillSelects(){
