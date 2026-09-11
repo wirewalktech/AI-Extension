@@ -80,6 +80,14 @@ table.cat td.n span{display:block;font-weight:400;color:var(--tx2);font-size:14p
    and the decision was re-made in a dropdown 400px further down, which asks the
    buyer to choose twice and re-opens a settled decision at the moment of
    commitment. */
+.terms4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0 0 34px}
+.terms4 div{border:1px solid var(--ln);border-radius:10px;padding:15px 16px;background:var(--alt)}
+.terms4 b{display:block;font-size:15px;margin-bottom:6px}
+.terms4 p{margin:0;font-size:14px;line-height:1.55;color:var(--tx2)}
+h3.orderway{font-size:clamp(19px,2.4vw,23px);letter-spacing:-.014em;margin:38px 0 8px;
+  padding-top:22px;border-top:1px solid var(--ln)}
+@media(max-width:860px){.terms4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.terms4{grid-template-columns:1fr}}
 table.cat td.n .acts{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 2px}
 table.cat td.n .acts button{font:600 13px/1 var(--sans);padding:8px 12px;border-radius:7px;
   border:1px solid var(--ln2);background:#fff;color:var(--tx);cursor:pointer}
@@ -315,37 +323,27 @@ footer.end a{color:var(--ac2)}
   coverage, and implementation support after a review, are scoped and quoted per engagement
   because the number of units and systems drives everything.</p>
 
-  <h2 id="routes">How to order</h2>
-  <div class="routes">
-    <a class="route primary" href="#po">
-      <span class="tagp">Primary route</span>
-      <b>Purchase order</b>
-      <p>Raise a PO against the engagement; we invoice against it on net 30 terms. This is
-      what institutional procurement is set up for, and the only route that works when the
-      figure is above a cardholder limit.</p>
-      <span class="go">Submit a purchase order &rarr;</span>
-    </a>
-    <a class="route" href="#po" data-route="invoice">
-      <b>Request an invoice</b>
-      <p>No PO in your process? Ask for an invoice and settle it by ACH or bank transfer on
-      the same net 30 terms.</p>
-      <span class="go">Request an invoice &rarr;</span>
-    </a>
-    <a class="route" href="#pay" data-mode="full">
-      <b>Prepay and reserve &mdash; 5% off</b>
-      <p>Pay in full up front, take 5% off, and the dates are held on receipt of funds.
-      ACH or card.</p>
-      <span class="go">Pay in full &rarr;</span>
-    </a>
-    <a class="route" href="#pay" data-mode="deposit">
-      <b>Deposit</b>
-      <p>Pay a deposit to book the engagement; the balance is invoiced on delivery.</p>
-      <span class="go">Pay a deposit &rarr;</span>
-    </a>
+  <h2 id="routes">What each route commits you to</h2>
+  <p class="sub">Every engagement above carries all four. Pick one from the row you are
+  reading &mdash; these are the terms behind the buttons, not another decision to make.</p>
+  <div class="terms4">
+    <div><b>Purchase order</b><p>Raise a PO; we invoice against it on net 30. What
+      institutional procurement is set up for, and the only route that works above a
+      cardholder limit.</p></div>
+    <div><b>Invoice, no PO</b><p>Use the purchase order form and leave the PO number blank
+      &mdash; it doubles as an invoice request. ACH or bank transfer, same net 30.</p></div>
+    <div><b>Prepay &mdash; 5% off</b><p>Paid in full up front. The discount applies
+      automatically and the dates are held on receipt of funds.</p></div>
+    <div><b>Deposit</b><p>Books the engagement; the balance is invoiced on delivery. The
+      prepay discount does not apply to a deposit.</p></div>
   </div>
 
   <!-- ======================= PURCHASE ORDER (primary) ==================== -->
-  <h2 id="po">Submit a purchase order</h2>
+  <h2 id="order">Complete your order</h2>
+  <p class="sub">Two ways to settle it. The buttons above open the right one; you can
+  also fill either in directly.</p>
+
+  <h3 class="orderway" id="po">Purchase order, or an invoice without one</h3>
   <p class="sub">Attach the PO if it has already been raised. If your procurement office needs
   a quotation, a W-9, a certificate of insurance or supplier registration before one can be
   raised, say so below and those come back the same working day.</p>
@@ -442,7 +440,7 @@ footer.end a{color:var(--ac2)}
   </form>
 
   <!-- ======================= CARD / ACH (secondary) ====================== -->
-  <h2 id="pay">Prepay, or pay a deposit</h2>
+  <h3 class="orderway" id="pay">Prepay, or pay a deposit</h3>
   <p class="sub">For commercial buyers who would rather not raise a PO. Card or ACH, handled
   by Stripe &mdash; card details never touch this site. Paying in full applies the 5% discount automatically. Engagements quoted per engagement are not payable here; use the
   purchase order form above or ask for a quotation.</p>
