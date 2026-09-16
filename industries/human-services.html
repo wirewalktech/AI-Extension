@@ -214,7 +214,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>unallowable</li>
     <li>single audit</li>
     <li>redetermination</li>
-    <li>supervision notes</li>
+    <li>co-signed progress note</li>
   </ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
@@ -240,22 +240,37 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Not every human services organization is the same business</h3>
     <ul class="subv">
-      <li><b>Behavioral health and substance use</b><span>Medical necessity documentation and supervision notes that make a delivered service billable or retroactively unbillable.</span></li>
-      <li><b>Developmental disability services</b><span>Residential and day programs on fixed rates set years ago, against staffing costs that moved with the labor market.</span></li>
+      <li><b>Behavioral health and substance use</b><span>Medical necessity documentation and the supervisor co-signature that make a delivered service billable or retroactively unbillable.</span></li>
+      <li><b>Intellectual and developmental disability (I/DD) services</b><span>Residential and day programs on fixed rates set years ago, against staffing costs that moved with the labor market.</span></li>
       <li><b>Child and family services</b><span>Multiple funders per client, each with its own eligibility, unit definition and reporting calendar.</span></li>
-      <li><b>Housing and homelessness services</b><span>Braided funding where one cost may be allowable to one funder and not another, and the allocation decision is rarely documented.</span></li>
+      <li><b>Homeless services and supportive housing</b><span>Braided funding where one cost may be allowable to one funder and not another, and the allocation decision is rarely documented.</span></li>
       <li><b>Workforce and community programs</b><span>Outcome-based contracts where payment depends on a result recorded months after the service was delivered.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Drafting the progress note the same day the session happened</b><span>An ambient scribe writes the draft from the session and the clinician edits and signs. The EHR vendors ship this now &mdash; Qualifacts iQ across CareLogic and Credible, Netsmart's Bells &mdash; and Bells and Eleos both run alongside whatever EHR you already have. What it shortens is the unsigned-note queue, which is where delivered service sits until it quietly stops being billable.</span></li>
+      <li><b>Checking the note before the claim, not after the takeback</b><span>Read every note for the period against what the payer requires: the service code against the recorded duration, the supervisor co-signature present, the staff credential valid on the date of service, an authorization with units left, eligibility active that day. Hold the exceptions and fix them while they are still fixable. This replaces a monthly sample review by one person with a checklist, which is how the rest go out unchecked.</span></li>
+      <li><b>Coding a year of denials and recoupments by cause</b><span>Remittances come back as terse codes and free text. Sorting them into causes &mdash; eligibility lapsed, no authorization, missing co-signature, late filing, duplicate &mdash; is ordinary classification work and it is reliable. It replaces the bad debt write-off line that hides which process is producing the loss.</span></li>
+      <li><b>Matching authorized against delivered against billed</b><span>The three numbers are often kept in different places with no shared key, so the reconciliation is a match on client, date and service code, plus a rule for each funder's unit definition. Scripting does most of it; a model handles the rule differences and the near-misses. It replaces the quarterly spreadsheet somebody builds by hand and then abandons.</span></li>
+      <li><b>Reading every contract and rate agreement into one table</b><span>Period, ceiling, allowable cost categories, match requirement, unit definition, reporting dates &mdash; pulled from the executed agreements and the state manual into a single sheet somebody can actually check. It replaces the folder of PDFs and the compliance calendar that lives in one person's head. It is a draft: each line gets confirmed against the signed document.</span></li>
+      <li><b>First drafts of the funder reports</b><span>The quarterly narrative and the unit counts, assembled from the outcomes record into each funder's template. It turns a compose into an edit, and it makes the number in the narrative agree with the number in the billing, which is the part a program officer actually checks.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a model that understands care. It needs the documents you already have, read consistently, which is exactly the work that gets sampled when a person has to do it. What it will not do is verify that the service happened. Every use above treats the record as the truth, so if the session did not occur as written, or a supervisor co-signed a note for a session nobody supervised, the model reproduces that faster and with more confidence than a person would. And when a cost is disallowed two years later, the person who signed the claim is still the person who answers for it.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Netsmart, Credible or Qualifacts as the EHR; Apricot or ETO for program outcomes</li>
-      <li>A separate billing intermediary or clearinghouse between you and the state</li>
+      <li>Netsmart (myAvatar, myEvolv), Qualifacts (CareLogic, Credible) or Foothold AWARDS as the EHR; Bonterra Apricot, formerly Social Solutions, for program outcomes</li>
+      <li>A clearinghouse or billing intermediary between you and the payer — in New York, fee-for-service claims land in eMedNY through ePACES, while managed care claims go to each plan on its own rules</li>
       <li>Payroll and scheduling that do not talk to the service-unit record, so authorized, delivered and paid are three different systems</li>
       <li>A cost allocation workbook in Excel that is the real basis of every indirect claim</li>
-    </ul>
+ <li>MIP Fund Accounting, Sage Intacct or Blackbaud Financial Edge NXT as the general ledger, which is where the allocation actually posts</li>
+ <li>Relias or a similar training record for staff credentials and supervision hours, kept apart from HR and payroll, so whether a person was qualified on the date of service is a reconciliation rather than a lookup</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -270,18 +285,21 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>program contribution</li>
       <li>days in AR</li>
       <li>staff turnover</li>
-    </ul>
+ <li>direct service hours vs standard</li>
+ <li>days cash on hand</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Single audit under Uniform Guidance, and whether prior findings actually closed</li>
-      <li>Medicaid cost reports and rate-setting submissions</li>
-      <li>State licensing and accreditation surveys — CARF, COA or Joint Commission</li>
-      <li>Staff credentialling, supervision and background check records per program</li>
+      <li>Single audit under Uniform Guidance — the trigger rose from $750,000 to $1 million in federal spend for fiscal years beginning on or after October 1, 2024 — and whether prior findings actually closed</li>
+      <li>Medicaid cost reports and rate-setting submissions — in New York, the Consolidated Fiscal Report filed through CFRS, due June 1 for calendar-year filers and December 1 for July–June filers</li>
+      <li>State licensing and accreditation surveys — CARF, COA Accreditation (now a service of Social Current) or Joint Commission</li>
+      <li>Staff credentialing, supervision and background check records per program</li>
       <li>Form 990 and functional expense allocation, which the same allocation plan drives</li>
-    </ul>
+ <li>New York Medicaid compliance program obligations under OMIG's 18 NYCRR Part 521, which bite at $1 million a year in Medicaid, and the 60-day rule — an overpayment you identify must be reported, returned and explained within 60 days</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -340,7 +358,8 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A single audit finding, especially a repeat one</li>
       <li>A merger conversation with another provider</li>
       <li>Losing a funder and discovering which shared costs it was carrying</li>
-    </ul>
+ <li>Drawing on the line of credit to make payroll while a state or plan receivable sits unpaid</li>
+</ul>
   </div>
 
   <div class="depth">
@@ -348,7 +367,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="roles">
       <li><b>Signs it:</b> Executive director or CFO</li>
       <li><b>Resists it:</b> Program directors whose individual program economics become visible</li>
-      <li><b>Has been asking for it:</b> The finance team, who already suspect which programs are subsidised</li>
+      <li><b>Has been asking for it:</b> The finance team, who already suspect which programs are subsidized</li>
     </ul>
   </div>
 

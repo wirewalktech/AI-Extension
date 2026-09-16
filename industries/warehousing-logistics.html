@@ -215,7 +215,8 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>cube utilization</li>
     <li>3PL</li>
     <li>dwell</li>
-  </ul>
+ <li>OS&amp;D</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -247,11 +248,23 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Freight bill audit against the rate card</b><span>Carrier invoices arrive as PDFs and EDI 210s in incompatible layouts and the accessorial lines are the messiest part of them. A model reads every line and matches it to the contracted rate and the accessorial schedule, flagging the charges with no contract basis behind them. It replaces the sample — the invoices somebody spot-checks each month — with a pass over all of them.</span></li>
+      <li><b>Turning each client contract into a billable-event list</b><span>Every 3PL agreement is negotiated separately and then sits in a Word file nobody has opened since signing. A model pulls the billable activities out of it, and that list gets reconciled against what the WMS logged and what the billing engine actually invoiced. It replaces the contract review that is scheduled annually and done rarely.</span></li>
+      <li><b>Detention, demurrage and per diem disputes inside the window</b><span>Matching the invoice to the free-time terms and to the gate-in, gate-out and appointment timestamps, then drafting the dispute with the evidence already attached. It replaces the charges that get paid because nobody had time to assemble the proof before the clock ran out.</span></li>
+      <li><b>Reading the paper — BOLs, packing lists, PODs, OS&amp;D reports</b><span>Extraction from scans and driver photos, so an exception is keyed once instead of re-keyed at each handoff, and so a proof of delivery can be produced when a customer disputes it weeks later. It replaces manual keying on the exception path, which is where the hours actually go, not on the clean orders that never needed a person.</span></li>
+      <li><b>Clustering the EDI exception queue</b><span>Every customer integration throws its own failures and they get worked in the order they arrive. A model groups them by root cause — same partner, same field, same mapping — so the ones that are really a single problem get fixed once. It replaces working the queue ticket by ticket, forever.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a new platform. Each one runs against extracts you already produce, and each has a point where a person confirms before money moves. They have one thing in common: they are all comparisons between two records you already hold — the contract and the transaction, the invoice and the rate card, the charge and the timestamp. That narrow band is where this is reliable today, and it happens to be where the money is.</p>
+  </div>
+
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Manhattan, Blue Yonder or Körber at the top end; Softeon, Deposco or 3PL Central in the mid-market</li>
-      <li>A separate TMS — MercuryGate, Kuebix — or brokerage on spreadsheets</li>
+      <li>Manhattan, Blue Yonder or Infios — the former Körber Supply Chain Software, renamed in 2025 — at the top end; Extensiv, the former 3PL Central and now owned by Descartes, or Deposco in the mid-market</li>
+      <li>A separate TMS — MercuryGate, now part of Infios, or Descartes — with McLeod or Revenova on the brokerage side, and spreadsheets where nobody ever bought one</li>
       <li>Customer EDI or API integrations, each with its own exception handling</li>
       <li>A billing engine that is often the weakest link between what was done and what was invoiced</li>
     </ul>
@@ -265,22 +278,26 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>cost per order</li>
       <li>storage utilization</li>
       <li>dock-to-stock time</li>
-      <li>accessorial capture rate</li>
+      <li>billing leakage</li>
       <li>pick accuracy</li>
       <li>labor cost per unit</li>
       <li>energy cost per pallet position</li>
-    </ul>
+ <li>on-time in-full</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Customs recordkeeping and FTZ inventory reporting where applicable</li>
-      <li>FDA or USDA registration for food-grade and pharmaceutical storage</li>
+      <li>Customs recordkeeping, and for an FTZ the annual reconciliation prepared within 90 days of the zone year end, with the operator's certifying letter to the port director 10 working days after that</li>
+      <li>FDA food facility registration, renewed every even-numbered year in the October 1 to December 31 window with no grace period; and for pharmaceutical storage, state 3PL licensure plus the annual DSCSA licensure report to FDA</li>
       <li>DOT and FMCSA compliance on any owned fleet, and the CSA score</li>
       <li>Client-facing SOC 1 or SOC 2 reports, where contracts require them</li>
-      <li>Hazmat certification and training records where relevant</li>
-    </ul>
+      <li>Hazmat employee training, repeated at least once every three years, with the record of current training covering the preceding three years kept for as long as the employee is in the role</li>
+ <li>New York's Warehouse Worker Protection Act and its Injury Reduction Program, which bite at 100 employees on a single site or 1,000 across the state — written quota descriptions on hire and within two business days of any change, plus an annual injury reduction program with a competent-person evaluation and training</li>
+ <li>OSHA powered industrial truck certification, with every operator re-evaluated at least once every three years and the certification record naming the equipment type</li>
+ <li>FSMA 204 traceability records for anything on the Food Traceability List, where the compliance date moved to July 20, 2028</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -343,7 +360,8 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A WMS migration, which exposes every unbilled activity at once</li>
       <li>A major client onboarding whose profile does not match the pricing assumption</li>
       <li>An acquisition, where per-client contribution margin is the first request</li>
-    </ul>
+ <li>A building lease renewal or expansion, where the rent step-up re-bases cost per pallet position</li>
+</ul>
   </div>
 
   <div class="depth">

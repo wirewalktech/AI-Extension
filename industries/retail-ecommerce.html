@@ -209,13 +209,15 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <ul class="vocab">
     <li>realized margin</li>
     <li>markdown</li>
-    <li>shrinkage</li>
+    <li>shrink</li>
     <li>sell-through</li>
     <li>cost to serve</li>
-    <li>returns rate</li>
-    <li>supplier funding</li>
-    <li>contribution</li>
-  </ul>
+    <li>return rate</li>
+    <li>vendor allowances</li>
+    <li>contribution margin</li>
+ <li>open-to-buy</li>
+ <li>landed cost</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -241,20 +243,34 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="subv">
       <li><b>Direct-to-consumer</b><span>Contribution margin per order swamped by shipping, returns and discounting that are reported separately from the product margin they erase.</span></li>
       <li><b>Wholesale and multi-channel</b><span>Chargebacks, co-op allowances and compliance deductions from retail partners, absorbed rather than disputed within the window.</span></li>
-      <li><b>Bricks and mortar</b><span>Store-level four-wall economics where occupancy and labor are allocated by a formula older than the current store mix.</span></li>
-      <li><b>Marketplace sellers</b><span>Platform fees, storage and long-term storage charges that change the unit economics of slow SKUs without anyone re-pricing them.</span></li>
+      <li><b>Brick-and-mortar</b><span>Store-level four-wall economics where occupancy and labor are allocated by a formula older than the current store mix.</span></li>
+      <li><b>Marketplace sellers</b><span>Referral and fulfillment fees, monthly storage, and the aged-inventory surcharge that replaced the long-term storage fee — now billed monthly from 181 days and stacking on top of storage — changing the unit economics of slow SKUs without anyone re-pricing them.</span></li>
       <li><b>Subscription and replenishment</b><span>Churn and cohort economics measured in aggregate, hiding a cohort that has never repaid acquisition cost.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Reading the carrier and 3PL invoice line by line</b><span>A parcel invoice arrives as line-level detail and gets paid on the total. A model reads your rate card and contract into rules, then checks every line against them — dim-weight reweighs, address corrections, residential and peak surcharges, pick-and-pack billed at the wrong tier. It replaces the quarterly spot-check that never found anything.</span></li>
+      <li><b>Turning return comments into a return reason</b><span>The dropdown code says "other". The truth is in the agent notes and the customer's own words. A model classifies a year of those into sizing, damaged in transit, wrong item picked, not as pictured — by SKU. That is what moves returns cost off the central overhead line and onto a photograph, a size chart or a packer.</span></li>
+      <li><b>Pulling vendor allowance terms out of the agreements</b><span>Rebate tiers, co-op, markdown support and claim deadlines sit in supply agreements and annual terms letters nobody re-reads. A model extracts them into a claim calendar with the threshold and the date attached. What it cannot do is prove you hit the tier — that comes from purchase data, and it is the half that gets skipped.</span></li>
+      <li><b>Allocating marketplace fees back to the SKU</b><span>The settlement report carries referral and fulfillment fees at order level, and monthly storage, the aged-inventory surcharge, inbound placement and returns processing as separate rows that never touch an order. The ledger sees one net deposit per settlement period, usually every 14 days. The matching is ordinary work; the model's job is mapping the fee-type strings to categories and writing the variance note each period.</span></li>
+      <li><b>Assembling the deduction dispute</b><span>A retailer deducts against an invoice with a code and a backup file, and the window to dispute it is short. A model reads the backup, matches the code to the evidence it requires, and drafts the packet with the PO, ASN and proof of delivery attached. It replaces the clerk deciding which deductions are worth the time and writing off the rest.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this creates cost data you never captured. Realized margin by SKU needs landed cost per receipt, freight and duty allocated to the goods that incurred them, and a return credit that points back to the order line it reverses. Where those links were never recorded, a model will hand you a confident number built on an average — and the average is the thing you were trying to get away from. The recording has to be fixed first. The reading is the easy part.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Shopify Plus, BigCommerce or Magento; NetSuite or Brightpearl behind them</li>
+      <li>Shopify Plus, BigCommerce or Adobe Commerce (Magento Open Source if you self-host); NetSuite or Brightpearl by Sage behind them</li>
       <li>A 3PL or fulfillment partner whose invoice is not reconciled to the order file</li>
       <li>Ad platforms reporting attributed revenue that the finance system never sees</li>
       <li>A returns process tracked in the helpdesk rather than in inventory</li>
-    </ul>
+ <li>Amazon Seller Central, where per-order referral, fulfillment, storage and surcharge detail sits in the settlement report and reaches the ledger as a net deposit</li>
+ <li>Walmart Supplier One and Retail Link, or Amazon Vendor Central, where deductions appear and the dispute window runs out</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -263,23 +279,25 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="mets">
       <li>contribution margin per order</li>
       <li>return rate</li>
-      <li>cost per acquisition</li>
+      <li>CAC</li>
       <li>cohort payback</li>
       <li>inventory turns</li>
       <li>sell-through</li>
       <li>chargeback rate</li>
       <li>four-wall margin</li>
-    </ul>
+ <li>GMROI</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
       <li>Sales tax and economic nexus across states, and marketplace facilitator rules</li>
-      <li>Customs, duty and country-of-origin documentation on imported goods</li>
+      <li>Customs, duty and country-of-origin documentation on imported goods — and, since de minimis ended on August 29, 2025, formal entry on the parcels that used to clear duty-free under $800</li>
       <li>Product compliance and labeling where the category requires it</li>
-      <li>PCI DSS scope, and whether it is as small as you think</li>
-    </ul>
+      <li>PCI DSS 4.0.1 scope, and whether SAQ A still covers you — the payment-page script criteria changed on March 31, 2025</li>
+ <li>Packaging EPR registration and annual reporting where you ship — California, Colorado, Oregon and Minnesota among them — reported at SKU and material level</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>

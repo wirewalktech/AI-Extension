@@ -211,10 +211,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>planned vs reactive</li>
     <li>outage cost</li>
     <li>non-technical losses</li>
-    <li>RAB</li>
-    <li>capital deliverability</li>
+    <li>rate base</li>
+    <li>revenue requirement</li>
     <li>condition-based maintenance</li>
-  </ul>
+ <li>AFUDC</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -238,53 +239,69 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Not every energy and utilities is the same business</h3>
     <ul class="subv">
-      <li><b>Regulated networks</b><span>Allowed revenue set for a period in advance, so an efficiency found in the final year is worth materially less than the same one found in the first.</span></li>
-      <li><b>Generation and independent power</b><span>Availability, heat rate and outage scheduling against contracted despatch, where a maintenance window moved is a revenue decision.</span></li>
+      <li><b>Regulated networks</b><span>Rates are set in a case on a test year and then held until the next filing, so an efficiency found right after the order is kept for years, and the same one found on the eve of the next filing is handed straight back.</span></li>
+      <li><b>Generation and independent power</b><span>Availability, heat rate and outage scheduling against dispatch and capacity obligations, where a maintenance window moved is a revenue decision.</span></li>
       <li><b>Retail supply and energy services</b><span>Hedged cost, bad debt and cost to serve per customer against a tariff fixed before any of the three were known.</span></li>
-      <li><b>Water and wastewater</b><span>Capital maintenance, leakage and consent compliance — obligations that do not move when the budget does.</span></li>
-      <li><b>Municipal and co-operative utilities</b><span>A rate case rather than a market, and a governing board that has to be persuaded before a cost can be recovered.</span></li>
+      <li><b>Water and wastewater</b><span>Renewal and replacement, non-revenue water and permit compliance — plus a lead service line inventory and replacement schedule that does not move when the budget does.</span></li>
+      <li><b>Municipal and cooperative utilities</b><span>Rates set by council ordinance or a board vote rather than by a commission, and a public meeting where a cost has to be defended before it can be recovered.</span></li>
       <li><b>Renewables and distributed assets</b><span>Offtake agreements and O&amp;M contracts signed at construction, with availability guarantees and liquidated damages nobody is tracking against actual performance.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI actually earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Assembling what a storm actually cost</b><span>The outage management system has the events. The timesheets have the crew hours. Contractor invoices arrive for six weeks and mutual aid bills arrive later still. A model reads the outage narratives, the crew notes and the invoices and drafts a cost per event, tied to the account it belongs in. It replaces the analyst who rebuilds it in a spreadsheet two months on, by which point the figures have quietly become estimates.</span></li>
+      <li><b>Reading closed work orders for what was coded wrong</b><span>The free text on a closed work order decides what is capitalized into rate base, what is expensed to O&amp;M, and which retirements ever reach the continuing property records. Classifying that text against the account catalog surfaces the orders coded to the wrong account and the units retired on paper but never taken out of the ground. It replaces the sample-based review done in the weeks before a filing.</span></li>
+      <li><b>Extracting what the agreements actually promised</b><span>Availability guarantees, liquidated damages formulas, escalators, curtailment terms and notice dates sit inside PPAs and O&amp;M contracts signed at construction. Pulled into a table and set beside actual generation and availability, they become a claim, a credit or a renegotiation. It replaces nobody having opened the binder since closing.</span></li>
+      <li><b>Answering information requests out of what you already filed</b><span>A rate case draws hundreds of information requests from commission staff and intervenors, and most of them restate something answered in the last case. Retrieval across prior testimony, workpapers and answered requests drafts the response and shows which document it came from. It replaces an analyst asking three colleagues what was filed last time and hoping the answer was right then.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a model trained on your data. It is retrieval and classification over records you already keep. Almost all of the work is in making those records joinable — the outage to the invoice, the work order to the account — which is the same work the review does anyway.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Maximo or SAP PM in the larger operators; eMaint, Brightly or Cityworks in the mid-market — with an asset register complete for what was installed and patchy for what was inherited</li>
-      <li>Esri ArcGIS, authoritative for where the asset is and silent on what it costs to keep</li>
-      <li>SCADA and a historian — OSIsoft PI, Ignition — rich enough to explain an outage and never joined to the ledger</li>
-      <li>A customer information and billing system — Oracle CC&amp;B, Gentrack, Harris NorthStar, Itron — where unbilled and estimated consumption accumulates</li>
-      <li>Meter data management holding reads whose exceptions are re-estimated month after month rather than resolved</li>
+      <li>IBM Maximo Application Suite or SAP S/4HANA Asset Management in the larger operators; eMaint, Brightly Asset Essentials or Trimble Cityworks — now migrating to Trimble Unity Maintain — in the mid-market, with an asset register complete for what was installed and patchy for what was inherited</li>
+      <li>Esri ArcGIS, authoritative for where the asset is and silent on what it costs to keep — and whether you have moved to the Utility Network or are still on the geometric network that retired with ArcMap in March 2026</li>
+      <li>SCADA and a historian — AVEVA PI System, sold as OSIsoft PI until the 2021 acquisition, or Ignition — rich enough to explain an outage and never joined to the ledger</li>
+      <li>A customer information and billing system — Harris NorthStar or CIS Infinity, NISC iVUE, Tyler Enterprise ERP or Incode, Oracle Customer to Meter at the top of the range — where unbilled and estimated consumption accumulates</li>
+      <li>Meter data management — Itron IEE, Harris MeterSense — holding reads whose exceptions are re-estimated month after month rather than resolved</li>
       <li>Mobile work management that records the job and not the cost of the job</li>
-    </ul>
+ <li>An outage management system and the SCADA under it — SurvalentONE in a great many municipal and cooperative systems — which records the event, the customers out and the time to restore, and never the cost of the crews who did it</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>totex against allowance</li>
+      <li>O&amp;M and capital against the revenue requirement</li>
       <li>planned vs reactive maintenance ratio</li>
-      <li>cost per connection</li>
+      <li>O&amp;M cost per customer</li>
       <li>unbilled and estimated consumption</li>
-      <li>SAIDI and SAIFI</li>
+      <li>SAIDI, SAIFI and CAIDI</li>
       <li>outage cost per event</li>
       <li>capital delivery against plan</li>
       <li>non-technical losses</li>
-      <li>return on the regulated asset base</li>
-    </ul>
+      <li>earned ROE against authorized ROE</li>
+ <li>estimated reads as a share of bills</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>The price control or rate case submission, and the cost evidence behind every line the regulator can disallow</li>
+      <li>The rate case filing, and the cost evidence behind every line the commission can disallow on a prudence review</li>
       <li>Regulatory reporting packs reconciled to the statutory accounts once a year, by a team that reports to neither the regulator nor the auditor</li>
-      <li>Reliability and interruption reporting — SAIDI, SAIFI, customer minutes lost — which feeds an incentive or a penalty rather than a report</li>
-      <li>Environmental permits, emissions and discharge consents, where the consequence is an enforcement notice rather than a fee</li>
+      <li>Reliability and interruption reporting — SAIDI, SAIFI, customer minutes interrupted — which feeds an incentive or a penalty rather than a report</li>
+      <li>Air permits, emissions reporting and NPDES discharge permits, where the consequence is a notice of violation or a consent decree rather than a fee</li>
       <li>Asset integrity and safety case records — pipeline, dam, pressure system — inspected on a statutory cycle that does not pause for a vacancy</li>
       <li>Critical infrastructure and operational technology security obligations, with the evidence held by a team that does not report to finance</li>
-    </ul>
+ <li>The annual regulatory returns — FERC Form 1, Form EIA-861 by April 30, and RUS Form 7 by March 1 for a cooperative carrying Rural Utilities Service debt — compiled by whoever has the spreadsheet rather than by whoever owns the number</li>
+ <li>The AWIA Section 2013 risk and resilience assessment and emergency response plan, recertified to EPA every five years on a schedule staggered by population — for a system serving 3,301 to 49,999 people, this round's emergency response plan certification is due December 31, 2026</li>
+ <li>The Lead and Copper Rule Improvements — the notice to every customer with a lead, galvanized or unknown service line each November, and the baseline inventory and replacement plan due November 1, 2027</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -334,7 +351,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>When this stops being interesting and becomes urgent</h3>
     <ul class="trg">
-      <li>A price control or rate case in preparation, where every cost must be evidenced</li>
+      <li>A rate case in preparation, where every cost must be evidenced</li>
       <li>An outage or an incident whose full cost nobody assembled afterwards</li>
       <li>A capital program that slipped, reported as underspend rather than as deferred liability</li>
       <li>A commodity or interest rate move that repriced the hedge book or the debt</li>
@@ -346,9 +363,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Who this involves</h3>
     <ul class="roles">
-      <li><b>Signs it:</b> Chief executive or CFO; the asset director on anything touching the capital program</li>
+      <li><b>Signs it:</b> Chief executive, general manager or CFO; the VP of operations on anything touching the capital program</li>
       <li><b>Resists it:</b> Operations and engineering leads, whose maintenance regimes become open to challenge</li>
-      <li><b>Has been asking for it:</b> Regulatory finance, who have to defend the numbers in a submission</li>
+      <li><b>Has been asking for it:</b> Rates and regulatory affairs, who have to defend the numbers in a filing</li>
     </ul>
   </div>
 

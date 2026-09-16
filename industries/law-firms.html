@@ -213,10 +213,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>leverage</li>
     <li>origination credit</li>
     <li>matter economics</li>
-    <li>disbursements</li>
-    <li>client account</li>
+    <li>advanced client costs</li>
+    <li>escrow account</li>
     <li>lock-up</li>
-  </ul>
+ <li>prebill</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -246,40 +247,57 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
+<div class="depth">
+    <h3>Where AI earns its keep in a law firm</h3>
+    <ul class="subv">
+      <li><b>Prebill review before the invoice leaves the building</b><span>A model reads every entry on the prebill against that client's outside counsel guidelines and flags what will be cut: block billing, a narrative that reads &ldquo;attention to file&rdquo;, a missing or wrong UTBMS task code, a timekeeper the guidelines do not allow on that task. It moves the write-down to before submission instead of after. The carriers and corporate departments on the other side already run AI bill review on these same invoices.</span></li>
+      <li><b>Reading the agreements back against the bills</b><span>Rate cards, agreed discounts, volume commitments, fee caps and staffing restrictions sit in signed engagement letters and panel agreements in iManage or NetDocuments. They do not sit in 3E or Aderant, which only know the rate somebody keyed in. Extraction pulls those terms into a table that can be set against what was actually billed, matter by matter.</span></li>
+      <li><b>Matching cost invoices to matters</b><span>Court reporters, process servers, filing fees, expert invoices, e-discovery hosting, medical records. Extraction reads vendor, amount, date and any matter reference off the PDF and proposes the matter to charge. The useful output is not the ones it matches. It is the short list it cannot match, because that is where the advanced costs that were never recharged are sitting.</span></li>
+      <li><b>Drafting the day's time from the day's record</b><span>Calendar, sent mail, document versions in the document system, the phone log. The model proposes entries with narratives already written to the client's required format and codes, and the timekeeper corrects and releases them. It shortens the days between doing the work and recording it, which is the gap that becomes WIP no client will pay.</span></li>
+      <li><b>The one page that has to exist before the write-off conversation</b><span>Aged WIP and aged AR stall on the same thing. Before a partner will call a client about a bill or agree to write time off, somebody has to reconstruct what was agreed, what was billed, what the client last said and what is still open. It takes long enough that it does not happen, and the balance ages another quarter. A model assembles it from the billing system, the matter file and the email thread.</span></li>
+      <li><b>Conflicts across the names people actually typed</b><span>Party names arrive misspelled, abbreviated, under a former name, or as a subsidiary nobody linked to its parent. Entity matching widens the search, and reading the incoming documents catches parties nobody entered on the intake form at all. It shortens the conflicts turnaround the intake asks about. It does not make the call. It hands a shorter and better list to the person who does.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this is a legal research product and none of it writes anything a client or a court sees. It all sits in the back office, on the same three numbers this page is about. Each item shortens a task that is currently skipped because it costs time nobody has, and being skipped is the reason the money is still sitting there.</p>
+  </div>
+
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Elite 3E or ProLaw for the larger firms; Aderant Expert where the finance function grew up around it</li>
-      <li>Clio Manage or PracticePanther in firms under about forty fee earners</li>
-      <li>Chrome River or Nexudus for disbursements, usually reconciled by hand</li>
+      <li>3E or ProLaw from Elite — spun out of Thomson Reuters in 2023, sold again to Francisco Partners in August 2025 — for the larger firms; Aderant Expert where the finance function grew up around it</li>
+      <li>Clio Manage or PracticePanther below about forty timekeepers; Centerbase in the 25-to-150-attorney range that has outgrown them</li>
+      <li>nQueue for soft costs — print, copy, scan, research — and Emburse Enterprise, renamed from Chrome River in January 2025, for travel and entertainment; hard costs usually reconciled by hand</li>
       <li>iManage or NetDocuments for matter files — often the only complete record of what was actually agreed</li>
-      <li>A separate IOLTA/client account reconciliation, frequently in Excel</li>
-    </ul>
+      <li>A separate attorney trust account reconciliation — IOLA in New York, IOLTA elsewhere — frequently in Excel</li>
+ <li>The client's e-billing gateway rather than yours — Legal Tracker, TyMetrix 360°, CounselLink or Collaborati. Invoices go in as LEDES 1998B and come back reduced, and the reduction reasons often live only in the gateway</li>
+ <li>Intapp Time or Aderant iTimekeep for time capture, and Intapp Intake and Intapp Conflicts where new business clearance has been systematized</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>realization</li>
-      <li>collection rate</li>
+      <li>billing realization</li>
+      <li>collection realization</li>
       <li>lock-up days</li>
       <li>WIP aging</li>
       <li>leverage ratio</li>
-      <li>profit per equity partner</li>
+      <li>profits per equity partner</li>
       <li>matter margin</li>
       <li>origination credit</li>
-    </ul>
+ <li>utilization</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>State bar trust account (IOLTA) compliance and the annual certification</li>
-      <li>Client account three-way reconciliation — bank, ledger and matter balances</li>
+      <li>Attorney trust account compliance — IOLA in New York, IOLTA in New Jersey and most other states — and the registration that carries the trust account attestation: annual in New Jersey, biennial in New York under Judiciary Law §468-a, due within 30 days of each attorney's birthday</li>
+      <li>Trust account three-way reconciliation — bank statement, cash receipts and disbursements journal, individual client ledgers — monthly under New Jersey Rule 1:21-6, with seven-year record retention under New York Rule 1.15</li>
       <li>Malpractice insurance renewal disclosures on claims and circumstances</li>
-      <li>1099 reporting on settlement disbursements</li>
-    </ul>
+      <li>1099 reporting on settlement payments — Box 10 of Form 1099-MISC for gross proceeds paid to an attorney, 1099-NEC for fees paid for services, $600 threshold either way</li>
+ <li>22 NYCRR Part 1215 — a written letter of engagement before the work starts whenever the fee is expected to reach $3,000, and Part 1400 in matrimonial matters, where a signed retainer and an itemized bill at least every 60 days are conditions of being able to collect the fee at all</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -337,12 +355,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>When this stops being interesting and becomes urgent</h3>
     <ul class="trg">
-      <li>A partner retiring or de-equitising, which forces a real valuation of WIP and receivables rather than a comfortable one</li>
+      <li>A partner retiring or de-equitizing, which forces a real valuation of WIP and receivables rather than a comfortable one</li>
       <li>A merger conversation, where the other side's diligence asks the questions nobody internal has asked</li>
-      <li>A bar audit or a trust account exception that did not clear</li>
+      <li>A dishonored check or overdraft on the trust account, which the bank reports straight to the Lawyers' Fund for Client Protection under 22 NYCRR Part 1300 before the firm gets a chance to explain it — or a New Jersey random audit</li>
       <li>A practice management migration, which surfaces every unbilled matter at once</li>
       <li>A bank covenant test on the firm's line of credit</li>
-    </ul>
+ <li>A client moving onto an e-billing gateway or tightening its outside counsel guidelines, which puts someone else's rules in front of every time narrative the firm writes</li>
+</ul>
   </div>
 
   <div class="depth">

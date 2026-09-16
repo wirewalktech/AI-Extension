@@ -207,10 +207,10 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <p class="lede">Gross margin looks healthy at the pay-to-charge spread and thins considerably once employment cost, rebates and the time from timesheet to cash are included.</p>
 
   <ul class="vocab">
-    <li>pay-to-charge</li>
-    <li>gross margin per placement</li>
+    <li>pay/bill spread</li>
+    <li>GP per placement</li>
     <li>rebate</li>
-    <li>contractor book</li>
+    <li>headcount on billing</li>
     <li>DSO</li>
     <li>fill rate</li>
     <li>time to submit</li>
@@ -239,11 +239,24 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>Not every staffing and recruitment is the same business</h3>
     <ul class="subv">
       <li><b>Contract and temp staffing</b><span>Bill rate and pay rate set per placement, with the spread eroded by burden that was estimated once and never trued up.</span></li>
-      <li><b>Permanent placement</b><span>Fee revenue with a fallback guarantee, where the fallback rate by recruiter and by client is rarely calculated.</span></li>
+      <li><b>Permanent placement</b><span>Fee revenue against a replacement guarantee, usually 30 to 90 days, where the fall-off rate by recruiter and by client is rarely calculated.</span></li>
       <li><b>Statement-of-work and managed services</b><span>Priced as a deliverable, staffed as a contract, and margin measured as though it were the latter.</span></li>
-      <li><b>Healthcare and travel staffing</b><span>Credentialling, housing and per-diem stipends, where an IRS-compliant stipend and a convenient one are different amounts.</span></li>
-      <li><b>Vendor-managed and MSP programs</b><span>Rates capped by a program, with the supplier absorbing every burden increase for the life of the agreement.</span></li>
+      <li><b>Healthcare and travel staffing</b><span>Credentialing, housing and per diem, where a non-taxable stipend depends on the traveler keeping a tax home and a convenient stipend is wages.</span></li>
+      <li><b>MSP and VMS programs</b><span>Rates capped by the program and a supplier-funded MSP fee taken off the invoice before you count the spread, with the supplier absorbing every burden increase for the life of the agreement.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Timesheet exceptions, before they become invoice disputes</b><span>Every week a batch of timesheets arrives missing an approval, billed at a rate that does not match the agreement, or with overtime figured under the wrong rule. A model reading the week's timesheets against the rate card and the contract terms flags the ones that will bounce before the invoice goes out. It replaces the Monday reconciliation pass and the credit memo issued three weeks later. Days to invoice is the part of the cash cycle you actually control.</span></li>
+      <li><b>Client agreements turned into a register</b><span>Bill rates, overtime multipliers, guarantee and rebate clauses, conversion fees, expense pass-through and the MSP fee sit in signed PDFs on a shared drive. Pulling those terms into a table you can query is the reading nobody gets to by hand. It is the difference between knowing a rate is wrong now and finding out at renewal.</span></li>
+      <li><b>The submittal write-up, not the shortlist</b><span>Drafting the candidate summary in the client's format, from a resume and the intake notes, is a safe use. Ranking or scoring candidates is a different act: for a New York City role that is an automated employment decision tool, with an annual bias audit and ten business days' notice to the candidate attached to it.</span></li>
+      <li><b>The client intake call turned into a real job order</b><span>Must-haves, bill rate ceiling, approval chain, start date, why the last person failed. Most of it is said on the call and little of it reaches the order, so the desk works from two lines and submits the wrong people. Structuring the call notes cuts rework at the submittal stage without touching who gets selected.</span></li>
+      <li><b>Assignment ends nobody is watching</b><span>End dates, extension windows and the contractors worth redeploying are already in the ATS. A weekly pass that reads the active assignments, matches ending contractors against open reqs and drafts the outreach turns redeployment rate from an accident into a number. Bullhorn Automation, formerly Herefish, already handles the sending; the drafting and the matching are what is new.</span></li>
+      <li><b>Burden that was modeled once</b><span>Fully burdened cost moves with state unemployment rates, the workers' compensation code, benefit take-up and ACA eligibility, and most firms carry one blended number applied to everyone. Getting the current per-state rates out of quarterly filings and the comp policy into one table, then repricing live assignments against it, is the recovery that needs no new system. The arithmetic was never the hard part. Assembling the inputs was, and that is the part this shortens.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a model trained on your data or a change of platform. It needs an extract, a rate card, and someone willing to check the first hundred outputs by hand before the next thousand go unchecked.</p>
   </div>
 
   <div class="depth">
@@ -251,9 +264,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="sysl">
       <li>Bullhorn for the front office; JobDiva or Avionté in higher-volume shops</li>
       <li>A separate back office — Avionté, TempWorks or an outsourced payroll bureau — that rarely reconciles cleanly to the ATS</li>
-      <li>WOTC and ACA tracking, very often with a third party nobody has reviewed</li>
+      <li>WOTC and ACA tracking, usually with a third party nobody has reviewed — and WOTC has been lapsed for anyone hired after December 31, 2025, so the screening contract is worth reading before it renews</li>
       <li>Certificates of insurance and client contract terms in a shared drive rather than a register</li>
-    </ul>
+ <li>The client's VMS — SAP Fieldglass or Beeline — which holds the rate card, the timesheet approval and the program fee, and which your own system only ever holds a copy of</li>
+ <li>A payroll funding or factoring line — Advance Partners, a Paychex company, is the common one — whose fee and advance rate are a real cost of the spread and almost never shown per client</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -265,21 +280,24 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>burden rate</li>
       <li>fill rate</li>
       <li>time to fill</li>
-      <li>fallback rate</li>
+      <li>fall-off rate</li>
       <li>redeployment rate</li>
       <li>days sales outstanding</li>
-    </ul>
+ <li>markup</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>ACA applicable large employer reporting — 1094-C and 1095-C — across a variable-hour workforce</li>
+      <li>ACA applicable large employer reporting — 1094-C and 1095-C — across a variable-hour workforce, with the look-back measurement method deciding who counts as full-time; electronic filing is due March 31, and since the Paperwork Burden Reduction Act the 1095-C can be posted for request instead of mailed, except where a state mandate still requires direct furnishing, New Jersey among them</li>
       <li>Multi-state payroll tax registration and unemployment experience rating</li>
       <li>Workers' compensation classification codes and the annual audit</li>
-      <li>I-9 and E-Verify records, and worker classification for anyone paid on 1099</li>
-      <li>State-level staffing agency licensing where it applies</li>
-    </ul>
+      <li>I-9 completion, reverification and retention — E-Verify only where a federal contract or a client's own policy requires it, not by New York law — and worker classification for anyone paid on 1099</li>
+      <li>Employment agency licensing for permanent placement — New York City through DCWP, the rest of the state through the Department of Labor — which a temp firm that W-2s its own workers falls outside</li>
+ <li>New Jersey's Temporary Workers' Bill of Rights for any assignment across the river — equal average pay and benefit cost to the client's comparable employees, a $200,000 bond, and joint liability with the client</li>
+ <li>NYC Local Law 144 — an annual independent bias audit, a published summary and ten business days' notice to the candidate, for any automated tool that screens for a New York City role; it binds employment agencies, not only employers</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -331,10 +349,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="trg">
       <li>A workers' compensation audit that reclassified codes and produced a bill</li>
       <li>A client demanding an unprofitable rate at renewal, with no cost model to argue from</li>
-      <li>A misclassification claim, or a state audit of 1099 contractors</li>
+      <li>A misclassification claim, or a New York State unemployment insurance audit of workers paid on 1099</li>
       <li>An acquisition approach, where spread by client becomes a diligence question</li>
       <li>Losing a large account and discovering how much overhead it was carrying</li>
-    </ul>
+ <li>A measurement period closing and a cohort of variable-hour contractors becoming benefit-eligible on rates priced without it</li>
+</ul>
   </div>
 
   <div class="depth">

@@ -207,16 +207,17 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <p class="lede">Projects lose money in the gap between what was instructed and what was agreed. Variations get built because the program demands it, and the paperwork follows later — or does not.</p>
 
   <ul class="vocab">
-    <li>variation</li>
+    <li>PCO (pending change order)</li>
     <li>change order</li>
-    <li>retention</li>
+    <li>retainage</li>
     <li>WIP</li>
     <li>over/under billing</li>
-    <li>final account</li>
-    <li>EOT</li>
+    <li>closeout</li>
+    <li>time extension</li>
     <li>back-charge</li>
-    <li>preliminaries</li>
-  </ul>
+    <li>general conditions</li>
+ <li>T&amp;M ticket</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -242,20 +243,34 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="subv">
       <li><b>General contracting</b><span>Margin lives in the difference between the estimate, the buyout and the final cost, and the estimate is rarely revisited once the job is won.</span></li>
       <li><b>Mechanical, electrical and specialty trades</b><span>Change orders performed before they are approved, then negotiated from a weak position because the work is already installed.</span></li>
-      <li><b>Heavy civil and public work</b><span>Certified payroll, prevailing wage and DBE participation, where a compliance failure is withheld payment rather than a fine.</span></li>
+      <li><b>Heavy civil and public work</b><span>Certified payroll, prevailing wage and DBE/MWBE participation, where a compliance failure is withheld payment rather than a fine.</span></li>
       <li><b>Service and maintenance divisions</b><span>The steadiest margin in the business, usually run on the estimating assumptions of the construction side, which do not fit it.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI actually earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Reading every contract for its notice clauses</b><span>Each prime contract and subcontract sets a window, measured in days, to give written notice of a change or a delay before the entitlement is gone. Nobody reads all of them, and the windows differ by job. A model reads the executed documents and returns one table per job: notice windows, retainage terms, pay-when-paid language, liquidated damages. It replaces finding out what the window was after it closed.</span></li>
+      <li><b>Daily reports and field email read against the scope</b><span>A superintendent writes a log for every working day of the job, and somewhere in those logs is &ldquo;relocated the floor drains at the owner's rep's direction.&rdquo; A model reads the logs, the RFIs and the site email and flags work described as directed or extra that carries no PCO number against it. It replaces the hunt for entitlement at closeout, when everyone who was there has moved to another job.</span></li>
+      <li><b>Signed T&amp;M tickets matched to what was billed</b><span>Tickets get signed in the field, photographed, and then live in somebody's phone. Ordinary OCR and a model pull the date, crew, hours and description off each one and match it against billed change orders. What comes back is a list of signed tickets nobody ever billed.</span></li>
+      <li><b>Certified payroll checked before it is submitted, not after</b><span>Run the payroll register against the wage determination for that job &mdash; classification, fringe, apprentice ratio, overtime rate &mdash; and catch the wrong classification the week it happens. It replaces the withheld payment three months later, the make-up payroll, and the letter explaining both to an agency that has already stopped paying.</span></li>
+      <li><b>Sub proposals against the specification at buyout</b><span>Compare each sub's proposal to the specification sections it is supposed to cover and list what nobody bid. A scope gap found at buyout is a negotiation. The same gap found in the field is a change order you absorb. It shortens the night before the award, when the estimator is reading a stack of proposals side by side.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a construction-specific AI product. It is ordinary document work done on your own files, and the constraint is almost always where those files are &mdash; executed subcontracts on a shared drive, daily logs in Procore, tickets in a phone, and no index across the three.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Sage 300 CRE (Timberline) or Viewpoint Vista in established contractors</li>
+      <li>Sage 300 CRE (Timberline) or Trimble Viewpoint Vista in established contractors</li>
       <li>Procore for project management, often not reconciled to the accounting system</li>
-      <li>Foundation or Computer Ease in specialty trades</li>
-      <li>A separate certified payroll process for any public work</li>
-      <li>Textura or GCPay for subcontractor payment and lien waiver tracking</li>
-    </ul>
+      <li>FOUNDATION or Deltek ComputerEase in specialty trades</li>
+      <li>A separate certified payroll and MWBE reporting process for public work, usually LCPtracker or B2Gnow on agency jobs</li>
+      <li>Oracle Textura or GCPay (Autodesk) for subcontractor payment and lien waiver tracking</li>
+ <li>HCSS HeavyBid and HeavyJob on heavy civil and utility work</li>
+ <li>ServiceTitan or BuildOps where a mechanical or electrical contractor runs a real service division</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -265,23 +280,26 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>gross margin by job</li>
       <li>over/under billings</li>
       <li>backlog</li>
-      <li>change order cycle time</li>
+      <li>change order aging</li>
       <li>cost to complete</li>
       <li>labor productivity</li>
       <li>EMR</li>
       <li>days sales outstanding</li>
-    </ul>
+ <li>margin fade</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Certified payroll (WH-347) and prevailing wage determinations on public work</li>
-      <li>Lien waivers, notices to owner and the statutory deadlines that void a claim</li>
+      <li>Certified payroll and prevailing wage determinations on public work — WH-347 on federal-aid jobs, and since January 1, 2026 electronic filing every 30 days through the NYS DOL portal on Article 8 work</li>
+      <li>Lien waivers and the mechanic's lien clock that voids a claim — in New York, 8 months from last furnishing on private work, 4 months on a single-family dwelling, and 30 days after completion and acceptance on a public improvement</li>
       <li>Surety bonding — the WIP schedule the bonding agent actually reads</li>
-      <li>OSHA 300 logs and EMR, which price the insurance</li>
-      <li>AIA G702/G703 applications and stored-materials substantiation</li>
-    </ul>
+      <li>OSHA 300 logs and EMR, which price the insurance, plus electronic submission through OSHA's ITA by March 2 — case-level 300 and 301 data at 100 employees or more</li>
+      <li>AIA G702/G703 pay applications — the requisition, in New York — and stored-materials substantiation</li>
+ <li>New York's 5% retainage cap on private construction contracts of $150,000 or more, plus the right to invoice in full at substantial completion — GBL §756-a, in force since November 2023 and tightened again in December 2025</li>
+ <li>Labor Law §198-e — on private work the general contractor is jointly and severally liable for a subcontractor's unpaid wages at any tier, for contracts entered into, renewed or amended on or after January 4, 2022</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>

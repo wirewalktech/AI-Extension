@@ -211,11 +211,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>daypart</li>
     <li>RevPAR</li>
     <li>ADR</li>
-    <li>wastage</li>
+    <li>waste</li>
     <li>covers</li>
     <li>channel contribution</li>
     <li>GOP</li>
-  </ul>
+ <li>PMIX</li>
+ <li>comps and voids</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -240,24 +242,37 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>Not every hospitality and food service is the same business</h3>
     <ul class="subv">
       <li><b>Independent and small-group restaurants</b><span>Prime cost managed as a single percentage, so a drift in one outlet's food cost is offset in the group total by a good month somewhere else.</span></li>
-      <li><b>Multi-site and franchised quick service</b><span>Royalty and advertising fund on gross sales, plus brand-mandated refurbishment on the franchisor's calendar rather than the site's cash position.</span></li>
-      <li><b>Hotels and rooms-led operations</b><span>Rooms carry the margin and food and beverage is run as an amenity, with banqueting and breakfast costed as though they were the restaurant.</span></li>
-      <li><b>Contract catering and food service management</b><span>Cost-plus and fixed-price client contracts side by side, where supplier rebates belong to one and not the other and the accounting rarely separates them.</span></li>
-      <li><b>Bars, pubs and late-night</b><span>Wet-led gross profit against pour cost, cellar loss and till voids, measured by stocktake at an interval long enough to hide the cause.</span></li>
-      <li><b>Events, banqueting and weddings</b><span>Priced from a banqueting event order and delivered against the version the client changed last week, with the difference absorbed on the night.</span></li>
+      <li><b>Multi-unit and franchised quick service</b><span>Royalty and ad fund on gross sales, plus a brand-mandated remodel on the franchisor's calendar rather than the location's cash position.</span></li>
+      <li><b>Hotels and rooms-driven operations</b><span>Rooms carry the margin and food and beverage is run as an amenity, with banquets and breakfast costed as though they were the restaurant.</span></li>
+      <li><b>Contract and managed food service</b><span>Management-fee and P&amp;L contracts side by side, where rebates belong to the client under one and to you under the other, and the accounting rarely separates them.</span></li>
+      <li><b>Bars, taverns and late-night</b><span>Beverage gross profit against pour cost, draft yield loss and register voids, measured by a physical count at an interval long enough to hide the cause.</span></li>
+      <li><b>Events, banquets and weddings</b><span>Priced from a banquet event order and delivered against the version the client changed last week, with the difference absorbed on the night.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Supplier invoices into the cost system</b><span>Invoices arrive as paper, PDFs and portal downloads, and someone keys them in — which is why the price file is always behind the supplier's prices. Extraction reads the line items, maps them to your recipe ingredients, and flags every unit price that moved since the last delivery and every one that broke the contracted price. It replaces the keying, not the buyer. The gain is not the hour saved in AP; it is seeing a move on a core item in the week it happens instead of at the next count.</span></li>
+      <li><b>Reading the agreements you are billed under</b><span>Rebate schedules, franchise agreements, aggregator and OTA contracts and management agreements all carry tiers, thresholds, commission rates and notice dates that sit in PDFs nobody re-reads. A model pulls those terms into one table you can set actual volumes against. Two of the losses above — rebates tied to volumes you no longer hit, and a commission change nobody modeled — only become visible once the terms sit beside the numbers.</span></li>
+      <li><b>A demand forecast the schedule is built from</b><span>Forecasting covers and sales by daypart off two or three years of POS history, plus the calendar and the weather, is commodity work now. It replaces the manager copying last week's schedule forward and trimming it until the labor percentage looks right. The model produces the forecast; the GM still writes the schedule, because the model does not know who called out or who can run a section alone.</span></li>
+      <li><b>Aggregator and OTA payouts matched to orders</b><span>Every platform sends a different payout file with a different fee breakdown, and most groups match it to the POS by hand, monthly, if at all. The work is normalizing inconsistent files and matching order by order — refunds, adjustments, promotional fees, orders you were charged on that never rang in. Most of it is plain matching. The model's job is reading each platform's format without you rewriting a parser every time one changes.</span></li>
+      <li><b>Menu contribution instead of menu cost percentage</b><span>PMIX joined to recipe cost, ranked by contribution dollars per item per daypart rather than by food cost percentage, with the last re-price measured against what it actually did to mix. It replaces a spreadsheet the chef and the finance lead rebuild by hand every time the menu changes — which is why it usually does not get rebuilt.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a platform purchase. All five run on extracts you already have: the POS, the invoices, the payout files and the contracts in a folder. The review names which of them your data can actually support today, and which would need a counting discipline you do not have yet.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Toast or Lightspeed in independents and small groups; Oracle Micros Simphony or NCR Aloha where the estate is older than the current operator</li>
+      <li>Toast or Lightspeed in independents and small groups; Oracle MICROS Simphony or NCR Voyix Aloha where the estate is older than the current operator</li>
       <li>Restaurant365, MarginEdge or Crunchtime for back-of-house cost — usually live in some outlets and not others, which is itself the finding</li>
       <li>Mews, Cloudbeds or StayNTouch as the PMS in independent hotels; Opera Cloud where a brand standard dictates it, with a channel manager between you and the OTAs</li>
-      <li>7shifts, HotSchedules or Deputy for rotas — the schedule, not the clock-in, is what most labor reports are built from</li>
-      <li>Delivery aggregator portals, each with its own remittance file, reconciled to the till by hand if at all</li>
+      <li>7shifts, HotSchedules (Fourth) or Deputy for scheduling — the schedule, not the actual punches, is what most labor reports are built from</li>
+      <li>DoorDash, Uber Eats and Grubhub merchant portals, each with its own payout file and its own fee breakdown, reconciled to the POS by hand if at all</li>
       <li>A supplier ordering platform whose price file is updated less often than the supplier's prices</li>
-    </ul>
+ <li>Otter, Chowly or Deliverect between the aggregators and the POS — where it exists the fee data is already structured; where it does not, someone is retyping orders off a tablet</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -270,7 +285,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>covers per labor hour</li>
       <li>RevPAR</li>
       <li>ADR</li>
-      <li>GOP per available room</li>
+      <li>GOPPAR</li>
       <li>channel contribution</li>
       <li>four-wall margin</li>
     </ul>
@@ -279,14 +294,16 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Alcohol license renewals, and the conditions on them that a change of manager can breach</li>
+      <li>State Liquor Authority license renewal, and the method-of-operation stipulations agreed with the community board — hours, music, outdoor seating — that a new manager can breach without knowing they exist</li>
       <li>Health and food safety inspections, and what a re-inspection costs in closed hours</li>
-      <li>Tip, gratuity and service-charge distribution records — the payroll and tax treatment follows the distribution rule rather than the intention</li>
-      <li>Applicable large employer reporting across a workforce whose hours vary week to week, and the measurement period that decides who is offered cover</li>
+      <li>Tip, gratuity and service-charge records under the New York Hospitality Industry Wage Order (12 NYCRR Part 146) — a mandatory service charge is presumed to be a gratuity unless the guest is clearly told otherwise, and the tip credit is lost on any day a tipped employee spends more than two hours or 20% of the shift on non-tipped work</li>
+      <li>ACA applicable large employer reporting on Forms 1094-C and 1095-C, across a workforce whose hours vary week to week, and the look-back measurement method that decides who must be offered coverage</li>
       <li>Sales, occupancy and tourist taxes per jurisdiction, on revenue arriving through channels that each report it differently</li>
       <li>Franchise agreement audit rights, and whether reported sales for royalty would survive one</li>
       <li>PCI DSS scope across tills, handheld terminals and the booking engine</li>
-    </ul>
+ <li>Total-price display for room rates under the FTC's Rule on Unfair or Deceptive Fees (16 CFR Part 464), in force since May 12, 2025 — every mandatory fee has to be in the advertised price, on your own booking engine and everywhere else a rate appears</li>
+ <li>A New York City hotel license under the Safe Hotels Act, required since May 3, 2025 and renewed every two years, with continuous front-desk coverage and direct employment of core staff as conditions of holding it</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -337,18 +354,19 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>When this stops being interesting and becomes urgent</h3>
     <ul class="trg">
       <li>A franchise renewal or a property improvement plan landing with a capital number attached to it</li>
-      <li>A minimum or tipped wage step, or a predictive scheduling ordinance</li>
+      <li>A minimum or tipped-wage step each January — New York's rate is legislated through 2026 and indexed to inflation after that — or NYC Fair Workweek premiums being charged on schedule changes</li>
       <li>A site that lost money for a full year while the group percentage looked normal</li>
       <li>A refinancing or a sale-leaseback, where four-wall margin per site is the first request</li>
       <li>An aggregator commission change, or a menu re-price nobody modeled through to contribution</li>
       <li>A general manager leaving, and the supplier relationships leaving with them</li>
-    </ul>
+ <li>A wage-and-hour claim — tip credit, spread of hours, uniform maintenance or a Fair Workweek premium — where the exposure is one repeated error multiplied by every employee and every pay period</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>Who this involves</h3>
     <ul class="roles">
-      <li><b>Signs it:</b> Owner, managing director or group CFO</li>
+      <li><b>Signs it:</b> Owner, president or group CFO</li>
       <li><b>Resists it:</b> General managers and head chefs, whose site and outlet numbers become comparable</li>
       <li><b>Has been asking for it:</b> The operations director, who can already name the two sites</li>
     </ul>

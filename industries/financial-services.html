@@ -207,12 +207,12 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <p class="lede">Regulated firms carry a cost of control that is real, necessary and almost never measured as a unit cost. What can be measured can be compared, and what can be compared usually turns out to vary far more than anyone expected.</p>
 
   <ul class="vocab">
-    <li>cost of control</li>
+    <li>cost of compliance</li>
     <li>reconciliation break</li>
     <li>KYC/AML</li>
     <li>remediation</li>
-    <li>outsourcing risk</li>
-    <li>expense ratio</li>
+    <li>third-party risk</li>
+    <li>NIGO</li>
     <li>attestation</li>
   </ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
@@ -239,21 +239,35 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>Not every financial services is the same business</h3>
     <ul class="subv">
       <li><b>Registered investment advisers</b><span>Fees calculated on values from a date convention that differs between the agreement, the billing sheet and the custodian.</span></li>
-      <li><b>Broker-dealers and hybrid</b><span>Commission grids, payout schedules and clearing costs that change per product and are reconciled per rep by nobody.</span></li>
+      <li><b>Independent broker-dealers and hybrid RIAs</b><span>Commission grids, payout schedules and clearing costs that change per product and are reconciled per rep by nobody.</span></li>
       <li><b>Community banks and credit unions</b><span>Deposit and loan operations where the cost to serve an account is rarely computed and small accounts frequently lose money.</span></li>
       <li><b>Specialty and private lending</b><span>Servicing, escrow and fee waterfalls per facility, with the loan documents and the servicing system saying different things.</span></li>
       <li><b>Fund administration and family office</b><span>Bespoke reporting delivered per client at a fee agreed when there were fewer clients and simpler structures.</span></li>
     </ul>
   </div>
 
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Fee schedules read out of the signed agreements</b><span>Pull the fee schedule, breakpoints, billing frequency, advance or arrears, valuation date and householding out of every executed agreement and every amendment, into one table you compare line by line against what the billing system actually charged. Replaces the handful of agreements somebody samples for the annual review, and finds the date-convention mismatch before a client does.</span></li>
+      <li><b>The NIGO check before the packet leaves</b><span>Read the new-account packet against the fields that have historically caused a return &mdash; missing signature page, stale ID, a trust or operating agreement whose signatory list does not match the application, the beneficial owners CIP needs. Replaces the second human pass on every packet, and removes a round trip that costs days each time the custodian sends one back.</span></li>
+      <li><b>Break comments and complaint narratives, sorted by cause</b><span>Operations already types a reason into every break it clears and every complaint it logs, and nobody reads that field in aggregate. Cluster a year of it and the causes stop being anecdotes: one corporate-action feed, one dividend convention, one disclosure line. Replaces the sheet where every complaint is categorized as &ldquo;service&rdquo; and no break has a cause at all.</span></li>
+      <li><b>Triage of the surveillance queue</b><span>A lexicon flags every &ldquo;guarantee&rdquo; and every &ldquo;no risk&rdquo; in the archive, and an analyst clears the hits by eye in the order they arrived, almost all of them nothing. A classifier trained on your own past dispositions ranks the queue so review starts where the risk is. Replaces the reading order, not the reviewer.</span></li>
+      <li><b>Alert disposition and the first draft of a SAR narrative</b><span>Transaction monitoring in a community bank or credit union raises far more alerts than there are things worth reporting, and the analyst writes each narrative from a blank page. Abrigo ships an assistant inside BAM+ that scores and prioritizes alerts and drafts the investigative narrative, which matters: an assistant bolted on the side creates a records problem the built-in one does not. Replaces the blank page, not the filing decision.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">Each of these runs on data you already hold and returns something you can check &mdash; against a custodian file, an invoice, a signed agreement, a disposition you already made. That is the whole test. And in a bank, anything that changes an alert outcome is a model, with a validation file an examiner will ask to see.</p>
+  </div>
+
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Orion, Addepar or Black Diamond for portfolio reporting; Redtail or Wealthbox as CRM</li>
-      <li>A custodian — Schwab, Fidelity or Pershing — whose statements are the authoritative record</li>
+      <li>Orion, Addepar, SS&C Black Diamond or Envestnet | Tamarac for portfolio accounting and performance reporting; Wealthbox, Redtail (Orion-owned since 2022) or Salesforce Financial Services Cloud as CRM</li>
+      <li>A custodian — Schwab Advisor Services, Fidelity Institutional, BNY Pershing or Altruist — whose statements are the authoritative record</li>
       <li>Fee billing run from a spreadsheet against the custodian file, reconciled by hand</li>
-      <li>A compliance archive for communications that nobody has tested a retrieval from</li>
-    </ul>
+      <li>A communications archive — Smarsh, Global Relay or Proofpoint — that nobody has tested a retrieval from</li>
+ <li>For a bank or credit union, the core — Fiserv (Premier or DNA), Jack Henry SilverLake, or Symitar — plus Nasdaq Verafin or Abrigo BAM+ for BSA/AML monitoring</li>
+ <li>COMPLY (formerly RIA in a Box) or SmartRIA holding the code of ethics, personal trading pre-clearance and the attestation log</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -261,14 +275,15 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
       <li>revenue per adviser</li>
-      <li>fee realization</li>
+      <li>effective fee rate</li>
       <li>AUM and net flows</li>
       <li>cost to serve per account</li>
       <li>billing exceptions</li>
       <li>client retention</li>
       <li>compliance findings</li>
       <li>operating margin</li>
-    </ul>
+ <li>efficiency ratio</li>
+</ul>
   </div>
 
   <div class="depth">
@@ -277,9 +292,12 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>Form ADV, and whether the fee disclosure matches what is actually billed</li>
       <li>SEC or state examination requests, and the books and records rule</li>
       <li>AML program, CIP and SAR filings; OFAC screening records</li>
-      <li>Communications retention and supervision under 17a-4</li>
-      <li>SOC 1 from any provider you rely on, and whether anybody reads it</li>
-    </ul>
+      <li>Communications retention under Advisers Act Rule 204-2 if you are an RIA, or Exchange Act Rule 17a-4 if you have a broker-dealer, and supervision of those communications under FINRA Rule 3110</li>
+      <li>SOC 1 or SOC 2 Type II from every provider you rely on, whether anybody reads the complementary user entity controls, and whether the report period actually covers your year end</li>
+ <li>Amended Regulation S-P: an incident response program, notice to affected customers within 30 days of determining unauthorized access, and contracts requiring your providers to tell you within 72 hours. Smaller entities have been on the hook since June 3, 2026</li>
+ <li>NYDFS Part 500 if you hold a New York license, and the annual Certification of Material Compliance due April 15, signed personally by the CEO or CISO</li>
+ <li>The Rule 206(4)-7 annual compliance review, and the Marketing Rule records behind every performance figure and testimonial you publish</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>

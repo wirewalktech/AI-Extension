@@ -212,8 +212,10 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>program vs support</li>
     <li>reserves policy</li>
     <li>funder reporting</li>
-    <li>net contribution</li>
-  </ul>
+    <li>net fundraising revenue</li>
+ <li>time and effort</li>
+ <li>subrecipient monitoring</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -241,31 +243,44 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li><b>Membership and association</b><span>Dues set years ago against services that expanded, with member cost to serve never calculated.</span></li>
       <li><b>Arts and cultural</b><span>Earned revenue with high fixed costs, where a program's true contribution is buried in shared overhead.</span></li>
       <li><b>Federated and affiliate models</b><span>Shared services charged to affiliates on a formula nobody has revisited.</span></li>
-      <li><b>Social enterprise</b><span>A trading arm whose margin subsidises the mission and is reported as though it were mission delivery.</span></li>
+      <li><b>Social enterprise</b><span>An earned-revenue arm whose margin subsidizes the mission and is reported as though it were mission delivery.</span></li>
     </ul>
+  </div>
+
+<div class="depth">
+    <h3>Where AI earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Reading the award documents for what they actually require</b><span>Every executed agreement, amendment and attachment put through extraction into one table: period of performance, allowable and unallowable categories, match and cost share, the indirect rate the award permits, report dates and formats, prior-approval triggers, carryover rules. It replaces the grants tracker one person keeps in Excel from memory, and it finds the term that was never entered because the person who negotiated it has left. Document extraction is the most reliable thing these tools do.</span></li>
+      <li><b>First drafts of funder reports</b><span>Each funder wants the same figures in its own format. Given the ledger extract, the approved budget and last period's report, a model fills the funder's template and drafts the narrative, and finance ties the numbers back to the ledger. It replaces the retyping, not the tie-out. This is the cost in the first pattern on this page.</span></li>
+      <li><b>Allowability checks monthly instead of every spring</b><span>Run payroll allocation and AP coding for each award against that award's own rules and flag what an auditor would question: costs charged after the period of performance closed, categories the agreement excludes, charges that jump in the final month, indirect applied above the negotiated or de minimis rate. It moves the sample the auditor takes in the spring to a check you run monthly, while a correcting entry is still cheap.</span></li>
+      <li><b>Testing the allocation basis against what actually happened</b><span>Compare the stated basis in the cost allocation plan &mdash; headcount, square feet, direct salary &mdash; against the year's real payroll distribution and program activity, and show where the two have drifted apart. That is the second pattern on this page: a basis set years ago that nobody can now reconstruct. The work is reconstruction, and reconstruction is cheap now.</span></li>
+      <li><b>Funder research from public filings</b><span>Form 990 and 990-PF data is public and machine-readable, so a model can read a foundation's giving history &mdash; who it funds, at what size, for how many years, and whether it renews &mdash; and rank a list that development staff would otherwise build by opening filings one at a time. It shortens the research. It does not write the relationship.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">All five run on documents and extracts you already hold, with commodity tools, and none of them needs a new system of record. The review counts the hours first &mdash; how many people, how many hours, per report and per award &mdash; because that number is what separates the ones worth doing at your size from the ones that are a toy.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Blackbaud Financial Edge or Sage Intacct for fund accounting; Raiser's Edge or Salesforce NPSP for development</li>
+      <li>Blackbaud Financial Edge NXT or Sage Intacct for fund accounting; Raiser's Edge NXT, Bonterra EveryAction or Salesforce for development &mdash; Salesforce's nonprofit product is now sold as Agentforce Nonprofit, and the NPSP package it replaced has had no new features since 2023</li>
       <li>A grants tracker separate from both, usually in Excel, holding the real deadlines</li>
       <li>Restricted fund balances reconciled annually rather than monthly</li>
       <li>Program outcome data collected for funders and never used for management</li>
-    </ul>
+ <li>SAM.gov, where the registration has to be revalidated every twelve months and lapses quietly, and the portal the cash actually comes through &mdash; the HHS Payment Management System for NIH, HRSA, CDC and ACF awards, Treasury's ASAP for most of the rest</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>program contribution</li>
-      <li>indirect recovery</li>
+      <li>program surplus or deficit</li>
+      <li>indirect cost recovery</li>
       <li>cost per outcome</li>
-      <li>restricted vs unrestricted balance</li>
+      <li>net assets with and without donor restrictions</li>
       <li>months of operating reserve</li>
-      <li>fundraising cost ratio</li>
-      <li>grant compliance findings</li>
+      <li>cost to raise a dollar</li>
+      <li>questioned costs</li>
       <li>donor retention</li>
     </ul>
   </div>
@@ -273,12 +288,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Form 990 and the functional expense allocation behind it</li>
-      <li>Single audit under Uniform Guidance where federal spend crosses the threshold</li>
+      <li>Form 990 and the statement of functional expenses behind it &mdash; due the fifteenth day of the fifth month after year end, May 15 for a calendar-year filer, with one automatic six-month extension on Form 8868; Form 990-T alongside it where there is unrelated business income</li>
+      <li>Single audit under Uniform Guidance once federal awards expended pass $1 million in a fiscal year &mdash; raised from $750,000 for fiscal years beginning on or after October 1, 2024 &mdash; with the reporting package and the SEFA filed to the Federal Audit Clearinghouse at fac.gov within nine months of year end, or 30 days after the auditor's report, whichever is earlier</li>
       <li>State charitable registration and renewal in every state you solicit in</li>
       <li>Grant reports with their own deadlines, formats and allowability rules</li>
       <li>Donor restriction documentation, which is what an auditor will ask to see</li>
-    </ul>
+ <li>In New York, the CHAR500 to the Attorney General's Charities Bureau, due the fifteenth day of the fifth month after year end &mdash; May 15 for a calendar-year filer &mdash; with a CPA review required above $250,000 of revenue and a full audit above $1 million</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -333,7 +349,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A capital campaign or a merger conversation</li>
       <li>A board asking which programs actually cover their costs</li>
       <li>A restricted fund balance nobody can explain</li>
-    </ul>
+ <li>A federal or state award paused, terminated or slow to reimburse, when payroll has already been spent against it</li>
+ <li>A new pass-through award that takes federal spend over $1 million for the first time and brings a single audit with it</li>
+</ul>
   </div>
 
   <div class="depth">
@@ -341,7 +359,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="roles">
       <li><b>Signs it:</b> Executive director or CFO</li>
       <li><b>Resists it:</b> Program leads whose individual economics become visible to the board</li>
-      <li><b>Has been asking for it:</b> Finance, who already know which programs are subsidised</li>
+      <li><b>Has been asking for it:</b> Finance, who already know which programs are subsidized</li>
     </ul>
   </div>
 

@@ -208,11 +208,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
 
   <ul class="vocab">
     <li>ARR</li>
-    <li>net revenue retention</li>
+    <li>NRR</li>
     <li>cost to serve</li>
-    <li>committed use</li>
+    <li>committed spend</li>
     <li>churn</li>
-    <li>capitalised R&amp;D</li>
+    <li>capitalized R&amp;D</li>
     <li>seat utilization</li>
     <li>gross margin</li>
   </ul>
@@ -246,26 +246,41 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
+<div class="depth">
+    <h3>Where AI actually earns its keep here</h3>
+    <ul class="subv">
+      <li><b>Reading the contract file</b><span>One pass over every signed order form and amendment, pulling term, notice window, auto-renewal date, uplift cap and the concessions a rep wrote in that never reached the CRM. What it replaces is nobody opening them: the caps on this page go unapplied because the terms sit in signed PDFs and the billing run does not read PDFs. Every extracted figure gets checked against the document before anyone bills on it.</span></li>
+      <li><b>Clustering support tickets by what actually caused them</b><span>Group a year of free-text Zendesk or Freshdesk tickets into recurring causes, instead of trusting a category dropdown that agents pick under handle-time pressure. The output is a ranked list of defects with contact volume attached, which turns "support is busy" into an engineering cost with a number next to it.</span></li>
+      <li><b>Putting a name on untagged cloud spend</b><span>Give a model the resource names, existing tags, Terraform and repo paths, have it propose an owner and an environment for each untagged resource, and have a human confirm the list. It replaces the tagging cleanup that keeps getting deferred, and it is the thing that has to exist before non-production waste or cost per customer can be measured at all.</span></li>
+      <li><b>Drafting the renewal brief</b><span>One page per account: usage against entitlement, ticket history, contract terms, and what was discounted last time. Assembled by hand it is slow enough that the small accounts get skipped, which is exactly where renewals go out at the old price with the uplift left on the table.</span></li>
+      <li><b>First-line support drafts</b><span>Replies drafted against your own help center and past resolved tickets, with an agent reading and sending. The gain you can measure is handle time on repeat questions. It is not a headcount saving unless someone changes the staffing plan, and deflection rate is the easiest number in this industry to flatter.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of these needs a model you host or data you do not already have: an export, a commodity model, and someone whose job it is to check the output. They are listed because each one sits on a loss already named above: the caps nobody applied, the tickets nobody grouped, the resources nobody owns. We do not sell any of them and take no commission on any of them. The review says which one has money behind it at your size, and what has to be true in your data first.</p>
+  </div>
+
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Stripe, Chargebee or Recurly for billing; a spreadsheet for anything the billing system could not model</li>
+      <li>Stripe Billing, Chargebee or Maxio (the former SaaSOptics and Chargify) for billing and revenue schedules; a spreadsheet for anything the billing system could not model</li>
       <li>Salesforce or HubSpot holding contract terms that the billing system does not share</li>
       <li>AWS, GCP or Azure, with cost allocation tags that were applied to some resources</li>
       <li>A data warehouse where ARR is calculated one way and the board pack another</li>
-    </ul>
+ <li>Zendesk, Intercom or Freshdesk for tickets, and Jira for the engineering backlog — the same defect exists in both, with nothing linking them</li>
+ <li>Pendo, Amplitude or Mixpanel for product usage, or the application database itself if nobody bought one — seats sold sit in billing, seats active sit here, and the two are joined by hand if at all</li>
+ <li>Salesforce CPQ — end of sale since March 2025, with new buyers steered to Revenue Cloud Advanced — or DealHub or PandaDoc, holding the discount that was approved rather than the one that was signed</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>net revenue retention</li>
+      <li>NRR and GRR</li>
       <li>gross margin by product</li>
       <li>CAC payback</li>
       <li>cost to serve per customer</li>
       <li>discount depth</li>
-      <li>cloud cost per account</li>
+      <li>hosting cost as % of revenue</li>
       <li>implementation margin</li>
       <li>ARR bridge</li>
     </ul>
@@ -278,7 +293,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>Sales tax and economic nexus on software across states — a common unbooked liability</li>
       <li>Data processing agreements and sub-processor disclosure to customers</li>
       <li>Revenue recognition under ASC 606, especially where implementation is bundled</li>
-    </ul>
+ <li>Section 174A — domestic R&amp;D is immediately deductible again for tax years beginning after December 31, 2024, with the unamortized 2022-2024 balance available as a catch-up. Research performed outside the US is still spread over 15 years, so where the engineers sit is now a tax question</li>
+ <li>New York taxes SaaS as prewritten software, and bundling non-taxable services into the same fee can pull the whole invoice into tax</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -336,7 +353,8 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>Cloud spend growing faster than revenue with no unit-cost view</li>
       <li>A large renewal at risk, without knowing whether that customer was ever profitable</li>
       <li>A sales tax notice from a state you did not know you had nexus in</li>
-    </ul>
+ <li>A cloud commitment coming up for renewal, with the vendor quoting against a spend number nobody inside has re-forecast</li>
+</ul>
   </div>
 
   <div class="depth">

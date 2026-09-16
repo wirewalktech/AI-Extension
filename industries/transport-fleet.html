@@ -209,12 +209,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <ul class="vocab">
     <li>cost per mile</li>
     <li>utilization</li>
-    <li>empty running</li>
-    <li>VOR</li>
-    <li>planned vs reactive</li>
+    <li>deadhead</li>
+    <li>downtime</li>
+    <li>PM vs breakdown</li>
     <li>telematics</li>
     <li>residual value</li>
-  </ul>
+ <li>unseated trucks</li>
+</ul>
   <p class="vocab-note">The terms above are the ones the review uses with you, because they
   are the ones you already use. Nothing is translated into a consultant's vocabulary and
   then translated back.</p>
@@ -239,21 +240,35 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>Not every transport and fleet is the same business</h3>
     <ul class="subv">
       <li><b>For-hire trucking</b><span>Revenue per mile against a cost per mile that was calculated before the last insurance renewal and the last driver pay increase.</span></li>
-      <li><b>Private and dedicated fleets</b><span>A cost center inside another business, where nobody has priced what outsourcing would actually cost by comparison.</span></li>
+      <li><b>Private fleets</b><span>A cost center inside another business, where nobody has priced what outsourcing would actually cost by comparison.</span></li>
       <li><b>Last mile and courier</b><span>Contractor classification, per-stop economics and route density that determine whether a contract earns anything.</span></li>
       <li><b>Specialized and heavy haul</b><span>Permits, escorts and deadhead that are quoted from memory and vary enormously.</span></li>
       <li><b>Passenger and shuttle</b><span>Utilization against fixed schedules, where an underused run is invisible inside a contract price.</span></li>
     </ul>
   </div>
 
+<div class="depth">
+    <h3>Where AI earns its keep in a fleet</h3>
+    <ul class="subv">
+      <li><b>Coding the shop's write-ups so repairs add up</b><span>Technicians write in sentences. The work order says PM B, found air leak at the gladhand, replaced — and finance sees one line and a dollar amount. A model reads the narrative and the parts lines, assigns a VMRS system code and a planned or unplanned flag, and the same failure on the same unit stops hiding inside a maintenance total. It replaces the recoding nobody has time for. A person still spot-checks a sample.</span></li>
+      <li><b>Billing the detention you can already prove</b><span>ELD and gate timestamps say when the truck arrived and when it left. The customer agreement says how much free time that account gets. Nobody joins the two, so detention goes unbilled. A model pulls the accessorial table out of each contract, compares it to the stop records, and hands back a billable list with the timestamps attached. This is the page's own point about ELD data that answers compliance questions and is never used for costing.</span></li>
+      <li><b>Reconciling the fuel card against the truck</b><span>Match every transaction to where that unit was, what its tank holds and what it burns: gallons over tank capacity, two purchases 400 miles apart twenty minutes apart, a card fueling a unit that was in the shop. Then reprice the statement against the discount and rebate tiers you actually negotiated. The card program already sends an exception report. Reading it every week is the part that does not happen.</span></li>
+      <li><b>Pulling the terms out of every lease and customer contract</b><span>Rate escalators, fuel surcharge tables, accessorials, auto-renewal windows, lease-end mileage bands and damage standards — signed by different people in different years and filed in different places. A model extracts them into one table with the source page cited for each line. The renewals that roll on their own become a calendar instead of a surprise.</span></li>
+      <li><b>A cost per mile for the lane, not the fleet</b><span>Before you quote, assemble what that lane has actually done: miles run, deadhead into the origin, detention paid, surcharge recovered, empty repositioning after the drop. The arithmetic is ordinary. The assembly is what never happens, because it costs an analyst a day and the quote is due this afternoon. That is the difference between a rate priced off a fleet average and a rate priced off the lane.</span></li>
+      <li><b>Driver files, before an audit reads them first</b><span>Medical certificates, MVRs, annual reviews, Clearinghouse queries and CDL expirations, filed under whatever naming the person who did the hiring used. A model reads the folder, lists what is missing and what expires inside sixty days, and puts that in front of the safety manager. It prepares the list. It does not decide who is qualified to drive.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:11px">None of this needs a model trained on your fleet, and none of it needs data you are not already paying to collect. It is reading, matching and arithmetic run against the systems named above — which is why it is worth doing before anything more ambitious, and why the review treats it as a cost item rather than a project.</p>
+  </div>
+
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Samsara, Motive or Geotab for telematics; McLeod or TMW where dispatch is the core</li>
-      <li>A fuel card program whose exception reports nobody reviews</li>
-      <li>Maintenance in a separate shop system that does not share cost per unit with finance</li>
+      <li>Samsara, Motive or Geotab for telematics; McLeod LoadMaster or Trimble TMW.Suite where dispatch is the core. Trimble sold its transportation telematics business to Platform Science in February 2025, so older Trimble and PeopleNet in-cab units are now a Platform Science account</li>
+      <li>A fuel card program — usually WEX or Comdata, which has been a Corpay brand since FleetCor renamed itself in 2024 — whose exception reports and rebate tiers nobody reviews</li>
+      <li>Maintenance in a separate shop system — Fleetio, RTA or Dossier — that does not share cost per mile with finance</li>
       <li>ELD data that answers compliance questions and is never used for costing</li>
-    </ul>
+ <li>PC*Miler (Trimble Maps), which decides whether a load is billed on practical, shortest or household goods miles — and whether that number ever matched the odometer</li>
+</ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -263,23 +278,27 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>cost per mile</li>
       <li>revenue per mile</li>
       <li>empty or deadhead ratio</li>
-      <li>fuel economy by unit</li>
-      <li>maintenance cost per unit</li>
-      <li>CSA score</li>
+      <li>MPG by unit</li>
+      <li>maintenance cost per mile</li>
+      <li>CSA BASIC percentiles</li>
       <li>driver turnover</li>
       <li>on-time delivery</li>
-    </ul>
+ <li>revenue per truck per week</li>
+ <li>PM compliance</li>
+</ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
       <li>DOT and FMCSA compliance, hours of service, and the CSA score that prices insurance</li>
-      <li>IFTA fuel tax reporting and mileage substantiation</li>
+      <li>IFTA quarterly returns, due April 30, July 31, October 31 and January 31, with the mileage and fuel records behind them</li>
       <li>Driver qualification files, drug and alcohol program records</li>
-      <li>Worker classification for owner-operators and contract drivers</li>
+      <li>Worker classification for owner-operators and contract drivers, which in New York runs through the Commercial Goods Transportation Industry Fair Play Act and its presumption that the driver is an employee</li>
       <li>DVIR and maintenance records, which become evidence after any incident</li>
-    </ul>
+ <li>New York Highway Use Tax: Form MT-903 on the same quarterly dates as IFTA, plus a HUT decal displayed on every vehicle subject to the tax</li>
+ <li>FMCSA Drug and Alcohol Clearinghouse: a query on every CDL driver at hire and once a year after. Since November 18, 2024 a driver in prohibited status has the CDL downgraded by the state licensing agency, so the truck is parked until return-to-duty is complete</li>
+</ul>
   </div>
 
   <h2>What the review would ask you for</h2>
