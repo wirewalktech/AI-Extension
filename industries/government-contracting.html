@@ -10,7 +10,7 @@ description: "The contract terms are the operating model. In federal work the co
 <meta name="description" content="The contract terms are the operating model. In federal work the cost you can recover is defined before the work starts, and the controls that prove it are audited afterwards. Money is lost in the space between the rate you negotiated and the cost you can actually substantiate.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/government-contracting/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Government contracting</p>
   <span class="eyebrow">Government contracting</span>
   <h1>The contract terms are the operating model.</h1>
+  <p class="overheard">&ldquo;The provisional rate was set in 2021 and nobody has looked at it since.&rdquo;</p>
   <p class="lede">In federal work the cost you can recover is defined before the work starts, and the controls that prove it are audited afterwards. Money is lost in the space between the rate you negotiated and the cost you can actually substantiate.</p>
 
   <ul class="vocab">
@@ -216,20 +225,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>firm fixed price</li>
     <li>cost plus</li>
     <li>task order</li>
- <li>LCAT</li>
- <li>fringe, overhead, G&amp;A</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  government contracting and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  government contracting is built to look for.</p>
+  <p>Five places the money tends to
+  go in government contracting. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Indirect rates under-recovered because the provisional rate was set conservatively and never revisited against actual.</li>
     <li>Timekeeping practice that would not survive an audit, which is the single most common adverse finding and the easiest to fix in advance.</li>
@@ -243,7 +245,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h3>Not every government contracting is the same business</h3>
     <ul class="subv">
       <li><b>Professional and technical services</b><span>Billing governed by the contract labor category rather than by what the person costs, so a qualified substitution can be unbillable.</span></li>
-      <li><b>Cost-reimbursable programs — CPFF, CPIF, CPAF</b><span>Provisional rates billed all year and trued up in an incurred cost submission prepared months after anyone could act on what it says.</span></li>
+      <li><b>Cost-reimbursable and CPFF programs</b><span>Provisional rates billed all year and trued up in an incurred cost submission prepared months after anyone could act on what it says.</span></li>
       <li><b>Firm fixed price and commercial items</b><span>Priced off a rate structure that has since moved, with the difference showing up as margin erosion nobody attributes to the rates.</span></li>
       <li><b>Small business and set-aside contractors</b><span>Size standards, affiliation and the limitations on subcontracting — an eligibility question that is also a costing question.</span></li>
       <li><b>State, local and education</b><span>Different rules in every state, cooperative purchasing vehicles, and a prime who is frequently another contractor with their own flow-downs.</span></li>
@@ -251,30 +253,16 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
-<div class="depth">
-    <h3>Where AI earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Reading the modification into the system</b><span>Mods arrive as PDFs and get keyed in by hand — new funded value, period of performance, CLIN changes, clauses added at Section I. A model reads the mod and returns the field-by-field change for a human to confirm. What it shortens is the weeks a funding increase or a ceiling change sits unrecorded while the project is billed against the old one.</span></li>
-      <li><b>Flow-down extraction from the prime contract</b><span>Pull the FAR and DFARS clause list out of Section I, including the clauses incorporated by reference, and set it against what your subcontract template actually passes down. That is a clause-by-clause read a contracts manager does on every award, and a model does the reading in minutes. Deciding which ones you are obliged to flow is still yours.</span></li>
-      <li><b>Unallowable screening weekly instead of at year end</b><span>Classify ledger and AP coding against the FAR 31.205 cost principles as the transactions post — entertainment, lobbying, interest, alcohol, travel above the per diem. It replaces the year-end scrub, which happens after the cost is already in the pool and the provisional rate has been billed on it all year.</span></li>
-      <li><b>Timecard pattern review before the auditor runs it</b><span>The checks an auditor runs are patterns: uniform 8.0-hour entries, blocks entered days after the fact, charges to a task order past its ceiling or its period, corrections with no stated reason. This does not replace work — it shortens the distance between a bad charging habit and the day someone notices.</span></li>
-      <li><b>Labor category matching before the person is billed</b><span>Match a resume against the education and experience the contract's LCAT actually requires, and name the requirement that is not met, at the point staffing commits rather than at invoice or at audit. This is the unbillable on the trigger list above, caught before it is created.</span></li>
-      <li><b>Solicitation triage and the compliance matrix</b><span>Read Sections L and M and return the requirements matrix plus the facts a bid or no-bid actually turns on: labor categories, rate ceilings, set-aside status, whether a subcontracting plan is required. It shortens the first two days of proposal work. Deltek and Unanet are both shipping a version of this inside their own products; a general model with the PDF does most of it.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a model trained on your data or a system you do not own. It needs your contracts, your ledger and your timecards in a form something can read — which for most contractors is the actual work, and is the part the review measures first.</p>
-  </div>
-
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
       <li>Deltek Costpoint in established contractors; Unanet GovCon, JAMIS Prime or PROCAS below that — and QuickBooks with a homemade job-cost layer at the small end, which is where accounting system adequacy questions begin</li>
-      <li>Timekeeping with a daily audit trail — Deltek Costpoint Time and Expense, the module inside Unanet or JAMIS, or a standalone product bolted onto QuickBooks; labor is the account an auditor opens first, and the trail is the control being tested</li>
-      <li>SAM.gov and SPRS holding the government's version of your record, which primes read before they read yours — subcontracting reports and FPDS data moved into SAM.gov when eSRS.gov was decommissioned in February 2026</li>
+      <li>A timekeeping product with a daily audit trail — labor is the account an auditor opens first, and the trail is the control being tested</li>
+      <li>SAM.gov, SPRS and eSRS holding the government's version of your record, which primes read before they read yours</li>
       <li>PIEE/WAWF for invoicing and receiving reports, where a rejected invoice is a cash event rather than a clerical one</li>
       <li>A contracts folder on SharePoint or a shared drive that is the only place the mods and the flow-downs actually live</li>
       <li>A capture pipeline in GovWin or a spreadsheet, disconnected from the resource plan that would have to deliver it</li>
- <li>The GSA FAS Sales Reporting Portal if you hold a Schedule — transactional data reporting monthly now that TDR is mandatory across MAS, with the IFF remitted quarterly on top of it</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -299,11 +287,10 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>Provisional billing rate submissions, and the true-up when actual rates land</li>
       <li>DFARS business system adequacy — accounting, estimating, purchasing — and the payment withholds that follow a determination of inadequate</li>
       <li>Certified cost or pricing data where the threshold is crossed, and the defective pricing exposure it creates for years afterwards</li>
-      <li>Subcontracting plan reporting on any plan-bearing contract — the ISR and the SSR now filed in SAM.gov, not eSRS.gov, which was retired in February 2026</li>
-      <li>The SPRS score and the NIST SP 800-171 assessment behind it, plus the annual affirmation — CMMC has been a condition of award since the DFARS clause took effect in November 2025, at Level 1 and Level 2 self-assessment; the third-party certification phase was suspended in July 2026 and is under review</li>
-      <li>Service Contract Act wage determinations, conformances and the health and welfare fringe; Davis-Bacon prevailing wages and fringe benefits on construction work</li>
- <li>The Limitation of Cost and Limitation of Funds notices — written warning to the contracting officer at 75 percent of the funded amount, since cost incurred past the ceiling without one is cost you may never recover</li>
-</ul>
+      <li>Subcontracting plan reporting through eSRS on any plan-bearing contract</li>
+      <li>The SPRS score and the NIST SP 800-171 assessment behind it, and CMMC as it phases into solicitations</li>
+      <li>Service Contract Act wage determinations and conformances; Davis-Bacon and the health and welfare fringe on construction work</li>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -351,12 +338,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="trg">
       <li>A DCAA audit notice, or a questioned cost carried over from the last one</li>
       <li>An incurred cost submission returned as inadequate, which stops closeout</li>
-      <li>A prime or a contracting officer demanding a current SPRS score and annual affirmation before it will issue the award</li>
+      <li>A CMMC or supplier assessment date attached to a re-compete</li>
       <li>A re-compete lost on price with no cost model that explains why</li>
       <li>A novation, an acquisition or a protest, where the rate structure is read by someone whose job is to find fault with it</li>
       <li>An unbillable arising because a person's labor category did not match the contract</li>
- <li>A merger, an acquisition or a majority investment that forces a size recertification — the SBA rule's grace period for existing set-aside multiple-award contracts ended January 17, 2026</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">

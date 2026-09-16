@@ -10,7 +10,7 @@ description: "The retainer that stopped covering the work. Retainers are scoped 
 <meta name="description" content="The retainer that stopped covering the work. Retainers are scoped once and delivered against for years. Overservice is the characteristic loss in this sector, and it is invisible unless hours are compared to the scope that was actually sold.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/agencies/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Agencies and media</p>
   <span class="eyebrow">Agencies and media</span>
   <h1>The retainer that stopped covering the work.</h1>
+  <p class="overheard">&ldquo;We are doing twice the work for the same retainer and nobody remembers agreeing to that.&rdquo;</p>
   <p class="lede">Retainers are scoped once and delivered against for years. Overservice is the characteristic loss in this sector, and it is invisible unless hours are compared to the scope that was actually sold.</p>
 
   <ul class="vocab">
@@ -214,21 +223,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>pitch cost</li>
     <li>rate card</li>
     <li>utilization</li>
- <li>AGI</li>
- <li>principal media</li>
- <li>change order</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  agencies and media and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  agencies and media is built to look for.</p>
+  <p>Five places the money tends to
+  go in agencies and media. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Retainer hours contracted against hours actually worked, diverging steadily on the largest and longest-standing accounts.</li>
     <li>Pass-through and third-party cost absorbed rather than recharged, because the conversation is awkward and the amounts are individually small.</li>
@@ -243,22 +244,10 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="subv">
       <li><b>Retainer-led creative</b><span>A monthly fee agreed against an assumed level of effort that grew every quarter without the retainer being revisited.</span></li>
       <li><b>Project and campaign work</b><span>Scoped in hours, delivered in revisions, with round four absorbed because asking for a change order feels like a fight.</span></li>
-      <li><b>Media buying</b><span>Pass-through spend at scale, where commission basis, AVBs and principal-media markups are rarely reconciled to what the client agreement actually permits.</span></li>
+      <li><b>Media buying</b><span>Pass-through spend at scale, where commission basis, rebates and platform credits are rarely reconciled to what the client agreement actually permits.</span></li>
       <li><b>Public relations</b><span>Retainers priced on coverage expectations, staffed by seniority the fee does not support.</span></li>
       <li><b>Performance and digital</b><span>Fees tied to spend, so revenue moves with the client's budget and the cost base does not.</span></li>
     </ul>
-  </div>
-
-<div class="depth">
-    <h3>Where AI actually pays here</h3>
-    <ul class="subv">
-      <li><b>Scope against actuals, read out of the contract</b><span>Today someone opens the signed SOW, types the deliverable list and the assumed hours into a spreadsheet, pulls the time export, and matches them by hand. It costs a day an account, so it gets run on the top five clients once a year, if at all. A model reads the SOW and the time export together and produces the contracted-versus-worked line for every client, every month. What it replaces is the re-reading of the contract, which is the actual reason the comparison never happens.</span></li>
-      <li><b>Time entries booked to the wrong job</b><span>Every agency's time data has hours sitting on the wrong job number and a general or admin bucket that is really client work. A model reads the free-text description on each entry and flags the ones whose wording does not match the job they were booked to. It replaces the resource manager chasing fourteen people on the second of the month. You still confirm every flag; the model only finds them.</span></li>
-      <li><b>The change order nobody writes</b><span>Detection is not the blocker. The account lead already knows the client is forty hours over. What stops it is a blank page and an awkward call. A model drafts the change order in the MSA's own defined terms, cites the work already logged against it, and puts a number on it. It replaces the writing, not the decision.</span></li>
-      <li><b>Coding pass-through and freelance invoices</b><span>Freelance invoices, print, production, stock licenses and platform fees arrive as PDFs and get coded by whoever opens them. A model pulls vendor, amount and job number off each one and tests it against what that client's agreement says — marked up, at cost, or absorbed. The output is a list of costs that were never recharged, which is the second loss on this page.</span></li>
-      <li><b>Media reconciliation, line by line</b><span>Matching a platform spend export to the client invoice and back to the IO is a job nobody has time for, so it runs on exception, after a client asks. A model does the line match, flags invoice lines with no platform spend behind them, and compares the commission actually charged to the rate written in the agreement. It replaces a reconciliation that was being skipped, not one being done well.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a custom model or a platform migration. It is a language model reading documents you already have, with a person confirming every flag before it reaches a client. These comparisons get skipped today because each one costs a day. That is the part that changes.</p>
   </div>
 
   <div class="depth">
@@ -266,10 +255,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="sysl">
       <li>Harvest, Toggl or Everhour for time — usually adopted unevenly, which is itself the finding</li>
       <li>Workamajig, Function Point or Productive for agency management</li>
-      <li>Asana, monday.com or Basecamp holding the real scope, separate from the contract</li>
-      <li>Basis for programmatic — the company was Centro until it renamed in 2021 — alongside Google Display &amp; Video 360 and Meta Ads Manager bought direct, where platform-side spend never reconciles cleanly to the client invoice</li>
- <li>QuickBooks Online or Sage Intacct as the general ledger, with Advantage or Deltek WorkBook where agency accounting and media billing sit together — client profitability usually has to be rebuilt across two of these, which is why nobody runs it monthly</li>
-</ul>
+      <li>Asana, Monday or Basecamp holding the real scope, separate from the contract</li>
+      <li>A media buying or programmatic platform whose pass-through billing never reconciles to the client invoice</li>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -279,24 +267,22 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>client profitability</li>
       <li>utilization</li>
       <li>effective hourly rate</li>
-      <li>realization rate</li>
-      <li>retainer burn</li>
-      <li>AGI per FTE</li>
+      <li>scope creep ratio</li>
+      <li>retainer coverage</li>
+      <li>revenue per head</li>
       <li>freelance ratio</li>
       <li>client concentration</li>
- <li>staff cost % of AGI</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
       <li>Client contract terms on rebates, commissions and media transparency</li>
-      <li>Form 1099-NEC across the freelance base — to the contractor and the IRS by January 31, with no automatic extension, and electronic filing mandatory once you file 10 or more information returns of all types combined. Behind every one of them is a worker classification question</li>
-      <li>Sales tax, which is rarely where an agency looks for it — New York does not tax advertising services, but it does tax prewritten software, and the state treats SaaS as prewritten software. The exposure sits in what you rebill: platform licenses, data and reporting subscriptions, and taxable information services passed to the client</li>
+      <li>1099 reporting across a heavy freelance base, and their classification</li>
+      <li>Sales tax on digital and creative services, which varies by state and is frequently unbilled</li>
       <li>Any client-side agency audit rights, and whether the records would satisfy one</li>
- <li>New York's Freelance Isn't Free Act, statewide since August 2024 — a written contract is required once a freelancer's work reaches $800 within any 120-day period, payment is due on the contract date or within 30 days of completion, and the contract must be kept for six years and produced to the Attorney General on request</li>
-</ul>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -357,9 +343,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Who this involves</h3>
     <ul class="roles">
-      <li><b>Signs it:</b> Founder, president or managing partner, with the CFO or controller</li>
+      <li><b>Signs it:</b> Founder, managing director or CFO</li>
       <li><b>Resists it:</b> Account directors whose client profitability becomes individually visible</li>
-      <li><b>Has been asking for it:</b> Project managers and resource managers, who have been absorbing the scope creep</li>
+      <li><b>Has been asking for it:</b> Delivery leads, who have been absorbing the scope creep</li>
     </ul>
   </div>
 

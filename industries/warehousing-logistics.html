@@ -10,7 +10,7 @@ description: "The quoted rate and the paid rate are different numbers. Rate card
 <meta name="description" content="The quoted rate and the paid rate are different numbers. Rate cards are negotiated hard and then eroded by everything that sits outside them. Cost per unit moved is the number that matters, and it is rarely the number anyone manages against.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/warehousing-logistics/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Warehousing and logistics</p>
   <span class="eyebrow">Warehousing and logistics</span>
   <h1>The quoted rate and the paid rate are different numbers.</h1>
+  <p class="overheard">&ldquo;We negotiated that rate down eight percent and the invoice went up.&rdquo;</p>
   <p class="lede">Rate cards are negotiated hard and then eroded by everything that sits outside them. Cost per unit moved is the number that matters, and it is rarely the number anyone manages against.</p>
 
   <ul class="vocab">
@@ -215,19 +224,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>cube utilization</li>
     <li>3PL</li>
     <li>dwell</li>
- <li>OS&amp;D</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  warehousing and logistics and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  warehousing and logistics is built to look for.</p>
+  <p>Five places the money tends to
+  go in warehousing and logistics. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Accessorial charges — detention, demurrage, fuel surcharge, redelivery, liftgate — accumulating outside the negotiated rate and rarely reconciled back to it.</li>
     <li>Empty running and unfilled backhaul treated as a fact of the network rather than a cost with an owner.</li>
@@ -248,23 +251,11 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
-<div class="depth">
-    <h3>Where AI earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Freight bill audit against the rate card</b><span>Carrier invoices arrive as PDFs and EDI 210s in incompatible layouts and the accessorial lines are the messiest part of them. A model reads every line and matches it to the contracted rate and the accessorial schedule, flagging the charges with no contract basis behind them. It replaces the sample — the invoices somebody spot-checks each month — with a pass over all of them.</span></li>
-      <li><b>Turning each client contract into a billable-event list</b><span>Every 3PL agreement is negotiated separately and then sits in a Word file nobody has opened since signing. A model pulls the billable activities out of it, and that list gets reconciled against what the WMS logged and what the billing engine actually invoiced. It replaces the contract review that is scheduled annually and done rarely.</span></li>
-      <li><b>Detention, demurrage and per diem disputes inside the window</b><span>Matching the invoice to the free-time terms and to the gate-in, gate-out and appointment timestamps, then drafting the dispute with the evidence already attached. It replaces the charges that get paid because nobody had time to assemble the proof before the clock ran out.</span></li>
-      <li><b>Reading the paper — BOLs, packing lists, PODs, OS&amp;D reports</b><span>Extraction from scans and driver photos, so an exception is keyed once instead of re-keyed at each handoff, and so a proof of delivery can be produced when a customer disputes it weeks later. It replaces manual keying on the exception path, which is where the hours actually go, not on the clean orders that never needed a person.</span></li>
-      <li><b>Clustering the EDI exception queue</b><span>Every customer integration throws its own failures and they get worked in the order they arrive. A model groups them by root cause — same partner, same field, same mapping — so the ones that are really a single problem get fixed once. It replaces working the queue ticket by ticket, forever.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a new platform. Each one runs against extracts you already produce, and each has a point where a person confirms before money moves. They have one thing in common: they are all comparisons between two records you already hold — the contract and the transaction, the invoice and the rate card, the charge and the timestamp. That narrow band is where this is reliable today, and it happens to be where the money is.</p>
-  </div>
-
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Manhattan, Blue Yonder or Infios — the former Körber Supply Chain Software, renamed in 2025 — at the top end; Extensiv, the former 3PL Central and now owned by Descartes, or Deposco in the mid-market</li>
-      <li>A separate TMS — MercuryGate, now part of Infios, or Descartes — with McLeod or Revenova on the brokerage side, and spreadsheets where nobody ever bought one</li>
+      <li>Manhattan, Blue Yonder or Körber at the top end; Softeon, Deposco or 3PL Central in the mid-market</li>
+      <li>A separate TMS — MercuryGate, Kuebix — or brokerage on spreadsheets</li>
       <li>Customer EDI or API integrations, each with its own exception handling</li>
       <li>A billing engine that is often the weakest link between what was done and what was invoiced</li>
     </ul>
@@ -278,26 +269,22 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>cost per order</li>
       <li>storage utilization</li>
       <li>dock-to-stock time</li>
-      <li>billing leakage</li>
+      <li>accessorial capture rate</li>
       <li>pick accuracy</li>
       <li>labor cost per unit</li>
       <li>energy cost per pallet position</li>
- <li>on-time in-full</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Customs recordkeeping, and for an FTZ the annual reconciliation prepared within 90 days of the zone year end, with the operator's certifying letter to the port director 10 working days after that</li>
-      <li>FDA food facility registration, renewed every even-numbered year in the October 1 to December 31 window with no grace period; and for pharmaceutical storage, state 3PL licensure plus the annual DSCSA licensure report to FDA</li>
+      <li>Customs recordkeeping and FTZ inventory reporting where applicable</li>
+      <li>FDA or USDA registration for food-grade and pharmaceutical storage</li>
       <li>DOT and FMCSA compliance on any owned fleet, and the CSA score</li>
       <li>Client-facing SOC 1 or SOC 2 reports, where contracts require them</li>
-      <li>Hazmat employee training, repeated at least once every three years, with the record of current training covering the preceding three years kept for as long as the employee is in the role</li>
- <li>New York's Warehouse Worker Protection Act and its Injury Reduction Program, which bite at 100 employees on a single site or 1,000 across the state — written quota descriptions on hire and within two business days of any change, plus an annual injury reduction program with a competent-person evaluation and training</li>
- <li>OSHA powered industrial truck certification, with every operator re-evaluated at least once every three years and the certification record naming the equipment type</li>
- <li>FSMA 204 traceability records for anything on the Food Traceability List, where the compliance date moved to July 20, 2028</li>
-</ul>
+      <li>Hazmat certification and training records where relevant</li>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -360,8 +347,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A WMS migration, which exposes every unbilled activity at once</li>
       <li>A major client onboarding whose profile does not match the pricing assumption</li>
       <li>An acquisition, where per-client contribution margin is the first request</li>
- <li>A building lease renewal or expansion, where the rent step-up re-bases cost per pallet position</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">

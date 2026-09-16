@@ -5,14 +5,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
 <meta property="og:title" content="Wirewalk AI — The Operating Review">
-<meta property="og:description" content="Revenue optimization, risk detection and AI adoption across the whole operation. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
+<meta property="og:description" content="Where the money leaks, where it drags, and what it quietly exposes you to. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
 <meta property="og:url" content="https://ai.wirewalk.com/">
 <meta property="og:image" content="https://ai.wirewalk.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ai.wirewalk.com/">
-<meta name="description" content="Revenue optimization, risk detection and AI adoption across the whole operation. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
+<meta name="description" content="Where the money leaks, where it drags, and what it quietly exposes you to. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
 <style>
 :root{
   --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
@@ -39,7 +39,7 @@ p{max-width:68ch}
 .lead{font-size:18px;color:var(--tx2)}
 .small{font-size:14.5px}
 .muted{color:var(--tx3)}
-/* body links have to opt back in: the reset above strips colour and underline
+/* body links have to opt back in: the reset above strips color and underline
    from every anchor so the nav and cards can style themselves */
 .ilink{color:var(--ac2);text-decoration:underline;text-decoration-thickness:1px;
  text-underline-offset:3px;text-decoration-color:rgba(194,96,63,.42);transition:text-decoration-color .18s}
@@ -62,12 +62,12 @@ header.stuck{box-shadow:0 2px 14px rgba(31,30,29,.07)}
   max-width:1160px;margin:0 auto;padding:0 var(--pad);height:62px}
 .nav-l{display:flex;align-items:center;gap:0;flex:0 0 auto}
 .nav-c{flex:1 1 auto;display:flex;justify-content:center;min-width:0}
-/* These paint OVER the centre column if it ever outgrows the space between
+/* These paint OVER the center column if it ever outgrows the space between
    them. `background:inherit` was the intent, but the header is deliberately
    translucent, so inherit resolved to see-through and the collision showed as
    two lines of text on top of each other -- "WirewalkThAe lenses". An opaque
    token is visually identical here and actually masks. It is a backstop, not
-   the fix: the fix is that the centre column now fits. */
+   the fix: the fix is that the center column now fits. */
 .nav-l,.nav-r{position:relative;z-index:2;background:var(--bg)}
 .nav-r{display:flex;align-items:center;gap:14px;flex:0 0 auto}
 .navlink{font-size:14.5px;line-height:1;color:var(--tx2);padding:0 16px 0 0;margin-right:2px;
@@ -330,7 +330,7 @@ footer{padding:52px 0 32px;background:#fff}
  .sh p,.sh-split p,.aa div,nav.lk>*{opacity:1!important;transform:none!important}
  html{scroll-behavior:auto}}
 /* Collapse to the burger while the full nav still FITS, not once it has
-   already broken. The old breakpoint was 1040px, chosen when the centre
+   already broken. The old breakpoint was 1040px, chosen when the center
    column was five items and ~512px wide; it then kept the full nav on screen
    for four more items it could not hold. Six items measure ~600px, the brand
    and button ~300px, so the row needs ~990px including padding -- hence 1100,
@@ -360,7 +360,7 @@ footer{padding:52px 0 32px;background:#fff}
  header nav.lk .caret{transform:rotate(-90deg);opacity:.4}
 }
 /* Desktop backstop. If a future item, a wider font stack or a zoomed browser
-   pushes the centre column past its space, clip it rather than let it slide
+   pushes the center column past its space, clip it rather than let it slide
    under the brand. A clipped last item is a visible, obvious fault; overlapping
    text reads as a rendering glitch and nobody reports it. */
 @media(min-width:1101px){nav.lk{overflow:hidden}}
@@ -432,7 +432,7 @@ footer{padding:52px 0 32px;background:#fff}
    surface #FAF9F5): lightness monotone PASS, adjacent ΔL PASS, light-end
    contrast 2.09:1 PASS (>2:1 ordinal floor), single hue PASS (spread 5°).
    Light end is under 3:1, so the relief rule applies: every stage is
-   direct-labelled and every value also appears in the cards below. */
+   direct-labeled and every value also appears in the cards below. */
 .viz{--s1:#EA9C7B;--s2:#D97757;--s3:#B5522F;--s4:#8A3A1B;
      --track:#EDE8DE;--rule:#E5E1D6;--srf:#FAF9F5}
 .viz{margin-bottom:26px}
@@ -534,7 +534,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     flush at the bottom and their footers start at three different heights,
     because the copy lengths differ -- which reads as misalignment even though
     every card is the same height. Subgrid keeps it true whatever the copy
-    later becomes; the auto/1fr fallback below is the pre-subgrid behaviour. */
+    later becomes; the auto/1fr fallback below is the pre-subgrid behavior. */
  grid-template-rows:auto auto 1fr auto}
 .lens>div{background:#fff;padding:26px 26px 0;position:relative;
  transition:background .22s var(--e);display:grid;grid-template-rows:auto auto 1fr auto}
@@ -559,7 +559,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 @media(max-width:940px){.lens{grid-template-columns:1fr}.lens h3{font-size:22px}}
 
 /* ── comparison ── */
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ln);
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--ln);
  border:1px solid var(--ln);border-radius:12px;overflow:hidden}
 .cmp>div{background:#fff;padding:26px 26px 28px}
 .cmp>div:first-child{background:var(--alt2)}
@@ -571,6 +571,12 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .cmp p.aip{font-size:14.5px;line-height:1.55;color:var(--tx2);margin:0 0 14px;
   padding-bottom:14px;border-bottom:1px solid var(--ln)}
 .cmp li b{color:var(--tx);font-weight:650}
+/* Three peers, not a before/after. The two-column .cmp shades its first
+   column to mark it as the thing being argued against; the AI block is three
+   services of equal standing, so that shading and the accented last heading
+   would both say something untrue about the middle one. */
+.cmp.peers>div{background:#fff}
+.cmp.peers>div h4{color:var(--ac2)}
 .aih{font-size:clamp(19px,2.5vw,23px);letter-spacing:-.016em;margin:46px 0 6px}
 .px{font-size:17px;letter-spacing:-.01em;display:inline-block;margin-top:10px}
 .pxn{font-size:13.5px;color:var(--tx3)}
@@ -597,6 +603,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .cred li:last-child{border-bottom:0}
 .cred .sig li{color:var(--tx2);border-bottom:0;padding:6px 0 6px 18px;position:relative;font-size:15px}
 .cred .sig li:before{content:'';position:absolute;left:0;top:14px;width:6px;height:1.5px;background:var(--tx3)}
+.foot-note{font-size:14.5px;line-height:1.6;color:var(--tx3);max-width:78ch;margin:20px 0 0}
 @media(max-width:900px){.cred{grid-template-columns:1fr 1fr;gap:28px}}
 @media(max-width:620px){.cred{grid-template-columns:1fr}}
 
@@ -748,20 +755,25 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="nav-c">
     <nav class="lk" id="lk">
       <span id="pill"></span>
-      <!-- Six items, and it stays six. The nav is capped at 1160px wide, so
-           whatever is in here has to fit roughly 700px of centre column at
-           EVERY viewport width -- a wider screen buys nothing. Nine items did
-           not fit and overlapped the brand rather than reflowing. Phase one
-           and two live under Phases; Terms lives under Ordering; the client
-           portal is not prospect navigation at all and is reached from the
-           link we email, so it sits in the footer. tools/check-layout.mjs
-           fails the build if anything in here collides again. -->
-      <a href="#lenses" data-sec="lenses">What we find</a>
-      <a href="/proposal/">Get a proposal</a><a href="/diagnostic/">Diagnostic</a><a href="#coverage" data-sec="coverage handling checkable">Method</a>
-      <a href="#phase1" data-sec="phase1 phase2 people">Phases</a>
-      <a href="#industries" data-sec="industries">Industries</a>
+      <!-- FLOWS AND DESTINATIONS, not chapters.
+           This used to carry eight items, and "What we find", "Method" and
+           "Phases" were three of them -- three anchors into different parts of
+           the SAME argument about the same service, which asked a first-time
+           reader to navigate a page they had not read yet. "Diagnostic" sat
+           beside them as a single SKU, at the same weight as the whole method.
+           Now each item is somewhere you can actually go: the two practices,
+           the sector pages, how the work runs, and what it costs. Phase one
+           and two, the coverage argument and the predictions all sit inside
+           the Operating Review and light its pill via data-sec.
+           The nav is capped at 1160px and has to fit ~700px of center column
+           at EVERY width -- a wider screen buys nothing, and nine items
+           overlapped the brand rather than reflowing. Five leaves room.
+           tools/check-layout.mjs fails the build if anything collides. -->
+      <a href="#lenses" data-sec="lenses coverage handling checkable phase1 phase2 people">Operating Review</a>
       <a href="#ai-policy" data-sec="ai-policy compliance credentials">AI adoption</a>
-      <a href="/order/">Ordering</a>
+      <a href="#industries" data-sec="industries">Industries</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/order/">Pricing</a>
     </nav>
   </div>
   <div class="nav-r">
@@ -778,7 +790,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <!-- The headline was "Revenue optimization and risk detection across the whole
          operation" -- a category label rather than a claim, in words available to
          anyone with a domain name. The live sentence was four lines further down in
-         grey: the obvious problems get attention, we find the expensive ones that
+         gray: the obvious problems get attention, we find the expensive ones that
          remain. Promoted, because it is the only line here with a point of view, and
          because it says something about every review the reader has already paid for
          without accusing them of anything. -->
@@ -788,7 +800,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
          This also carries the terms people actually search for. The argument then
          lands immediately underneath, where it reads as a claim about the work
          rather than as a slogan standing on its own. -->
-    <h1 class="hro">Revenue optimization, risk detection and AI adoption across the whole operation.</h1>
+    <h1 class="hro">Where the money leaks, where it drags, and what it quietly exposes you to.</h1>
     <p class="lead hro">Most reviews look closely at one department and estimate the rest.
     We read the whole operating system &mdash; finance, revenue, receivables, payables,
     contracts, people and IT &mdash; because that is where the money quietly goes: an
@@ -930,7 +942,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="sh-split">
     <div><span class="eyebrow">Method</span>
       <h2>We review the operating system, not one department.</h2></div>
-    <p>Full operating coverage replaces narrow extrapolation. That is how prior engagements surfaced issues a finance-only or compliance-only review would miss. Loss concentrates; it does not distribute. A sample is the wrong instrument for finding something that happens once.</p>
+    <p>Loss concentrates; it does not distribute. One contract, one queue, one account nobody reconciles. Thirty sampled transactions are the wrong instrument for finding something that only happened once &mdash; and a finance-only review never opens the contract file at all.</p>
   </div>
   <div class="cmp" data-rv>
     <div>
@@ -981,8 +993,9 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="g3" data-rv>
     <div><span class="n">Advisory</span><h4>Professional and advisory firms</h4>
       <p>Where the product is time, and three different numbers describe the same hour.<br>
+      <a class="ilink" href="/industries/law-firms/">Law firms</a> &middot;
       <a class="ilink" href="/industries/accountancy/">Accountancy firms</a> &middot;
-      <a class="ilink" href="/industries/professional-services/">Professional services and law firms</a> &middot;
+      <a class="ilink" href="/industries/professional-services/">Professional services</a> &middot;
       <a class="ilink" href="/industries/agencies/">Agencies and media</a> &middot;
       <a class="ilink" href="/industries/staffing/">Staffing and recruitment</a> &middot;
       <a class="ilink" href="/industries/engineering-architecture/">Engineering and architecture</a></p></div>
@@ -994,7 +1007,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <div><span class="n">Industrial</span><h4>Making, moving and building</h4>
       <p>Where margin is calculated from standards, and the standards drift.<br>
       <a class="ilink" href="/industries/manufacturing/">Manufacturing</a> &middot;
-      <a class="ilink" href="/industries/aerospace-defence/">Aerospace and defense</a> &middot;
+      <a class="ilink" href="/industries/aerospace-defense/">Aerospace and defense</a> &middot;
       <a class="ilink" href="/industries/warehousing-logistics/">Warehousing and logistics</a> &middot;
       <a class="ilink" href="/industries/transport-fleet/">Transport and fleet</a> &middot;
       <a class="ilink" href="/industries/construction/">Construction and contracting</a></p></div>
@@ -1029,16 +1042,17 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 <section class="sec" id="ai-policy"><div class="wrap">
   <div class="sh-split">
-    <div><span class="eyebrow">AI</span>
-      <h2>Two separate jobs. Most people need one of them.</h2></div>
-    <p>Deciding what your organization is allowed to do with AI, and working out where it
-    would actually earn its keep, are different pieces of work for different reasons. They
-    are priced and delivered separately, and taking one does not commit you to the other
-    &mdash; a firm with a client asking hard questions needs the first and may never want
-    the second.</p>
+    <div><span class="eyebrow">AI adoption</span>
+      <h2>Three separate jobs. Most people start with one.</h2></div>
+    <p>What you allow, how that stays true once everyone is busy, and where a model would
+    actually earn its keep are three different pieces of work with three different buyers.
+    They are priced and delivered separately and none of them commits you to the next: a
+    firm with a client questionnaire due next month needs the first, a firm whose board has
+    started asking who signed off on any of this needs the second, and a firm that just
+    wants the productivity needs the third.</p>
   </div>
 
-  <div class="cmp" data-rv>
+  <div class="cmp peers" data-rv>
     <div>
       <h4>ONE &mdash; THE POLICY</h4>
       <p class="aip">For when somebody is going to ask what you allow, and you need an
@@ -1056,7 +1070,27 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       </ul>
     </div>
     <div>
-      <h4>TWO &mdash; PUTTING IT TO WORK</h4>
+      <h4>TWO &mdash; THE GOVERNANCE</h4>
+      <p class="aip">For when a document is no longer enough, because the question has
+      stopped being what you allow and started being who decided.</p>
+      <ul>
+        <li><b>Every model and AI-bearing vendor, inventoried.</b> Classified by what it
+          touches and what it could cost you. Most of the exposure is in software you
+          already bought, where a vendor turned a feature on.</li>
+        <li><b>Decision rights, written down.</b> Who approves a new tool, who may accept a
+          risk, who cannot. With an approval path short enough that people use it instead
+          of routing around it &mdash; the long one is why shadow AI exists.</li>
+        <li><b>Monitoring, and a procedure for the bad day.</b> What is actually being used
+          against what was approved, and what happens when an output is wrong in a way that
+          reaches a client.</li>
+        <li><b>A board pack that answers it before it is asked.</b> Mapped to the NIST AI
+          Risk Management Framework and ISO/IEC 42001, and to the EU AI Act where you have
+          European exposure &mdash; as a structure the work is delivered under, never as a
+          certification.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>THREE &mdash; PUTTING IT TO WORK</h4>
       <p class="aip">For when you want the productivity and have nobody who can tell you
       where it is real.</p>
       <ul>
@@ -1098,13 +1132,18 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
   <div class="aibuy">
     <div>
-      <b>Start with a scoping session &mdash; $4,500</b>
-      <span>Half a day with whoever owns the decision &mdash; usually two or three of
-      your people, and worth having them all in the room. What you are already running,
-      what you are actually trying to do, what your sector will and will not permit, and an
-      honest read on whether it needs building, buying or dropping. Written up afterwards
-      so it survives the meeting. <b>Credited in full</b> against whatever you commission
-      next, with no deadline on that.</span>
+      <b>Start with a scoping session &mdash; $9,500</b>
+      <span>A full day with whoever owns the decision, and two days of work around it.
+      <b>Before the room</b>, we establish what your organization is already running &mdash;
+      from the network and the expense claims, not from a survey asking people to confess.
+      Most firms are both more exposed and further along than they think, and both halves
+      of that change the conversation. <b>In the room</b>, what you are actually trying to
+      do, what your sector will and will not permit, and where a model would genuinely earn
+      against how the business runs. <b>Afterwards</b>, a written readiness assessment: what
+      is in use, what must stop, the work worth automating and the obvious candidates that
+      will not repay the effort, buy against build with the numbers at your volume, and a
+      sequence you can put to a board. <b>Credited in full</b> against whatever you
+      commission next, with no deadline on that.</span>
     </div>
     <div class="acts">
       <a class="btn btn-p" href="/order/#catalog">Book a scoping session</a>
@@ -1132,75 +1171,39 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <p>A review of the whole operation reaches the parts of it that are regulated. Payroll,
     contracts, the general ledger, customer records and in some sectors patient or student
     records all sit inside somebody&rsquo;s regime, and the review does not get an exemption
-    from it. These are the frameworks the work is delivered under &mdash; described as
-    capability and commitment, not as certification.</p>
+    from it. PHI under a signed BAA and the HIPAA Security Rule. CUI to NIST SP 800-171,
+    with the SSP and POA&amp;M that go with it. EAR and ITAR where they apply &mdash;
+    including the part that catches research organizations, where a document request is a
+    form of access. GDPR, FERPA, and PCI DSS handled by keeping cardholder data out of
+    scope entirely.</p>
   </div>
-  <div class="g3" data-rv>
-    <div><span class="n">PHI</span><h4>Health information</h4><p>Where protected health
-      information is in scope, a business associate agreement is signed before any data
-      moves, and the engagement runs to the HIPAA Security Rule and the minimum-necessary
-      standard. In practice we ask for de-identified or aggregated extracts first and
-      identifiable data only where a finding genuinely depends on it. GxP and 21 CFR Part 11
-      where electronic records and signatures are in scope.</p></div>
-    <div><span class="n">CUI</span><h4>Controlled unclassified information</h4><p>CUI is
-      handled to NIST SP 800-171, with the system security plan and POA&amp;M that go with
-      it, and NIST SP 800-53 where a federal system is involved. Media sanitisation on
-      disposal follows NIST SP 800-88. Where a contract carries CMMC obligations or
-      flow-down clauses, those govern what we may hold and where &mdash; and we will say so
-      before accepting the work rather than after.</p></div>
-    <div><span class="n">Export</span><h4>Export control and sanctions</h4><p>EAR and ITAR
-      where they apply, including the part that catches research organizations: giving a
-      foreign national access to controlled technology is an export, and a document request
-      is a form of access. Restricted party and OFAC screening, technology control plans,
-      and an honest reading of where the fundamental research exclusion applies rather than
-      where it would be convenient.</p></div>
-  </div>
-  <div class="g3" data-rv style="margin-top:1px">
-    <div><span class="n">Data</span><h4>Privacy, payments and records</h4><p>GDPR and UK GDPR
-      where a collaboration or a customer base crosses into scope, with a data processing
-      agreement rather than an assurance. FERPA for education records. PCI DSS is handled by
-      keeping cardholder data out of scope by default &mdash; we ask for settlement and
-      reconciliation data, not card numbers. Where your own regime is something else, it
-      governs, and we work to it.</p></div>
-    <div><span class="n">In writing</span><h4>Agreed before work begins</h4><p>What we may
-      hold, where it may be stored, who may see it, how long it is kept and how it is
-      destroyed are agreed in writing before the first document moves &mdash; your NDA where
-      you want one, and a BAA or DPA where one is required. Named individuals, not &ldquo;the team&rdquo;. No
-      subprocessing without your agreement. The commercial half of the same question is in
-      the <a class="ilink" href="/terms/">ordering terms</a>.</p></div>
-    <div><span class="n">In practice</span><h4>What the commitment actually looks like</h4>
-      <p>Documents go to private storage with no public address; access is by an
-      unguessable per-engagement link, never a shared password; every open, view, upload and
-      download is written to an append-only log, so &ldquo;who saw our payroll file&rdquo;
-      has a list for an answer; and a retention date is set at the start and enforced by the
-      storage itself rather than by anyone remembering. That is the
-      <a class="ilink" href="/portal/">client portal</a>.</p></div>
-  </div>
-  <p class="rl"><b>Said plainly, because the distinction matters.</b> Everything above is a
-  statement of how we work and what we will commit to, not a certification. There is no such
-  thing as being &ldquo;HIPAA certified&rdquo;, and a firm that says otherwise has told you
-  something useful about the rest of its claims. Where you need evidence rather than
-  assurance &mdash; a completed security questionnaire, a signed BAA, a named data
-  controller, your own paper instead of ours &mdash; ask, and it happens before the
-  engagement starts rather than during it.</p>
+  <p class="rl"><b>Capability and commitment, not certification.</b> There is no such thing
+  as being &ldquo;HIPAA certified&rdquo;, and a firm that says otherwise has told you
+  something useful about the rest of its claims. What we may hold, where, who may see it and
+  how it is destroyed is agreed in writing before the first document moves &mdash;
+  <a class="ilink" href="/assurance/">the whole of it is written down here</a>, and a
+  security questionnaire can be completed before you commission anything.</p>
 </div></section>
-
 <section class="sec" id="phase1"><div class="wrap">
   <div class="sh"><span class="eyebrow">Phase one</span>
     <h2>Full operating diagnostic.</h2>
-    <p>We apply the same method across finance, IT, compliance, people, legal, marketing and sales operations, in whatever sector you are in. Phase one stands alone. The report is yours; phase two is discussed only afterward.</p></div>
+    <p>Six areas, one pass, whatever sector you are in. Phase one stands alone &mdash; the report is yours, and phase two is not discussed until you have read it.</p></div>
   <div class="ph" data-rv>
     <div class="ph-hd"><b>Phase one &mdash; Full operating diagnostic</b><span>Priced before phase two is discussed</span></div>
     <div class="ph-cols two">
       <div>
-        <h4>OUR APPROACH</h4>
+        <!-- The six areas are named once, in the numbered strip at the top of
+             the page. They were restated here in full, which is how a reader
+             ends up scrolling past the same list twice and trusting it less
+             the second time. What this column is FOR is the thing the strip
+             cannot say: how far each area is actually taken. -->
+        <h4>HOW FAR IT GOES</h4>
         <ul>
-          <li>Finance operations reviewed end to end</li>
-          <li>Revenue leakage traced to root cause</li>
-          <li>IT operations, access and data workflows mapped</li>
-          <li>Compliance and regulatory stance reviewed</li>
-          <li>Legal contracts and vendor obligations tested</li>
-          <li>Marketing and sales operations assessed</li>
+          <li>Every record in scope read, not a sample of thirty</li>
+          <li>Revenue leakage traced to the cause, not the symptom</li>
+          <li>The contracts themselves, not the contract register</li>
+          <li>Access and data workflows walked, not attested</li>
+          <li>Each finding put to whoever owns it before it is written down</li>
         </ul>
       </div>
       <div>
@@ -1214,7 +1217,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
         </ul>
       </div>
     </div>
-    <div class="ph-note"><b>Completed reviews have covered both failure points and practices worth preserving.</b></div>
+    <div class="ph-note"><b>Some of what we find is worth protecting, and that goes in the report too. A process that works is as easy to break as it is to miss.</b></div>
   </div>
   <p class="rl"><b>Not ready to commission the whole thing?</b> The
   <a class="ilink" href="/order/#catalog">operating diagnostic</a> is the short, bounded
@@ -1227,41 +1230,23 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 <section class="sec tint" id="phase2"><div class="wrap">
   <div class="sh"><span class="eyebrow">Phase two</span>
     <h2>Improve and build.</h2>
-    <p>We scale what already works, then repair the systems that slow the business down. We build technology only where it improves the economics.</p></div>
-  <div class="ph" data-rv>
-    <div class="ph-hd"><b>Phase two &mdash; Improve and build</b><span>Discussed only after the phase one report</span></div>
-    <div class="ph-cols">
-      <div>
-        <h4>EXTEND &amp; REWARD</h4>
-        <ul>
-          <li>Scale methods already working</li>
-          <li>Recognize the people behind them</li>
-          <li>Align incentives to clean performance</li>
-          <li>Protect what should not change</li>
-        </ul>
-      </div>
-      <div>
-        <h4>REPAIR &amp; REBUILD</h4>
-        <ul>
-          <li>Rebuild finance and IT workflows</li>
-          <li>Close compliance and readiness gaps</li>
-          <li>Renegotiate legal and vendor terms</li>
-          <li>Clean up marketing and sales handoffs</li>
-          <li>Train staff on the new process</li>
-        </ul>
-      </div>
-      <div>
-        <h4>CUSTOM BUILD &mdash; IF APPLICABLE</h4>
-        <ul>
-          <li>Pre-bill review using rejection history</li>
-          <li>Finance and contract exception reporting</li>
-          <li>Document classification</li>
-          <li>Automated screening and eligibility checks</li>
-          <li>AI-use and data-access monitoring</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <p>First we scale what is already working, then we fix what is slowing you down. We build software only when buying it costs more than building it &mdash; which is rarer than the people selling it suggest.</p></div>
+  <!-- Fourteen bullets in three columns, for work that by the page's own rule
+       is not sold until the phase one report is delivered and agreed. A reader
+       deciding whether to commission phase ONE does not need the catalog of
+       phase two; they need to know it exists, that it is quoted against real
+       findings, and that it is not a condition of anything. Three lines say
+       that. The detail belongs in the conversation that follows the report. -->
+  <ul class="deliv" data-rv style="max-width:70ch">
+    <li><b>Extend what works.</b> Scale the methods already producing results, and pay the
+      people behind them in a way that recognizes it.</li>
+    <li><b>Repair what does not.</b> Finance and IT workflows rebuilt, compliance gaps
+      closed, vendor and legal terms renegotiated, and your staff trained on whatever
+      replaces the old process.</li>
+    <li><b>Build only where buying is worse.</b> Pre-bill review against rejection history,
+      exception reporting, eligibility screening, AI-use monitoring &mdash; but only where
+      a tool you could buy would cost more over three years than one we build you.</li>
+  </ul>
   <p class="rl"><b>Phase two is never sold before phase one is delivered.</b> When the
   findings are agreed and you want help landing them,
   <a class="ilink" href="/order/#catalog">implementation support</a> is scoped and quoted
@@ -1273,13 +1258,22 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="sh-split">
     <div><span class="eyebrow">Your people</span>
       <h2>Make the work better across the whole operation.</h2></div>
-    <p>Successful engagements improve the daily operating system, not just the report. We fix processes first. That is how prior projects gained better data and stronger adoption.</p>
+    <p>A report nobody acts on is an expensive document. The work that lands is the work your people already wanted: the re-keying, the chasing, the third approval on a $200 invoice. Fix that and you get clean data and willing staff. Lead with the software and you get neither.</p>
   </div>
-  <div class="g3 g4" data-rv>
-    <div><span class="n">01</span><h4>Scale what already works</h4><p>Strong performers and clean processes are identified, protected and replicated.</p></div>
-    <div><span class="n">02</span><h4>Remove low-value work first</h4><p>Re-keying, chasing paper, access issues and repetitive follow-up are usually the first targets.</p></div>
-    <div><span class="n">03</span><h4>Automation handles routine volume</h4><p>People move to exceptions, judgment and higher-value work.</p></div>
-    <div><span class="n">04</span><h4>Align incentives</h4><p>Reward the behaviors that produce clean finance, clean handoffs and clean operations.</p></div>
+  <!-- The numbered 01-04 grid that used to sit here restated the paragraph
+       above it in four tiles, and the numbering implied a sequence these are
+       not -- they happen together, and "align incentives" is not step four of
+       anything. Three tiles, no numbers, each saying something the paragraph
+       does not. -->
+  <div class="g3" data-rv>
+    <div><h4>Protect what works</h4><p>The strong performers and the clean processes get
+      named in the report, because the fastest way to break one is to reorganize around
+      the parts that are broken.</p></div>
+    <div><h4>Take the dull work first</h4><p>Re-keying, chasing paper, access requests,
+      the third approval on a small invoice. Your people will tell you where these are in
+      the first ten minutes, and nobody has ever asked them.</p></div>
+    <div><h4>Then pay for the right behavior</h4><p>Incentives that reward clean finance
+      and clean handoffs, rather than volume that somebody downstream has to correct.</p></div>
   </div>
 </div></section>
 
@@ -1287,7 +1281,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="sh-split">
     <div><span class="eyebrow">How we make the work checkable</span>
       <h2>Before fieldwork, we document what we expect to find.</h2></div>
-    <p>Three dated predictions, including one thing we expect is already working well. Repeatable work should be measurable.</p>
+    <p>Three dated predictions, written down before we open a single file &mdash; and one of them is always something we expect to find already working. Afterwards you mark us against it.</p>
   </div>
   <div class="pred" data-rv>
     <div><h4>If we are right</h4><p>It shows the diagnosis came from experience, not hindsight.</p></div>
@@ -1307,8 +1301,8 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 <section class="sec" id="credentials"><div class="wrap">
   <div class="sh"><span class="eyebrow">Track record</span>
-    <h2>Proven across demanding client environments.</h2>
-    <p>The same operating and technical discipline has been applied in healthcare, life sciences, national laboratory, semiconductor equipment, enterprise technology, aerospace and automotive settings. Our advantage is not a single specialty. It is the ability to see operations, technology and risk together, in organizations where mistakes are expensive.</p></div>
+    <h2>Twenty years in rooms where a mistake is expensive.</h2>
+    <p>Pharmaceutical manufacturing. A national laboratory. Semiconductor equipment. A cancer hospital. An aerospace supply chain. Different industries, one problem underneath: operations, technology and risk are a single system, and almost nobody is paid to look at all three at once.</p></div>
   <div class="cred" data-rv>
     <div>
       <h4>HEALTHCARE &amp; LIFE SCIENCES</h4>
@@ -1327,16 +1321,23 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       </ul>
     </div>
     <div class="sig">
-      <h4>WHAT THIS SIGNALS</h4>
+      <h4>WHAT THAT BUYS YOU</h4>
       <ul>
-        <li>Regulated data environments</li>
-        <li>Complex operations</li>
-        <li>High-trust executive stakeholders</li>
+        <li>Regulated data handled the way the regulator expects</li>
+        <li>Operations complicated enough that nobody has the whole picture</li>
+        <li>Executives who will not sit through a warm-up</li>
         <li>Clinical, scientific, semiconductor and industrial workflows</li>
-        <li>Work that must hold up under scrutiny</li>
+        <li>Work that has to survive somebody else&rsquo;s audit</li>
       </ul>
     </div>
   </div>
+  <!-- PROVENANCE. Written to be true whether these are engagements of the
+       practice or organizations this experience was earned inside -- which is
+       the one thing a diligence-minded buyer will test, and the one claim not
+       worth being loose about. Tighten it once Lenny confirms which. -->
+  <p class="foot-note">Where this experience was earned. Twenty years of operations,
+  infrastructure and risk work inside these organizations &mdash; not a claim that each is a
+  client of this practice, and nothing here reports an engagement or a measured result.</p>
 </div></section>
 
 <section class="sec tint" id="terms"><div class="wrap">
@@ -1384,7 +1385,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <p class="rl"><b>If your procurement office moves before your calendar does, start there.</b>
   Raise a purchase order against the engagement and we invoice on net 30 &mdash; the route
   most institutions are actually set up for, whether that is a health system, a university,
-  a manufacturer, a local authority or a federal prime. Prices,
+  a manufacturer, a city or county government or a federal prime. Prices,
   deposits and the PO form are on the
   <a class="ilink" href="/order/">ordering page</a>.</p>
 </div></section>

@@ -10,7 +10,7 @@ description: "Statutory duty, and the cost of discharging it. Public bodies cann
 <meta name="description" content="Statutory duty, and the cost of discharging it. Public bodies cannot choose not to deliver. What they can choose is how, and the how is rarely examined across services — each one optimizing locally while the shared cost sits between them.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/public-sector/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,34 +212,27 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Public sector</p>
   <span class="eyebrow">Public sector</span>
   <h1>Statutory duty, and the cost of discharging it.</h1>
+  <p class="overheard">&ldquo;We have a statutory duty and no line in the budget for discharging it.&rdquo;</p>
   <p class="lede">Public bodies cannot choose not to deliver. What they can choose is how, and the how is rarely examined across services — each one optimizing locally while the shared cost sits between them.</p>
 
   <ul class="vocab">
-    <li>budget-to-actual</li>
-    <li>budget modification</li>
-    <li>mandated vs discretionary</li>
+    <li>outturn</li>
+    <li>virement</li>
+    <li>statutory vs discretionary</li>
     <li>unit cost</li>
     <li>cost recovery</li>
-    <li>caseload growth</li>
+    <li>demand management</li>
     <li>general fund</li>
- <li>fund balance</li>
- <li>tax cap</li>
- <li>encumbrance</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  the public sector and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  the public sector is built to look for.</p>
+  <p>Five places the money tends to
+  go in the public sector. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Unit cost of a service varying substantially between neighboring areas with similar demand, unexamined because the comparison is nobody's job.</li>
-    <li>Fees and charges set historically and never uprated to cost recovery, subsidising users at the expense of the general fund.</li>
+    <li>Fees and charges set historically and never uprated to cost recovery, subsidizing users at the expense of the general fund.</li>
     <li>Direct awards and off-framework procurement accumulating without aggregate visibility.</li>
     <li>Property portfolio holding cost carried by services that do not see it and cannot act on it.</li>
     <li>Demand management effort concentrated at the point of crisis rather than upstream, where it is cheaper.</li>
@@ -241,37 +242,24 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Not every the public sector is the same business</h3>
     <ul class="subv">
-      <li><b>Counties</b><span>Medicaid local share, social services and the correctional facility consuming the levy-funded side of the budget, with placement and contract rates set by the state and by a provider market the county does not control.</span></li>
-      <li><b>Cities, towns and villages</b><span>A tax levy small enough that one contract — sanitation, ambulance, a shared highway agreement — is a material share of it.</span></li>
-      <li><b>School districts and BOCES</b><span>A budget the voters approve, a state aid claim that drives the revenue side, and a cost base fixed by contracts that keep running on their own terms after they expire.</span></li>
-      <li><b>Public authorities, IDAs and special districts</b><span>Water, sewer, fire, library and industrial development boards with their own budgets, their own boards and their own reporting, sitting outside the host municipality's normal monitoring.</span></li>
-      <li><b>Police, fire and EMS</b><span>Headcount-driven cost with overtime as the only flex, minimum staffing written into the contract, and mutual aid agreements whose cost shares were agreed once.</span></li>
-      <li><b>Component units and shared services</b><span>A local development corporation, an authority or a shared service billed to the parent on a basis nobody has re-costed since it was set up.</span></li>
+      <li><b>Counties</b><span>Human services, corrections and indigent health consuming most of the general fund, at a unit cost set in a market the county does not control.</span></li>
+      <li><b>Cities and municipalities</b><span>A general fund small enough that a single solid waste, fleet or public safety contract is a material share of it.</span></li>
+      <li><b>Special districts and authorities</b><span>Water, transit, port and utility districts with their own bond covenants and rate-setting, sitting outside the parent government's normal monitoring.</span></li>
+      <li><b>Public housing authorities</b><span>HUD-funded operations carrying a capital needs assessment older than several of the assumptions built on it.</span></li>
+      <li><b>Police, fire and emergency services</b><span>Position-driven cost with overtime as the only flex, and mutual aid agreements whose cost shares were agreed once and never revisited.</span></li>
+      <li><b>Component units and shared services</b><span>Trading with the parent government on a cost allocation nobody has rebuilt since the entity was created.</span></li>
     </ul>
-  </div>
-
-<div class="depth">
-    <h3>Where AI is already worth the money here</h3>
-    <ul class="subv">
-      <li><b>The monthly budget-to-actual narrative</b><span>Every month the budget office exports the ledger, rebuilds the same variance report, and writes the same explanations department by department. A model reading that export against the prior three months drafts the first pass &mdash; which line moved, by how much, and whether it moved last month too. The analyst corrects it and signs it. What goes away is the typing, not the judgment.</span></li>
-      <li><b>One vendor, spelled four ways</b><span>The vendor master holds the same company under four spellings, and purchasing, the attorney and the department each keep their own contract file. Matching those into a single cumulative spend per vendor is name matching, which a model does reliably, and it produces a number no single file holds: everything bought from one company this year, a purchase order at a time.</span></li>
-      <li><b>Grant closeout before the clawback</b><span>SLFRF money has to be spent by December 31, 2026, and proving it was spent means tying every charge to an approved budget line and an allowable cost category under 2 CFR 200. Reading the award terms and the general ledger detail together and flagging what does not tie is weeks of a grants accountant's time now. It is also the exact work the single audit will do later, at your expense.</span></li>
-      <li><b>The fee schedule against what the service costs</b><span>Fees are set in local laws and resolutions adopted years apart, and nobody holds the whole list in one place. Pulling every fee out of the code and the adopted schedules into one table is extraction work &mdash; slow by hand, quick with a model &mdash; and it is the step that has to happen before anyone can set a fee against the labor minutes behind it.</span></li>
-      <li><b>Records requests</b><span>FOIL requests arrive continuously and the search is done by whoever has time that week. A model can assemble the responsive set from the mail store and the shared drives and propose an exemption for each withholding. The records access officer still decides every one and still signs the response &mdash; but on a stack that arrives sorted.</span></li>
-      <li><b>Overtime against what the contract actually says</b><span>Call-out order, minimum staffing, what triggers premium pay: it is all in the collective bargaining agreement, and payroll applies it from memory. A model reading the agreement alongside the time records flags the shifts where the rule and the payment disagree. Payroll still verifies each flag &mdash; but flagging is the part nobody is staffed to do.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a model smarter than your budget director. It needs one that will read all of it, every month, which is the part nobody has the headcount for.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Tyler Enterprise ERP — still called Munis by everyone who uses it — as the ledger; CentralSquare Finance Enterprise or Naviline in mid-size agencies, Springbrook in villages and districts, Williamson Law Book in the smallest towns</li>
-      <li>For counties, the state systems the caseworkers actually live in — CONNECTIONS for child welfare, the state eligibility system for public assistance and Medicaid — which report to Albany, not to your ledger</li>
-      <li>Tax and assessment in their own stack — RPS and Image Mate for the roll (Systems Development Group was bought by Schneider Geospatial in 2024) — with collection sitting in the receiver's or treasurer's office and not posting to the ledger in real time</li>
-      <li>Accela, Tyler EnerGov or Municity (now sold by ICC Community Development Solutions) for permits, codes and licensing — where the fee schedule lives, and where the cost of issuing the permit does not</li>
-      <li>A budget worksheet per department that is the real working document between the ledger and the adopted budget, rebuilt from scratch every year by one person</li>
-      <li>Contract files in three places — purchasing, the attorney and the department — that do not agree with each other, and a vendor master with the same vendor entered four ways</li>
+      <li>Tyler Technologies (Munis / Enterprise ERP) or CentralSquare as the ledger; Oracle Fusion or Workday in the larger counties and cities</li>
+      <li>A separate case management system for human services — where most of the demand and most of the cost actually sit, and which rarely reconciles to the ledger</li>
+      <li>Accela or Tyler EnerGov for permitting, licensing and code enforcement, holding fee revenue nobody has re-costed against the effort to deliver it</li>
+      <li>A property tax and utility billing system owned by a different department from the one that answers for collection</li>
+      <li>A budget monitoring workbook per department that is the real working document between the ledger and the year-end actuals</li>
+      <li>Contract registers in three places — procurement, the attorney's office and the department — that do not agree with each other</li>
     </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
@@ -279,28 +267,27 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>budget-to-actual by department and fund</li>
-      <li>cost per case, per placement, per call for service</li>
+      <li>actual against budget by fund and department</li>
+      <li>unit cost per case or per placement</li>
       <li>cost recovery on fees and charges</li>
-      <li>unassigned fund balance as a percent of expenditures</li>
-      <li>capital plan carryover and unspent appropriations</li>
-      <li>overtime and temporary help as a percent of base payroll</li>
-      <li>property tax collection rate and delinquency</li>
-      <li>days to pay a voucher</li>
+      <li>fund balance as a share of expenditures</li>
+      <li>capital improvement plan slippage</li>
+      <li>overtime and temporary staffing spend</li>
+      <li>property tax collection rate</li>
+      <li>days to pay a vendor invoice</li>
     </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>The annual comprehensive financial report — the ACFR, renamed from CAFR in 2021 — under GASB, and the audit opinion under Government Auditing Standards</li>
-      <li>The section 25 statement on the robustness of estimates and the adequacy of reserves, and the reserves position it depends on</li>
-      <li>The tax cap calculation filed with the State Comptroller before the budget is adopted, and the local law it takes a 60 percent vote of the board to override</li>
-      <li>Grant awards and their conditions, including disallowance and recovery of ineligible costs, and the single audit that tests them once federal spending crosses $1,000,000 in a year — raised from $750,000 for fiscal years beginning on or after October 1, 2024</li>
-      <li>The NYSLRS employer invoice, issued in November and payable February 1, with a discount for prepaying by December 15 — a cash decision made once a year and rarely modeled</li>
-      <li>Competitive bidding thresholds under General Municipal Law §103 — over $20,000 for purchase contracts, over $35,000 for public works — and the procurement policy §104-b requires the board to adopt and review every year</li>
- <li>The SLFRF expenditure deadline of December 31, 2026 — funds had to be obligated by December 31, 2024, and anything unspent when the clock runs out goes back to Treasury</li>
-</ul>
+      <li>The Annual Comprehensive Financial Report under GASB, and an audit opinion that may or may not arrive before the next budget is adopted</li>
+      <li>The Single Audit under 2 CFR 200 where federal awards cross the threshold — findings here are public, and repeat findings are read as a management failure</li>
+      <li>The cost allocation plan and any negotiated indirect cost rate, which decide how much of your overhead a federal grant will actually carry</li>
+      <li>Grant agreements and their conditions, including clawback on unspent, late or ineligible expenditure</li>
+      <li>Continuing disclosure to EMMA under the bond covenants, including the fund balance and coverage ratios the covenants actually name</li>
+      <li>State-mandated budget and financial reports, filed by departments separately from the accounts they should agree with</li>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -350,28 +337,26 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>When this stops being interesting and becomes urgent</h3>
     <ul class="trg">
-      <li>A projected deficit in the monthly budget-to-actual that grows at each report</li>
-      <li>A material weakness, or a repeat finding in the schedule of findings and questioned costs</li>
-      <li>Fund balance drawn down two years running to hold the levy under the cap</li>
-      <li>An out-of-district special education or foster care placement rate moving faster than the budget that funds it</li>
+      <li>A forecast overspend reported quarterly that grows at each report</li>
+      <li>A Single Audit finding, a material weakness, or a repeat finding from last year</li>
+      <li>A fund balance that has fallen through the reserve policy the covenants assume</li>
+      <li>A federal grant approaching its period of performance deadline with the money unspent</li>
       <li>An ERP or case management replacement, which surfaces every local workaround</li>
-      <li>A shared services or consolidation study, where an intermunicipal charge is examined for the first time since it was set</li>
- <li>A fiscal stress score from the State Comptroller, or an OSC audit and the corrective action plan that follows it</li>
- <li>A collective bargaining agreement running past its expiry, where the steps keep moving under Triborough while nothing is signed</li>
-</ul>
+      <li>A bond rating review, or a shared services and cost allocation review where the basis is examined for the first time since it was set</li>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>Who this involves</h3>
     <ul class="roles">
-      <li><b>Signs it:</b> The comptroller, finance commissioner or director of finance, with the county executive, mayor, supervisor or superintendent</li>
-      <li><b>Resists it:</b> Department heads and commissioners, whose cost per unit becomes comparable with the next county over</li>
-      <li><b>Has been asking for it:</b> The budget office, which has been writing the monthly variance reports nobody acts on</li>
+      <li><b>Signs it:</b> The finance director or CFO, with the city or county manager</li>
+      <li><b>Resists it:</b> Department heads, whose unit costs become comparable with neighboring jurisdictions'</li>
+      <li><b>Has been asking for it:</b> Budget analysts, who have been writing the exception reports</li>
     </ul>
   </div>
 
   <h2>Who commissions it</h2>
-  <p class="who"><b>Section 151 officers, directors of finance and chief executives.</b> Phase one is priced before phase two is
+  <p class="who"><b>Finance directors, city and county managers and chief executives.</b> Phase one is priced before phase two is
   discussed, the report is yours either way, and we take no vendor commissions or referral
   fees on anything we recommend.</p>
 

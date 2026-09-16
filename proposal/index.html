@@ -264,7 +264,7 @@ footer a{color:var(--tx2)}
       token:token, sector:$("sector").value, units:Number($("units").value)||1,
       size:$("size").value, role:$("role").value, trigger:$("trigger").value,
       concern:$("concern").value,
-      recognised:[].slice.call(document.querySelectorAll("#pats input:checked")).map(function(c){return c.value})
+      recognized:[].slice.call(document.querySelectorAll("#pats input:checked")).map(function(c){return c.value})
     };
     $("form").classList.add("hide"); $("wait").classList.remove("hide");
     var t0=Date.now();

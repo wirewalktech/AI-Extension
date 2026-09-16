@@ -1,0 +1,201 @@
+---
+permalink: /how-it-works/
+title: How the review runs
+description: >-
+  The five weeks, what arrives at the end of them, and what we need from you.
+  The same in every sector — which is why it is written down once.
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How the review runs — Wirewalk AI</title>
+<meta name="description" content="The five weeks of an Operating Review, what arrives at the end of them, and what we need from you. The method is the same in every sector; what changes is what gets read.">
+<link rel="canonical" href="https://ai.wirewalk.com/how-it-works/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wirewalk AI">
+<meta property="og:title" content="How the review runs — Wirewalk AI">
+<meta property="og:description" content="The five weeks, what arrives at the end of them, and what we need from you.">
+<meta property="og:url" content="https://ai.wirewalk.com/how-it-works/">
+<meta property="og:image" content="https://ai.wirewalk.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:44px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);
+       font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;
+      grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.back:hover{color:var(--ac)}
+.crumb{font-size:13.5px;color:var(--tx3);margin:0 0 14px}
+.crumb a{color:var(--tx2);text-decoration:none}
+.crumb a:hover{color:var(--ac2)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(30px,5.4vw,42px);line-height:1.13;letter-spacing:-.024em;margin:0 0 16px;
+   text-wrap:balance}
+h2{font-size:clamp(21px,2.9vw,26px);letter-spacing:-.016em;margin:56px 0 8px;text-wrap:balance}
+p{max-width:70ch}
+.lede{color:var(--tx2);font-size:19px;margin:0 0 12px}
+.sub{color:var(--tx3);font-size:15px;margin:0 0 22px}
+a{color:var(--ac2);text-underline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15.5px;
+     font-weight:600;padding:12px 22px;border-radius:9px;border:1px solid var(--ac);
+     background:var(--ac);color:#fff;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--ac2);border-color:var(--ac2)}
+.btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt)}
+.acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
+.phase{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
+.phase li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:18px 0;
+  border-top:1px solid var(--ln)}
+.phase li:last-child{border-bottom:1px solid var(--ln)}
+.phase .wk{font:650 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ac);padding-top:2px}
+.phase b{display:block;font-size:15.5px;margin-bottom:5px}
+.phase span{font-size:14.5px;line-height:1.6;color:var(--tx2)}
+.deliv{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px}
+.deliv li{padding-left:24px;position:relative;font-size:15px;line-height:1.55}
+.deliv li:before{content:"";position:absolute;left:6px;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--ac)}
+.note{border:1px solid var(--ac);background:var(--acs);border-radius:12px;padding:20px 22px;
+      margin:30px 0 0}
+.note b{display:block;font-size:17px;color:var(--tx);margin-bottom:6px}
+.note p{margin:0;color:var(--tx2);font-size:15.5px;max-width:none}
+.also{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 0;padding:0;list-style:none}
+.also a{display:inline-block;font-size:14.5px;text-decoration:none;color:var(--tx);
+        border:1px solid var(--ln2);border-radius:20px;padding:7px 15px;background:#fff}
+.also a:hover{border-color:var(--ac);background:var(--acs);color:var(--ac2)}
+footer.end{margin:60px 0 46px;padding-top:24px;border-top:1px solid var(--ln);
+           color:var(--tx3);font-size:14px}
+footer.end a{color:var(--ac2)}
+footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+@media(max-width:640px){.phase li{grid-template-columns:1fr;gap:6px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span>
+    <span>Wirewalk<s>AI</s></span></a>
+  <a class="back" href="/order/">Commission an engagement</a>
+</div></header>
+
+<div class="wrap">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo; How it runs</p>
+  <span class="eyebrow">How it runs</span>
+  <h1>Five weeks, and what you have at the end of them.</h1>
+  <p class="lede">The sequence is the same whatever sector you are in &mdash; it is the
+  method, not the industry. What changes is what gets read in week two, and that comes
+  from <a href="/industries/">your own page</a>.</p>
+  <p>This is written down once, here, rather than repeated on twenty-five proposals.
+  A proposal should tell you what we would look for in <em>your</em> operation and what it
+  costs; it should not spend half its length explaining a process that does not vary.</p>
+
+  <h2>The sequence</h2>
+  <p>Five weeks for one operating unit. More units run in parallel rather than in series,
+  so a group does not take five times as long.</p>
+  <ul class="phase">
+    <li><span class="wk">Week 1</span>
+      <div><b>Intake and reconciliation</b><span>You complete the intake in the client
+      portal &mdash; a set of requests written for your sector, alongside the 107 that cover
+      the operating spine any business has. Anything you do not have is skipped in one
+      click, with a reason. We reconcile what arrives against what was asked and tell you,
+      before any fieldwork, which findings the gaps will limit.</span></div></li>
+    <li><span class="wk">Weeks 2&ndash;3</span>
+      <div><b>Full pass, not a sample</b><span>Every record in scope is read rather than
+      sampled. Concentrated loss is exactly what sampling misses &mdash; one contract, one
+      queue, one unreviewed account &mdash; so a sample of the operation tends to miss it
+      and a full pass tends to find it.</span></div></li>
+    <li><span class="wk">Week 4</span>
+      <div><b>Quantification and challenge</b><span>Each finding is sized, and each is put
+      to the person who owns it before it is written down. A finding the operator can
+      immediately explain away is not a finding, and it is cheaper to discover that here
+      than in the room.</span></div></li>
+    <li><span class="wk">Week 5</span>
+      <div><b>Report and walkthrough</b><span>A written report with the evidence attached,
+      and a walkthrough with whoever you want in the room. Findings are ranked by annual
+      value and by how hard they are to act on, because those are different axes and the
+      cheap ones should not wait for the big ones.</span></div></li>
+  </ul>
+
+  <h2>What you get</h2>
+  <ul class="deliv">
+    <li>A written report, with the evidence for each finding attached rather than
+      referenced.</li>
+    <li>Each finding sized in annual value, and ranked against how hard it is to act on.</li>
+    <li>The reconciliation of what was asked for against what was provided, so the
+      limits of the work are stated rather than implied.</li>
+    <li>A walkthrough with whoever you want present.</li>
+    <li>Your documents destroyed on completion, with a certificate naming every file.</li>
+  </ul>
+
+  <h2>How we behave while we are in there</h2>
+  <ul class="deliv">
+    <li>Phase one is priced before phase two is discussed. The report is yours either way.</li>
+    <li>We take no vendor commissions and no referral fees on anything we recommend.</li>
+    <li>Findings go to you and to nobody else. You decide what circulates, to whom, and when.</li>
+    <li>Anything uncomfortable is a conversation first &mdash; spoken, early and in private,
+      before it is written down anywhere.</li>
+    <li>We read systems, not people. An operating review is not a forensic investigation and
+      we do not quietly run one inside the other.</li>
+  </ul>
+
+  <h2>What we need from you</h2>
+  <p>The intake is completed in the <a href="/portal/">client portal</a>, which saves each
+  answer as it is given and can be returned to as often as you like. Anything you do not
+  have can be skipped with a reason &mdash; skipping narrows what the review can conclude,
+  and we tell you where before the work starts rather than after.</p>
+  <p class="sub">The sector-specific half of the intake is listed on each industry page, so
+  you can see exactly what would be asked before you commission anything.</p>
+
+  <div class="note">
+    <b>Purchase order is the primary route.</b>
+    <p>Most buyers this size raise a PO and pay against an invoice on terms. Card and bank
+    transfer exist for those who prefer them. Prices, deposits and the purchase-order form
+    are all on the <a href="/order/">ordering page</a>, and the commercial terms are in the
+    <a href="/terms/">ordering terms</a>.</p>
+  </div>
+
+  <h2>Start with your own sector</h2>
+  <p class="sub">Each industry page names what recurs there, in the words that sector uses,
+  and the proposal behind it carries the price for your number of operating units.</p>
+  <ul class="also">
+    <li><a href="/industries/">All industries</a></li>
+    <li><a href="/order/#catalog">What it costs</a></li>
+    <li><a href="/#contact">Talk it through first</a></li>
+  </ul>
+
+  <footer class="end">
+    <div class="fl">
+      <a href="/">The Operating Review</a>
+      <a href="/industries/">All industries</a>
+      <a href="/order/">What it costs</a>
+      <a href="/terms/">Ordering terms</a>
+      <a href="/writing/">Notes</a>
+      <a href="/portal/">Client portal</a>
+      <a href="https://www.wirewalk.com/">Wirewalk</a>
+    </div>
+    <p>Wirewalk AI &middot; <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> &middot;
+    <a href="tel:+15162691517">516-269-1517</a></p>
+  </footer>
+</div>
+</body></html>

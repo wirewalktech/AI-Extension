@@ -10,7 +10,7 @@ description: "Funded work, and the cost of administering it. Grant-funded organi
 <meta name="description" content="Funded work, and the cost of administering it. Grant-funded organizations carry an administrative burden that is real and largely unmeasured. The question is not whether compliance is necessary — it is — but what it costs per award, and whether that cost is recovered.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/education-research/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Education and research</p>
   <span class="eyebrow">Education and research</span>
   <h1>Funded work, and the cost of administering it.</h1>
+  <p class="overheard">&ldquo;The grant is fully funded. The department is still short.&rdquo;</p>
   <p class="lede">Grant-funded organizations carry an administrative burden that is real and largely unmeasured. The question is not whether compliance is necessary — it is — but what it costs per award, and whether that cost is recovered.</p>
 
   <ul class="vocab">
@@ -214,24 +223,18 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>recharge</li>
     <li>cost share</li>
     <li>sponsored programs</li>
- <li>MTDC</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  education and research and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  education and research is built to look for.</p>
+  <p>Five places the money tends to
+  go in education and research. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Indirect cost negotiated at one rate and recovered at a materially lower one, with the shortfall absorbed centrally and never reported.</li>
     <li>Effort reporting maintained to satisfy an auditor rather than to reflect where time actually goes, so the allocation basis is unusable for management.</li>
     <li>Review and approval queues — IRB, IACUC, export control, contracts — adding weeks between award and first spend.</li>
-    <li>Core facilities and shared resources recharging below cost, subsidised from a budget nobody has reconciled to the subsidy.</li>
+    <li>Core facilities and shared resources recharging below cost, subsidized from a budget nobody has reconciled to the subsidy.</li>
     <li>Awards closing with unspent balances returned, alongside other awards overspending.</li>
   </ol>
 
@@ -248,62 +251,45 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
-<div class="depth">
-    <h3>Where AI actually earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Reading the award into the ledger</b><span>A notice of award, the sponsor's terms and the approved budget arrive as documents, and someone keys a short list of fields out of them — F&amp;A rate and base, cost share committed, prior-approval triggers, subaward terms, report dates. A model reads the same documents, produces the setup sheet, and diffs it against what was actually keyed. It replaces the second read nobody has time for, and it finds the mis-keyed rate in week one rather than at closeout.</span></li>
-      <li><b>Subrecipient invoices</b><span>They arrive as PDFs, get re-keyed, and get approved because the queue is long. Extraction turns each into lines matched to the subaward budget, period and negotiated rate, and raises only the exceptions: cumulative billing over the obligated amount, a period already invoiced, a missing certification statement, an F&amp;A rate that is not the one in the agreement. It replaces the re-keying, and more usefully it replaces the check that was supposed to follow the re-keying.</span></li>
-      <li><b>Other Support and biosketch assembly</b><span>NIH requires the Common Forms for biographical sketch and current and pending (other) support, produced in SciENcv and certified by the individual, and since May 8, 2026 eRA errors out any submission that uses anything else. Most of what goes on them — active and pending awards, effort, overlap — is already in the institution's own award records. Drafting the content of each PI's form from those records and handing back a short list of what only the PI can confirm replaces the email thread that starts two days before the deadline.</span></li>
-      <li><b>Cost transfer triage</b><span>Transfers after 90 days are a standing audit risk, and the justification field is usually one line. A model reads each justification against the account history and sorts them: the ones with a real explanation, the ones that say an error was corrected and nothing more, and the ones where the same award has been the destination five times this quarter. It replaces a sample with the whole population.</span></li>
-      <li><b>The queue before the queue</b><span>IRB, IACUC, export control and contract review add the weeks the page describes, and a large share of that is the first round trip — the submission returned for corrections before anyone has looked at the science. Checking a protocol or a subaward packet against the committee's own checklist and the sponsor's terms before it is submitted removes that round trip. It does not speed up review. It stops the clock starting twice.</span></li>
-      <li><b>Closeout, ninety days early</b><span>Final reports and liquidation are due 120 days after the period of performance ends. The awards that will finish with money returned are visible long before that, in commitments, payroll encumbrances and months remaining. What a model adds is reading each award's own terms for what is actually available — carryforward, a no-cost extension, rebudgeting that needs prior approval — so what lands on the desk is a list of options rather than a list of problems.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a model trained on your data, and none of it is a system replacement. It needs the award document, the ledger and the subaward file readable in one place — which at most institutions is the harder half of the work, and is the half a review measures.</p>
-  </div>
-
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
       <li>Banner, Colleague or Jenzabar as the student and finance system; Workday Student where a replacement is part-way through</li>
       <li>Kuali Research, Cayuse or InfoEd for proposals and pre-award — with the post-award record frequently living somewhere else entirely</li>
-      <li>Agilent iLab, which everyone still calls iLab, or Stratocore PPMS for core facility recharge — or a workbook that is the real rate calculation</li>
+      <li>iLab or Stratocore for core facility recharge, or a workbook that is the real rate calculation</li>
       <li>An effort certification module completed after the period it certifies, which is what makes it a reconstruction rather than a record</li>
       <li>eRA Commons, Research.gov and Grants.gov holding the sponsor's version of the award, which is the version that governs</li>
       <li>Subrecipient invoices arriving as PDFs and re-keyed into the award ledger</li>
- <li>OnCore (Advarra) as the clinical trials office's CTMS — with the coverage analysis and the negotiated study budget living in a spreadsheet beside it, which is where the per-patient math actually is</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>effective F&A rate vs negotiated</li>
+      <li>indirect cost recovery against the negotiated rate</li>
       <li>cost share committed vs met</li>
       <li>award closeout cycle time</li>
       <li>effort certified vs charged</li>
       <li>recharge center surplus or deficit</li>
-      <li>proposal success rate</li>
-      <li>research expenditures per PI</li>
+      <li>proposal-to-award conversion</li>
+      <li>research expenditure per investigator</li>
       <li>net tuition revenue</li>
-      <li>tuition discount rate</li>
- <li>cost transfers after 90 days</li>
-</ul>
+      <li>discount rate</li>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>The Uniform Guidance single audit — the threshold is $1 million in federal awards expended, for fiscal years beginning on or after October 1, 2024 — and whether last year's findings actually closed</li>
+      <li>The Uniform Guidance single audit, and whether last year's findings actually closed</li>
       <li>The negotiated indirect cost rate agreement, and the rate proposal and base year behind it</li>
       <li>Effort certification records — the evidence for every salary dollar charged to an award</li>
       <li>Subrecipient risk assessment and monitoring documentation, which the pass-through entity owns whether or not it performed it</li>
       <li>Financial conflict of interest disclosures, and research security and foreign support disclosure on the investigator side</li>
       <li>Export control determinations where research involves controlled technology or foreign nationals</li>
-      <li>Title IV program review exposure, and the Clery annual security report, due October 1 every year, where student aid is in scope</li>
- <li>Closeout under 2 CFR 200.344 — all final reports filed and all obligations liquidated within 120 days of the end of the period of performance, with subrecipients owing the pass-through at 90</li>
- <li>FFATA subaward reporting, which moved into SAM.gov when FSRS.gov was retired in March 2025 and now needs a separately assigned SAM.gov role</li>
-</ul>
+      <li>Title IV program review exposure and Clery reporting where student aid is in scope</li>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -355,8 +341,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A large award ending while the staff, space and instrumentation it carried remain</li>
       <li>A finance or research administration system replacement, which surfaces every local workaround at once</li>
       <li>A school or department running a structural deficit that central budget has quietly covered for several years</li>
- <li>An award terminated or suspended mid-period, with the salary, effort and startup commitments it carried still in place and no funding source behind them</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">

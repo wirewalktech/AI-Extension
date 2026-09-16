@@ -10,7 +10,7 @@ description: "Contracted is not the same as collected. A rent roll states what s
 <meta name="description" content="Contracted is not the same as collected. A rent roll states what should arrive. What arrives depends on whether escalations were applied, whether recoverable expenditure was recovered, and whether anyone chased the arrears. Each is somebody's job in principle and frequently nobody's in…">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/real-estate/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,36 +212,30 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Real estate</p>
   <span class="eyebrow">Real estate</span>
   <h1>Contracted is not the same as collected.</h1>
+  <p class="overheard">&ldquo;The rent roll says one number and the bank statement says another.&rdquo;</p>
   <p class="lede">A rent roll states what should arrive. What arrives depends on whether escalations were applied, whether recoverable expenditure was recovered, and whether anyone chased the arrears. Each is somebody's job in principle and frequently nobody's in practice.</p>
 
   <ul class="vocab">
     <li>rent roll</li>
-    <li>vacancy loss</li>
-    <li>CAM reconciliation</li>
+    <li>vacancy</li>
+    <li>CAM recovery</li>
     <li>escalation</li>
-    <li>mark-to-market</li>
-    <li>restoration obligation</li>
+    <li>recovery ratio</li>
+    <li>restoration obligations</li>
     <li>cap rate</li>
-    <li>expense stop</li>
- <li>gross-up</li>
- <li>TI/LC</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+    <li>opex reconciliation</li>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  real estate and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  real estate is built to look for.</p>
+  <p>Five places the money tends to
+  go in real estate. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Lease escalations not applied on the review date, then not applied the following year either, compounding quietly for the rest of the term.</li>
-    <li>Recoverable service charge expenditure incurred and never recovered, because the reconciliation is late and the deadline to bill it passed.</li>
-    <li>Vacant units still absorbing full service charge with no void allowance recognized.</li>
-    <li>Statutory compliance certificates — fire, lifts, electrical, asbestos — lapsed across part of a portfolio, discovered at the worst possible moment.</li>
+    <li>Recoverable CAM and operating expense incurred and never billed back, because the reconciliation ran late and the window in the lease to bill it closed.</li>
+    <li>Vacant suites still absorbing full CAM with no vacancy allowance recognized, so the recovery ratio flatters the asset.</li>
+    <li>Life-safety and compliance certifications — fire, elevator, electrical, asbestos — lapsed across part of a portfolio, found at the worst possible moment.</li>
     <li>Management agreements with fee bases that no longer match the service actually being delivered.</li>
   </ol>
 
@@ -249,28 +251,14 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
-<div class="depth">
-    <h3>Where AI earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Lease abstraction</b><span>Pulling the escalation date, the recovery clause, the base year, the gross-up provision and the audit window out of a lease and its amendment stack into a table. This is the one job these tools do well today, and it is bought rather than built — MRI Contract Intelligence, formerly Leverton, or the Document Intelligence add-on to Building Engines Prism. What it removes is the transcription. It does not remove the review pass: escalation formulas and cross-referenced exhibits are still where the extraction goes wrong.</span></li>
-      <li><b>The date list nobody keeps</b><span>Turning those abstracts into one dated list of review dates, breaks, options and index resets that fires before the date rather than after it. What it replaces is one person re-reading the lease files each January. What it produces is a list, not an action — pattern 01 on this page is a list nobody worked.</span></li>
-      <li><b>Coding an invoice recoverable or not</b><span>Every utility, cleaning and repair invoice is coded recoverable or not at entry, by whoever is in AP that week, against a clause they have not read. A model holding the abstracted recovery clause can propose the code and flag the invoices treated differently from the same vendor at the same property last year. What it shortens is the year-end hunt for the expense that was coded wrong in March.</span></li>
-      <li><b>A first pass at the CAM reconciliation</b><span>Before the statement goes out: check each pro rata share against the abstracted clause, check the gross-up was applied where the lease allows it, and flag pool expenses the lease excludes — capital items, management fee caps, tenant-specific work. It is the same review the tenant's auditor will run. Running it first costs less than running it second.</span></li>
-      <li><b>Certificate and filing dates</b><span>Reading fire, elevator, boiler, backflow and facade certificates as they arrive, extracting the property and the expiry, and producing the exception list. In New York that calendar also carries LL84 and LL97, both due May 1, and the FISP sub-cycle your block number falls in. It replaces a binder and somebody's memory.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a model built for you. It runs on documents you already hold. The reason it is not running is rarely the technology.</p>
-  </div>
-
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Yardi Voyager, MRI Property Management X, RealPage or Entrata in larger portfolios; AppFolio, Yardi Breeze Premier or Rent Manager below that</li>
+      <li>Yardi Voyager, MRI or RealPage in larger portfolios; AppFolio or Entrata below that</li>
       <li>A CAM reconciliation workbook that is the real basis of recoveries</li>
       <li>Building systems and utility accounts often not mapped to the entity that pays them</li>
       <li>A lease abstract set that is complete for recent leases and patchy for inherited ones</li>
- <li>ARGUS Enterprise for valuation and cash flow, built lease by lease and rarely reconciled back to the rent roll it was built from</li>
- <li>MRI Angus (formerly Angus AnyWhere) or Building Engines Prism, now a JLL company, where the tenant request becomes a work order and somebody decides whether it is billable back</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -281,23 +269,22 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>recovery ratio</li>
       <li>economic occupancy</li>
       <li>turn cost per unit</li>
-      <li>concessions % of GPR</li>
+      <li>concession burden</li>
       <li>operating expense per square foot</li>
-      <li>delinquency and AR aging</li>
-      <li>management fee % of EGI</li>
+      <li>arrears aging</li>
+      <li>management fee capture</li>
     </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Property tax appeals on a fixed calendar — in New York City, Tax Commission applications by March 1 for Class 2, 3 and 4 and March 15 for Class 1, moving to the next business day, and the RPIE by June 1. File the RPIE late and the right to appeal goes with it</li>
+      <li>Property tax assessments and appeal deadlines, which cannot be extended</li>
       <li>Insurance schedules and certificates from tenants and contractors</li>
       <li>Lender reporting: rent rolls, operating statements, covenant certificates</li>
-      <li>New York City's own calendar: Local Law 84 benchmarking and the Local Law 97 emissions report both due May 1 for buildings over 25,000 square feet, and facade inspection under Local Law 11 in whichever FISP sub-cycle your block number falls in</li>
-      <li>New York sales tax on repair and maintenance to real property, exempt only where the contractor holds a properly completed capital improvement certificate (Form ST-124) within 90 days; interior cleaning and janitorial is taxable either way</li>
- <li>Rent-stabilized registration with DHCR by July 31 on an April 1 snapshot, at $500 per unit per month once it is delinquent</li>
-</ul>
+      <li>Local compliance — energy benchmarking, inspections, registrations</li>
+      <li>Sales and use tax on services in jurisdictions that apply it</li>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
@@ -360,8 +347,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>An acquisition of a portfolio whose recoveries were run differently</li>
       <li>A property manager change</li>
       <li>An insurance renewal after a market-wide rate move</li>
- <li>A loan maturity or a covenant test, where the DSCR is recalculated on trailing numbers and a cash sweep follows if it fails</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">

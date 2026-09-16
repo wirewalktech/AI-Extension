@@ -17,8 +17,8 @@ is evenly distributed. Operating loss is not evenly distributed.
 
 ## Why the sample keeps finding the same things
 
-A thirty-item sample is large enough to characterise a common failure and far too small to
-find a concentrated one. If four per cent of claims carry a coding error, thirty claims will
+A thirty-item sample is large enough to characterize a common failure and far too small to
+find a concentrated one. If four percent of claims carry a coding error, thirty claims will
 usually surface it — and that finding will be in the report, because it is easy to find and
 easy to quantify.
 

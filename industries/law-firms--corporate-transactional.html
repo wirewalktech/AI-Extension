@@ -10,7 +10,7 @@ description: "Matter budgets agreed at engagement and quietly exceeded, with the
 <meta name="description" content="Matter budgets agreed at engagement and quietly exceeded, with the overage written off rather than discussed. Transactional work is quoted against an assumed shape of deal and delivered against the real one. The gap between them is absorbed silently, because raising it mid-deal feels like…">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/law-firms/corporate-transactional/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -126,6 +126,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles li{font-size:14.5px;line-height:1.5}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
+
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
 
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
@@ -256,7 +264,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <h2>The rest of the sector</h2>
   <ul class="also">
     <li><a href="/industries/law-firms/">Law firms &mdash; where loss concentrates</a></li>
-    <li><a href="/industries/law-firms/insurance-defence/">Insurance defense</a></li>
+    <li><a href="/industries/law-firms/insurance-defense/">Insurance defense</a></li>
     <li><a href="/industries/law-firms/plaintiff-contingency/">Plaintiff and contingency</a></li>
   </ul>
 

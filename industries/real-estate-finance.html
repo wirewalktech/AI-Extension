@@ -10,7 +10,7 @@ description: "What the operating agreement says, and what the model computes. Th
 <meta name="description" content="What the operating agreement says, and what the model computes. The buildings are one business and the capital structure is another, and the second is where the money is actually decided. Waterfalls, capital accounts and covenant definitions are agreed once, then computed for years by a…">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/real-estate-finance/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Real estate finance</p>
   <span class="eyebrow">Real estate finance</span>
   <h1>What the operating agreement says, and what the model computes.</h1>
+  <p class="overheard">&ldquo;The waterfall in the model is not the waterfall in the operating agreement.&rdquo;</p>
   <p class="lede">The buildings are one business and the capital structure is another, and the second is where the money is actually decided. Waterfalls, capital accounts and covenant definitions are agreed once, then computed for years by a spreadsheet nobody else can read. A review reconciles the computation to the document.</p>
 
   <ul class="vocab">
@@ -216,23 +225,16 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>clawback</li>
     <li>cost to complete</li>
     <li>related-party fees</li>
- <li>catch-up</li>
- <li>cash trap</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>7 losses that recur in
-  a real estate sponsor and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  a real estate sponsor is built to look for.</p>
+  <p>7 places the money tends to
+  go in a real estate sponsor. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>A distribution waterfall computed by a spreadsheet that has never been reconciled, clause by clause, to the operating agreement it implements.</li>
-    <li>Preferred return accruing at a rate and compounding on a basis that the model and the agreement describe differently, discovered at the crystallisation event.</li>
+    <li>Preferred return accruing at a rate and compounding on a basis that the model and the agreement describe differently, discovered at the crystallization event.</li>
     <li>Covenant ratios reported against a definition borrowed from another loan — DSCR and debt yield are defined per document, and the definitions differ.</li>
     <li>Affiliated fees — asset management, construction management, acquisition — charged to deals at rates that were never re-consented as the platform grew.</li>
     <li>Investor capital accounts maintained in the fund system and in the tax return with no reconciliation between them.</li>
@@ -247,33 +249,19 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li><b>Sponsors and syndicators</b><span>Deal-by-deal entities, each with its own waterfall, promote and capital accounts, and no consolidated view of what the sponsor actually earned.</span></li>
       <li><b>Funds and programmatic capital</b><span>Preferred return accruals and clawback exposure that is computed once a year, usually by the person who built the model.</span></li>
       <li><b>Property management arms</b><span>Management and construction management fees earned from affiliated entities, which is exactly where a related-party question lands.</span></li>
-      <li><b>Development</b><span>Capitalized interest, draw schedules and cost to complete, where a budget reforecast is a covenant event.</span></li>
+      <li><b>Development</b><span>Capitalized interest, draw schedules and cost-to-complete, where a budget reforecast is a covenant event.</span></li>
       <li><b>Affordable and tax-credit housing</b><span>LIHTC compliance periods, investor reporting and recapture exposure that survives long after the deal closes.</span></li>
     </ul>
-  </div>
-
-<div class="depth">
-    <h3>Where AI actually earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Covenant definitions across the loan stack</b><span>A sponsor with nine loans has nine definitions of DSCR and debt yield, and pulling them into one grid — test date, NOI adjustments, permitted add-backs, cure rights, what counts as debt service — is a week with a highlighter that nobody schedules. A language model reading the loan PDFs produces that grid with a section cite in every cell. It replaces the reading, not the judgment. The argument about which definition is the binding one still happens, but over a table instead of a stack of paper.</span></li>
-      <li><b>The operating agreement restated as a waterfall spec</b><span>Before anyone can tie the spreadsheet to the document, somebody has to write down what the document actually says: pref rate and compounding basis, return-of-capital ordering, catch-up percentage and what it catches up on, residual split, clawback trigger, deal-by-deal or whole-fund. That restatement is the half that is usually missing, and it is the half a model does well. It does not audit the formulas. It gives you the thing to audit them against.</span></li>
-      <li><b>The quarterly lender reporting pack</b><span>The same rent roll, T-12, occupancy and budget-to-actual get poured into a different template for each lender, by hand, every quarter. Extract once out of Yardi or MRI, then have a model map the fields into each lender's format. The person goes from assembling nine packages to reviewing nine drafts, and the drafts are wrong in visible ways rather than invisible ones.</span></li>
-      <li><b>Affiliate fee entitlement against what was billed</b><span>Every operating agreement and management agreement states a rate and a base for asset management, property management, construction management and acquisition fees. Pull those terms out of the documents into a table, join it to what the GL actually charged each deal, and the deals billed at the platform's current rate rather than the rate that deal consented to fall out on their own.</span></li>
-      <li><b>Draw package assembly and invoice coding</b><span>Coding subcontractor invoices to budget lines, matching lien waivers to the payments they release, and rebuilding the lender's draw form every month is clerical work a project accountant does under deadline, which is why cost to complete gets updated late. Extraction and first-pass coding are reliable here. The exceptions are what the accountant should have been spending the month on.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of these is a model deciding anything. Each one produces a first pass a person checks, and checking is faster than reading was. That is the whole gain. It shows up as hours, not as judgment, and it is available today with tools you can buy this month.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Yardi Voyager or MRI at the property level; Juniper Square, Yardi Investment Manager or AppFolio Investment Manager for the fund and investor layer</li>
+      <li>Yardi Voyager or MRI at the property level; Investran or Juniper Square for the fund and investor layer</li>
       <li>Excel for the waterfall — almost always, and almost always unreconciled to the operating agreement</li>
       <li>AppFolio or Entrata in the smaller property management operations</li>
       <li>A separate lender reporting pack per loan, assembled by hand each quarter</li>
- <li>ARGUS Enterprise for the underwriting and valuation model, now sold inside Altus Group's ARGUS Intelligence platform rather than standalone</li>
- <li>Procore, Northspyre or Rabbet where development cost tracking has been bought; a spreadsheet and the lender's own draw form where it has not</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -287,9 +275,8 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>NOI bridge</li>
       <li>capital account balances</li>
       <li>cost to complete</li>
-      <li>affiliate fee revenue</li>
- <li>yield on cost against the exit cap</li>
-</ul>
+      <li>management fee capture</li>
+    </ul>
   </div>
 
   <div class="depth">
@@ -297,9 +284,9 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="fil">
       <li>Lender covenant certificates — DSCR, debt yield, LTV — and the calculation definitions that differ per loan document</li>
       <li>Investor capital account statements and K-1s, tied to the operating agreement</li>
-      <li>Form D within 15 days of the first sale, amended annually while the offering is open, and the New York notice filing made through NASAA's Electronic Filing Depository, which lapses after four years</li>
+      <li>SEC Regulation D filings and, where relevant, Form D amendments</li>
       <li>LIHTC and HUD compliance reporting where applicable</li>
-      <li>Property tax appeals — in New York City the Tax Commission application is due March 1 for Class 2, 3 and 4 and March 15 for Class 1, and neither date can be extended</li>
+      <li>Property tax appeals and the deadlines that cannot be extended</li>
     </ul>
   </div>
 
@@ -363,8 +350,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A fund audit, or the first audit the sponsor has had</li>
       <li>A partner separation, where the waterfall becomes contested rather than academic</li>
       <li>A promote crystallization event</li>
- <li>A rate cap expiring, or a floating-rate bridge loan reaching maturity with a cash sweep attached to the extension</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">

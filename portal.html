@@ -148,7 +148,7 @@ summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset
 #bulk .hd p{margin:4px 0 0;font-size:14.5px;color:var(--tx2)}
 #bulk .bd{padding:20px 22px 24px}
 /* The disclaimer is the point of this block, so it is set at reading size and
-   sits above the control rather than under it in grey. */
+   sits above the control rather than under it in gray. */
 .tradeoff{border-left:3px solid var(--ac);padding:2px 0 2px 17px;margin:0 0 20px}
 .tradeoff b.h{display:block;font-size:16.5px;color:var(--tx);margin-bottom:9px}
 .tradeoff p{margin:0 0 9px;font-size:15.5px;color:var(--tx2);max-width:74ch}
@@ -777,7 +777,7 @@ function updateProgress() {
      report that turned out to have holes in it. */
   $("#doc-note").innerHTML = c.unfiled
     ? "<b>" + c.unfiled + " sent in bulk</b>, not yet matched to a request — these do not " +
-      "count towards the answers above. " + (c.total - c.done) + " requests still open."
+      "count toward the answers above. " + (c.total - c.done) + " requests still open."
     : (c.total - c.done) + " requests still open.";
 
   // per-section counters in the jump list and the section headers
@@ -998,7 +998,7 @@ function renderFiles(it, ul) {
 
 function render() {
   const e = DATA.engagement;
-  $("#org").textContent = e.organisation;
+  $("#org").textContent = e.organization;
   $("#stage").textContent = e.stage;
   $("#engmeta").innerHTML =
     "<b>" + (e.service_name || "Operating Review") + "</b> · engagement " + e.id +
@@ -1344,7 +1344,7 @@ async function bulkUpload(files) {
       renderUnfiled();
       updateProgress();
     }
-    /* This used to be one line of 13.5px grey where a progress bar had just
+    /* This used to be one line of 13.5px gray where a progress bar had just
        vanished, and the counter above still read 0 of N — so the page said
        "nothing else to do" in small print while appearing to show that nothing
        had happened. People asked what to do next, which is the correct
@@ -1375,7 +1375,7 @@ function bulkDone(n) {
     '<b>' + n + ' file' + (n === 1 ? "" : "s") + ' received.</b>' +
     '<p>You do not need to do anything else with these. We work out what each one ' +
     'answers, which is why the counter above has not moved — a bulk file only counts ' +
-    'towards a request once a person has read it and filed it.</p>' +
+    'toward a request once a person has read it and filed it.</p>' +
     '<p>If there are requests you would rather answer directly, the list is above and ' +
     'still open. Otherwise you are done, and we will come back to you if something ' +
     'important is missing.</p>';

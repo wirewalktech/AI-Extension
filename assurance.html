@@ -1,0 +1,206 @@
+---
+permalink: /assurance/
+title: Regulated environments and data handling
+description: >-
+  The frameworks an Operating Review is delivered under — PHI, CUI, export
+  control, privacy and payments — described as capability and commitment,
+  not as certification.
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regulated environments — Wirewalk AI</title>
+<meta name="description" content="The frameworks the engagement is delivered under: HIPAA and PHI, CUI and NIST SP 800-171, EAR and ITAR, GDPR, FERPA and PCI DSS. Described as capability and commitment, not as certification.">
+<link rel="canonical" href="https://ai.wirewalk.com/assurance/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wirewalk AI">
+<meta property="og:title" content="Regulated environments — Wirewalk AI">
+<meta property="og:description" content="The rules the engagement has to live inside, and what we will commit to in writing before the first document moves.">
+<meta property="og:url" content="https://ai.wirewalk.com/assurance/">
+<meta property="og:image" content="https://ai.wirewalk.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:44px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);
+       font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;
+      grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.back:hover{color:var(--ac)}
+.crumb{font-size:13.5px;color:var(--tx3);margin:0 0 14px}
+.crumb a{color:var(--tx2);text-decoration:none}
+.crumb a:hover{color:var(--ac2)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(30px,5.4vw,42px);line-height:1.13;letter-spacing:-.024em;margin:0 0 16px;
+   text-wrap:balance}
+h2{font-size:clamp(21px,2.9vw,26px);letter-spacing:-.016em;margin:56px 0 8px;text-wrap:balance}
+p{max-width:70ch}
+.lede{color:var(--tx2);font-size:19px;margin:0 0 12px}
+.sub{color:var(--tx3);font-size:15px;margin:0 0 22px}
+a{color:var(--ac2);text-underline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15.5px;
+     font-weight:600;padding:12px 22px;border-radius:9px;border:1px solid var(--ac);
+     background:var(--ac);color:#fff;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--ac2);border-color:var(--ac2)}
+.btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt)}
+.acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
+.phase{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
+.phase li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:18px 0;
+  border-top:1px solid var(--ln)}
+.phase li:last-child{border-bottom:1px solid var(--ln)}
+.phase .wk{font:650 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ac);padding-top:2px}
+.phase b{display:block;font-size:15.5px;margin-bottom:5px}
+.phase span{font-size:14.5px;line-height:1.6;color:var(--tx2)}
+.deliv{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px}
+.deliv li{padding-left:24px;position:relative;font-size:15px;line-height:1.55}
+.deliv li:before{content:"";position:absolute;left:6px;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--ac)}
+.note{border:1px solid var(--ac);background:var(--acs);border-radius:12px;padding:20px 22px;
+      margin:30px 0 0}
+.note b{display:block;font-size:17px;color:var(--tx);margin-bottom:6px}
+.note p{margin:0;color:var(--tx2);font-size:15.5px;max-width:none}
+.also{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 0;padding:0;list-style:none}
+.also a{display:inline-block;font-size:14.5px;text-decoration:none;color:var(--tx);
+        border:1px solid var(--ln2);border-radius:20px;padding:7px 15px;background:#fff}
+.also a:hover{border-color:var(--ac);background:var(--acs);color:var(--ac2)}
+footer.end{margin:60px 0 46px;padding-top:24px;border-top:1px solid var(--ln);
+           color:var(--tx3);font-size:14px}
+footer.end a{color:var(--ac2)}
+footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+@media(max-width:640px){.phase li{grid-template-columns:1fr;gap:6px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Carried over from the homepage section this page was split out of. */
+.sh-split{display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,1.3fr);
+  gap:clamp(20px,4vw,52px);align-items:start;margin-bottom:26px}
+@media(max-width:780px){.sh-split{grid-template-columns:1fr;gap:14px}}
+.sh-split h2{margin:0}
+.sh-split p{margin:0;color:var(--tx2);font-size:16.5px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--ln);border:1px solid var(--ln);border-radius:12px;overflow:hidden;
+  margin-top:22px}
+.g3>div{background:#fff;padding:20px 22px}
+.g3 .n{display:block;font:650 11.5px/1 var(--mono);letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ac2);margin-bottom:9px}
+.g3 h4{font-size:16px;margin:0 0 7px}
+.g3 p{font-size:14.5px;line-height:1.58;color:var(--tx2);margin:0;max-width:none}
+.rl{font-size:15.5px;color:var(--tx2);margin-top:22px}
+.rl b{color:var(--tx)}
+.ilink{color:var(--ac2)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span>
+    <span>Wirewalk<s>AI</s></span></a>
+  <a class="back" href="/order/">Commission an engagement</a>
+</div></header>
+
+<div class="wrap">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo; Regulated environments</p>
+
+  <div class="sh-split">
+    <div><span class="eyebrow">Regulated environments</span>
+      <h2>The rules the engagement has to live inside.</h2></div>
+    <p>A review of the whole operation reaches the parts of it that are regulated. Payroll,
+    contracts, the general ledger, customer records and in some sectors patient or student
+    records all sit inside somebody&rsquo;s regime, and the review does not get an exemption
+    from it. These are the frameworks the work is delivered under &mdash; described as
+    capability and commitment, not as certification.</p>
+  </div>
+  <div class="g3" data-rv>
+    <div><span class="n">PHI</span><h4>Health information</h4><p>Where protected health
+      information is in scope, a business associate agreement is signed before any data
+      moves, and the engagement runs to the HIPAA Security Rule and the minimum-necessary
+      standard. In practice we ask for de-identified or aggregated extracts first and
+      identifiable data only where a finding genuinely depends on it. GxP and 21 CFR Part 11
+      where electronic records and signatures are in scope.</p></div>
+    <div><span class="n">CUI</span><h4>Controlled unclassified information</h4><p>CUI is
+      handled to NIST SP 800-171, with the system security plan and POA&amp;M that go with
+      it, and NIST SP 800-53 where a federal system is involved. Media sanitization on
+      disposal follows NIST SP 800-88. Where a contract carries CMMC obligations or
+      flow-down clauses, those govern what we may hold and where &mdash; and we will say so
+      before accepting the work rather than after.</p></div>
+    <div><span class="n">Export</span><h4>Export control and sanctions</h4><p>EAR and ITAR
+      where they apply, including the part that catches research organizations: giving a
+      foreign national access to controlled technology is an export, and a document request
+      is a form of access. Restricted party and OFAC screening, technology control plans,
+      and an honest reading of where the fundamental research exclusion applies rather than
+      where it would be convenient.</p></div>
+  </div>
+  <div class="g3" data-rv style="margin-top:1px">
+    <div><span class="n">Data</span><h4>Privacy, payments and records</h4><p>GDPR and UK GDPR
+      where a collaboration or a customer base crosses into scope, with a data processing
+      agreement rather than an assurance. FERPA for education records. PCI DSS is handled by
+      keeping cardholder data out of scope by default &mdash; we ask for settlement and
+      reconciliation data, not card numbers. Where your own regime is something else, it
+      governs, and we work to it.</p></div>
+    <div><span class="n">In writing</span><h4>Agreed before work begins</h4><p>What we may
+      hold, where it may be stored, who may see it, how long it is kept and how it is
+      destroyed are agreed in writing before the first document moves &mdash; your NDA where
+      you want one, and a BAA or DPA where one is required. Named individuals, not &ldquo;the team&rdquo;. No
+      subprocessing without your agreement. The commercial half of the same question is in
+      the <a class="ilink" href="/terms/">ordering terms</a>.</p></div>
+    <div><span class="n">In practice</span><h4>What the commitment actually looks like</h4>
+      <p>Documents go to private storage with no public address; access is by an
+      unguessable per-engagement link, never a shared password; every open, view, upload and
+      download is written to an append-only log, so &ldquo;who saw our payroll file&rdquo;
+      has a list for an answer; and a retention date is set at the start and enforced by the
+      storage itself rather than by anyone remembering. That is the
+      <a class="ilink" href="/portal/">client portal</a>.</p></div>
+  </div>
+  <p class="rl"><b>Said plainly, because the distinction matters.</b> Everything above is a
+  statement of how we work and what we will commit to, not a certification. There is no such
+  thing as being &ldquo;HIPAA certified&rdquo;, and a firm that says otherwise has told you
+  something useful about the rest of its claims. Where you need evidence rather than
+  assurance &mdash; a completed security questionnaire, a signed BAA, a named data
+  controller, your own paper instead of ours &mdash; ask, and it happens before the
+  engagement starts rather than during it.</p>
+
+  <h2>Ask before you commission, not during</h2>
+  <p class="sub">A completed security questionnaire, a signed BAA, a named data controller,
+  your own paper instead of ours &mdash; all of it happens before the engagement starts.</p>
+  <ul class="also">
+    <li><a href="/how-it-works/">How the review runs</a></li>
+    <li><a href="/terms/">Ordering terms</a></li>
+    <li><a href="/portal/">The client portal</a></li>
+    <li><a href="/#contact">Ask a question</a></li>
+  </ul>
+
+  <footer class="end">
+    <div class="fl">
+      <a href="/">The Operating Review</a>
+      <a href="/industries/">All industries</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/order/">What it costs</a>
+      <a href="/terms/">Ordering terms</a>
+      <a href="/portal/">Client portal</a>
+    </div>
+    <p>Wirewalk AI &middot; <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> &middot;
+    <a href="tel:+15162691517">516-269-1517</a></p>
+  </footer>
+</div>
+</body></html>

@@ -51,7 +51,7 @@ const GROUPS = [
     slugs: ["financial-services", "insurance", "real-estate-finance"] },
   { id: "industrial", title: "Making, moving and building",
     blurb: "Where margin is calculated from standards, and the standards drift.",
-    slugs: ["manufacturing", "aerospace-defence", "warehousing-logistics",
+    slugs: ["manufacturing", "aerospace-defense", "warehousing-logistics",
              "transport-fleet", "construction"] },
   { id: "asset", title: "Property, energy and infrastructure",
     blurb: "Where the asset is the business, and what is contracted is not what is collected.",
@@ -92,7 +92,7 @@ const ALSO = {
   "human-services": ["healthcare", "nonprofit", "public-sector"],
   "engineering-architecture": ["construction", "professional-services", "manufacturing"],
   "accountancy": ["law-firms", "professional-services", "financial-services"],
-  "aerospace-defence": ["manufacturing", "government-contracting", "technology-saas"],
+  "aerospace-defense": ["manufacturing", "government-contracting", "technology-saas"],
   "real-estate-finance": ["real-estate", "financial-services", "construction"],
 };
 
@@ -101,16 +101,16 @@ const ALSO = {
    saas". Grammar only -- no content lives here. */
 const PHRASE = {
   "public-sector": "the public sector",
-  "nonprofit": "nonprofit and grant-funded organisations",
+  "nonprofit": "nonprofit and grant-funded organizations",
   "technology-saas": "technology and SaaS",
   "financial-services": "financial services",
   "government-contracting": "government contracting",
 };
 Object.assign(PHRASE, {
-  "human-services": "a human services organisation",
+  "human-services": "a human services organization",
   "engineering-architecture": "a design practice",
   "accountancy": "an accountancy firm",
-  "aerospace-defence": "an aerospace and defence manufacturer",
+  "aerospace-defense": "an aerospace and defense manufacturer",
   "real-estate-finance": "a real estate sponsor",
 });
 const phraseOf = i => PHRASE[i.slug] || i.name.toLowerCase();
@@ -121,12 +121,12 @@ const COUNTABLE = {
   "law-firms": "matter", "accountancy": "engagement", "healthcare": "encounter",
   "human-services": "unit of service", "construction": "job",
   "engineering-architecture": "project", "manufacturing": "part",
-  "aerospace-defence": "part", "real-estate": "lease",
+  "aerospace-defense": "part", "real-estate": "lease",
   "real-estate-finance": "deal", "staffing": "placement", "agencies": "client",
   "insurance": "policy", "warehousing-logistics": "client account",
   "professional-services": "engagement", "technology-saas": "account",
   "financial-services": "account", "retail-ecommerce": "order",
-  "transport-fleet": "load", "hospitality": "outlet", "nonprofit": "programme",
+  "transport-fleet": "load", "hospitality": "outlet", "nonprofit": "program",
   "education-research": "grant", "government-contracting": "contract",
   "public-sector": "service", "energy-utilities": "site",
 };
@@ -240,6 +240,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -311,7 +319,7 @@ const head = (title, desc, canonical) => `<!DOCTYPE html>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canonical}">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -353,7 +361,7 @@ const foot = `
     <a href="tel:+15162691517">516-269-1517</a></p>
     <p style="margin-top:9px">The patterns on these pages are what recurs in each
     sector and what a review therefore goes looking for. They are not claims about
-    any particular organisation, and nothing here reports a client, an engagement
+    any particular organization, and nothing here reports a client, an engagement
     or a measured result.</p>
   </footer>
 </div>
@@ -542,22 +550,18 @@ ${head(`${ind.name} — the Operating Review — Wirewalk AI`,
     <a href="/industries/">Industries</a> &rsaquo; ${esc(ind.name)}</p>
   <span class="eyebrow">${esc(ind.name)}</span>
   <h1>${esc(ind.headline)}</h1>
+  ${ind.overheard ? `<p class="overheard">&ldquo;${esc(ind.overheard)}&rdquo;</p>` : ""}
   <p class="lede">${esc(ind.lede)}</p>
 
   <ul class="vocab">
 ${vocab}
   </ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>${ind.patterns.length === 5 ? "Five" : ind.patterns.length} losses that recur in
-  ${esc(phrase)} and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  ${esc(phrase)} is built to look for.</p>
+  <p>${ind.patterns.length === 5 ? "Five" : ind.patterns.length} places the money tends to
+  go in ${esc(phrase)}. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
 ${pats}
   </ol>
@@ -621,31 +625,29 @@ function proposalPage(ind) {
   const phrase = phraseOf(ind);
   const core = mod.items.filter(i => i.importance === "core");
 
+  /* ONE LINE PER WEEK, not one paragraph.
+     The full explanation of each phase is identical in every sector -- it is
+     the method, not the industry -- and repeating it on twenty-five proposals
+     made 47% of each page word-for-word the same as the other twenty-four.
+     Google reads that as near-duplicate content and suppresses all of them;
+     a reader reads it as a template. It now lives once, on /how-it-works/,
+     and what stays here is only what actually varies: how many sector
+     requests, and what this sector counts in. */
   const phases = [
     { wk: "Week 1", title: "Intake and reconciliation",
-      body: `You complete the intake in the client portal — ${mod.items.length} requests ` +
-            `written for ${phrase} and asked of nobody else, alongside the 107 that ` +
-            `cover the operating spine any business has. ` +
-            `Anything you do not have is skipped in one click, with a reason. We reconcile ` +
-            `what arrives against what was asked and tell you, before any fieldwork, which ` +
-            `findings the gaps will limit.` },
+      body: `${mod.items.length} requests written for ${phrase}, alongside the 107 ` +
+            `covering the operating spine. We tell you which findings the gaps will ` +
+            `limit before any fieldwork starts.` },
     { wk: "Weeks 2–3", title: "Full pass, not a sample",
       /* A sector's first metric is a MEASURE, not a countable thing -- healthcare's
          is "days in AR", which produced "Every days in AR in scope is read". The
          sentence needs a noun, so use the unit the sector actually counts in. */
-      body: `Every ${countable(ind)} in scope is read rather than ` +
-            `sampled. Concentrated loss is exactly what sampling misses — one contract, one ` +
-            `queue, one unreviewed account — so a sample of the operation tends to miss it ` +
-            `and a full pass tends to find it.` },
+      body: `Every ${countable(ind)} in scope is read rather than sampled.` },
     { wk: "Week 4", title: "Quantification and challenge",
-      body: `Each finding is sized, and each is put to the person who owns it before it is ` +
-            `written down. A finding the operator can immediately explain away is not a ` +
-            `finding, and it is cheaper to discover that here than in the room.` },
+      body: `Each finding sized, and put to whoever owns it before it is written down.` },
     { wk: "Week 5", title: "Report and walkthrough",
-      body: `A written report with the evidence attached, and a walkthrough with whoever ` +
-            `you want in the room. Findings are ranked by annual value and by how hard they ` +
-            `are to act on, because those are different axes and the cheap ones should not ` +
-            `wait for the big ones.` },
+      body: `The written report, ranked by annual value and by how hard each finding ` +
+            `is to act on.` },
   ];
 
   const phaseHtml = phases.map(p => `    <li>
@@ -709,20 +711,9 @@ ${patHtml}
   <ul class="phase">
 ${phaseHtml}
   </ul>
-
-  <h2>What you get</h2>
-  <ul class="deliv">
-    <li>A written report, with the evidence for each finding attached rather than
-      referenced.</li>
-    <li>Each finding sized in annual value, and ranked against how hard it is to act on.</li>
-    <li>The reconciliation of what was asked for against what was provided, so the
-      limits of the work are stated rather than implied.</li>
-    <li>A walkthrough with whoever you want present.</li>
-    <li>Your documents destroyed on completion, with a certificate naming every file.</li>
-  </ul>
-  <p class="sub" style="margin-top:14px">Phase one is priced before phase two is
-  discussed. The report is yours either way, and we take no vendor commissions or
-  referral fees on anything we recommend.</p>
+  <p class="sub" style="margin-top:14px"><a href="/how-it-works/">What each week actually
+  involves, what arrives at the end of it, and how we behave while we are in there</a>
+  &mdash; written down once rather than repeated on every sector's proposal.</p>
 
   <h2>What we need from you</h2>
   <p>${core.length} core request${core.length === 1 ? "" : "s"} written for ${esc(phrase)}, inside the full intake.
@@ -838,7 +829,7 @@ ${foot}`;
  * would contradict the one claim this whole section rests on, that each page
  * is written for one reader.
  *
- * An insurance-defence firm should meet LEDES exports, task-code rejections
+ * An insurance-defense firm should meet LEDES exports, task-code rejections
  * and carrier audits here -- none of which belong on a page a plaintiff firm
  * also reads.
  */
@@ -951,7 +942,63 @@ function writeHomepageTeaser() {
   return cards.length;
 }
 
+/* ------------------------------------------------------------------ *
+ * Redirects for slugs that have moved
+ * ------------------------------------------------------------------ *
+ * Americanizing the copy renamed four slugs, and a slug is a live URL:
+ *
+ *   aerospace-defence -> aerospace-defense   (and its /proposal/)
+ *   defence-contracts -> defense-contracts
+ *   insurance-defence -> insurance-defense
+ *   surgery-centres   -> surgery-centers
+ *
+ * These pages have been linked and indexed. A rename with no redirect throws
+ * away whatever authority they had and 404s anyone arriving from an older
+ * link, which for a practice whose distribution IS one person sharing links is
+ * not a cosmetic problem.
+ *
+ * Written as meta-refresh stubs with rel=canonical rather than via
+ * jekyll-redirect-from, because that would mean a Gemfile and a plugin for
+ * seven files the generator can emit itself. Jekyll copies them as-is.
+ */
+const MOVED = [
+  ["aerospace-defence",                   "aerospace-defense"],
+  ["aerospace-defence/proposal",          "aerospace-defense/proposal"],
+  ["aerospace-defence/build-to-print",    "aerospace-defense/build-to-print"],
+  ["aerospace-defence/mro-aftermarket",   "aerospace-defense/mro-aftermarket"],
+  ["aerospace-defence/defence-contracts", "aerospace-defense/defense-contracts"],
+  ["law-firms/insurance-defence",         "law-firms/insurance-defense"],
+  ["healthcare/surgery-centres",          "healthcare/surgery-centers"],
+];
+
+function redirectPage(from, to) {
+  const url = `https://ai.wirewalk.com/industries/${to}/`;
+  return `---
+permalink: /industries/${from}/
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Moved — Wirewalk AI</title>
+<link rel="canonical" href="${url}">
+<meta http-equiv="refresh" content="0; url=${url}">
+<meta name="robots" content="noindex,follow">
+</head>
+<body>
+<p>This page has moved to <a href="${url}">${url}</a>.</p>
+<script>location.replace(${JSON.stringify(url)});</script>
+</body></html>
+`;
+}
+
 writeFileSync(join(OUT, "index.html"), indexPage());
+let moved = 0;
+for (const [from, to] of MOVED) {
+  writeFileSync(join(OUT, from.replace(/\//g, "--") + "--REDIRECT.html"),
+                redirectPage(from, to));
+  moved++;
+}
 let n = 1, subs = 0;
 for (const ind of INDUSTRIES) {
   writeFileSync(join(OUT, `${ind.slug}.html`), industryPage(ind));
@@ -965,5 +1012,5 @@ for (const ind of INDUSTRIES) {
   }
 }
 const teased = writeHomepageTeaser();
-console.log(`wrote ${n} files into ${OUT} (${subs} sub-vertical page(s))`);
+console.log(`wrote ${n} files into ${OUT} (${subs} sub-vertical page(s), ${moved} redirect(s))`);
 console.log(`homepage teaser: ${teased} group card(s) from ${INDUSTRIES.length} industries`);

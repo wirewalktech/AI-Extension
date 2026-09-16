@@ -12,7 +12,7 @@ description: >-
 <meta name="description" content="Where operating loss concentrates in your sector, what a review would ask you for, and who commissions it. Written for one industry at a time.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -129,6 +129,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -224,14 +232,19 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <h2>Professional and advisory firms</h2>
     <p>Where the product is time, and three different numbers describe the same hour.</p>
     <div class="cards">
+      <a href="/industries/law-firms/">
+        <b>Law firms</b>
+        <span>The gap between recorded, billed and collected.</span>
+        <em>realization · WIP · leverage · origination credit</em>
+      </a>
       <a href="/industries/accountancy/">
         <b>Accountancy firms</b>
         <span>You audit everyone else's numbers. Nobody audits how the firm earns.</span>
         <em>realization · net fees per partner · utilization · WIP</em>
       </a>
       <a href="/industries/professional-services/">
-        <b>Professional services and law firms</b>
-        <span>Sold at a rate, delivered at another. Utilization watched closely, realization watched less.</span>
+        <b>Professional services</b>
+        <span>Sold at a rate, delivered at another.</span>
         <em>utilization · realization · WIP · write-down</em>
       </a>
       <a href="/industries/agencies/">
@@ -283,7 +296,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
         <span>Standard cost said one thing. The line said another.</span>
         <em>standard cost · yield · scrap and rework · OEE</em>
       </a>
-      <a href="/industries/aerospace-defence/">
+      <a href="/industries/aerospace-defense/">
         <b>Aerospace and defense</b>
         <span>Here, a compliance lapse is not a fine. It is a contract you may no longer bid.</span>
         <em>AS9100 · ITAR · DFARS · SPRS</em>
@@ -301,7 +314,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <a href="/industries/construction/">
         <b>Construction and contracting</b>
         <span>Built, and never billed.</span>
-        <em>variation · change order · retention · WIP</em>
+        <em>change order · retainage · WIP · over/under billing</em>
       </a>
     </div>
   </div>
@@ -313,7 +326,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <a href="/industries/real-estate/">
         <b>Real estate</b>
         <span>Contracted is not the same as collected.</span>
-        <em>rent roll · void · service charge recovery · escalation</em>
+        <em>rent roll · vacancy · CAM recovery · escalation</em>
       </a>
       <a href="/industries/energy-utilities/">
         <b>Energy and utilities</b>

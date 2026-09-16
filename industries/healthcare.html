@@ -10,7 +10,7 @@ description: "Denied once, and then never touched again. Revenue cycle is measur
 <meta name="description" content="Denied once, and then never touched again. Revenue cycle is measured in aggregate and lost in specifics — a payer, a reason code, a queue. Reading it end to end rather than by sample finds the concentrations that averages hide.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/healthcare/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Healthcare</p>
   <span class="eyebrow">Healthcare</span>
   <h1>Denied once, and then never touched again.</h1>
+  <p class="overheard">&ldquo;The denial rate looks fine. So why is cash down?&rdquo;</p>
   <p class="lede">Revenue cycle is measured in aggregate and lost in specifics — a payer, a reason code, a queue. Reading it end to end rather than by sample finds the concentrations that averages hide.</p>
 
   <ul class="vocab">
@@ -211,24 +220,17 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>denials</li>
     <li>reason code</li>
     <li>underpayment</li>
-    <li>chargemaster</li>
+    <li>charge master</li>
     <li>credentialing</li>
     <li>case mix</li>
-    <li>physician preference items</li>
- <li>prior auth</li>
- <li>timely filing</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+    <li>preference items</li>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  healthcare and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  healthcare is built to look for.</p>
+  <p>Five places the money tends to
+  go in healthcare. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Denials by reason code and payer showing one or two causes carrying most of the value, with no owner assigned to either.</li>
     <li>Denied claims never reworked at all, because the queue exceeded the team's capacity and the oldest simply aged out.</li>
@@ -245,29 +247,16 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li class="has"><a href="/industries/healthcare/specialty-ancillary/"><b>Dermatology, ophthalmology and specialty</b><span>Ancillary revenue — pathology, cosmetics, optical — with materially different margins that are rarely reported separately.</span><em>Read the page for dermatology, ophthalmology and specialty &rarr;</em></a></li>
       <li class="has"><a href="/industries/healthcare/dental-dso/"><b>Dental groups and DSOs</b><span>Per-location P&amp;Ls where doctor compensation formulas differ by acquisition vintage and nobody has modeled the aggregate.</span><em>Read the page for dental groups and dsos &rarr;</em></a></li>
       <li><b>Behavioral and human services</b><span>Medicaid and grant funding with cost-reporting obligations, where an unallowable cost found late is repayable.</span></li>
-      <li class="has"><a href="/industries/healthcare/surgery-centres/"><b>Imaging, surgery centers and ancillary</b><span>Capital-heavy, utilization-driven, and priced on assumptions set when the equipment was bought.</span><em>Read the page for imaging, surgery centers and ancillary &rarr;</em></a></li>
+      <li class="has"><a href="/industries/healthcare/surgery-centers/"><b>Imaging, surgery centers and ancillary</b><span>Capital-heavy, utilization-driven, and priced on assumptions set when the equipment was bought.</span><em>Read the page for imaging, surgery centers and ancillary &rarr;</em></a></li>
     </ul>
-  </div>
-
-<div class="depth">
-    <h3>Where AI actually earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Reading the whole denial file instead of the top ten codes</b><span>Denials arrive as CARC and RARC codes plus free-text payer remarks that map cleanly to nothing. A model sorts every denied line by payer, code, provider, site and remark language, then ranks the buckets by dollars at risk. It replaces the monthly pivot on the top ten reason codes — which is exactly where a concentration hides, because one payer and one missing modifier rarely make the top ten until the year is over.</span></li>
-      <li><b>First-draft appeals and reconsiderations</b><span>Today a biller pulls the denial, the note and the payer's own medical policy, and writes the letter from a template that is two policy revisions out of date. A model writes that first draft and quotes the policy section it is arguing from. Writing becomes reading and signing, which is the difference between working the queue and watching it age past timely filing. A person still sends it.</span></li>
-      <li><b>Turning payer contracts into a rate table</b><span>Underpayment stays invisible because the contracted rate is not in the practice management system. It is in a PDF, plus four amendments, plus a fee schedule someone scanned sideways in 2019. Pulling that into a rate per code per payer with effective dates and escalators is the step that never gets done, and it is ordinary document extraction. Once the table exists, comparing it to paid is a join, not a project.</span></li>
-      <li><b>Prior authorization prep</b><span>Read the payer's policy for the CPT, produce the list of what the chart has to contain, and run it against next week's scheduled cases so the ones missing an element surface before the patient is in the chair. It replaces a staff member re-reading the same policy PDF case by case, and it moves the work from after the denial to before the claim.</span></li>
-      <li><b>Credentialing expirables and repeat applications</b><span>Licenses, DEA registrations, COIs and board certificates sit as scans in a shared folder while the tracker is a spreadsheet nobody has opened since the last hire. Pull the dates off the documents, build the expiry calendar, and fill the twelfth payer application from one verified provider record instead of retyping the CV. Most of the gap between a start date and the first billable encounter is waiting and retyping, and retyping is the half you control.</span></li>
-      <li><b>Normalizing the item master</b><span>The same implant appears under six vendor descriptions across three sites, so preference-item variation cannot be compared even when someone wants to compare it. Matching free-text item descriptions into one catalog is dull, high-volume text work, and a model is good at dull, high-volume text work. The variation becomes visible. The conversation with the surgeon is still a conversation.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a model trained on your data or a new platform to buy. It needs your own files in one place and someone who checks the output against the source before anything goes to a payer. What it buys is coverage — the whole file read, rather than a sample of it.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Epic in the larger groups, or reached through a health system's Community Connect; athenahealth, eClinicalWorks or NextGen in the mid-market; ModMed (formerly Modernizing Medicine) in dermatology, ophthalmology and orthopedics</li>
-      <li>Waystar, Availity or Optum — the clearinghouse most groups still call Change Healthcare — sitting between the practice and the payer</li>
-      <li>A separate credentialing tracker, very often a spreadsheet, next to CAQH ProView — now the Provider Data Portal, under CAQH's new DataSpring name — and Medicare PECOS</li>
+      <li>Epic in the larger groups; athenahealth, eClinicalWorks or NextGen in the mid-market; Modernizing Medicine in specialty practices</li>
+      <li>Waystar, Availity or Change Healthcare sitting between the practice and the payer</li>
+      <li>A separate credentialling tracker, very often a spreadsheet</li>
       <li>Dentrix or Open Dental in dental groups, per location and rarely consolidated</li>
     </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
@@ -276,30 +265,26 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>days in A/R</li>
+      <li>days in AR</li>
       <li>denial rate</li>
       <li>net collection rate</li>
-      <li>wRVU per provider</li>
+      <li>RVU per provider</li>
       <li>no-show rate</li>
       <li>payer mix</li>
       <li>cost per encounter</li>
       <li>chair or room utilization</li>
- <li>clean claim rate</li>
- <li>A/R over 90 days</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Payer credentialing and revalidation per provider per payer — lapse and the claims deny; Medicare revalidation runs on a five-year cycle in PECOS, and a missed one deactivates billing privileges with no pay for the gap</li>
+      <li>Payer credentialling and revalidation per provider per payer — lapse and the claims deny</li>
       <li>Medicare cost reports and Medicaid cost settlement where applicable</li>
-      <li>HIPAA security risk analysis — the Security Rule requires it be kept current, MIPS attestation requires one in the performance year, and a proposed rewrite would make annual explicit; in most groups it has not been redone since a payer last asked</li>
+      <li>HIPAA security risk analysis, which is required annually and often is not done</li>
       <li>Stark and Anti-Kickback exposure on any physician compensation formula</li>
       <li>340B compliance where the group participates</li>
- <li>No Surprises Act good faith estimates for uninsured and self-pay patients — and the patient dispute route that opens if the bill lands $400 or more above the estimate</li>
- <li>New York material transaction notice — written notice to the Department of Health at least 30 days before a qualifying sale, merger or MSO deal closes (Public Health Law Article 45-A); an MSO managing a practice counts as a health care entity</li>
-</ul>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>

@@ -10,7 +10,7 @@ description: "The margin you report and the margin you keep. Gross margin is cal
 <meta name="description" content="The margin you report and the margin you keep. Gross margin is calculated at the point of sale and eroded everywhere afterwards — discount, markdown, returns, fulfillment, platform fees. Realized margin by SKU is a different ranking from reported margin, and often a surprising one.">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/retail-ecommerce/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,31 +212,25 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Retail and e-commerce</p>
   <span class="eyebrow">Retail and e-commerce</span>
   <h1>The margin you report and the margin you keep.</h1>
+  <p class="overheard">&ldquo;Gross margin looks fine right up until you land the returns.&rdquo;</p>
   <p class="lede">Gross margin is calculated at the point of sale and eroded everywhere afterwards — discount, markdown, returns, fulfillment, platform fees. Realized margin by SKU is a different ranking from reported margin, and often a surprising one.</p>
 
   <ul class="vocab">
     <li>realized margin</li>
     <li>markdown</li>
-    <li>shrink</li>
+    <li>shrinkage</li>
     <li>sell-through</li>
     <li>cost to serve</li>
-    <li>return rate</li>
-    <li>vendor allowances</li>
-    <li>contribution margin</li>
- <li>open-to-buy</li>
- <li>landed cost</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+    <li>returns rate</li>
+    <li>supplier funding</li>
+    <li>contribution</li>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  retail and e-commerce and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  retail and e-commerce is built to look for.</p>
+  <p>Five places the money tends to
+  go in retail and e-commerce. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Returns cost — processing, refurbishment, disposal — carried centrally and never allocated to the category generating it.</li>
     <li>Marketplace and platform fees, including advertising, taking a share that is not in the product margin calculation.</li>
@@ -243,33 +245,20 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="subv">
       <li><b>Direct-to-consumer</b><span>Contribution margin per order swamped by shipping, returns and discounting that are reported separately from the product margin they erase.</span></li>
       <li><b>Wholesale and multi-channel</b><span>Chargebacks, co-op allowances and compliance deductions from retail partners, absorbed rather than disputed within the window.</span></li>
-      <li><b>Brick-and-mortar</b><span>Store-level four-wall economics where occupancy and labor are allocated by a formula older than the current store mix.</span></li>
-      <li><b>Marketplace sellers</b><span>Referral and fulfillment fees, monthly storage, and the aged-inventory surcharge that replaced the long-term storage fee — now billed monthly from 181 days and stacking on top of storage — changing the unit economics of slow SKUs without anyone re-pricing them.</span></li>
+      <li><b>Bricks and mortar</b><span>Store-level four-wall economics where occupancy and labor are allocated by a formula older than the current store mix.</span></li>
+      <li><b>Marketplace sellers</b><span>Platform fees, storage and long-term storage charges that change the unit economics of slow SKUs without anyone re-pricing them.</span></li>
       <li><b>Subscription and replenishment</b><span>Churn and cohort economics measured in aggregate, hiding a cohort that has never repaid acquisition cost.</span></li>
     </ul>
-  </div>
-
-<div class="depth">
-    <h3>Where AI earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Reading the carrier and 3PL invoice line by line</b><span>A parcel invoice arrives as line-level detail and gets paid on the total. A model reads your rate card and contract into rules, then checks every line against them — dim-weight reweighs, address corrections, residential and peak surcharges, pick-and-pack billed at the wrong tier. It replaces the quarterly spot-check that never found anything.</span></li>
-      <li><b>Turning return comments into a return reason</b><span>The dropdown code says "other". The truth is in the agent notes and the customer's own words. A model classifies a year of those into sizing, damaged in transit, wrong item picked, not as pictured — by SKU. That is what moves returns cost off the central overhead line and onto a photograph, a size chart or a packer.</span></li>
-      <li><b>Pulling vendor allowance terms out of the agreements</b><span>Rebate tiers, co-op, markdown support and claim deadlines sit in supply agreements and annual terms letters nobody re-reads. A model extracts them into a claim calendar with the threshold and the date attached. What it cannot do is prove you hit the tier — that comes from purchase data, and it is the half that gets skipped.</span></li>
-      <li><b>Allocating marketplace fees back to the SKU</b><span>The settlement report carries referral and fulfillment fees at order level, and monthly storage, the aged-inventory surcharge, inbound placement and returns processing as separate rows that never touch an order. The ledger sees one net deposit per settlement period, usually every 14 days. The matching is ordinary work; the model's job is mapping the fee-type strings to categories and writing the variance note each period.</span></li>
-      <li><b>Assembling the deduction dispute</b><span>A retailer deducts against an invoice with a code and a backup file, and the window to dispute it is short. A model reads the backup, matches the code to the evidence it requires, and drafts the packet with the PO, ASN and proof of delivery attached. It replaces the clerk deciding which deductions are worth the time and writing off the rest.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this creates cost data you never captured. Realized margin by SKU needs landed cost per receipt, freight and duty allocated to the goods that incurred them, and a return credit that points back to the order line it reverses. Where those links were never recorded, a model will hand you a confident number built on an average — and the average is the thing you were trying to get away from. The recording has to be fixed first. The reading is the easy part.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Shopify Plus, BigCommerce or Adobe Commerce (Magento Open Source if you self-host); NetSuite or Brightpearl by Sage behind them</li>
+      <li>Shopify Plus, BigCommerce or Magento; NetSuite or Brightpearl behind them</li>
       <li>A 3PL or fulfillment partner whose invoice is not reconciled to the order file</li>
       <li>Ad platforms reporting attributed revenue that the finance system never sees</li>
       <li>A returns process tracked in the helpdesk rather than in inventory</li>
- <li>Walmart Supplier One and Retail Link, or Amazon Vendor Central, where deductions appear and the dispute window runs out</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -278,14 +267,13 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <ul class="mets">
       <li>contribution margin per order</li>
       <li>return rate</li>
-      <li>CAC</li>
+      <li>cost per acquisition</li>
       <li>cohort payback</li>
       <li>inventory turns</li>
       <li>sell-through</li>
       <li>chargeback rate</li>
       <li>four-wall margin</li>
- <li>GMROI</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">
@@ -294,8 +282,8 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>Sales tax and economic nexus across states, and marketplace facilitator rules</li>
       <li>Customs, duty and country-of-origin documentation on imported goods</li>
       <li>Product compliance and labeling where the category requires it</li>
-      <li>PCI DSS 4.0.1 scope, and whether SAQ A still covers you — the payment-page script criteria changed on March 31, 2025</li>
-</ul>
+      <li>PCI DSS scope, and whether it is as small as you think</li>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>

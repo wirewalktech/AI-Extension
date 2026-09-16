@@ -10,7 +10,7 @@ description: "Standard cost said one thing. The line said another. Product margi
 <meta name="description" content="Standard cost said one thing. The line said another. Product margin is calculated from standards, and standards are refreshed less often than anyone admits. When they drift, every downstream decision — what to quote, what to promote, what to discontinue — is made on numbers that stopped…">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/manufacturing/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Manufacturing</p>
   <span class="eyebrow">Manufacturing</span>
   <h1>Standard cost said one thing. The line said another.</h1>
+  <p class="overheard">&ldquo;That job was quoted at thirty points. It cannot have come in at nine.&rdquo;</p>
   <p class="lede">Product margin is calculated from standards, and standards are refreshed less often than anyone admits. When they drift, every downstream decision — what to quote, what to promote, what to discontinue — is made on numbers that stopped being true.</p>
 
   <ul class="vocab">
@@ -214,21 +223,14 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>BOM</li>
     <li>obsolescence</li>
     <li>accessorials</li>
-    <li>absorption</li>
- <li>PPV</li>
- <li>ECO</li>
-</ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+    <li>takt</li>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>Five losses that recur in
-  manufacturing and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  manufacturing is built to look for.</p>
+  <p>Five places the money tends to
+  go in manufacturing. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Standard costs last genuinely rebuilt several years ago, so reported margin by product is a well-formatted guess.</li>
     <li>Scrap and rework booked to a variance account that is reviewed in total and never by line, so a single bad process hides inside an acceptable aggregate.</li>
@@ -245,40 +247,25 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li><b>Medical device and components</b><span>Design history files, validation and lot traceability, where the cost of quality is real and is buried in overhead.</span></li>
       <li><b>Packaging and print</b><span>Substrate cost passed through unevenly, and make-ready waste absorbed into a standard that was set at a different run length.</span></li>
       <li><b>Contract and private label</b><span>Customer-supplied specifications, customer-owned tooling and customer-driven changes, priced as though none of those cost anything.</span></li>
-      <li><b>Plastics, molding and extrusion</b><span>Resin priced on an index and quoted on a memory, with scrap rates that vary by tool and are reported in aggregate.</span></li>
+      <li><b>Plastics, moulding and extrusion</b><span>Resin priced on an index and quoted on a memory, with scrap rates that vary by tool and are reported in aggregate.</span></li>
     </ul>
-  </div>
-
-<div class="depth">
-    <h3>Where AI earns its keep here</h3>
-    <ul class="subv">
-      <li><b>Reading the RFQ packet before an estimator does</b><span>A quote arrives as a drawing, a spec and an email. One estimator opens it and prices it from memory. Geometry-aware quoting tools already flag what drives cost — deep holes, tight tolerance, a finish that needs an outside operation — and pull the last three parts that looked like this one and how they were quoted, overrides included. The estimator still sets the price. What goes away is quoting the eleventh revision of a part as though it were the first.</span></li>
-      <li><b>Ranking standard cost drift instead of rebuilding every standard</b><span>Nobody rebuilds four thousand standards, which is why they sit. Join clocked hours and machine time against the routing, rank part numbers by dollars of drift times annual volume, and the list worth rebuilding is thirty long, not four thousand. Most of that is a query, not a model. What the model adds is a written monthly exception a controller reads in ten minutes, so the list gets acted on rather than generated.</span></li>
-      <li><b>Coding scrap and downtime free text into reasons that add up</b><span>Operators type "tool broke", "matl bad", "prog wrong" into a reason field, and because free text does not aggregate, the variance account gets reviewed in total. Classifying short free text against your own reason code list is one of the things language models are genuinely reliable at. The output is a Pareto by line, by tool and by part number — the view the aggregate has been hiding.</span></li>
-      <li><b>Auditing freight invoices line by line instead of by sample</b><span>Detention, fuel, redelivery, liftgate, reconsignment. A few hundred carrier invoices a month, each a PDF, none checked against the rate agreement because checking them is nobody's job. Reading an invoice and comparing every accessorial to the negotiated tariff is ordinary document work now. The finding is rarely fraud; it is an accessorial that was never in the rate and has been billed every week for two years.</span></li>
-      <li><b>Reconciling the quote, the acknowledgment and the invoice</b><span>The same purchased part carries three prices across three documents and only the invoice is ever looked at. Matching them catches the increase that arrived as an order acknowledgment nobody read, and the resin or steel index clause being applied on a different index than the contract names.</span></li>
-      <li><b>Drafting the CAPA and the 8D from records that already exist</b><span>CAPA investigations and 8D reports get written by the few people who can write them, and they are the same people you need on the floor. A first draft assembled from the non-conformance record, the inspection data and the prior investigation puts the writing where the evidence already sits. A person still reviews and signs it — and on device work the QMSR wants that approver's signature and date on the record itself.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this needs a data science hire. All six run on extracts you can already produce from systems you already pay for, and each can be tested against a single month before anyone commits to it as a standing report.</p>
   </div>
 
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
-      <li>Epicor Kinetic (what Epicor ERP 10 was renamed), Global Shop Solutions or JobBOSS² — the single name E2 Shop System and JobBOSS were merged into — in the mid-market; SAP Business One or NetSuite where finance led the choice</li>
+      <li>Epicor Kinetic, Global Shop, JobBOSS or E2 in the mid-market; SAP Business One or NetSuite where finance led the choice</li>
       <li>A shop-floor data collection layer that is only as good as the labor tickets actually clocked against it</li>
       <li>A separate quality system holding the CAPA and non-conformance record</li>
       <li>Estimating in a spreadsheet the ERP does not know about, which is where the quoted cost and the real cost first diverge</li>
- <li>SOLIDWORKS PDM or Autodesk Vault holding the revision of record, which is where the print on the floor and the BOM in the ERP quietly disagree</li>
- <li>Machine monitoring — MachineMetrics, or the control's own dashboard — which is where OEE comes from, when it is measured rather than estimated</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
   <div class="depth">
     <h3>Reported in your numbers, not ours</h3>
     <ul class="mets">
-      <li>margin by part number</li>
+      <li>gross margin by part</li>
       <li>standard vs actual cost</li>
       <li>scrap and rework</li>
       <li>OEE</li>
@@ -286,17 +273,16 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>quote win rate</li>
       <li>inventory turns</li>
       <li>cost of poor quality</li>
- <li>first pass yield</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>ISO 9001 — now the 2026 revision, with a three-year transition off ISO 9001:2015 — and ISO 13485 for device work, with the audit findings and whether they closed</li>
-      <li>FDA registration and listing where applicable, and the QMSR record — 21 CFR Part 820 has incorporated ISO 13485:2016 since February 2, 2026, and the QSR it replaced is no longer what an inspection is run against</li>
+      <li>ISO 9001, and ISO 13485 for device work — with the audit findings and whether they closed</li>
+      <li>FDA registration and listing where applicable, and the QSR/QMSR record</li>
       <li>PPAP and first article submissions to customers who require them</li>
-      <li>EPA and state environmental reporting — Tier II chemical inventory by March 1, TRI Form R by July 1, and the RCRA hazardous waste biennial report by March 1 of even years for large quantity generators</li>
+      <li>EPA and state environmental reporting on emissions, waste and solvents</li>
       <li>Customer supplier scorecards, which is how the customer measures you rather than how you measure yourself</li>
     </ul>
   </div>
@@ -353,8 +339,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>A quote win rate that fell and nobody can say which cost assumption caused it</li>
       <li>An acquisition approach, where margin by part number is the first thing asked for</li>
       <li>A key customer taking work in-house, exposing how much overhead they were carrying</li>
- <li>A tariff or duty classification change on a bought-in component, where the landed cost moves and the standard does not</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">

@@ -13,7 +13,7 @@ sitemap: false
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Quotation — Wirewalk AI</title>
 <meta name="description" content="A numbered quotation from Wirewalk AI, for attaching to a purchase requisition.">
-<!-- Not a marketing page. Each quotation is addressed to one organisation and
+<!-- Not a marketing page. Each quotation is addressed to one organization and
      reachable only with its token, so there is nothing here for an index. -->
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -215,7 +215,7 @@ footer a{color:var(--tx2)}
   .meta{grid-template-columns:repeat(4,1fr);gap:10pt}
   .parties{grid-template-columns:1fr 1fr;gap:10pt}
   .meta div b{font-size:10.5pt}
-  /* Accent orange prints as pale grey on a mono printer. */
+  /* Accent orange prints as pale gray on a mono printer. */
   .eyebrow{color:#000}
   .party,fieldset{background:#fff;border-color:#999}
   .party>b,.scope>b,.docno span,.meta div span,.lt th{color:#000}
@@ -273,7 +273,7 @@ const token = new URLSearchParams(location.search).get("q") || "";
 
 /* Built with textContent throughout. The scope and address are typed by an
    operator, not a visitor, but a quotation is not the place to find out that
-   an em-dash in an organisation's name was pasted as markup. */
+   an em-dash in an organization's name was pasted as markup. */
 function el(tag, cls, text) {
   const n = document.createElement(tag);
   if (cls) n.className = cls;
@@ -433,7 +433,7 @@ function render(q) {
 
   const to = el("div", "party");
   to.appendChild(el("b", null, "Quotation for"));
-  to.appendChild(el("span", "nm", q.buyer.organisation));
+  to.appendChild(el("span", "nm", q.buyer.organization));
   const tp = el("p");
   const bits = [];
   if (q.buyer.contact) bits.push(q.buyer.contact);
@@ -555,7 +555,7 @@ function closingNote(q) {
  *   2. The form is then submitted to the SAME purchase-order intake the
  *      ordering page posts to, carrying the quotation number and everything
  *      already known about the buyer. That is the point of the exercise: a
- *      quotation becomes an order without anybody retyping an organisation
+ *      quotation becomes an order without anybody retyping an organization
  *      name into a second form.
  *
  * If step 1 refuses -- the quotation lapsed between loading this page and
@@ -587,7 +587,7 @@ function acceptSection(q) {
     _captcha: "false",
     _next: "https://ai.wirewalk.com/order/received/",
     "Quotation": q.number,
-    "Organisation": q.buyer.organisation,
+    "Organization": q.buyer.organization,
     "Engagement": q.title || "As quoted",
     "Quotation reference": q.buyer.reference || "",
     /* Deliberately NOT the fee. The authoritative figure lives on the quote
@@ -654,7 +654,7 @@ function acceptSection(q) {
   const words = el("span");
   words.appendChild(document.createTextNode(
     "I am authorized to accept this quotation on behalf of " +
-    q.buyer.organisation + ", and have read the "));
+    q.buyer.organization + ", and have read the "));
   const tl = el("a", null, "ordering terms");
   tl.href = "/terms/"; tl.target = "_blank"; tl.rel = "noopener";
   words.appendChild(tl);

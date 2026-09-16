@@ -76,7 +76,7 @@ table.cat td{padding:14px 12px 14px 0;border-bottom:1px solid var(--ln);vertical
 table.cat td.n{font-weight:600;color:var(--tx)}
 table.cat td.n span{display:block;font-weight:400;color:var(--tx2);font-size:14px;
                     margin-top:4px;max-width:58ch}
-/* Commit from the row you are reading. The catalogue used to be a price list
+/* Commit from the row you are reading. The catalog used to be a price list
    and the decision was re-made in a dropdown 400px further down, which asks the
    buyer to choose twice and re-opens a settled decision at the moment of
    commitment. */
@@ -107,7 +107,7 @@ table.cat td.n .acts button.go{min-height:46px}
 
 /* Below 700px a four-column table crushes the description into a ~220px column
    and produces a thirty-line wall of text beside three columns of figures.
-   Stack each engagement as a card instead: name, description, a labelled price
+   Stack each engagement as a card instead: name, description, a labeled price
    line, then the actions. Desktop is untouched. */
 @media(max-width:700px){
   table.cat thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -117,7 +117,7 @@ table.cat td.n .acts button.go{min-height:46px}
   table.cat td{border:0;padding:0}
   table.cat td.n{font-size:16.5px}
   table.cat td.n span{font-size:14.5px;margin-top:6px}
-  /* the three figures become one labelled row, not three columns */
+  /* the three figures become one labeled row, not three columns */
   table.cat td.p{display:inline-block;width:auto;text-align:left;margin:10px 14px 0 0;
     font-size:14px;color:var(--tx2)}
   table.cat td.p::before{content:attr(data-l);display:block;font-size:10.5px;
@@ -292,7 +292,7 @@ footer.end a{color:var(--ac2)}
   <span class="eyebrow">Ordering</span>
   <h1>Commission an engagement.</h1>
   <p class="lede">Most buyers here are institutions &mdash; health systems, universities,
-  manufacturers, local authorities, federal primes, professional firms &mdash; and a purchase
+  manufacturers, city and county governments, federal primes, professional firms &mdash; and a purchase
   order is how they buy. That is the primary route below. Card and ACH are offered for
   commercial buyers who prefer them.</p>
   <p class="sub">Not sure which engagement fits? Start from
@@ -362,7 +362,7 @@ footer.end a{color:var(--ac2)}
       <legend>Organization</legend>
       <div class="row">
         <div class="fld"><label for="po-org">Organization</label>
-          <input id="po-org" type="text" name="Organisation" autocomplete="organization" required></div>
+          <input id="po-org" type="text" name="Organization" autocomplete="organization" required></div>
         <div class="fld"><label for="po-unit">Business unit or department <span class="h">&mdash; the unit under review</span></label>
           <input id="po-unit" type="text" name="Business unit"></div>
       </div>
@@ -460,7 +460,7 @@ footer.end a{color:var(--ac2)}
       <div class="fld"><label for="pay-email">Email for the receipt</label>
         <input id="pay-email" type="email" name="Receipt email" autocomplete="email" required></div>
       <div class="fld"><label for="pay-org">Organization <span class="h">&mdash; optional</span></label>
-        <input id="pay-org" type="text" name="Organisation" autocomplete="organization"></div>
+        <input id="pay-org" type="text" name="Organization" autocomplete="organization"></div>
     </div>
     <div class="note" id="paysum" hidden></div>
     <div id="ts" style="margin:14px 0"></div>
@@ -543,7 +543,7 @@ const SITE_KEY = "0x4AAAAAAEuBwz8OpbI3bmtE";
 const $ = s => document.querySelector(s);
 let ITEMS = [], GROUPS = [], widgetId = null;
 
-/* The catalogue is fetched rather than written into this page, so the figure a
+/* The catalog is fetched rather than written into this page, so the figure a
    buyer reads and the figure Stripe charges cannot drift apart. A hard-coded
    price that has gone stale is worse than no price at all: it is a quotation
    the seller did not mean to give. */
@@ -626,7 +626,7 @@ function renderCatalog(){
   });
 }
 
-/* Commit straight from the catalogue row.
+/* Commit straight from the catalog row.
    Two things here are load-bearing:
    (a) setting select.value from script does NOT fire `change`, so the price
        summary would silently not update -- dispatch it explicitly;
@@ -689,11 +689,11 @@ function fillSelects(){
     }
   }
   if (!ITEMS.some(i => !i.priceOnApplication)) return;
-  $("#pay-svc").addEventListener("change", summarise);
-  $("#pay-mode").addEventListener("change", summarise);
+  $("#pay-svc").addEventListener("change", summarize);
+  $("#pay-mode").addEventListener("change", summarize);
 }
 
-function summarise(){
+function summarize(){
   const i = ITEMS.find(x => x.sku === $("#pay-svc").value);
   const box = $("#paysum"), btn = $("#paygo");
   if (!i || i.priceOnApplication){ box.hidden = true; btn.disabled = true; return; }
@@ -754,7 +754,7 @@ $("#paygo").addEventListener("click", async () => {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         sku: $("#pay-svc").value, mode: $("#pay-mode").value, email,
-        organisation: $("#pay-org").value.trim(), token: t }),
+        organization: $("#pay-org").value.trim(), token: t }),
     });
     const d = await r.json();
     if (!r.ok || !d.url) throw new Error(d.error || "could not start payment");

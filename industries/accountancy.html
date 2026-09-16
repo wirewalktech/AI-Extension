@@ -10,7 +10,7 @@ description: "You audit everyone else's numbers. Nobody audits how the firm earn
 <meta name="description" content="You audit everyone else's numbers. Nobody audits how the firm earns. A practice built on examining other people's operations rarely turns the same attention on its own, because the people who could are the people whose books would be examined. A review reads fee realization, capacity and…">
 <link rel="canonical" href="https://ai.wirewalk.com/industries/accountancy/">
 <!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
-     email client renders as a bare grey rectangle, which for a practice whose
+     email client renders as a bare gray rectangle, which for a practice whose
      distribution IS one person sharing links is not a cosmetic problem. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
@@ -127,6 +127,14 @@ a{color:var(--ac2);text-underline-offset:2px}
 .roles b{color:var(--tx2);font-weight:650}
 @media(max-width:640px){.subv li{padding:11px 12px}}
 
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
 /* vocabulary strip */
 .vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
 .vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
@@ -204,6 +212,7 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <a href="/industries/">Industries</a> &rsaquo; Accountancy firms</p>
   <span class="eyebrow">Accountancy firms</span>
   <h1>You audit everyone else's numbers. Nobody audits how the firm earns.</h1>
+  <p class="overheard">&ldquo;We know every client's margin except our own.&rdquo;</p>
   <p class="lede">A practice built on examining other people's operations rarely turns the same attention on its own, because the people who could are the people whose books would be examined. A review reads fee realization, capacity and client concentration end to end, and reports what the partnership has been unable to ask itself.</p>
 
   <ul class="vocab">
@@ -211,23 +220,18 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     <li>net fees per partner</li>
     <li>utilization</li>
     <li>WIP</li>
-    <li>A/R days</li>
+    <li>lock-up</li>
     <li>recurring revenue</li>
     <li>peer review</li>
     <li>client concentration</li>
     <li>write-off</li>
   </ul>
-  <p class="vocab-note">The terms above are the ones the review uses with you, because they
-  are the ones you already use. Nothing is translated into a consultant's vocabulary and
-  then translated back.</p>
+  <p class="vocab-note">Your words, not ours.</p>
 
   <h2>Where it concentrates here</h2>
-  <p>6 losses that recur in
-  an accountancy firm and are worth going looking for. Each is concentrated &mdash; a single
-  agreement, a single queue, a single account nobody reviews &mdash; which is precisely why
-  a sample of the operation tends to miss them and a full pass tends to find them. They are
-  not findings from a named engagement; they are what a review of
-  an accountancy firm is built to look for.</p>
+  <p>6 places the money tends to
+  go in an accountancy firm. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
   <ol class="pat">
     <li>Recurring fees quoted years ago and never repriced, while the scope behind them grew every year the client did.</li>
     <li>Peak-season capacity bought at contractor and overtime rates, absorbed into a seasonal average that hides what it actually cost against the fees it delivered.</li>
@@ -248,29 +252,15 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
     </ul>
   </div>
 
-<div class="depth">
-    <h3>Where AI already earns its keep in a firm this size</h3>
-    <ul class="subv">
-      <li><b>Scan-and-populate on 1040 source documents</b><span>SurePrep 1040SCAN, and CCH Axcess Scan with AutoFlow, read W-2s, 1099s, K-1s and brokerage statements and push them into the return. What it removes is the keying — the work a firm buys contractors and overtime to absorb in February. A preparer still reviews the populated return, and anything the software is unsure of is routed to a verification step. The typing is gone; the review is not.</span></li>
-      <li><b>Reading every engagement letter against what was actually delivered</b><span>The letter, against the hours and deliverables recorded on that client, across the whole book. The output is a repricing list with the evidence attached: whose scope grew, by how many hours, and the year the fee last moved. That is the first pattern on this page, and it is a reading job across a few hundred documents — which is the thing these tools are genuinely good at and a partner never has a free week for.</span></li>
-      <li><b>Full-population testing instead of sampling</b><span>MindBridge and CaseWare IDEA score the entire general ledger rather than a selection from it. On a fixed-fee audit that is a direct cost change: fewer hours spent selecting and tying out, more spent on what came back flagged. It will not raise the fee. It changes whether the engagement makes its budget, which is the third pattern above.</span></li>
-      <li><b>Chasing the open-item list</b><span>The PBC list in Suralink, and the missing-document list on the tax side, get followed up by a manager with better things to do — or they do not get followed up at all until the week before the deadline. Drafting the follow-ups, tracking who has answered and escalating on a fixed schedule is routine work a model handles well. Every day cut off that wait is a day off WIP.</span></li>
-      <li><b>The first draft of a research memo</b><span>Checkpoint Edge with CoCounsel answers in prose with citations back into the source material. It replaces the first hour, not the conclusion. Someone with a license still reads the authority it cites and signs the advice, and nothing about that has changed.</span></li>
-    </ul>
-    <p class="sub" style="margin-top:11px">None of this is speculative. Every product named here ships today: SurePrep 1040SCAN and CCH Axcess Scan, MindBridge and CaseWare IDEA, Suralink, Checkpoint Edge with CoCounsel. The harder question is the one the review answers: nobody has measured what this work costs now, so nobody can say what any of it saved.</p>
-  </div>
-
   <div class="depth">
     <h3>Where this data actually lives</h3>
     <ul class="sysl">
       <li>CCH Axcess or UltraTax for compliance work; Lacerte in smaller firms</li>
-      <li>Karbon or Canopy for workflow, and CCH Axcess Workflow (the former XCM) in firms already on Axcess — usually adopted partially</li>
-      <li>CCH Axcess Practice or Practice CS for time and billing; IRIS Practice Engine in the larger firms</li>
+      <li>Karbon, Jetpack or Canopy for workflow — usually adopted partially</li>
+      <li>Practice CS or CCH Practice for time and billing</li>
       <li>QuickBooks Online Accountant across the client base, at wildly varying quality</li>
       <li>A separate spreadsheet that is the real record of who owns which client</li>
- <li>SafeSend for return assembly, e-signature and delivery — Thomson Reuters bought it in January 2025; its timestamps show how long a finished return sat before it went out</li>
- <li>CCH ProSystem fx Engagement or CaseWare for audit workpapers — where the budgeted hours per engagement sit, if anyone entered them</li>
-</ul>
+    </ul>
     <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
   </div>
 
@@ -280,26 +270,22 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
       <li>realization</li>
       <li>net fees per partner</li>
       <li>utilization</li>
-      <li>WIP days and A/R days</li>
+      <li>WIP and lock-up</li>
       <li>recurring revenue share</li>
       <li>client concentration</li>
       <li>write-off rate</li>
       <li>average fee per client</li>
- <li>income per partner (IPP)</li>
-</ul>
+    </ul>
   </div>
 
   <div class="depth">
     <h3>The obligations that set the deadlines</h3>
     <ul class="fil">
-      <li>Peer review every three years, and the working papers it will actually sample — in New York, firm registration with the State Education Department is conditioned on it</li>
+      <li>Peer review, and the working papers it will actually sample</li>
       <li>PCAOB registration and inspection, where applicable</li>
-      <li>State board licensing and CPE per licensed professional — in New York, 24 or 40 contact hours a year plus 4 hours of ethics every three years, all on a December 31 clock</li>
+      <li>State board licensing and CPE tracking per licensed professional</li>
       <li>Professional liability renewal, which asks about fee disputes</li>
- <li>SQMS No. 1: the firm's system of quality management had to be designed and implemented by December 15, 2025, with the first annual evaluation of it due by December 15, 2026</li>
- <li>PTIN renewal by December 31 for every preparer who signs, with the Form W-12 attestation that the firm has a written information security plan under the FTC Safeguards Rule</li>
- <li>The return calendar itself: March 15 for partnerships and S corps, April 15 for individuals and calendar-year C corps, September 15 and October 15 for the extended ones — and Form 5500 on July 31, extended to October 15, which stacks benefit plan audits onto the October wall</li>
-</ul>
+    </ul>
   </div>
 
   <h2>What the review would ask you for</h2>
