@@ -249,7 +249,7 @@ footer a{color:var(--tx2)}
 <footer class="noprint"><div class="wrap">
   <p>Wirewalk AI &middot; <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a>
   &middot; <a href="tel:+15162691517">516-269-1517</a></p>
-  <p style="margin-top:8px">Quotations are issued to the organisation named on them.
+  <p style="margin-top:8px">Quotations are issued to the organization named on them.
   Ordering terms are at <a href="/terms/">ai.wirewalk.com/terms</a>.</p>
 </div></footer>
 
@@ -653,7 +653,7 @@ function acceptSection(q) {
      out as three columns, stranding the link and its full stop on the right. */
   const words = el("span");
   words.appendChild(document.createTextNode(
-    "I am authorised to accept this quotation on behalf of " +
+    "I am authorized to accept this quotation on behalf of " +
     q.buyer.organisation + ", and have read the "));
   const tl = el("a", null, "ordering terms");
   tl.href = "/terms/"; tl.target = "_blank"; tl.rel = "noopener";
@@ -686,7 +686,7 @@ function acceptSection(q) {
     if (!name) return say("Please give the name of the person accepting.", "err");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
       return say("Please give a valid email address for the acceptance record.", "err");
-    if (!cb.checked) return say("Please confirm you are authorised to accept this quotation.", "err");
+    if (!cb.checked) return say("Please confirm you are authorized to accept this quotation.", "err");
 
     sending = true;
     go.disabled = true;
