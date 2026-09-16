@@ -5,14 +5,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
 <meta property="og:title" content="Wirewalk AI — The Operating Review">
-<meta property="og:description" content="Where the money leaks, where it drags, and what it quietly exposes you to. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
+<meta property="og:description" content="Where the money leaks, where it drags, and what it quietly exposes you to — and when the answer is infrastructure, we build it: private AI installations, GPU clusters and the fabric, storage and scheduler underneath them. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
 <meta property="og:url" content="https://ai.wirewalk.com/">
 <meta property="og:image" content="https://ai.wirewalk.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ai.wirewalk.com/">
-<meta name="description" content="Where the money leaks, where it drags, and what it quietly exposes you to. The obvious problems already have owners; we find the expensive ones that do not. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
+<meta name="description" content="Where the money leaks, where it drags, and what it quietly exposes you to — and when the answer is infrastructure, we build it: private AI installations, GPU clusters and the fabric, storage and scheduler underneath them. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
 <style>
 :root{
   --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
@@ -770,7 +770,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
            overlapped the brand rather than reflowing. Five leaves room.
            tools/check-layout.mjs fails the build if anything collides. -->
       <a href="#lenses" data-sec="lenses coverage handling checkable phase1 phase2 people">Operating Review</a>
-      <a href="#ai-policy" data-sec="ai-policy compliance credentials">AI adoption</a>
+      <a href="#ai-policy" data-sec="ai-policy compliance credentials">AI &amp; HPC build</a>
       <a href="#industries" data-sec="industries">Industries</a>
       <a href="/how-it-works/">How it works</a>
       <a href="/order/">Pricing</a>
@@ -810,6 +810,12 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     only add cost.
     <b>The obvious problems already have owners. We are here for the expensive ones that
     do not.</b></p>
+    <!-- The AI and HPC half was invisible above the fold. A visitor who needs a
+         cluster built was reading a page about operating reviews and leaving. -->
+    <p class="lead hro" style="margin-top:14px">And when the answer is infrastructure, we
+    build it &mdash; <a class="ilink" href="#ai-policy">one private inference box or ten
+    thousand GPUs</a>, scheduler and parallel filesystem and fabric, benchmarked against
+    what was actually sold to you.</p>
     <div class="acts hro">
       <a href="#contact" class="btn btn-p">Book the review<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="/industries/" class="btn btn-g">Find your industry</a>
@@ -818,7 +824,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <div><b>Read in full</b><span class="muted">Every record in scope, not a sample</span></div>
       <div><b>Priced in the open</b><span class="muted">Published prices, not a
       discovery call</span></div>
-      <div><b>Yours either way</b><span class="muted">No vendor commissions or referral fees</span></div>
+      <div><b>We build it too</b><span class="muted">Clusters and private AI, not just the advice</span></div>
     </div>
   </div>
   <div class="scopes">
@@ -1042,55 +1048,74 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 <section class="sec" id="ai-policy"><div class="wrap">
   <div class="sh-split">
-    <div><span class="eyebrow">AI adoption</span>
-      <h2>Three separate jobs. Most people start with one.</h2></div>
-    <p>What you allow, how that stays true once everyone is busy, and where a model would
-    actually earn its keep are three different pieces of work with three different buyers.
-    They are priced and delivered separately and none of them commits you to the next: a
-    firm with a client questionnaire due next month needs the first, a firm whose board has
-    started asking who signed off on any of this needs the second, and a firm that just
-    wants the productivity needs the third.</p>
+    <div><span class="eyebrow">AI and HPC infrastructure</span>
+      <h2>We build the thing. Not a slide deck about the thing.</h2></div>
+    <p>Most firms selling AI advice will write you a policy and a roadmap and stop at the
+    point where somebody has to make hardware work. We start there. A single private
+    inference box in your rack, or ten thousand GPUs with a fabric that has to actually
+    carry the traffic &mdash; same discipline, and the interesting question at every size
+    is which layer fails first.</p>
   </div>
 
+  <!-- THE BUILD LEADS.
+       This section used to open with policy and governance and demote the
+       engineering to a sub-block three screens down, which described a
+       practice that writes documents. It is the wrong way round: anyone can
+       write an AI policy, and almost nobody can tell you why your RDMA
+       quietly fell back to TCP. -->
+  <h3 class="aih">What we build</h3>
+  <div class="g3" data-rv>
+    <div><span class="n">One box</span><h4>A private installation</h4>
+      <p>One machine in your rack running open models on hardware you own. Nothing leaves
+      the building &mdash; the only arrangement that works for controlled technical data,
+      client confidences or patient records.<br>
+      <b class="px">$45,000</b> <span class="pxn">specified, procured, built, benchmarked
+      and handed over &mdash; hardware bought in your name, no margin taken on it</span></p></div>
+    <div><span class="n">A cluster</span><h4>Tens to thousands of GPUs</h4>
+      <p>Scheduler, parallel filesystem, InfiniBand or RoCE fabric, and the power and
+      cooling envelope they all have to live inside. Built, benchmarked against what was
+      actually sold to you, and instrumented so you can prove it.<br>
+      <b class="px">Quoted per build</b> <span class="pxn">after a scoping session</span></p></div>
+    <div><span class="n">A factory</span><h4>Production AI at industrial scale</h4>
+      <p>Multi-rack, multi-tenant, with the operational discipline that keeps it running
+      once the launch is over: rolling maintenance with no filesystem interruption, health
+      checks that page before a user notices, and an image pipeline a reboot survives.<br>
+      <b class="px">Quoted per build</b> <span class="pxn">including the run-book and the
+      training to operate it without us</span></p></div>
+  </div>
+
+  <p class="rl" style="margin-top:22px"><b>Which layer fails first changes with scale, and
+  that is the whole job.</b> At a few nodes it is the scheduler. At a few hundred it is the
+  fabric &mdash; routing, congestion, and whether RDMA is carrying the traffic or has
+  silently fallen back to TCP. Past that it is storage bandwidth, then power and cooling.
+  A vendor benchmark will not tell you which one you have, partly because the storage
+  array's own write buffer can defeat the test you were told to run.</p>
+
+  <h3 class="aih">When it is built and it is slow</h3>
+  <p class="sub" style="max-width:66ch;margin:0 0 18px">Fixed-price investigations for
+  infrastructure somebody else built, or that you built and cannot get to perform. Each one
+  ends in a number and a cause, not an opinion.</p>
+  <div class="g3" data-rv>
+    <div><span class="n">Fabric</span><h4>Interconnect diagnostic</h4>
+      <p>InfiniBand or RoCE end to end: link rates and widths, routing and ISL balance,
+      congestion, firmware skew, and whether RDMA is carrying the traffic.<br>
+      <b class="px">$4,500</b></p></div>
+    <div><span class="n">Storage</span><h4>Parallel filesystem investigation</h4>
+      <p>GPFS, Lustre, Weka or VAST, measured against the workload rather than the page
+      cache, with each layer eliminated by a number instead of an argument.<br>
+      <b class="px">$6,500</b></p></div>
+    <div><span class="n">Acceptance</span><h4>Benchmark and acceptance testing</h4>
+      <p>Before you sign for it. What was sold to you, measured, with the gap between the
+      datasheet and the rack written down while you still have leverage.<br>
+      <b class="px">$9,500</b> <span class="pxn">scheduler and workload review, $3,500</span></p></div>
+  </div>
+
+  <h3 class="aih">Then: where it earns, and what you allow</h3>
+  <p class="sub" style="max-width:66ch;margin:0 0 18px">The two jobs that sit either side of
+  the build. Priced and delivered separately, and neither commits you to the other.</p>
   <div class="cmp peers" data-rv>
     <div>
-      <h4>ONE &mdash; THE POLICY</h4>
-      <p class="aip">For when somebody is going to ask what you allow, and you need an
-      answer you can stand behind.</p>
-      <ul>
-        <li><b>What is already in use.</b> An inventory from what the network and the
-          expense claims show, not a survey asking people to confess.</li>
-        <li><b>A policy people will follow.</b> Written to permit rather than forbid:
-          named tools, what may go into each, what must never, who signs an exception.
-          A ban is ignored by the second week and leaves you the same exposure plus a
-          document saying you knew.</li>
-        <li><b>The evidence behind it.</b> Processing agreements, retention terms,
-          approvals and an audit trail &mdash; so the answer exists before a client, an
-          insurer or a regulator asks.</li>
-      </ul>
-    </div>
-    <div>
-      <h4>TWO &mdash; THE GOVERNANCE</h4>
-      <p class="aip">For when a document is no longer enough, because the question has
-      stopped being what you allow and started being who decided.</p>
-      <ul>
-        <li><b>Every model and AI-bearing vendor, inventoried.</b> Classified by what it
-          touches and what it could cost you. Most of the exposure is in software you
-          already bought, where a vendor turned a feature on.</li>
-        <li><b>Decision rights, written down.</b> Who approves a new tool, who may accept a
-          risk, who cannot. With an approval path short enough that people use it instead
-          of routing around it &mdash; the long one is why shadow AI exists.</li>
-        <li><b>Monitoring, and a procedure for the bad day.</b> What is actually being used
-          against what was approved, and what happens when an output is wrong in a way that
-          reaches a client.</li>
-        <li><b>A board pack that answers it before it is asked.</b> Mapped to the NIST AI
-          Risk Management Framework and ISO/IEC 42001, and to the EU AI Act where you have
-          European exposure &mdash; as a structure the work is delivered under, never as a
-          certification.</li>
-      </ul>
-    </div>
-    <div>
-      <h4>THREE &mdash; PUTTING IT TO WORK</h4>
+      <h4>PUTTING IT TO WORK</h4>
       <p class="aip">For when you want the productivity and have nobody who can tell you
       where it is real.</p>
       <ul>
@@ -1104,46 +1129,50 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
           dependent on us or on a vendor you cannot leave.</li>
       </ul>
     </div>
-  </div>
-
-  <h3 class="aih">Three ways to actually run it</h3>
-  <p class="sub" style="max-width:62ch;margin:0 0 18px">Where the models run decides what
-  you are allowed to put into them. That is an infrastructure question before it is a
-  policy one, and it is the half most advice skips.</p>
-  <div class="g3" data-rv>
-    <div><span class="n">On your premises</span><h4>A private installation</h4>
-      <p>One machine in your rack running open models on hardware you own. Nothing leaves
-      the building &mdash; the only arrangement that works for controlled technical data,
-      client confidences or patient records.<br>
-      <b class="px">$45,000</b> <span class="pxn">specified, procured, built, benchmarked
-      and handed over &mdash; hardware bought in your name, no margin taken on it</span></p></div>
-    <div><span class="n">In the cloud</span><h4>The right provider, chosen properly</h4>
-      <p>Which platform fits the work, what it costs at your volume rather than at list,
-      where your data goes and what the exit looks like. Ends in a written recommendation
-      you can put to a board.<br>
-      <b class="px">$22,000</b> <span class="pxn">with the numbers behind it</span></p></div>
-    <div><span class="n">At scale</span><h4>From a few nodes to tens of thousands of GPUs</h4>
-      <p>The same discipline at every size &mdash; what changes is which layer fails first.
-      At a few nodes it is scheduling. At a few hundred it is the fabric. Past that it is
-      storage bandwidth, then power and cooling. Built, benchmarked against what was
-      actually sold to you, and instrumented so you can prove it.<br>
-      <b class="px">Quoted per build</b> <span class="pxn">after a scoping session</span></p></div>
+    <div>
+      <h4>THE POLICY &mdash; $18,000</h4>
+      <p class="aip">For when somebody is going to ask what you allow, and you need an
+      answer you can stand behind.</p>
+      <ul>
+        <li><b>What is already in use.</b> An inventory from what the network and the
+          expense claims show, not a survey asking people to confess.</li>
+        <li><b>A policy people will follow.</b> Written to permit rather than forbid: named
+          tools, what may go into each, what must never, who signs an exception. A ban is
+          ignored by the second week and leaves you the same exposure plus a document
+          saying you knew.</li>
+        <li><b>The evidence behind it.</b> Processing agreements, retention terms,
+          approvals and an audit trail.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>THE GOVERNANCE &mdash; $28,000</h4>
+      <p class="aip">For when a document is no longer enough, because the question has
+      stopped being what you allow and started being who decided.</p>
+      <ul>
+        <li><b>Every model and AI-bearing vendor, inventoried.</b> Classified by what it
+          touches and what it could cost you. Most of the exposure is in software you
+          already bought, where a vendor turned a feature on.</li>
+        <li><b>Decision rights, and an approval path people use.</b> The long one is why
+          shadow AI exists.</li>
+        <li><b>Monitoring, an incident procedure, and a board pack.</b> Mapped to the NIST
+          AI Risk Management Framework and ISO/IEC 42001, and to the EU AI Act where you
+          have European exposure &mdash; as a structure the work is delivered under, never
+          as a certification.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="aibuy">
     <div>
-      <b>Start with a scoping session &mdash; $9,500</b>
+      <b>Every one of these starts with a scoping session &mdash; $9,500</b>
       <span>A full day with whoever owns the decision, and two days of work around it.
-      <b>Before the room</b>, we establish what your organization is already running &mdash;
-      from the network and the expense claims, not from a survey asking people to confess.
-      Most firms are both more exposed and further along than they think, and both halves
-      of that change the conversation. <b>In the room</b>, what you are actually trying to
-      do, what your sector will and will not permit, and where a model would genuinely earn
-      against how the business runs. <b>Afterwards</b>, a written readiness assessment: what
-      is in use, what must stop, the work worth automating and the obvious candidates that
-      will not repay the effort, buy against build with the numbers at your volume, and a
-      sequence you can put to a board. <b>Credited in full</b> against whatever you
-      commission next, with no deadline on that.</span>
+      <b>Before the room</b>, we establish what you are already running &mdash; the
+      hardware, the fabric, the models, and what is quietly on a credit card. <b>In the
+      room</b>, what you are actually trying to build, what your sector will and will not
+      permit, and an honest read on whether it needs building, buying or dropping.
+      <b>Afterwards</b>, a written assessment with the architecture, the numbers at your
+      volume, and a sequence you can put to a board. <b>Credited in full</b> against
+      whatever you commission next, with no deadline on that.</span>
     </div>
     <div class="acts">
       <a class="btn btn-p" href="/order/#catalog">Book a scoping session</a>
@@ -1151,11 +1180,13 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     </div>
   </div>
 
-  <p class="rl"><b>They connect, but only if you want them to.</b> Knowing which of your
-  work a model is good at is an operating question, answered by reading how the business
-  actually runs &mdash; which is what the rest of this page is about. If a review is
-  already happening, this costs very little extra. If it is not, either job stands
-  perfectly well on its own.</p>
+  <p class="rl" style="margin-top:22px"><b>Twenty years of this, at real scale.</b> The
+  same discipline has run production clusters in a national laboratory, a health system and
+  semiconductor manufacturing &mdash; parallel filesystems that cannot drop, NDR and HDR
+  InfiniBand fabrics, schedulers carrying work that costs real money when it stalls, and
+  GPU estates where a bad image is a fleet-wide outage. It is not a practice that read
+  about this.</p>
+
   <p class="rl" style="margin-top:1px"><b>Your sector already has a view.</b> A law firm
   has bar guidance on client confidences. A defense supplier has controlled technical data
   that must not reach a public model at all. A practice has patient records and a business
