@@ -781,13 +781,13 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <span id="pill"></span>
       <a href="#ai-adoption" data-sec="ai-adoption">AI adoption</a>
       <a href="#ai-policy" data-sec="ai-policy compliance credentials">Infrastructure</a>
-      <a href="#lenses" data-sec="lenses coverage handling checkable phase1 people">Operating reviews</a>
-      <a href="#industries" data-sec="industries">Industries</a>
+      <a href="#lenses" data-sec="lenses coverage handling checkable phase1 people" data-contact-label="Discuss your business">Operating reviews</a>
+      <a href="#industries" data-sec="industries" data-contact-label="Discuss your business">Industries</a>
       <a href="/order/">Pricing</a>
     </nav>
   </div>
   <div class="nav-r">
-    <a href="#contact" class="btn btn-p btn-sm">Talk to an engineer</a>
+    <a href="#contact" class="btn btn-p btn-sm" id="nav-contact">Talk to an engineer</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="lk"><i></i><i></i><i></i></button>
 </div>
@@ -1426,6 +1426,7 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
    onto whichever section you are actually reading. */
 (function(){
   const lk=$('#lk'), pill=$('#pill'), items=$$('#lk a,#lk button');
+  const contact=$('#nav-contact'), technicalLabel=contact.textContent;
   let current=null;
 
   function place(el,show){
@@ -1445,18 +1446,16 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
   addEventListener('resize',()=>{pill.style.transition='none';settle();
     requestAnimationFrame(()=>pill.style.transition='');},{passive:true});
 
-  /* Six nav items now stand for eleven sections, because nine top-level items
-     did not fit the bar. data-sec therefore holds a LIST: "phase1 phase2
-     people" all light up Phases. Matching on equality here would have left the
-     indicator dark through most of the page. */
-  const IDS=['lenses','coverage','checkable','industries','compliance','credentials',
-             'phase1','phase2','people','terms'], live=new Set();
+  /* Follow document order so the first visible section wins after sections
+     are moved or added. Each nav item can cover several section IDs. */
+  const IDS=$$('section[id]').map(el=>el.id), live=new Set();
   const covers=(el,id)=>(el.dataset.sec||'').split(/\s+/).includes(id);
   const spy=new IntersectionObserver(es=>{
     for(const e of es) e.isIntersecting?live.add(e.target.id):live.delete(e.target.id);
     /* the topmost section still in view wins; none in view clears the mark */
     const id=IDS.find(x=>live.has(x));
     const hit=id?items.find(i=>covers(i,id)):null;
+    contact.textContent=hit?.dataset.contactLabel||technicalLabel;
     if(hit===current)return;
     items.forEach(i=>i.classList.remove('cur'));
     current=hit||null; if(hit)hit.classList.add('cur');
