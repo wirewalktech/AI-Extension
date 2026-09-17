@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Wirewalk AI — AI infrastructure and operating reviews</title>
+<title>Wirewalk AI — AI adoption and infrastructure</title>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
-<meta property="og:title" content="Wirewalk AI — AI infrastructure and operating reviews">
-<meta property="og:description" content="Where the money leaks, where it drags, and what it quietly exposes you to — and when the answer is infrastructure, we build it: private AI installations, GPU clusters and the fabric, storage and scheduler underneath them. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
+<meta property="og:title" content="Wirewalk AI — AI adoption and infrastructure">
+<meta property="og:description" content="Adopt AI with a clear use case, a practical implementation plan and infrastructure you control. Private AI deployments, GPU clusters, performance diagnostics and governance from Wirewalk.">
 <meta property="og:url" content="https://ai.wirewalk.com/">
 <meta property="og:image" content="https://ai.wirewalk.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ai.wirewalk.com/">
-<meta name="description" content="Where the money leaks, where it drags, and what it quietly exposes you to — and when the answer is infrastructure, we build it: private AI installations, GPU clusters and the fabric, storage and scheduler underneath them. A full read of how an operation earns — finance, revenue, receivables, payables, contracts, people and IT — rather than a sample of the one department already under review. Read in your sector's own vocabulary: your regulator, your filings, the systems your data sits in.">
+<meta name="description" content="Adopt AI with a clear use case, a practical implementation plan and infrastructure you control. Private AI deployments, GPU clusters, performance diagnostics and governance from Wirewalk.">
 <style>
 :root{
   --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
@@ -597,7 +597,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .doors h3{font-size:18.5px;line-height:1.3;margin:0 0 7px;letter-spacing:-.01em}
 .doors p{font-size:14.5px;line-height:1.58;color:var(--tx2);margin:0 0 12px;max-width:none}
 .doors .dp{font:600 13.5px/1 var(--mono);color:var(--tx);display:block}
-.doors .dp em{font-style:normal;font-weight:400;color:var(--tx3)}
+.doors .dp em{display:block;margin-top:6px;font-style:normal;font-weight:400;line-height:1.45;color:var(--tx3)}
 @media(max-width:560px){.doors a{padding:19px 20px 17px}}
 .aibuy{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:space-between;
   border:1px solid var(--ln);border-radius:11px;background:var(--alt);padding:22px 24px;
@@ -690,7 +690,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
  "name": "Wirewalk AI",
  "url": "https://ai.wirewalk.com/",
  "image": "https://ai.wirewalk.com/assets/og.png",
- "description": "The Operating Review: where revenue leaks, where risk sits, and which of the work a machine should be doing — read in your sector's own vocabulary.",
+ "description": "Adopt AI with a clear use case, a practical implementation plan and infrastructure you control. Private AI deployments, GPU clusters, performance diagnostics and governance from Wirewalk.",
  "email": "sales@wirewalk.com",
  "areaServed": [
   {
@@ -727,6 +727,17 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     "@type": "Offer",
     "itemOffered": {
      "@type": "Service",
+     "name": "AI architecture and readiness assessment",
+     "description": "Where a machine genuinely helps, and what it would take to trust it."
+    },
+    "priceCurrency": "USD",
+    "price": "9500",
+    "sku": "ai-scoping"
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
      "name": "Operating sounding",
      "description": "One question about one area, from three registers, in five business days."
     },
@@ -752,16 +763,6 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     },
     "priceCurrency": "USD",
     "price": "38000"
-   },
-   {
-    "@type": "Offer",
-    "itemOffered": {
-     "@type": "Service",
-     "name": "AI adoption scoping",
-     "description": "Where a machine genuinely helps, and what it would take to trust it."
-    },
-    "priceCurrency": "USD",
-    "price": "4500"
    }
   ]
  }
@@ -778,29 +779,15 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="nav-c">
     <nav class="lk" id="lk">
       <span id="pill"></span>
-      <!-- FLOWS AND DESTINATIONS, not chapters.
-           This used to carry eight items, and "What we find", "Method" and
-           "Phases" were three of them -- three anchors into different parts of
-           the SAME argument about the same service, which asked a first-time
-           reader to navigate a page they had not read yet. "Diagnostic" sat
-           beside them as a single SKU, at the same weight as the whole method.
-           Now each item is somewhere you can actually go: the two practices,
-           the sector pages, how the work runs, and what it costs. Phase one
-           and two, the coverage argument and the predictions all sit inside
-           the Operating Review and light its pill via data-sec.
-           The nav is capped at 1160px and has to fit ~700px of center column
-           at EVERY width -- a wider screen buys nothing, and nine items
-           overlapped the brand rather than reflowing. Five leaves room.
-           tools/check-layout.mjs fails the build if anything collides. -->
-      <a href="#lenses" data-sec="lenses coverage handling checkable phase1 people">Operating Review</a>
-      <a href="#ai-policy" data-sec="ai-policy compliance credentials">AI infrastructure</a>
+      <a href="#ai-adoption" data-sec="ai-adoption">AI adoption</a>
+      <a href="#ai-policy" data-sec="ai-policy compliance credentials">Infrastructure</a>
+      <a href="#lenses" data-sec="lenses coverage handling checkable phase1 people">Operating reviews</a>
       <a href="#industries" data-sec="industries">Industries</a>
-      <a href="/how-it-works/">How it works</a>
       <a href="/order/">Pricing</a>
     </nav>
   </div>
   <div class="nav-r">
-    <a href="#contact" class="btn btn-p btn-sm">Book the review</a>
+    <a href="#contact" class="btn btn-p btn-sm">Talk to an engineer</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="lk"><i></i><i></i><i></i></button>
 </div>
@@ -809,96 +796,197 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 <section class="hero" id="top"><div class="wrap hgd">
   <div>
-    <span class="eyebrow hro">The Operating Review</span>
-    <!-- The headline was "Revenue optimization and risk detection across the whole
-         operation" -- a category label rather than a claim, in words available to
-         anyone with a domain name. The live sentence was four lines further down in
-         gray: the obvious problems get attention, we find the expensive ones that
-         remain. Promoted, because it is the only line here with a point of view, and
-         because it says something about every review the reader has already paid for
-         without accusing them of anything. -->
-    <!-- Category first, point of view second. A headline that only has a point of
-         view assumes the reader already knows what an Operating Review is, and a
-         cold visitor does not -- they need orienting before they can be persuaded.
-         This also carries the terms people actually search for. The argument then
-         lands immediately underneath, where it reads as a claim about the work
-         rather than as a slogan standing on its own. -->
-    <h1 class="hro">Where the money leaks, where it drags, and what it quietly exposes you to.</h1>
-    <p class="lead hro">Most reviews look closely at one department and estimate the rest.
-    We read the whole operating system &mdash; finance, revenue, receivables, payables,
-    contracts, people and IT &mdash; because that is where the money quietly goes: an
-    agreement that renews itself on terms nobody revisits, a queue that belongs to no one,
-    an account that stopped being reconciled three years ago and was never missed. And
-    because the same reading tells you where AI would genuinely help, and where it would
-    only add cost.
-    <b>The obvious problems already have owners. We are here for the expensive ones that
-    do not.</b></p>
-    <!-- The infrastructure half was invisible above the fold. A visitor who needs a
-         cluster built was reading a page about operating reviews and leaving. -->
-    <p class="lead hro" style="margin-top:14px">And when the answer is infrastructure, we build it.
-    <a class="ilink" href="#ai-policy">One private inference box, or ten thousand GPUs.</a>
-    Scheduler, parallel filesystem and fabric, benchmarked against what was actually sold
-    to you.</p>
+    <span class="eyebrow hro">AI adoption &amp; infrastructure</span>
+    <h1 class="hro">Put AI to work.<br>Build it to last.</h1>
+    <p class="lead hro">Turn a useful AI idea into a working part of your business.
+    We help you choose the right use case, select or build the solution, and put the
+    infrastructure and controls behind it &mdash; from a private AI server to a GPU cluster.</p>
+    <p class="lead hro" style="margin-top:14px">Already running AI or HPC and not getting
+    the performance you expected? We investigate the fabric, storage and scheduler,
+    with measurements and a clear next step.</p>
     <div class="acts hro">
-      <a href="#contact" class="btn btn-p" data-ev="cta.book">Book the review<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="/industries/" class="btn btn-g" data-ev="cta.industries">Find your industry</a>
+      <a href="#contact" class="btn btn-p" data-ev="cta.adoption">Discuss your AI project<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#ai-policy" class="btn btn-g" data-ev="cta.infrastructure">Explore infrastructure</a>
     </div>
     <div class="proof hro">
-      <div><b>Read in full</b><span class="muted">Every record in scope, not a sample</span></div>
-      <div><b>Priced in the open</b><span class="muted">Published prices, not a
-      discovery call</span></div>
-      <div><b>We build it too</b><span class="muted">Clusters and private AI, not just the advice</span></div>
+      <div><b>Adopt with purpose</b><span class="muted">Use cases, economics and a delivery plan</span></div>
+      <div><b>Build with control</b><span class="muted">Private AI, access controls and clear ownership</span></div>
+      <div><b>Measure the result</b><span class="muted">Workload benchmarks and documented handover</span></div>
     </div>
   </div>
-
-  <p class="lead hro" style="margin-top:30px;max-width:64ch"><b>Operations, technology and
-  risk are one system.</b> Almost nobody is paid to look at all three at once.
-  So the contract nobody enforces, the cluster nobody benchmarked and the AI tool nobody
-  approved get found by three different people, years apart. Usually after they have cost
-  something.</p>
-
   <div class="doors">
+    <a href="#ai-adoption" data-ev="door.adoption">
+      <span class="dn">Adopt AI</span><h3>Choose the work worth changing.</h3>
+      <p>Find a useful first application, compare buying with building, and understand
+      the costs and data requirements before committing to a deployment.</p>
+      <span class="dp">Assessment $9,500 <em>· a defined, standalone engagement</em></span>
+    </a>
     <a href="#ai-policy" data-ev="door.technical">
-      <span class="dn">Technical</span>
-      <h3>You need it built.</h3>
-      <p>Private AI on hardware you own, or a GPU cluster at any scale &mdash; fabric,
-      parallel filesystem, scheduler, and acceptance testing against what was actually sold
-      to you. Or it is already built and it is slow, and nobody can tell you which layer.</p>
-      <span class="dp">From $4,500 <em>· builds quoted per build</em></span>
+      <span class="dn">Build infrastructure</span><h3>Run AI on your terms.</h3>
+      <p>Private model deployments, GPU clusters, fabric, storage and schedulers.
+      Specified, built, tested and handed over to the people who will operate them.</p>
+      <span class="dp">Single-system engineering $45,000 <em>· hardware separate</em></span>
     </a>
-    <a href="#lenses" data-ev="door.process">
-      <span class="dn">Business process</span>
-      <h3>You need to know what it is costing you.</h3>
-      <p>A full read of how the operation actually earns &mdash; finance, revenue,
-      receivables, contracts, people and IT &mdash; rather than a sample of the one
-      department already under review. Every record in scope, not thirty of them.</p>
-      <span class="dp">From $3,500 <em>· one question, five days</em></span>
+    <a href="#diagnostics" data-ev="door.diagnostics">
+      <span class="dn">Improve performance</span><h3>Find what is holding it back.</h3>
+      <p>A focused investigation of an existing system, with a written report and
+      recommended actions. Book after a brief qualification call.</p>
+      <span class="dp">Diagnostics from $3,500 <em>· no paid assessment prerequisite</em></span>
     </a>
-    <a href="#ai-policy" data-ev="door.policy">
-      <span class="dn">Policy</span>
-      <h3>You need to say what you allow.</h3>
-      <p>An inventory of what is genuinely in use, a policy written to permit rather than
-      forbid, and the governance that keeps it true once everyone is busy &mdash; with the
-      evidence ready before a client, an insurer or a regulator asks.</p>
-      <span class="dp">From $18,000 <em>· governance from $28,000</em></span>
-    </a>
-  </div>
-
-  <div class="scopes" style="margin-top:34px">
-    <div class="hd"><span>Phase one coverage</span><span class="muted">One diagnostic, six areas</span></div>
-    <div id="scopelist">
-      <a href="#coverage">Finance operations end to end<span>01</span></a>
-      <a href="#coverage">Revenue leakage traced to root cause<span>02</span></a>
-      <a href="#coverage">IT operations, access and data workflows<span>03</span></a>
-      <a href="#coverage">Compliance and regulatory stance<span>04</span></a>
-      <a href="#coverage">Legal contracts and vendor obligations<span>05</span></a>
-      <a href="#coverage">Marketing and sales operations<span>06</span></a>
-    </div>
   </div>
 </div></section>
 
+<section class="sec tint" id="ai-adoption"><div class="wrap">
+  <div class="sh-split">
+    <div><span class="eyebrow">AI adoption</span><h2>From a useful idea to everyday work.</h2></div>
+    <p>Document intake, internal knowledge search, repetitive handoffs and specialist
+    workflows are places to start. We assess the actual work, data and economics,
+    then recommend a manageable first implementation.</p>
+  </div>
+  <div class="g3" data-rv>
+    <div><span class="n">01 &mdash; Decide</span><h4>Choose a worthwhile use case.</h4>
+      <p>Map the workflow, establish a baseline and compare the options. You get a
+      written assessment, cost model and implementation sequence.</p></div>
+    <div><span class="n">02 &mdash; Deliver</span><h4>Connect it to the real work.</h4>
+      <p>Select a platform or build a private deployment. Agree the integrations,
+      human review steps and acceptance tests before implementation is quoted.</p></div>
+    <div><span class="n">03 &mdash; Operate</span><h4>Give your team control.</h4>
+      <p>Document how to run it, who can access it and how to evaluate changes.
+      Policy, governance and ongoing support are separately scoped services.</p></div>
+  </div>
+  <p class="rl"><b>Architecture and readiness assessment &mdash; $9,500.</b>
+    Preparation, a full-day workshop and a written plan. A standalone engagement for
+    new builds and complex adoption decisions. Bounded diagnostics can be commissioned directly.</p>
+  <div class="acts"><a class="btn btn-p" href="/order/?sku=ai-scoping#catalog">See the assessment</a>
+    <a class="btn btn-g" href="#contact">Discuss a use case</a></div>
+</div></section>
+
+<section class="sec" id="ai-policy"><div class="wrap">
+  <div class="sh-split">
+    <div><span class="eyebrow">AI infrastructure</span>
+      <h2>We build the thing. Not a slide deck about the thing.</h2></div>
+    <p>Most firms selling AI advice will write you a policy and a roadmap and stop at the
+    point where somebody has to make hardware work. We start there. One private inference box in your rack, or ten
+    thousand GPUs with a fabric that has to actually carry the traffic. Same discipline
+    either way. The interesting question at every size is which layer fails first.</p>
+  </div>
+
+  <!-- THE BUILD LEADS.
+       This section used to open with policy and governance and demote the
+       engineering to a sub-block three screens down, which described a
+       practice that writes documents. It is the wrong way round: anyone can
+       write an AI policy, and almost nobody can tell you why your RDMA
+       quietly fell back to TCP. -->
+  <h3 class="aih">What we build</h3>
+  <div class="g3" data-rv>
+    <div><span class="n">One box</span><h4>A private installation</h4>
+      <p>One customer-owned server with a model runtime, agreed access controls,
+      performance validation, monitoring, documentation and administrator handover.<br>
+      <b class="px">$45,000 engineering fee</b> <span class="pxn">Hardware, software licenses,
+      travel and ongoing support are separate. Hardware is bought in your name, without markup.</span>
+      <a class="ilink" href="/order/?sku=ai-node#catalog">Scope and ordering &rarr;</a></p></div>
+    <div><span class="n">A cluster</span><h4>Tens to thousands of GPUs</h4>
+      <p>Scheduler, parallel filesystem, InfiniBand or RoCE fabric, and the power and
+      cooling envelope they all have to live inside. Built, benchmarked against what was
+      actually sold to you, and instrumented so you can prove it.<br>
+      <b class="px">Quoted per build</b> <span class="pxn">after a scoping session</span></p></div>
+    <div><span class="n">A factory</span><h4>Production AI at industrial scale</h4>
+      <p>Multi-rack, multi-tenant, with the operational discipline that keeps it running
+      once the launch is over: rolling maintenance with no filesystem interruption, health
+      checks that page before a user notices, and an image pipeline a reboot survives.<br>
+      <b class="px">Quoted per build</b> <span class="pxn">including the run-book and the
+      training to operate it without us</span></p></div>
+  </div>
+
+  <p class="rl" style="margin-top:22px"><b>Which layer fails first changes with scale, and
+  that is the whole job.</b> At a few nodes it is the scheduler. At a few hundred it is the
+  fabric &mdash; routing, congestion, and whether RDMA is carrying the traffic or has
+  silently fallen back to TCP. Past that it is storage bandwidth, then power and cooling.
+  A vendor benchmark will not tell you which one you have, partly because the storage
+  array's own write buffer can defeat the test you were told to run.</p>
+
+  <h3 class="aih" id="diagnostics">When it is built and it is slow</h3>
+  <p class="sub" style="max-width:66ch;margin:0 0 18px">Fixed-price investigations for
+  infrastructure somebody else built, or that you built and cannot get to perform. Each one
+  includes measurements, written findings and a readout. <b>No paid architecture assessment is required.</b></p>
+  <div class="g3" data-rv>
+    <div><span class="n">Fabric</span><h4>Interconnect diagnostic</h4>
+      <p>InfiniBand or RoCE end to end: link rates and widths, routing and ISL balance,
+      congestion, firmware skew, and whether RDMA is carrying the traffic.<br>
+      <b class="px">$4,500</b><br><a class="ilink" href="/order/?sku=diag-fabric#catalog">Book the fabric diagnostic &rarr;</a></p></div>
+    <div><span class="n">Storage</span><h4>Parallel filesystem investigation</h4>
+      <p>GPFS, Lustre, Weka or VAST, measured against the workload rather than the page
+      cache, with each layer eliminated by a number instead of an argument.<br>
+      <b class="px">$6,500</b><br><a class="ilink" href="/order/?sku=diag-storage#catalog">Book the storage investigation &rarr;</a></p></div>
+    <div><span class="n">Acceptance</span><h4>Benchmark and acceptance testing</h4>
+      <p>Before you sign for it. What was sold to you, measured, with the gap between the
+      datasheet and the rack written down while you still have leverage.<br>
+      <b class="px">$9,500</b><br><a class="ilink" href="/order/?sku=diag-acceptance#catalog">Book acceptance testing &rarr;</a></p></div>
+  </div>
+
+  <p class="rl"><a class="ilink" href="/order/?sku=diag-scheduler#catalog"><b>Scheduler and workload review &mdash; $3,500.</b></a>
+  One Slurm, PBS Pro or LSF environment, with findings and recommendations.</p>
+  <p class="rl"><b>A clear boundary before work starts.</b> A brief qualification call
+  confirms which diagnostic fits. Written acceptance identifies the system size,
+  workloads, access, testing window and delivery date. Remediation, travel, additional
+  systems and ongoing support are quoted separately.</p>
+
+  <h3 class="aih">Then: where it earns, and what you allow</h3>
+  <p class="sub" style="max-width:68ch;margin:0 0 6px">Two jobs sit either side of the
+  build, priced and delivered separately. <b>Putting it to work</b> &mdash; which work in
+  your operation is genuinely worth automating, judged against how the business runs rather
+  than what is fashionable, and whether to buy, build or neither. <b>The policy</b>
+  ($18,000) &mdash; an inventory of what is already in use and a policy written to permit
+  rather than forbid, because a ban is ignored by the second week. <b>The governance</b>
+  ($28,000) &mdash; the machinery that keeps that true once everyone is busy, mapped to the
+  NIST AI Risk Management Framework and ISO/IEC 42001.
+  <a class="ilink" href="/ai-adoption/">All three in full &rarr;</a></p>
+
+  <div class="aibuy">
+    <div>
+      <b>Planning a new build? Architecture and readiness assessment &mdash; $9,500</b>
+      <span>A full day with whoever owns the decision, and two days of work around it.
+      <b>Before the room</b>, we establish what you are already running &mdash; the
+      hardware, the fabric, the models, and what is quietly on a credit card. <b>In the
+      room</b>, what you are actually trying to build, what your sector will and will not
+      permit, and an honest read on whether it needs building, buying or dropping.
+      <b>Afterwards</b>, a written assessment with the architecture, the numbers at your
+      volume, and a sequence you can put to a board. The assessment fee is credited once
+      against a subsequent build or implementation, up to the fee due, with no expiry.
+      Request an invoice so the credit is applied before payment. Diagnostics can be booked directly.</span>
+    </div>
+    <div class="acts">
+      <a class="btn btn-p" href="/order/?sku=ai-scoping#catalog" data-ev="cta.scoping">See the assessment</a>
+      <a class="btn btn-g" href="/#contact">Ask first</a>
+    </div>
+  </div>
+
+  <div class="note" style="margin:26px 0 0">
+    <b>The same engineers, under two names.</b>
+    <p>The deep infrastructure practice has its own site &mdash;
+    <a class="ilink" href="https://www.wirewalk.com/">Wirewalk Advisory</a> &mdash; where the
+    cluster engineering, the fabric work and the MPI and storage writing live in full. It is
+    one team and one set of hands. This page exists because the answer to a business
+    question is sometimes a machine, and the person who tells you that should be the person
+    who can build it.</p>
+  </div>
+
+  <p class="rl" style="margin-top:22px"><b>Twenty years of this, at real scale.</b> The same
+  discipline has run production clusters in a national laboratory, a health system and
+  semiconductor manufacturing. Parallel filesystems that cannot drop. NDR and HDR InfiniBand
+  fabrics. Schedulers carrying work that costs real money when it stalls. GPU estates where
+  a bad image is a fleet-wide outage. This is not a practice that read about it.</p>
+
+  <p class="rl" style="margin-top:1px"><b>Your sector already has a view.</b> A law firm
+  has bar guidance on client confidences. A defense supplier has controlled technical data
+  that must not reach a public model at all. A practice has patient records and a business
+  associate agreement written before any of this existed. What makes general advice usable
+  is knowing which rules are yours, which is what
+  <a class="ilink" href="/industries/">the industry pages</a> are for.</p>
+</div></section>
+
 <div class="band"><div class="wrap">
-  <b>The review reaches</b>
+  <b>Also: operating reviews</b>
   <ul>
     <li>Billing and collection</li><li>AR/AP and write-offs</li><li>Vendor contracts</li>
     <li>IT operations and access</li><li>Time to productive</li><li>Sales and delivery handoffs</li>
@@ -1075,121 +1163,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   start at <a class="ilink" href="/industries/">the index</a>.</p>
 </div></section>
 
-<section class="sec" id="ai-policy"><div class="wrap">
-  <div class="sh-split">
-    <div><span class="eyebrow">AI infrastructure</span>
-      <h2>We build the thing. Not a slide deck about the thing.</h2></div>
-    <p>Most firms selling AI advice will write you a policy and a roadmap and stop at the
-    point where somebody has to make hardware work. We start there. One private inference box in your rack, or ten
-    thousand GPUs with a fabric that has to actually carry the traffic. Same discipline
-    either way. The interesting question at every size is which layer fails first.</p>
-  </div>
 
-  <!-- THE BUILD LEADS.
-       This section used to open with policy and governance and demote the
-       engineering to a sub-block three screens down, which described a
-       practice that writes documents. It is the wrong way round: anyone can
-       write an AI policy, and almost nobody can tell you why your RDMA
-       quietly fell back to TCP. -->
-  <h3 class="aih">What we build</h3>
-  <div class="g3" data-rv>
-    <div><span class="n">One box</span><h4>A private installation</h4>
-      <p>One machine in your rack running open models on hardware you own. Nothing leaves
-      the building &mdash; the only arrangement that works for controlled technical data,
-      client confidences or patient records.<br>
-      <b class="px">$45,000</b> <span class="pxn">specified, procured, built, benchmarked
-      and handed over &mdash; hardware bought in your name, no margin taken on it</span></p></div>
-    <div><span class="n">A cluster</span><h4>Tens to thousands of GPUs</h4>
-      <p>Scheduler, parallel filesystem, InfiniBand or RoCE fabric, and the power and
-      cooling envelope they all have to live inside. Built, benchmarked against what was
-      actually sold to you, and instrumented so you can prove it.<br>
-      <b class="px">Quoted per build</b> <span class="pxn">after a scoping session</span></p></div>
-    <div><span class="n">A factory</span><h4>Production AI at industrial scale</h4>
-      <p>Multi-rack, multi-tenant, with the operational discipline that keeps it running
-      once the launch is over: rolling maintenance with no filesystem interruption, health
-      checks that page before a user notices, and an image pipeline a reboot survives.<br>
-      <b class="px">Quoted per build</b> <span class="pxn">including the run-book and the
-      training to operate it without us</span></p></div>
-  </div>
-
-  <p class="rl" style="margin-top:22px"><b>Which layer fails first changes with scale, and
-  that is the whole job.</b> At a few nodes it is the scheduler. At a few hundred it is the
-  fabric &mdash; routing, congestion, and whether RDMA is carrying the traffic or has
-  silently fallen back to TCP. Past that it is storage bandwidth, then power and cooling.
-  A vendor benchmark will not tell you which one you have, partly because the storage
-  array's own write buffer can defeat the test you were told to run.</p>
-
-  <h3 class="aih">When it is built and it is slow</h3>
-  <p class="sub" style="max-width:66ch;margin:0 0 18px">Fixed-price investigations for
-  infrastructure somebody else built, or that you built and cannot get to perform. Each one
-  ends in a number and a cause, not an opinion.</p>
-  <div class="g3" data-rv>
-    <div><span class="n">Fabric</span><h4>Interconnect diagnostic</h4>
-      <p>InfiniBand or RoCE end to end: link rates and widths, routing and ISL balance,
-      congestion, firmware skew, and whether RDMA is carrying the traffic.<br>
-      <b class="px">$4,500</b></p></div>
-    <div><span class="n">Storage</span><h4>Parallel filesystem investigation</h4>
-      <p>GPFS, Lustre, Weka or VAST, measured against the workload rather than the page
-      cache, with each layer eliminated by a number instead of an argument.<br>
-      <b class="px">$6,500</b></p></div>
-    <div><span class="n">Acceptance</span><h4>Benchmark and acceptance testing</h4>
-      <p>Before you sign for it. What was sold to you, measured, with the gap between the
-      datasheet and the rack written down while you still have leverage.<br>
-      <b class="px">$9,500</b> <span class="pxn">scheduler and workload review, $3,500</span></p></div>
-  </div>
-
-  <h3 class="aih">Then: where it earns, and what you allow</h3>
-  <p class="sub" style="max-width:68ch;margin:0 0 6px">Two jobs sit either side of the
-  build, priced and delivered separately. <b>Putting it to work</b> &mdash; which work in
-  your operation is genuinely worth automating, judged against how the business runs rather
-  than what is fashionable, and whether to buy, build or neither. <b>The policy</b>
-  ($18,000) &mdash; an inventory of what is already in use and a policy written to permit
-  rather than forbid, because a ban is ignored by the second week. <b>The governance</b>
-  ($28,000) &mdash; the machinery that keeps that true once everyone is busy, mapped to the
-  NIST AI Risk Management Framework and ISO/IEC 42001.
-  <a class="ilink" href="/ai-adoption/">All three in full &rarr;</a></p>
-
-  <div class="aibuy">
-    <div>
-      <b>Every one of these starts with a scoping session &mdash; $9,500</b>
-      <span>A full day with whoever owns the decision, and two days of work around it.
-      <b>Before the room</b>, we establish what you are already running &mdash; the
-      hardware, the fabric, the models, and what is quietly on a credit card. <b>In the
-      room</b>, what you are actually trying to build, what your sector will and will not
-      permit, and an honest read on whether it needs building, buying or dropping.
-      <b>Afterwards</b>, a written assessment with the architecture, the numbers at your
-      volume, and a sequence you can put to a board. <b>Credited in full</b> against
-      whatever you commission next, with no deadline on that.</span>
-    </div>
-    <div class="acts">
-      <a class="btn btn-p" href="/order/#catalog" data-ev="cta.scoping">Book a scoping session</a>
-      <a class="btn btn-g" href="/#contact">Ask first</a>
-    </div>
-  </div>
-
-  <div class="note" style="margin:26px 0 0">
-    <b>The same engineers, under two names.</b>
-    <p>The deep infrastructure practice has its own site &mdash;
-    <a class="ilink" href="https://www.wirewalk.com/">Wirewalk Advisory</a> &mdash; where the
-    cluster engineering, the fabric work and the MPI and storage writing live in full. It is
-    one team and one set of hands. This page exists because the answer to a business
-    question is sometimes a machine, and the person who tells you that should be the person
-    who can build it.</p>
-  </div>
-
-  <p class="rl" style="margin-top:22px"><b>Twenty years of this, at real scale.</b> The same
-  discipline has run production clusters in a national laboratory, a health system and
-  semiconductor manufacturing. Parallel filesystems that cannot drop. NDR and HDR InfiniBand
-  fabrics. Schedulers carrying work that costs real money when it stalls. GPU estates where
-  a bad image is a fleet-wide outage. This is not a practice that read about it.</p>
-
-  <p class="rl" style="margin-top:1px"><b>Your sector already has a view.</b> A law firm
-  has bar guidance on client confidences. A defense supplier has controlled technical data
-  that must not reach a public model at all. A practice has patient records and a business
-  associate agreement written before any of this existed. What makes general advice usable
-  is knowing which rules are yours, which is what
-  <a class="ilink" href="/industries/">the industry pages</a> are for.</p>
-</div></section>
 
 <section class="sec tint" id="compliance"><div class="wrap">
   <div class="sh-split">
@@ -1354,12 +1328,12 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 
 <section class="sec" id="next"><div class="wrap">
   <div class="sh"><span class="eyebrow">Next step</span>
-    <h2>We work backward from your next business deadline.</h2>
-    <p>Your next budget cycle, survey or renewal sets the date. The only decision today is the start date.</p></div>
+    <h2>Start with the outcome you need.</h2>
+    <p>Tell us what you want AI to do, what you already run and when you need it working.</p></div>
   <div class="nsteps" data-rv>
-    <div><span class="k">01</span><h4>You name a start date</h4><p>Choose the date. We handle the kickoff.</p></div>
-    <div><span class="k">02</span><h4>Fieldwork</h4><p>We work around operations; staff keep working.</p></div>
-    <div><span class="k">03</span><h4>Findings presented</h4><p>Findings are quantified. Phase two comes afterward.</p></div>
+    <div><span class="k">01</span><h4>Discuss the use case</h4><p>A brief conversation to establish the problem and the right engagement.</p></div>
+    <div><span class="k">02</span><h4>Agree the scope</h4><p>Systems, deliverables, timing and fee are written down before work starts.</p></div>
+    <div><span class="k">03</span><h4>Deliver and hand over</h4><p>A decision, an investigation or a working system, tested against the agreed scope.</p></div>
   </div>
   <p class="rl"><b>If your procurement office moves before your calendar does, start there.</b>
   Raise a purchase order against the engagement and we invoice on net 30 &mdash; the route
@@ -1373,11 +1347,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
   <div class="cta-in">
    <div>
     <span class="eyebrow">Get started</span>
-    <h2>The only decision today is the start date.</h2>
+    <h2>What would you like AI to do for your business?</h2>
    </div>
    <div class="cta-b">
-    <p>Tell us what you run and what your next business deadline is &mdash; a budget cycle, a survey, a renewal. We work backward from it. Phase one is priced before phase two is discussed, the report is yours either way, and we take no vendor commissions or referral fees on anything we recommend.</p>
-    <p class="small" style="margin-top:20px"><strong>Take this with you.</strong> The same material as a deck or a document, for circulating internally.</p>
+    <p>Tell us about the workflow you want to improve, the system you need to build or the performance problem you need to solve. We will help identify the next practical step and agree the scope before you commit.</p>
+    <p class="small" style="margin-top:20px"><strong>Considering an operating review?</strong> Download the review overview to circulate internally.</p>
     <p style="margin-top:10px">
       <a class="btn btn-so btn-sm" href="operating-review.pptx" download>Download the deck (PPTX)</a>
       <a class="btn btn-so btn-sm" href="operating-review.docx" download style="margin-left:10px">Download the document (DOCX)</a>
@@ -1390,14 +1364,14 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
          submission, shows this visitor a thank-you page and delivers nothing.
          Now the message survives whatever email does. -->
     <form class="frm" action="https://wirewalk-portal.wirewalk-upload.workers.dev/api/enquiry" method="POST">
-      <input type="hidden" name="_subject" value="Wirewalk — Scoping call request">
+      <input type="hidden" name="_subject" value="Wirewalk AI — Project inquiry">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://ai.wirewalk.com/thanks/">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
       <input type="text" name="name" aria-label="Name and organization" placeholder="Name and organization" autocomplete="organization" required>
       <input type="email" name="email" aria-label="Work email" placeholder="Work email" autocomplete="email" required>
-      <button class="btn btn-p" type="submit">Book the review</button>
+      <button class="btn btn-p" type="submit">Discuss your project</button>
     </form>
     <p class="small" style="margin-top:16px">Prefer to call? <a class="ilink" href="tel:+15162691517">516-269-1517</a></p>
     <p class="small" style="margin-top:16px">Already know what you want, or need a quotation
@@ -1414,7 +1388,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
     <div>
       <a href="#top" class="brand" style="margin-bottom:12px"><span class="mark"><i></i><i></i><i></i><i></i></span>
         <span class="bn"><span>Wirewalk<s>AI</s></span></span></a>
-      <p class="small" style="max-width:36ch">The Operating Review. Revenue optimization and risk detection across finance, IT, compliance, contracts, sales and delivery &mdash; read in your sector&rsquo;s own vocabulary.</p>
+      <p class="small" style="max-width:36ch">AI adoption, private infrastructure and performance engineering. Operating reviews help identify where a change will earn its cost.</p>
     </div>
     <div><h5>The review</h5>
       <a href="#lenses">What we find</a><a href="#coverage">Method</a>

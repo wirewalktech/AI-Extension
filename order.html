@@ -2,7 +2,7 @@
 permalink: /order/
 title: Commission an engagement
 description: >-
-  Commission the Operating Review by purchase order, invoice, deposit or
+  Commission AI adoption, infrastructure or an operating review by purchase order, invoice, deposit or
   prepayment. Purchase orders are the primary route for institutional buyers in every
   sector; prepayment earns 5%.
 ---
@@ -13,13 +13,13 @@ description: >-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wirewalk AI">
 <meta property="og:title" content="Commission an engagement — Wirewalk AI">
-<meta property="og:description" content="Commission the Operating Review by purchase order, invoice, deposit or prepayment. Purchase orders are the primary route for institutional buyers in every sector; prepayment earns 5%.">
+<meta property="og:description" content="Commission AI adoption, infrastructure or an operating review by purchase order, invoice, deposit or prepayment. Purchase orders are the primary route for institutional buyers in every sector; prepayment earns 5%.">
 <meta property="og:url" content="https://ai.wirewalk.com/order/">
 <meta property="og:image" content="https://ai.wirewalk.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Commission the Operating Review by purchase order, invoice, deposit or prepayment. Purchase orders are the primary route for institutional buyers in every sector; prepayment earns 5%.">
+<meta name="description" content="Commission AI adoption, infrastructure or an operating review by purchase order, invoice, deposit or prepayment. Purchase orders are the primary route for institutional buyers in every sector; prepayment earns 5%.">
 <link rel="canonical" href="https://ai.wirewalk.com/order/">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
@@ -315,7 +315,11 @@ footer.end a{color:var(--ac2)}
     <a href="#po">Raise a purchase order for it</a></p>
   </div>
 
-  <h2 id="catalog-heading">What can be commissioned</h2>
+  <h2 id="catalog-heading">AI adoption, infrastructure and operating reviews</h2>
+  <p class="sub">Bounded infrastructure diagnostics can be booked after a brief qualification call;
+  no paid architecture assessment is required. The $45,000 single-system installation is an
+  engineering fee; hardware, licenses, travel and ongoing support are separate.
+  Have an assessment credit? Request an invoice so it is applied before payment.</p>
   <div id="catalog"><p class="sub">Loading current pricing&hellip;</p></div>
   <p class="sub" style="margin-top:16px">Prices exclude any applicable sales or use tax.
   Paying in full in advance earns <b>5%</b> and reserves the dates on receipt of funds; the
@@ -462,6 +466,10 @@ footer.end a{color:var(--ac2)}
       <div class="fld"><label for="pay-org">Organization <span class="h">&mdash; optional</span></label>
         <input id="pay-org" type="text" name="Organization" autocomplete="organization"></div>
     </div>
+    <div class="fld"><label for="pay-method">Payment method</label>
+      <select id="pay-method"><option value="card">Card</option>
+        <option value="ach">US bank account (ACH) — 3% discount</option></select></div>
+    <div class="note" id="payment-status" role="status"></div>
     <div class="note" id="paysum" hidden></div>
     <div id="ts" style="margin:14px 0"></div>
     <button class="btn" id="paygo" disabled>Continue to payment</button>
@@ -541,19 +549,22 @@ const ORDERS   = "https://wirewalk-orders.wirewalk-upload.workers.dev";
 const SITE_KEY = "0x4AAAAAAEuBwz8OpbI3bmtE";
 
 const $ = s => document.querySelector(s);
-let ITEMS = [], GROUPS = [], widgetId = null;
+let ITEMS = [], GROUPS = [], widgetId = null, PAYMENT_MODE = "unconfigured";
 
 /* The catalog is fetched rather than written into this page, so the figure a
    buyer reads and the figure Stripe charges cannot drift apart. A hard-coded
    price that has gone stale is worse than no price at all: it is a quotation
    the seller did not mean to give. */
 fetch(ORDERS + "/catalog?practice=ai")
-  .then(r => r.json())
+  .then(r => { if (!r.ok) throw new Error("pricing unavailable"); return r.json(); })
   .then(d => {
+    PAYMENT_MODE = d.paymentMode || "unconfigured";
+    showPaymentStatus();
     ITEMS  = d.items  || [];
     GROUPS = d.groups || [];
     renderCatalog();
     fillSelects();
+    selectLinkedSku();
   })
   .catch(() => {
     $("#catalog").innerHTML =
@@ -691,22 +702,40 @@ function fillSelects(){
   if (!ITEMS.some(i => !i.priceOnApplication)) return;
   $("#pay-svc").addEventListener("change", summarize);
   $("#pay-mode").addEventListener("change", summarize);
+  $("#pay-method").addEventListener("change", summarize);
 }
 
+function showPaymentStatus(){
+  const box = $("#payment-status");
+  box.hidden = PAYMENT_MODE === "live";
+  box.textContent = PAYMENT_MODE === "test"
+    ? "Online payment is not live yet. Prices below are previews; use the purchase-order or invoice request to place a real order."
+    : "Online payment is unavailable. Please request an invoice or submit a purchase order.";
+}
+function selectLinkedSku(){
+  const sku = new URLSearchParams(location.search).get("sku");
+  const item = ITEMS.find(i => i.sku === sku);
+  if (!item) return;
+  $("#po-svc").value = sku;
+  if (!item.priceOnApplication) { $("#pay-svc").value = sku; summarize(); }
+  const button = [...document.querySelectorAll("[data-sku]")].find(el => el.dataset.sku === sku);
+  if (button) { const row=button.closest("tr"); row.style.outline="2px solid var(--ac)"; row.scrollIntoView({block:"center"}); }
+}
 function summarize(){
   const i = ITEMS.find(x => x.sku === $("#pay-svc").value);
   const box = $("#paysum"), btn = $("#paygo");
   if (!i || i.priceOnApplication){ box.hidden = true; btn.disabled = true; return; }
-  const dep = $("#pay-mode").value === "deposit";
+  const dep = $("#pay-mode").value === "deposit", ach = $("#pay-method").value === "ach";
+  const due = ach ? (dep ? i.ach.depositFormatted : i.ach.fullFormatted)
+                  : (dep ? i.deposit.formatted : i.prepay.formatted);
+  const total = ach ? i.ach.totalFormatted : i.listFormatted;
+  const balance = ach ? i.ach.balanceFormatted : i.deposit.balanceFormatted;
   box.hidden = false;
-  box.innerHTML = dep
-    ? "<b>" + esc(i.deposit.formatted) + " due now.</b> Deposit against " +
-      esc(i.listFormatted) + ". The balance of " + esc(i.deposit.balanceFormatted) +
-      " is invoiced on delivery. The prepay discount does not apply to a deposit."
-    : "<b>" + esc(i.prepay.formatted) + " due now.</b> " + esc(i.name) +
-      " paid in full, saving " + esc(i.prepay.savingFormatted) + " against the " +
-      esc(i.listFormatted) + " list price. Dates are reserved on receipt of funds.";
-  btn.disabled = false;
+  box.textContent = dep
+    ? due + " due now. Deposit against " + total + ". Balance " + balance + " invoiced on delivery. No prepay discount on deposits."
+    : due + " due now for full payment by " + (ach ? "US bank account" : "card") + ". List price " + i.listFormatted + ".";
+  if (ach) box.textContent += " The bank-transfer discount is included. ACH confirmation can take several business days.";
+  btn.disabled = PAYMENT_MODE !== "live";
 }
 
 function token(){
@@ -739,6 +768,7 @@ document.querySelectorAll('.route[data-route="invoice"]').forEach(a => {
 
 $("#paygo").addEventListener("click", async () => {
   const btn = $("#paygo"), msg = $("#paymsg");
+  if (PAYMENT_MODE !== "live") { showPaymentStatus(); return; }
   const email = $("#pay-email").value.trim();
   if (!email || !$("#pay-email").checkValidity()){
     msg.className = "msg bad";
@@ -754,6 +784,7 @@ $("#paygo").addEventListener("click", async () => {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         sku: $("#pay-svc").value, mode: $("#pay-mode").value, email,
+        method: $("#pay-method").value, practice: "ai",
         organization: $("#pay-org").value.trim(), token: t }),
     });
     const d = await r.json();

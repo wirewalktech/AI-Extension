@@ -1,8 +1,8 @@
 title: Wirewalk AI
-tagline: AI infrastructure and operating reviews
+tagline: AI adoption and infrastructure
 description: >-
-  Field notes on operating performance: where value leaks across finance, IT,
-  compliance, contracts and delivery, and what it costs to leave it there.
+  AI adoption, private AI deployments, GPU infrastructure and performance diagnostics.
+  From selecting a useful first application to building and operating the system.
 author: Wirewalk AI
 url: https://ai.wirewalk.com
 # Served at the root of ai.wirewalk.com (see CNAME). A non-empty baseurl
