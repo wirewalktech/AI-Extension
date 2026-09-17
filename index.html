@@ -1658,9 +1658,8 @@ lk.addEventListener('click',e=>{
 });
 addEventListener('keydown',e=>{if(e.key==='Escape'&&lk.classList.contains('open'))setMenu(false);});
 
-/* Submit directly to FormSubmit so its confirmation and spam checks run.
-   Delivery requires the recipient's one-time email activation.
-   Never display a local success message before the service accepts the form. */
+/* Submit to our Worker, which records the enquiry before attempting email.
+   Native form submission keeps delivery independent of client-side JavaScript. */
 const frm=$('.frm');
 if(frm){
   frm.addEventListener('submit',e=>{
