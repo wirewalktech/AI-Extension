@@ -1,0 +1,397 @@
+---
+permalink: /demos/financial-services-gold/
+sitemap: false
+title: "Financial services — the Operating Review"
+description: "Compliance is an operating line, not a department. Regulated firms carry a cost of control that is real, necessary and almost never measured as a unit cost. What can be measured can be compared, and what can be compared usually turns out to vary far more than anyone expected."
+---
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Financial services — Gold edition demo — Wirewalk AI</title>
+<meta name="description" content="Compliance is an operating line, not a department. Regulated firms carry a cost of control that is real, necessary and almost never measured as a unit cost. What can be measured can be compared, and what can be compared usually turns out to vary far more than anyone expected.">
+<link rel="canonical" href="https://ai.wirewalk.com/industries/financial-services/">
+<!-- Social preview. Without these a link pasted into LinkedIn, Slack or an
+     email client renders as a bare gray rectangle, which for a practice whose
+     distribution IS one person sharing links is not a cosmetic problem. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wirewalk AI">
+<meta property="og:title" content="Financial services — Gold edition demo — Wirewalk AI">
+<meta property="og:description" content="Compliance is an operating line, not a department. Regulated firms carry a cost of control that is real, necessary and almost never measured as a unit cost. What can be measured can be compared, and what can be compared usually turns out to vary far more than anyone expected.">
+<meta property="og:url" content="https://ai.wirewalk.com/demos/financial-services-gold/">
+<meta property="og:image" content="https://ai.wirewalk.com/assets/finance-gold/coins-hero.jpg">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<style>
+:root{
+  --bg:#FAF9F5; --alt:#F4F2EC; --alt2:#EFEDE5; --ln:#E4E0D5; --ln2:#D5D0C0;
+  --tx:#1F1E1D; --tx2:#5C5A54; --tx3:#8A8781;
+  --ac:#D97757; --ac2:#C2603F; --acs:#FBEEE8;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);
+     font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,32px)}
+header.top{border-bottom:1px solid var(--ln);padding:22px 0;margin-bottom:44px}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--tx);
+       font-weight:600}
+.mark{width:21px;height:21px;flex:0 0 21px;display:grid;
+      grid-template:repeat(2,1fr)/repeat(2,1fr);gap:2.5px}
+.mark i{background:var(--ac);border-radius:1.5px;transform:scale(.84)}
+.mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px var(--ac)}
+.brand s{text-decoration:none;color:var(--tx3);font-weight:500;margin-left:6px}
+.back{float:right;font-size:14px;color:var(--tx2);text-decoration:none}
+.back:hover{color:var(--ac)}
+.crumb{font-size:13.5px;color:var(--tx3);margin:0 0 14px}
+.crumb a{color:var(--tx2);text-decoration:none}
+.crumb a:hover{color:var(--ac2)}
+.eyebrow{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--ac2);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(30px,5.4vw,42px);line-height:1.13;letter-spacing:-.024em;margin:0 0 16px;
+   text-wrap:balance}
+h2{font-size:clamp(21px,2.9vw,26px);letter-spacing:-.016em;margin:56px 0 8px;text-wrap:balance}
+h3{font-size:17.5px;margin:0 0 5px}
+p{max-width:70ch}
+.lede{color:var(--tx2);font-size:19px;margin:0 0 12px}
+.sub{color:var(--tx3);font-size:15px;margin:0 0 22px}
+a{color:var(--ac2);text-underline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15.5px;
+     font-weight:600;padding:12px 22px;border-radius:9px;border:1px solid var(--ac);
+     background:var(--ac);color:#fff;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--ac2);border-color:var(--ac2)}
+.btn.g{background:#fff;color:var(--tx);border-color:var(--ln2)}
+.btn.g:hover{background:var(--alt)}
+.acts{display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0}
+
+/* proposal page */
+.prop-hero{padding:26px 0 6px}
+.phase{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
+.phase li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:18px 0;
+  border-top:1px solid var(--ln)}
+.phase li:last-child{border-bottom:1px solid var(--ln)}
+.phase .wk{font:650 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ac);padding-top:2px}
+.phase b{display:block;font-size:15.5px;margin-bottom:5px}
+.phase span{font-size:14.5px;line-height:1.6;color:var(--tx2)}
+.deliv{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px}
+.deliv li{padding-left:24px;position:relative;font-size:14.5px;line-height:1.55}
+.deliv li:before{content:"";position:absolute;left:6px;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--ac)}
+.quotebox{border:1px solid var(--ln);border-radius:11px;padding:22px;margin:26px 0 0;
+  background:var(--bg2)}
+.quotebox label{display:block;font-size:13px;color:var(--tx2);margin-bottom:7px}
+.quotebox input,.quotebox select{width:100%;max-width:220px;padding:11px 12px;
+  font:500 15px/1.2 var(--sans);border:1px solid var(--ln);border-radius:7px;
+  background:var(--bg);color:var(--tx)}
+.qrow{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end}
+.qout{margin-top:20px;padding-top:18px;border-top:1px solid var(--ln)}
+.qbig{font:700 34px/1.1 var(--sans);letter-spacing:-.02em}
+.qsub{font-size:13.5px;color:var(--tx2);margin-top:5px}
+.qlines{list-style:none;padding:0;margin:15px 0 0;display:grid;gap:6px}
+.qlines li{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;
+  color:var(--tx2);font-variant-numeric:tabular-nums}
+.qopts{display:grid;gap:9px;margin-top:16px}
+.qopt{display:flex;justify-content:space-between;gap:14px;padding:11px 13px;
+  border:1px solid var(--ln);border-radius:7px;font-size:14px;background:var(--bg)}
+.qopt b{font-variant-numeric:tabular-nums}
+.qerr{color:#b4232a;font-size:14px;margin-top:12px}
+@media(max-width:640px){.phase li{grid-template-columns:1fr;gap:6px}}
+
+/* depth blocks -- systems, sub-verticals, filings, triggers */
+.depth{margin:26px 0 0}
+.depth h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2);
+  margin:0 0 10px;font-weight:650}
+.sysl{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.sysl li{padding:11px 13px;background:var(--bg2);border-radius:7px;font-size:14.5px;
+  line-height:1.5;border-left:2px solid var(--ac)}
+.subv{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.subv li{padding:12px 14px;border:1px solid var(--ln);border-radius:8px}
+.subv b{display:block;font-size:14.5px;margin-bottom:4px}
+.subv span{font-size:14px;line-height:1.55;color:var(--tx2)}
+.subv li.has{padding:0}
+.subv li.has a{display:block;padding:12px 14px;text-decoration:none;color:inherit;
+  border-radius:8px;transition:background .16s}
+.subv li.has a:hover{background:var(--alt)}
+.subv li.has em{display:block;margin-top:7px;font-style:normal;font-size:13px;
+  font-weight:600;color:var(--ac2)}
+.fil,.trg{margin:0;padding-left:20px;display:grid;gap:7px}
+.fil li,.trg li{font-size:14.5px;line-height:1.55}
+.mets{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+.mets li{font:600 12px/1 var(--mono);letter-spacing:.02em;padding:6px 9px;
+  background:var(--bg2);border-radius:5px;color:var(--tx2)}
+.roles{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.roles li{font-size:14.5px;line-height:1.5}
+.roles b{color:var(--tx2);font-weight:650}
+@media(max-width:640px){.subv li{padding:11px 12px}}
+
+/* The line the buyer says out loud.
+   Sits between the headline and the lede because recognition has to come
+   before argument -- a reader who has said this sentence in their own office
+   is already reading the rest differently. */
+.overheard{font-size:clamp(19px,2.6vw,23px);line-height:1.4;letter-spacing:-.012em;
+  color:var(--tx);margin:0 0 14px;max-width:34ch;font-style:italic;
+  border-left:2px solid var(--ac);padding-left:16px}
+
+/* vocabulary strip */
+.vocab{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0;padding:0;list-style:none}
+.vocab li{font:12.5px/1 var(--mono);color:var(--tx2);background:var(--alt);
+          border:1px solid var(--ln);border-radius:20px;padding:6px 12px}
+.vocab-note{color:var(--tx3);font-size:13.5px;margin:10px 0 0}
+
+/* the patterns -- the substance of the page, so give them room */
+.pat{list-style:none;margin:22px 0 0;padding:0;counter-reset:p}
+.pat li{counter-increment:p;position:relative;border-top:1px solid var(--ln);
+        padding:20px 0 20px 58px;font-size:17px;color:var(--tx);max-width:74ch}
+.pat li:last-child{border-bottom:1px solid var(--ln)}
+.pat li:before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:20px;
+               font:700 13px/1.5 var(--mono);color:var(--ac2);letter-spacing:.04em}
+
+/* what the intake would ask for */
+.ask{border:1px solid var(--ln);border-radius:12px;background:#fff;margin:22px 0 0;
+     overflow:hidden}
+.ask .hd{background:var(--alt);border-bottom:1px solid var(--ln);padding:15px 20px;
+         font-size:14.5px;color:var(--tx2)}
+.ask .hd b{color:var(--tx)}
+.ask ul{list-style:none;margin:0;padding:4px 20px 8px}
+.ask li{border-top:1px solid var(--ln);padding:14px 0}
+.ask li:first-child{border-top:0}
+.ask b{display:block;font-size:16px;color:var(--tx)}
+.ask b .core{font:700 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+             color:#fff;background:var(--ac2);border-radius:20px;padding:4px 9px;
+             margin-left:9px;vertical-align:2px}
+.ask span{display:block;color:var(--tx2);font-size:14.5px;max-width:70ch}
+
+.who{border-left:2px solid var(--ac);padding-left:18px;margin:22px 0 0;color:var(--tx2);
+     font-size:16px}
+.who b{color:var(--tx)}
+
+/* the index */
+.grp{margin:46px 0 0}
+.grp h2{margin:0 0 4px}
+.grp>p{color:var(--tx2);font-size:15.5px;margin:0 0 16px}
+.cards{display:grid;gap:1px;background:var(--ln);border:1px solid var(--ln);border-radius:12px;
+       overflow:hidden;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.cards a{display:block;background:#fff;padding:18px 20px;text-decoration:none;color:var(--tx)}
+.cards a:hover{background:var(--acs)}
+.cards b{display:block;font-size:16.5px;margin-bottom:4px}
+.cards span{display:block;color:var(--tx2);font-size:14.5px}
+.cards em{display:block;font:12px/1.5 var(--mono);font-style:normal;color:var(--tx3);
+          margin-top:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.also{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 0;padding:0;list-style:none}
+.also a{display:inline-block;font-size:14.5px;text-decoration:none;color:var(--tx);
+        border:1px solid var(--ln2);border-radius:20px;padding:7px 15px;background:#fff}
+.also a:hover{border-color:var(--ac);background:var(--acs);color:var(--ac2)}
+
+.note{border:1px solid var(--ac);background:var(--acs);border-radius:12px;padding:20px 22px;
+      margin:30px 0 0}
+.note b{display:block;font-size:17px;color:var(--tx);margin-bottom:6px}
+.note p{margin:0;color:var(--tx2);font-size:15.5px;max-width:none}
+.note p+p{margin-top:9px}
+
+footer.end{margin:60px 0 46px;padding-top:24px;border-top:1px solid var(--ln);
+           color:var(--tx3);font-size:14px}
+footer.end a{color:var(--ac2)}
+footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/finance-gold/demo.css">
+</head>
+<body class="gold-demo">
+<div class="demo-label"><div class="wrap"><span>Gold edition · Design preview</span><a href="/industries/financial-services/">View original page →</a></div></div>
+
+<header class="top"><div class="wrap">
+  <a href="/" class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span>
+    <span>Wirewalk<s>AI</s></span></a>
+  <a class="back" href="/order/">Commission an engagement</a>
+</div></header>
+
+<div class="wrap">
+  <p class="crumb"><a href="/">The Operating Review</a> &rsaquo;
+    <a href="/industries/">Industries</a> &rsaquo; Financial services</p>
+  <section class="gold-hero" aria-label="Financial services introduction">
+    <div class="gold-hero-copy">  <span class="eyebrow">Financial services</span>
+  <h1>Compliance is an operating line, not a department.</h1>
+  <p class="overheard">&ldquo;Compliance headcount has doubled and nobody can tell me what one control costs.&rdquo;</p>
+  <p class="lede">Regulated firms carry a cost of control that is real, necessary and almost never measured as a unit cost. What can be measured can be compared, and what can be compared usually turns out to vary far more than anyone expected.</p>
+    </div>
+    <figure class="gold-hero-image"><picture><img src="/assets/finance-gold/coins-hero.jpg" alt="Gold bullion coins arranged on warm ivory stone" width="1536" height="1024" fetchpriority="high"></picture></figure>
+  </section>
+  <div class="gold-body">
+
+  <ul class="vocab">
+    <li>cost of control</li>
+    <li>reconciliation break</li>
+    <li>KYC/AML</li>
+    <li>remediation</li>
+    <li>outsourcing risk</li>
+    <li>expense ratio</li>
+    <li>attestation</li>
+  </ul>
+  <p class="vocab-note">Your words, not ours.</p>
+
+  <h2>Where it concentrates here</h2>
+  <p>Five places the money tends to
+  go in financial services. Each one is concentrated &mdash; a single agreement, a single queue,
+  a single account nobody reviews &mdash; which is why sampling walks straight past them.</p>
+  <ol class="pat">
+    <li>Reconciliation breaks cleared manually every month by the same people, treated as business as usual rather than as a defect with a cost.</li>
+    <li>Onboarding and KYC rework — files returned for the same handful of causes, repeatedly.</li>
+    <li>Commission and override arrangements with distribution that were competitive when signed and were never revisited.</li>
+    <li>Complaint remediation cost accounted for as redress and never traced back to the process that generated it.</li>
+    <li>Critical outsourcing with performance measured on availability rather than on anything that affects the customer.</li>
+  </ol>
+
+
+  <div class="depth">
+    <h3>Not every financial services is the same business</h3>
+    <ul class="subv">
+      <li><b>Registered investment advisers</b><span>Fees calculated on values from a date convention that differs between the agreement, the billing sheet and the custodian.</span></li>
+      <li><b>Broker-dealers and hybrid</b><span>Commission grids, payout schedules and clearing costs that change per product and are reconciled per rep by nobody.</span></li>
+      <li><b>Community banks and credit unions</b><span>Deposit and loan operations where the cost to serve an account is rarely computed and small accounts frequently lose money.</span></li>
+      <li><b>Specialty and private lending</b><span>Servicing, escrow and fee waterfalls per facility, with the loan documents and the servicing system saying different things.</span></li>
+      <li><b>Fund administration and family office</b><span>Bespoke reporting delivered per client at a fee agreed when there were fewer clients and simpler structures.</span></li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Where this data actually lives</h3>
+    <ul class="sysl">
+      <li>Orion, Addepar or Black Diamond for portfolio reporting; Redtail or Wealthbox as CRM</li>
+      <li>A custodian — Schwab, Fidelity or Pershing — whose statements are the authoritative record</li>
+      <li>Fee billing run from a spreadsheet against the custodian file, reconciled by hand</li>
+      <li>A compliance archive for communications that nobody has tested a retrieval from</li>
+    </ul>
+    <p class="sub" style="margin-top:11px">Named because it changes what the intake asks for. An extract from one of these has known gaps, and the review is built around them rather than surprised by them.</p>
+  </div>
+
+  <div class="depth">
+    <h3>Reported in your numbers, not ours</h3>
+    <ul class="mets">
+      <li>revenue per adviser</li>
+      <li>fee realization</li>
+      <li>AUM and net flows</li>
+      <li>cost to serve per account</li>
+      <li>billing exceptions</li>
+      <li>client retention</li>
+      <li>compliance findings</li>
+      <li>operating margin</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>The obligations that set the deadlines</h3>
+    <ul class="fil">
+      <li>Form ADV, and whether the fee disclosure matches what is actually billed</li>
+      <li>SEC or state examination requests, and the books and records rule</li>
+      <li>AML program, CIP and SAR filings; OFAC screening records</li>
+      <li>Communications retention and supervision under 17a-4</li>
+      <li>SOC 1 from any provider you rely on, and whether anybody reads it</li>
+    </ul>
+  </div>
+
+  <h2>What the review would ask you for</h2>
+  <div class="ask">
+    <div class="hd"><b>5 requests written for financial services
+      and asked of nobody else</b> &mdash; 1 of them core. They sit alongside
+      the operating spine every business has &mdash; finance, revenue, receivables,
+      payables, contracts, people, IT, operations, risk, commercial and governance
+      &mdash; which is 107 further requests.</div>
+    <ul>
+      <li>
+        <b>Regulatory capital and reporting burden</b>
+        <span>Cost of compliance as an operating line.</span>
+      </li>
+      <li>
+        <b>Onboarding, KYC and AML operations <span class="core">Core</span></b>
+        <span>Volume, cycle time, rework rate.</span>
+      </li>
+      <li>
+        <b>Complaints and remediation</b>
+        <span>Volume, root cause, cost of redress.</span>
+      </li>
+      <li>
+        <b>Critical outsourcing and third-party risk</b>
+        <span>With regulator notifications.</span>
+      </li>
+      <li>
+        <b>Reconciliation breaks</b>
+        <span>Volume, age, and how many are cleared manually.</span>
+      </li>
+    </ul>
+  </div>
+  <p class="sub" style="margin-top:16px">Anything you do not have can be skipped in one
+  click, with a reason. The intake is completed in the
+  <a href="/portal/">client portal</a>, which saves each answer as it is given and can be
+  returned to as often as you like.</p>
+
+
+  <div class="depth">
+    <h3>When this stops being interesting and becomes urgent</h3>
+    <ul class="trg">
+      <li>An examination notice, or a deficiency letter from the last one</li>
+      <li>A fee-billing error found by a client rather than by you</li>
+      <li>Succession, or a purchase offer that values recurring revenue</li>
+      <li>A custodian transition, which exposes every reconciliation shortcut at once</li>
+      <li>Growth that outran the operations team two years ago</li>
+    </ul>
+  </div>
+
+  <div class="depth">
+    <h3>Who this involves</h3>
+    <ul class="roles">
+      <li><b>Signs it:</b> Managing principal, CEO or CCO</li>
+      <li><b>Resists it:</b> Advisers whose book economics and service cost become visible</li>
+      <li><b>Has been asking for it:</b> Operations and compliance, who have been carrying the exceptions</li>
+    </ul>
+  </div>
+
+  <figure class="gold-detail" aria-label="Gold coin detail"><picture><img src="/assets/finance-gold/coins-detail.jpg" alt="Fine ridged edges of stacked gold coins in soft light" width="2172" height="724" loading="lazy"></picture></figure>
+  <h2>Who commissions it</h2>
+  <p class="who"><b>COOs, finance directors and heads of operations.</b> Phase one is priced before phase two is
+  discussed, the report is yours either way, and we take no vendor commissions or referral
+  fees on anything we recommend.</p>
+
+  <div class="acts">
+    <a class="btn" href="/industries/financial-services/proposal/">See the proposal and the price</a>
+    <a class="btn g" href="/#contact">Talk it through first</a>
+  </div>
+  <p class="sub" style="margin-top:11px">The proposal sets out the sequence week by
+  week, what we would need from you, and what it costs for your number of operating
+  units. No call required to see the number.</p>
+
+  <h2>Closest to this</h2>
+  <p class="sub">Operations that share more with financial services than the sector label
+  suggests.</p>
+  <ul class="also">
+    <li><a href="/industries/insurance/">Insurance</a></li>
+    <li><a href="/industries/professional-services/">Professional services</a></li>
+    <li><a href="/industries/technology-saas/">Technology and SaaS</a></li>
+    <li><a href="/industries/#financial">All of financial services and insurance</a></li>
+  </ul>
+
+  </div><!-- gold-body -->
+  <footer class="end">
+    <div class="fl">
+      <a href="/">The Operating Review</a>
+      <a href="/industries/">All industries</a>
+      <a href="/order/">What it costs</a>
+      <a href="/terms/">Ordering terms</a>
+      <a href="/writing/">Notes</a>
+      <a href="/portal/">Client portal</a>
+      <a href="https://www.wirewalk.com/">Wirewalk</a>
+    </div>
+    <p>Wirewalk AI · <a href="mailto:sales@wirewalk.com">sales@wirewalk.com</a> ·
+    <a href="tel:+15162691517">516-269-1517</a></p>
+    <p style="margin-top:9px">The patterns on these pages are what recurs in each
+    sector and what a review therefore goes looking for. They are not claims about
+    any particular organization, and nothing here reports a client, an engagement
+    or a measured result.</p>
+  </footer>
+</div>
+</body></html>

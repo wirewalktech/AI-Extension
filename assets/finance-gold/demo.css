@@ -1,0 +1,32 @@
+/* Isolated presentation layer: the original industry page is unchanged. */
+.gold-demo{--bg:#fbfaf6;--alt:#f1eddf;--alt2:#e9e1cd;--ln:#e2dccb;--ln2:#cfc3a5;--tx:#29291f;--tx2:#635e4e;--tx3:#746d5d;--ac:#866322;--ac2:#78571c;--acs:#f8f1df;--bg2:#f4f0e5}
+.gold-demo .wrap{max-width:1180px}
+.demo-label{background:#eee7d6;border-bottom:1px solid #d9cbaa;font-size:11px;color:#5f5030}
+.demo-label .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:9px;padding-bottom:9px}
+.demo-label span{letter-spacing:.05em}.demo-label a{color:#675022;text-decoration:none}
+.gold-demo header.top{padding:23px 0;margin-bottom:28px}
+.gold-demo header.top .wrap{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+.gold-demo .back{float:none}.gold-demo .brand{color:var(--tx)}
+/* Keep the Wirewalk mark in its house color; gold belongs to this demo's imagery. */
+.gold-demo .mark i{background:#d97757}.gold-demo .mark i:nth-child(4){background:transparent;box-shadow:inset 0 0 0 1.8px #d97757}
+.gold-demo .crumb{font-size:12px;margin-bottom:28px}
+.gold-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:42px;align-items:center;margin:0 0 40px}
+.gold-hero-copy h1{font-size:clamp(35px,3.8vw,51px);line-height:1.13;max-width:17ch;margin-bottom:26px}
+.gold-hero-copy .overheard{font-size:19px;max-width:38ch;margin-bottom:20px;line-height:1.5;border-left-color:#b8944a}
+.gold-hero-copy .lede{font-size:16px;line-height:1.65;margin:0}
+.gold-hero-image{margin:0;align-self:stretch;min-height:420px;border-radius:4px 62px 4px 4px;overflow:hidden;background:#eee7d5;border:1px solid #e2d7bd;box-shadow:0 14px 32px #7357190a}
+.gold-hero-image picture{display:block;width:100%;height:100%}.gold-hero-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:68% center}
+.gold-body{max-width:836px;margin:0 auto;border-top:1px solid #d7c79d;padding-top:7px}
+.gold-demo .vocab{margin-top:22px}.gold-demo .vocab li{background:#f1ecdc;border-color:#ddd0ae;color:#625230}
+.gold-demo .pat li:before{color:#8e6a28}.gold-demo .ask{border-color:#d7c8a1;border-radius:5px}
+.gold-demo .ask .hd{background:#eee6d2;border-color:#d7c8a1}
+.gold-demo .subv li{border-radius:4px;background:#fffdf7}
+.gold-detail{height:188px;margin:42px 0 0;border-block:1px solid #d8c79b;overflow:hidden;background:#ede5d3}
+.gold-detail picture,.gold-detail img{display:block;width:100%;height:100%}.gold-detail img{object-fit:cover;object-position:center 55%}
+.gold-detail+h2{margin-top:34px}
+.gold-demo .btn{background:#78571c;border-color:#78571c;border-radius:4px}.gold-demo .btn:hover{background:#614514;border-color:#614514}.gold-demo .btn.g{background:transparent;color:#694e20;border-color:#c6b387}.gold-demo .btn.g:hover{background:#eee7d3}
+.gold-demo .who{border-color:#b59450}.gold-demo footer.end{max-width:836px;margin-left:auto;margin-right:auto}
+.gold-demo a:focus-visible{outline:3px solid #796126;outline-offset:4px}
+@media(max-width:850px){.gold-hero{grid-template-columns:1fr;gap:26px}.gold-hero-copy h1{max-width:24ch}.gold-hero-copy .lede{max-width:none}.gold-hero-image{min-height:0;height:300px;border-radius:4px 42px 4px 4px}.gold-hero-image img{object-position:70% 62%}.gold-detail{height:150px}}
+@media(max-width:440px){.gold-demo header.top .wrap{gap:9px}.gold-demo header.top{margin-bottom:20px}.gold-demo .back{font-size:12px}.gold-demo .brand{font-size:15px}.demo-label .wrap{font-size:10px;flex-wrap:wrap;gap:3px 10px}.gold-hero-copy h1{font-size:35px}.gold-hero-image{height:250px}.gold-demo .vocab li{font-size:11px;padding:6px 9px}.gold-demo .btn{font-size:14px}.gold-detail{height:130px}}
+.gold-demo .ask b .core{display:inline-block;max-width:none;width:auto;line-height:1}
