@@ -1,0 +1,12 @@
+/* Second demo: a panoramic still life with the stacks on their sides. */
+.gold-horizontal .demo-compare{display:flex;gap:20px;flex-wrap:wrap}
+.gold-horizontal .gold-hero{display:block;margin-bottom:38px}
+.gold-horizontal .gold-hero-copy{max-width:836px;margin:0 auto 32px}
+.gold-horizontal .gold-hero-copy h1{max-width:23ch;font-size:clamp(35px,4.3vw,56px);margin-bottom:24px}
+.gold-horizontal .gold-hero-copy .overheard{max-width:43ch;font-size:20px}
+.gold-horizontal .gold-hero-copy .lede{max-width:76ch}
+.gold-horizontal .gold-hero-image{min-height:0;height:auto;aspect-ratio:2.7;border-radius:4px;border-color:#d8c7a0;box-shadow:none}
+.gold-horizontal .gold-hero-image img{object-position:center 55%}
+.gold-horizontal .gold-body{border-top:none}
+@media(max-width:850px){.gold-horizontal .gold-hero-image{aspect-ratio:2;height:auto}.gold-horizontal .gold-hero-copy{margin-bottom:25px}}
+@media(max-width:440px){.gold-horizontal .demo-label .wrap{gap:7px}.gold-horizontal .demo-compare{gap:16px}.gold-horizontal .gold-hero-image{aspect-ratio:1.5;height:auto}.gold-horizontal .gold-hero-copy .overheard{font-size:18px}}
