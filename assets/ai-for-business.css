@@ -4,3 +4,17 @@
 @media(max-width:760px){.wrap{padding-left:22px;padding-right:22px}.top-inner{min-height:74px;gap:12px}.brand{font-size:20px}.header-contact{font-size:13px}.hero{grid-template-columns:1fr;padding-top:43px;padding-bottom:40px;gap:35px}.hero-copy{max-width:600px}h1{font-size:clamp(39px,8vw,57px)}.intro{max-width:52ch}.workflow{padding:24px}.workflow-heading{flex-wrap:nowrap}.workflow h2 br{display:none}.principles .wrap{flex-wrap:wrap;gap:9px 24px}.section{padding-top:48px;padding-bottom:48px}.examples,.delivery-grid,.fit-grid,.project-grid{grid-template-columns:1fr;gap:28px}.examples article{padding-top:18px}.examples h3{max-width:none;font-size:23px;margin-bottom:12px}.examples p{margin-bottom:13px}.section-heading{margin-bottom:25px}.fit-note{padding:23px}.project-copy{padding:0}.project-form{padding:23px}.footer-inner{flex-direction:column;gap:15px}.footer p span{display:block}.direct-contact{margin-top:20px}}
 @media(max-width:370px){.brand{font-size:18px;gap:6px}.brand img{width:25px;height:25px}.header-contact{font-size:12px}.workflow-heading{flex-wrap:wrap}.button{font-size:15px;padding:12px 15px;gap:12px}.project-form{padding:19px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Technical capabilities remain readable alongside the business offer. */
+.engineering{background:#f0f1e9;border-block:1px solid var(--line)}
+.engineering .section-heading{max-width:760px}
+.engineering-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.engineering-grid article{padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:7px}
+.engineering-grid .card-number{margin-bottom:14px;color:var(--accent)}
+.engineering-grid h3{font-size:25px;line-height:1.2}
+.engineering-grid p{font-size:15px;color:var(--muted)}
+.engineering-grid .engineering-detail{font-size:12px;border-top:1px solid var(--line);padding-top:15px;margin-bottom:0;line-height:1.7}
+.engineering-goal{margin-top:30px;max-width:850px;padding-left:22px;border-left:3px solid var(--clay)}
+.engineering-goal strong{display:block;font-size:20px;line-height:1.4;margin-bottom:10px}
+.engineering-goal p{font-size:15px;color:var(--muted);margin-bottom:12px}
+@media(max-width:760px){.engineering-grid{grid-template-columns:1fr;gap:18px}.engineering-grid article{padding:23px}.engineering-grid h3{font-size:23px}}
