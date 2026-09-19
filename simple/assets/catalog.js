@@ -20,7 +20,10 @@
         if (item.deposit) prices.push('Deposit: ' + item.deposit.formatted + ' • Remaining balance: ' + item.deposit.balanceFormatted);
         article.append(make('p', prices.join(' · '), 'small'));
       }
-      const details = make('details'); details.append(make('summary', 'Full scope and payment details'), make('p', item.blurb));
+      const details = make('details'); details.append(make('summary', item.scopeSections?.length ? (item.sku === 'ai-cluster' ? 'Explore AI and HPC cluster services' : 'Explore development services') : 'Full scope and payment details'), make('p', item.blurb));
+      for (const section of item.scopeSections || []) {
+        details.append(make('h4', section.title), make('p', section.body));
+      }
       if (item.ach) details.append(make('p', 'Bank transfer: full payment ' + item.ach.fullFormatted + '; deposit ' + item.ach.depositFormatted + '; remaining balance ' + item.ach.balanceFormatted + '.', 'small'));
       article.append(details);
       const link = make('a', item.priceOnApplication ? 'Request a quote' : 'Choose this service', 'button secondary');

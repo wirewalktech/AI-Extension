@@ -189,6 +189,7 @@ footer.end{margin:56px 0 44px;padding-top:24px;border-top:1px solid var(--ln);
            color:var(--tx3);font-size:14px}
 footer.end a{color:var(--ac2)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.cluster-scope{margin:14px 0;font-weight:400}.cluster-scope summary{cursor:pointer;font-weight:600;color:var(--ac2)}.cluster-scope h4{margin:18px 0 5px}.cluster-scope p{font-size:14px;color:var(--tx2);line-height:1.65}
 </style>
 <script type="application/ld+json">
 {
@@ -605,9 +606,13 @@ function renderCatalog(){
       const pin = i.sku === "ai-sounding"   ? '<span class="pin">Start here</span>'
                 : i.sku === "ai-diagnostic" ? '<span class="pin">Most commissioned</span>'
                 : "";
+      const scopeDetails = (i.scopeSections || []).length
+        ? '<details class="cluster-scope"><summary>' + (i.sku === 'ai-cluster' ? 'Explore AI and HPC cluster services' : 'Explore development services') + '</summary>' +
+          i.scopeSections.map(section => '<h4>' + esc(section.title) + '</h4><p>' + esc(section.body) + '</p>').join('') + '</details>'
+        : '';
       if (i.priceOnApplication){
         html += '<tr><td class="n">' + '<span class="nm">' + esc(i.name) + pin + '</span>' +
-                "<span>" + esc(i.blurb) + "</span>" +
+                "<span>" + esc(i.blurb) + "</span>" + scopeDetails +
                 '<span class="acts"><button type="button" data-sku="' + esc(i.sku) +
                 '" data-mode="po">Raise a purchase order</button></span></td>' +
                 '<td class="p poa" colspan="3">Quoted per engagement</td></tr>';
@@ -615,7 +620,7 @@ function renderCatalog(){
       }
       const sp = i.special ? '<span class="save">' + esc(i.special.label) + "</span>" : "";
       html += '<tr><td class="n">' + '<span class="nm">' + esc(i.name) + pin + '</span>' +
-              "<span>" + esc(i.blurb) + "</span>" +
+              "<span>" + esc(i.blurb) + "</span>" + scopeDetails +
               '<span class="acts">' +
                 '<button type="button" class="go" data-sku="' + esc(i.sku) + '" data-mode="full">' +
                   "Prepay " + esc(i.prepay.formatted) + "</button>" +

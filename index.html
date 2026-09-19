@@ -680,6 +680,7 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
 .pred h4{font-size:16px;margin-bottom:7px}
 .pred p{font-size:15px}
 @media(max-width:800px){.pred{grid-template-columns:1fr}}
+.cluster-scope{margin:24px 0;padding:20px 24px;border:1px solid var(--ln);border-radius:12px;scroll-margin-top:90px}.cluster-scope summary{cursor:pointer;font-weight:600}.cluster-scope h4{margin:22px 0 6px}.cluster-scope p{max-width:85ch;margin:0 0 12px;line-height:1.7}
 </style><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
 <link rel="apple-touch-icon" href="favicon-180.png">
@@ -886,11 +887,11 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <b class="px">$45,000 engineering fee</b> <span class="pxn">Hardware, software licenses,
       travel and ongoing support are separate. Hardware is bought in your name, without markup.</span>
       <a class="ilink" href="/order/?sku=ai-node#catalog">Scope and ordering &rarr;</a></p></div>
-    <div><span class="n">A cluster</span><h4>Tens to thousands of GPUs</h4>
-      <p>Scheduler, parallel filesystem, InfiniBand or RoCE fabric, and the power and
-      cooling envelope they all have to live inside. Built, benchmarked against what was
-      actually sold to you, and instrumented so you can prove it.<br>
-      <b class="px">Quoted per build</b> <span class="pxn">after a scoping session</span></p></div>
+    <div><span class="n">A cluster</span><h4>AI and HPC clusters</h4>
+      <p>From a few servers to large GPU installations. We design, build and tune the
+      computing, network, storage and software for your AI or high-performance computing workloads.<br>
+      <b class="px">Quoted per build</b> <span class="pxn">for your system and workloads</span>
+      <a class="ilink" href="#cluster-scope">Explore cluster services &rarr;</a></p></div>
     <div><span class="n">A factory</span><h4>Production AI at industrial scale</h4>
       <p>Multi-rack, multi-tenant, with the operational discipline that keeps it running
       once the launch is over: rolling maintenance with no filesystem interruption, health
@@ -898,6 +899,22 @@ nav.lk button.on .caret{transform:rotate(180deg);opacity:1}
       <b class="px">Quoted per build</b> <span class="pxn">including the run-book and the
       training to operate it without us</span></p></div>
   </div>
+
+  <details id="cluster-scope" class="cluster-scope"><summary>Explore AI and HPC cluster services</summary>
+<h4>Design and capacity planning</h4><p>Start with your AI, simulation, research, or data workloads. Size CPU and GPU nodes, memory, storage, and network capacity. Plan topology, growth, rack space, power, and cooling, with hardware selection and procurement assistance.</p>
+<h4>Cluster installation</h4><p>Install and configure compute, GPU, login, and management nodes. Set up operating system images, provisioning, drivers, firmware, user access, and repeatable configuration. Integrate with your existing identity and network services.</p>
+<h4>Networking and fabric tuning</h4><p>Build and tune InfiniBand, RoCE, or Ethernet networks. Check cabling, link speeds, routing, congestion, and RDMA. Include NVIDIA UFM configuration and tuning where used, with settings matched to the hardware and workloads.</p>
+<h4>Parallel filesystems and data</h4><p>Set up parallel storage such as GPFS / IBM Storage Scale, Lustre, Weka, or VAST. Plan shared and scratch storage, client connections, permissions, data movement, and agreed backup or recovery requirements. Test throughput, latency, and metadata performance.</p>
+<h4>Scheduling and resource sharing</h4><p>Configure Slurm, PBS Pro, or LSF for queues, priorities, fair share, GPU allocation, accounting, and license-aware scheduling. Set up containers or Kubernetes where the workload calls for them, and test how teams share the system.</p>
+<h4>AI models and applications</h4><p>Select models and set up the agreed training, fine-tuning, distributed training, and inference workflows. Configure frameworks, containers, and model-serving tools. Define data preparation, integrations, and model evaluation in the project scope.</p>
+<h4>HPC software and workloads</h4><p>Install agreed compilers, MPI libraries, math libraries, environment modules, and scientific or engineering applications. Help move workloads to the cluster and tune representative jobs for the available CPUs, GPUs, memory, and network.</p>
+<h4>Performance and acceptance testing</h4><p>Measure the complete system with agreed application and infrastructure tests. Use NCCL collectives for GPU communication, MPI and RDMA tests for interconnects, and IOR/mdtest where appropriate for storage. Check GPUDirect RDMA where supported, unintended TCP fallback, scaling, and bottlenecks. Deliver results against agreed acceptance targets.</p>
+<h4>Monitoring, reliability, and handover</h4><p>Set up health monitoring, dashboards, alerts, logs, and agreed security controls. Plan maintenance, upgrades, recovery, and high availability where required. Provide operating documentation, administrator training, and handover. Ongoing support can be included in a separate agreement.</p>
+<h4>What your quote covers</h4><p>Every build has a written scope covering system size, workloads, deliverables, licenses, hardware, testing, schedule, and acceptance criteria. The final design determines which services above apply. Hardware, software licenses, facilities work, travel, and ongoing support are itemized as applicable; they are not automatically included in an engineering quote.</p>
+<a class="ilink" href="/order/?sku=ai-cluster">Request a cluster quote &rarr;</a></details>
+
+  <div class="rl"><h3>Custom software and pipeline development</h3><p>Build AI applications, connect your systems, and automate data, training, or scientific workflows. Includes agreed development, testing, deployment and handover. <b>Custom quote.</b></p>
+  <details class="cluster-scope"><summary>Explore development services</summary><h4>Applications and integrations</h4><p>Build custom AI applications, internal tools, APIs, and connections to your existing systems. Define users, workflows, access controls, and acceptance criteria before development starts.</p><h4>Data and AI pipelines</h4><p>Develop data ingestion, validation, transformation, and retrieval workflows. Build agreed model training, fine-tuning, evaluation, and inference pipelines, with versioning and reproducible runs.</p><h4>Scientific and HPC workflows</h4><p>Automate simulation, analysis, batch processing, and multi-step research workflows. Integrate with cluster schedulers, containers, shared storage, and agreed CPU or GPU applications.</p><h4>Testing, deployment, and handover</h4><p>Include agreed automated tests, error handling, logging, monitoring, and deployment automation. Provide source code, documentation, and team handover for the custom work, with ownership and third-party license terms defined in the agreement.</p><h4>How we quote</h4><p>Quoted by scope, integrations, data requirements, delivery milestones, and acceptance criteria. Software development is a separate service from infrastructure installation. Hosting, compute, third-party licenses, and ongoing maintenance are itemized separately where applicable.</p></details><a class="ilink" href="/order/?sku=ai-software">Discuss your software project &rarr;</a></div>
 
   <p class="rl" style="margin-top:22px"><b>Which layer fails first changes with scale, and
   that is the whole job.</b> At a few nodes it is the scheduler. At a few hundred it is the
