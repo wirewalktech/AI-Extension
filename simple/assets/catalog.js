@@ -20,7 +20,7 @@
         if (item.deposit) prices.push('Deposit: ' + item.deposit.formatted + ' • Remaining balance: ' + item.deposit.balanceFormatted);
         article.append(make('p', prices.join(' · '), 'small'));
       }
-      const details = make('details'); details.append(make('summary', item.scopeSections?.length ? (item.sku === 'ai-cluster' ? 'Explore AI and HPC cluster services' : 'Explore development services') : 'Full scope and payment details'), make('p', item.blurb));
+      const details = make('details'); details.append(make('summary', item.scopeSections?.length ? (item.sku === 'ai-cluster' ? 'Explore AI and HPC cluster services' : item.sku === 'diag-acceptance' ? 'Explore AI model pretraining benchmarks' : 'Explore development services') : 'Full scope and payment details'), make('p', item.blurb));
       for (const section of item.scopeSections || []) {
         details.append(make('h4', section.title), make('p', section.body));
       }

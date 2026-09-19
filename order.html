@@ -607,7 +607,7 @@ function renderCatalog(){
                 : i.sku === "ai-diagnostic" ? '<span class="pin">Most commissioned</span>'
                 : "";
       const scopeDetails = (i.scopeSections || []).length
-        ? '<details class="cluster-scope"><summary>' + (i.sku === 'ai-cluster' ? 'Explore AI and HPC cluster services' : 'Explore development services') + '</summary>' +
+        ? '<details class="cluster-scope"><summary>' + (i.sku === 'ai-cluster' ? 'Explore AI and HPC cluster services' : i.sku === 'diag-acceptance' ? 'Explore AI model pretraining benchmarks' : 'Explore development services') + '</summary>' +
           i.scopeSections.map(section => '<h4>' + esc(section.title) + '</h4><p>' + esc(section.body) + '</p>').join('') + '</details>'
         : '';
       if (i.priceOnApplication){
