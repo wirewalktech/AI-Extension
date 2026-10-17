@@ -19,6 +19,9 @@ defaults:
   - scope: { path: "", type: "posts" }
     values: { layout: article }
 exclude:
+  - AI.MD
+  - AGENTS.md
+  - CLAUDE.md
   # Was live at /README-admin.md. No credentials in it, but it published the
   # private repo path and the OAuth setup procedure. `README.md` was excluded --
   # a file that does not exist.
