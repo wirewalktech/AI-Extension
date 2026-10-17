@@ -2,7 +2,9 @@
   'use strict';
   const form = document.querySelector('.project-form');
   if (!form) return;
-  // Attribution travels with the inquiry; no cookies, pixel, or cross-page storage.
+  // Attribution travels with the inquiry; no cookies or pixel. This script keeps
+  // nothing between pages; the separate first-party /assets/src-fields.js keeps a
+  // 30-day first/last touch in localStorage and adds it as _src_* fields at submit.
   // Never send the full query string or referrer path, which could contain private data.
   const params = new URLSearchParams(window.location.search);
   const clean = value => String(value || '').replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, 160);
