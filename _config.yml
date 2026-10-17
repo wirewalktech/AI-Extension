@@ -3,7 +3,14 @@ tagline: AI adoption and infrastructure
 description: >-
   AI adoption, private AI deployments, GPU infrastructure and performance diagnostics.
   From selecting a useful first application to building and operating the system.
-author: Wirewalk AI
+# site.author is the human who writes the notes -- it drives the visible byline
+# and the Person in the Article structured data. The organisation is separate so
+# schema can name a publisher distinct from the author.
+author: Lenny Shovsky
+author_url: https://www.wirewalk.com/about/lenny-shovsky/
+author_role: HPC and AI infrastructure engineer
+organization: Wirewalk AI
+locale: en_US
 url: https://ai.wirewalk.com
 # Served at the root of ai.wirewalk.com (see CNAME). A non-empty baseurl
 # makes every Liquid-generated link 404 on the live domain.

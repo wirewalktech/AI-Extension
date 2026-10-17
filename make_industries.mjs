@@ -312,6 +312,25 @@ footer.end .fl{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 `.trim();
 
+/* Breadcrumb trail derived from the canonical URL, so it can never disagree with
+   the page's own address. "Industries" and the industry name come from the path
+   segments; the leaf is the page title with the site suffix removed. */
+const breadcrumbs = (canonical, title) => {
+  const u = new URL(canonical);
+  const segs = u.pathname.split("/").filter(Boolean);
+  const items = [{ "@type": "ListItem", position: 1, name: "Home", item: u.origin + "/" }];
+  let acc = "";
+  segs.forEach((seg, i) => {
+    acc += "/" + seg;
+    const last = i === segs.length - 1;
+    const name = last
+      ? String(title).split("—")[0].trim()
+      : seg.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    items.push({ "@type": "ListItem", position: i + 2, name, item: u.origin + acc + "/" });
+  });
+  return { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items };
+};
+
 const head = (title, desc, canonical) => `<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -330,6 +349,19 @@ const head = (title, desc, canonical) => `<!DOCTYPE html>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="https://ai.wirewalk.com/assets/og.png">
+<meta property="og:locale" content="en_US">
+<meta name="theme-color" content="#FAF9F5">
+<meta name="author" content="Lenny Shovsky">
+<link rel="alternate" type="application/atom+xml" title="Wirewalk AI" href="https://ai.wirewalk.com/feed.xml">
+<!-- Structured data. These pages sit two and three levels deep under /industries/,
+     and without a breadcrumb trail a search result shows the bare URL instead of
+     the path. Built from the canonical so it cannot disagree with it. -->
+<script type="application/ld+json">
+${JSON.stringify(breadcrumbs(canonical, title), null, 0)}
+</script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
 <style>
